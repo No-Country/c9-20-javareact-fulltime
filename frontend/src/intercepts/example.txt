@@ -1,0 +1,1 @@
+Interceptar la información de los datos sea de una api o servicios externo. Puede interceptar errores del back.

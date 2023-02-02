@@ -1,0 +1,1 @@
+Las representaciones de nuestras entidades.
