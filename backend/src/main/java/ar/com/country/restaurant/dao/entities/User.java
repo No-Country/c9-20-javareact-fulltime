@@ -1,17 +1,37 @@
 package ar.com.country.restaurant.dao.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
+import java.util.List;
 
 @Entity
-public class User {
+public class User implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false, unique = true)
+    private String dni;
+    @NotEmpty
+    @Size(min = 3, max = 12)
+    @Column(nullable = false)
     private String name;
+    @NotEmpty
     private String lastName;
+    @NotEmpty
+    @Email
     private String email;
+    @NotEmpty
     private String password;
     private String phone;
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Order> order;
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Address> address;
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Payment> payment;
 
     public User() {
     }
