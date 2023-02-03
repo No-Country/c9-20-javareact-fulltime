@@ -1,4 +1,4 @@
-package com.demo.react;
+package ar.com.country.restaurant.controllers;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

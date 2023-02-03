@@ -1,4 +1,4 @@
-package com.demo.react;
+package ar.com.country.restaurant.controllers;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
