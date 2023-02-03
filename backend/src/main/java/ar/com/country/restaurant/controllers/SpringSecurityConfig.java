@@ -1,4 +1,4 @@
-package com.demo.react;
+package ar.com.country.restaurant.controllers;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
