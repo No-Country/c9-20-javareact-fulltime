@@ -17,6 +17,10 @@ public class SecurityUser implements UserDetails {
         return List.of(() -> "ADMIN");
     }
 
+    public Long getId() {
+        return user.getId();
+    }
+
     @Override
     public String getPassword() {
         return user.getPassword();

@@ -34,7 +34,6 @@ public class TokenGenerator {
             JwtEncoder encoder,
             @Qualifier("jwtRefreshTokenEncoder") JwtEncoder refreshTokenEncoder,
             @Qualifier("tokenEncoderClock") Clock clock
-
     ) {
         this.encoder = encoder;
         this.refreshTokenEncoder = refreshTokenEncoder;
@@ -45,15 +44,15 @@ public class TokenGenerator {
         SecurityUser user = (SecurityUser) authentication.getPrincipal();
         String refreshToken = renovateRefreshTokenIfLessThan1WeekBeforeExpiration(authentication);
         return TokenDTO.builder()
-                .username(user.getUsername())
+                .id(user.getId())
+                .email(user.getUsername())
                 .accessToken(generateAccessToken(authentication))
                 .refreshToken(refreshToken)
                 .build();
     }
 
     private String renovateRefreshTokenIfLessThan1WeekBeforeExpiration(Authentication authentication) {
-        if (authentication.getCredentials() instanceof Jwt) {
-            Jwt jwt = (Jwt) authentication.getCredentials();
+        if (authentication.getCredentials() instanceof Jwt jwt) {
             if (lessThan1WeekBeforeExpiration(jwt)) {
                 return generateRefreshToken(authentication);
             } else {
