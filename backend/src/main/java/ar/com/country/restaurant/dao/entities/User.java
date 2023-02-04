@@ -1,16 +1,30 @@
 package ar.com.country.restaurant.dao.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import lombok.Builder;
+
+import javax.persistence.*;
 
 @Entity
+@Table(name = "users")
+@Builder
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
     private String name;
+
+    @Column
     private String lastName;
+
+    @Column
     private String email;
+
+    @Column
     private String password;
+
+    @Column
     private String phone;
 
     public User() {
