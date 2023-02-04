@@ -30,8 +30,8 @@ public class UserServiceImpl implements UserService {
     }
 
     private void ensureUniqueEmail(String email) {
-        boolean usernameTaken = userRepository.existsByEmail(email);
-        if (usernameTaken) {
+        boolean emailTaken = userRepository.existsByEmail(email);
+        if (emailTaken) {
             throw new EmailAlreadyTakenException(email);
         }
     }
