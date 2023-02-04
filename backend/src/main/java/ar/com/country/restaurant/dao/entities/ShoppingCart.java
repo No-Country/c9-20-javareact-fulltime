@@ -2,25 +2,25 @@ package ar.com.country.restaurant.dao.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Entity
-public class OrderDetail {
+public class ShoppingCart {
     @Id
     private Long id;
     private Long orderId;
-    private Long dishId;
-    private Integer quantity;
-    private Double subtotal;
+    private int quantity;
+    @OneToMany
+    private List<Order> orders;
 
-    public OrderDetail() {
+    public ShoppingCart() {
     }
 
-    public OrderDetail(Long id, Long orderId, Long dishId, Integer quantity, Double price, Double subtotal) {
+    public ShoppingCart(Long id, Long orderId, int quantity) {
         this.id = id;
         this.orderId = orderId;
-        this.dishId = dishId;
         this.quantity = quantity;
-        this.subtotal = subtotal;
     }
 
     public Long getId() {
@@ -31,20 +31,13 @@ public class OrderDetail {
         this.id = id;
     }
 
+
     public Long getOrderId() {
         return orderId;
     }
 
     public void setOrderId(Long orderId) {
         this.orderId = orderId;
-    }
-
-    public Long getDishId() {
-        return dishId;
-    }
-
-    public void setDishId(Long dishId) {
-        this.dishId = dishId;
     }
 
     public int getQuantity() {
@@ -55,12 +48,4 @@ public class OrderDetail {
         this.quantity = quantity;
     }
 
-
-    public double getSubtotal() {
-        return subtotal;
-    }
-
-    public void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
-    }
 }

@@ -7,18 +7,26 @@ import javax.persistence.Id;
 public class Payment {
     @Id
     private Long id;
-    private String type;
-    private String number;
+    private Long userId;
+    private Long orderId;
+    private String paymentMethod;
+    private String cardNumber;
+    private String cardHolder;
     private String expirationDate;
+    private String cvv;
 
     public Payment() {
     }
 
-    public Payment(Long id, String type, String number, String expirationDate) {
+    public Payment(Long id, Long userId, Long orderId, String paymentMethod, String cardNumber, String cardHolder, String expirationDate, String cvv) {
         this.id = id;
-        this.type = type;
-        this.number = number;
+        this.userId = userId;
+        this.orderId = orderId;
+        this.paymentMethod = paymentMethod;
+        this.cardNumber = cardNumber;
+        this.cardHolder = cardHolder;
         this.expirationDate = expirationDate;
+        this.cvv = cvv;
     }
 
     public Long getId() {
@@ -29,20 +37,44 @@ public class Payment {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public String getNumber() {
-        return number;
+    public Long getOrderId() {
+        return orderId;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public String getCardHolder() {
+        return cardHolder;
+    }
+
+    public void setCardHolder(String cardHolder) {
+        this.cardHolder = cardHolder;
     }
 
     public String getExpirationDate() {
@@ -51,5 +83,13 @@ public class Payment {
 
     public void setExpirationDate(String expirationDate) {
         this.expirationDate = expirationDate;
+    }
+
+    public String getCvv() {
+        return cvv;
+    }
+
+    public void setCvv(String cvv) {
+        this.cvv = cvv;
     }
 }

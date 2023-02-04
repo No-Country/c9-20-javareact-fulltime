@@ -14,16 +14,9 @@ public class User implements Serializable {
     private Long id;
     @Column(nullable = false, unique = true)
     private String dni;
-    @NotEmpty
-    @Size(min = 3, max = 12)
-    @Column(nullable = false)
     private String name;
-    @NotEmpty
     private String lastName;
-    @NotEmpty
-    @Email
     private String email;
-    @NotEmpty
     private String password;
     private String phone;
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -83,5 +76,12 @@ public class User implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
