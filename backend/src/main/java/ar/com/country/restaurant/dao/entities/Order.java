@@ -1,9 +1,6 @@
 package ar.com.country.restaurant.dao.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -11,17 +8,19 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int number;
-    private String description;
+    private Long userId;
+    private String number;
     private Date createdAt;
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+    private OrderDetail orderDetail;
 
     public Order() {
     }
 
-    public Order(Long id, int number, String description, Date createdAt) {
+    public Order(Long id, Long userId ,String number, String description, Date createdAt) {
         this.id = id;
+        this.userId = userId;
         this.number = number;
-        this.description = description;
         this.createdAt = createdAt;
     }
 
@@ -33,21 +32,22 @@ public class Order {
         this.id = id;
     }
 
-    public int getNumber() {
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public Date getCreatedAt() {
         return createdAt;

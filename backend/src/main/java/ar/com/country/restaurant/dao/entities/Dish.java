@@ -2,6 +2,7 @@ package ar.com.country.restaurant.dao.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Dish {

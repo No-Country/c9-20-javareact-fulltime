@@ -7,18 +7,18 @@ import javax.persistence.Id;
 public class Delivery {
     @Id
     private Long id;
-    private String type;
-    private String number;
-    private String expirationDate;
+    private Long orderId;
+    private Long addressId;
+    private String status;
 
     public Delivery() {
     }
 
-    public Delivery(Long id, String type, String number, String expirationDate) {
+    public Delivery(Long id, Long orderId, Long addressId, String status) {
         this.id = id;
-        this.type = type;
-        this.number = number;
-        this.expirationDate = expirationDate;
+        this.orderId = orderId;
+        this.addressId = addressId;
+        this.status = status;
     }
 
     public Long getId() {
@@ -29,27 +29,27 @@ public class Delivery {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
+    public Long getOrderId() {
+        return orderId;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 
-    public String getNumber() {
-        return number;
+    public Long getAddressId() {
+        return addressId;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setAddressId(Long addressId) {
+        this.addressId = addressId;
     }
 
-    public String getExpirationDate() {
-        return expirationDate;
+    public String getStatus() {
+        return status;
     }
 
-    public void setExpirationDate(String expirationDate) {
-        this.expirationDate = expirationDate;
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

@@ -2,6 +2,8 @@ package ar.com.country.restaurant.dao.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 public class Promotion {
@@ -11,20 +13,19 @@ public class Promotion {
     private String description;
     private String startDate;
     private String endDate;
-    private String image;
     private String status;
+    @OneToMany(mappedBy = "promotion")
+    private List<Dish> dishes;
 
     public Promotion() {
     }
 
-    public Promotion(Long id, String name, String description, String startDate, String endDate, String image, String status) {
+    public Promotion(Long id, String name, String description, String startDate, String endDate, String status) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.image = image;
-        this.status = status;
     }
 
     public Long getId() {
@@ -67,14 +68,6 @@ public class Promotion {
         this.endDate = endDate;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -82,5 +75,4 @@ public class Promotion {
     public void setStatus(String status) {
         this.status = status;
     }
-
 }

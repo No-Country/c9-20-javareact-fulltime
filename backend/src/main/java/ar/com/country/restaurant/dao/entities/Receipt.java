@@ -1,7 +1,10 @@
 package ar.com.country.restaurant.dao.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import java.util.Date;
 
 @Entity
 public class Receipt {
@@ -10,7 +13,12 @@ public class Receipt {
     private Long orderId;
     private Long paymentId;
     private Long deliveryId;
+    @Column(name = "create_at")
+    private Date created;
     private double total;
+    @OneToOne
+    private ReceiptStatus status;
+
 
     public Receipt() {
     }
