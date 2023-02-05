@@ -4,16 +4,6 @@ export const HeaderSubtitleStyled = styled.header`
     text-align: ${({ textAlign }) => textAlign}; 
 `;
 
-export const ContainerFlexBoxStyled = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    block-size: ${({ blockSize }) => blockSize};
-    inline-size: ${({ inlineSize }) => inlineSize};
-    align-items: center;
-    gap: ${({ gap }) => gap};
-`;
-
 export const SectionStyled = styled.section`
     padding: 30px;
 `;
