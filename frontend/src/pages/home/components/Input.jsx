@@ -1,7 +1,7 @@
 const Input = ({ type, name }) => {
 	return (
 		<>
-			<label htmlFor={name}>{labelText}</label>
+			<label htmlFor={name}>{name}</label>
 			<input type={type} name={name} />
 		</>
 	);
