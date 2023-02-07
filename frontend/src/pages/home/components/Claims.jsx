@@ -1,9 +1,9 @@
 import { ContainerFormClaimsStyled } from "../styled-components";
-import HeaderSubTitle from "./HeaderSubTitle";
+import HeaderSubTitle from "./../../../components/HeaderSubTitle";
 const Claims = () => {
 	return (
 		<section>
-			<HeaderSubTitle title='Reclamos' textAlign='left' />
+			<HeaderSubTitle title='Reclamos' textAlign='left' level={2} />
 			<p>Deja tu reclamo aquí </p>
 			<ContainerFormClaimsStyled>
 				<textarea />
