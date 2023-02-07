@@ -32,4 +32,5 @@ public class ReceiptStatus {
     public void setName(String name) {
         this.name = name;
     }
+
 }
