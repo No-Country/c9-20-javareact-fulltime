@@ -1,9 +1,4 @@
-import {
-	ItemButton,
-	ItemContainer,
-	ItemDescription,
-	ItemImg,
-} from "../styled-components/ItemsComponents.jsx";
+import { ItemButton, ItemContainer, ItemDescription, ItemImg } from "../styled-components";
 import React from "/assets/react.svg";
 const Items = () => {
 	return (

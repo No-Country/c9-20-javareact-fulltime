@@ -1,5 +1,6 @@
 import React from 'react'
-import { CardContainer, CardContent } from '../styled-components/CardComponents'
+import { CardContainer, CardContent } from '../styled-components'
+
 
 const Card = () => {
     return (

@@ -1,16 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
 import Items from '../components/Items'
+import { Div } from '../styled-components';
 import Card from './Card';
-const Div = styled.div`
-display: flex;
-margin:15px;
-justify-content: space-around;
-flex-wrap: wrap;
-h1{
-	text-align: center;
-}
-`;
+
 
 const ItemListContainer = () => {
 	return (
