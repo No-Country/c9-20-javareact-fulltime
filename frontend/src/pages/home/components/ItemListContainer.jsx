@@ -1,17 +1,16 @@
-import React from 'react'
-import Items from '../components/Items'
-import { Div } from '../styled-components';
-import Card from './Card';
-
+import React from "react";
+import { Div } from "../../../styled-components";
+import Items from "../components/Items";
+import Card from "./Card";
 
 const ItemListContainer = () => {
 	return (
 		<>
 			<Div>
-				<Card/>
-				<Card/>
-				<Card/>
-				<Card/>
+				<Card />
+				<Card />
+				<Card />
+				<Card />
 			</Div>
 			<h1>Productos Destacados</h1>
 			<Div>

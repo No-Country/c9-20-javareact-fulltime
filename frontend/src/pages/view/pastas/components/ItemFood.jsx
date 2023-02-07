@@ -2,9 +2,11 @@ import HeaderSubTitle from "../../../../components/HeaderSubTitle";
 import { ItemFoodStyled } from "../styled-components/layout.styled";
 import HeroImage from "./HeroImage";
 import react from "/assets/react.svg";
+
 const ItemFood = () => {
 	return (
 		<ItemFoodStyled>
+             
 			<div>
 				<HeroImage
 					img={react}

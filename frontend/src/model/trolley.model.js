@@ -14,7 +14,6 @@ class Trolley {
 		this.subTotal = subTotal;
 		this.ShippingCost = ShippingCost;
 		this.total = total;
-
 		this.DiscountCode = DiscountCode;
 	}
 }
