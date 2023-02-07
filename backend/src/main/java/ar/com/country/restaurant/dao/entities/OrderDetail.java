@@ -1,13 +1,16 @@
 package ar.com.country.restaurant.dao.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class OrderDetail {
     @Id
     private Long id;
-    private Long orderId;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Order order;
     private Long dishId;
     private Integer quantity;
     private Double subtotal;
@@ -15,9 +18,9 @@ public class OrderDetail {
     public OrderDetail() {
     }
 
-    public OrderDetail(Long id, Long orderId, Long dishId, Integer quantity, Double price, Double subtotal) {
+    public OrderDetail(Long id, Order order, Long dishId, Integer quantity, Double price, Double subtotal) {
         this.id = id;
-        this.orderId = orderId;
+        this.order = order;
         this.dishId = dishId;
         this.quantity = quantity;
         this.subtotal = subtotal;
@@ -31,12 +34,12 @@ public class OrderDetail {
         this.id = id;
     }
 
-    public Long getOrderId() {
-        return orderId;
+    public Order getOrderId() {
+        return order;
     }
 
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
+    public void setOrderId(Order orderId) {
+        this.order = orderId;
     }
 
     public Long getDishId() {

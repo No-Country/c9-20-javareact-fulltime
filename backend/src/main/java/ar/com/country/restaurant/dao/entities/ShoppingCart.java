@@ -11,8 +11,9 @@ public class ShoppingCart {
     private Long id;
     private Long orderId;
     private int quantity;
+
     @OneToMany
-    private List<Order> orders;
+    private List<Dish> dishes;
 
     public ShoppingCart() {
     }
@@ -48,4 +49,12 @@ public class ShoppingCart {
         this.quantity = quantity;
     }
 
+
+    public List<Dish> getDishes() {
+        return dishes;
+    }
+
+    public void setDishes(List<Dish> dishes) {
+        this.dishes = dishes;
+    }
 }

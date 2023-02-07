@@ -8,18 +8,19 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long userId;
+    @ManyToOne
+    private User user;
     private String number;
     private Date createdAt;
     @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
     private OrderDetail orderDetail;
+
 
     public Order() {
     }
 
     public Order(Long id, Long userId ,String number, String description, Date createdAt) {
         this.id = id;
-        this.userId = userId;
         this.number = number;
         this.createdAt = createdAt;
     }
@@ -32,13 +33,6 @@ public class Order {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
 
     public String getNumber() {
         return number;

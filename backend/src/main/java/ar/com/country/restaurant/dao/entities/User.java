@@ -1,5 +1,6 @@
 package ar.com.country.restaurant.dao.entities;
 
+import lombok.Builder;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -8,16 +9,28 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
+@Table(name = "users")
+@Builder
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+ 
     @Column(nullable = false, unique = true)
     private String dni;
+
     private String name;
+
+    @Column
     private String lastName;
+
+    @Column
     private String email;
+
+    @Column
     private String password;
+
+    @Column
     private String phone;
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Order> order;
@@ -70,6 +83,14 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -84,4 +105,5 @@ public class User implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

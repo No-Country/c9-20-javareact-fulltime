@@ -2,12 +2,15 @@ package ar.com.country.restaurant.dao.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Payment {
     @Id
     private Long id;
-    private Long userId;
+
+    @ManyToOne
+    private User user;
     private Long orderId;
     private String paymentMethod;
     private String cardNumber;
@@ -20,7 +23,7 @@ public class Payment {
 
     public Payment(Long id, Long userId, Long orderId, String paymentMethod, String cardNumber, String cardHolder, String expirationDate, String cvv) {
         this.id = id;
-        this.userId = userId;
+        this.user = user;
         this.orderId = orderId;
         this.paymentMethod = paymentMethod;
         this.cardNumber = cardNumber;
@@ -37,12 +40,12 @@ public class Payment {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Long getOrderId() {

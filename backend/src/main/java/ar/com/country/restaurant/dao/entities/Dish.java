@@ -2,6 +2,7 @@ package ar.com.country.restaurant.dao.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -13,6 +14,10 @@ public class Dish {
     private String image;
     private Double price;
     private String category;
+    @ManyToOne
+    private Promotion promotion;
+    @ManyToOne
+    private ShoppingCart shoppingCart;
 
     public Dish() {
     }
