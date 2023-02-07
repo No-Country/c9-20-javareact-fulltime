@@ -1,51 +1,26 @@
 package ar.com.country.restaurant.dao.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import lombok.*;
+
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "shopping_carts")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class ShoppingCart {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "shopping_cart_id")
     private Long id;
-    private Long orderId;
-    private int quantity;
-    @OneToMany
-    private List<Order> orders;
 
-    public ShoppingCart() {
-    }
+    @Column
+    private Integer quantity;
 
-    public ShoppingCart(Long id, Long orderId, int quantity) {
-        this.id = id;
-        this.orderId = orderId;
-        this.quantity = quantity;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-
-    public Long getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
+    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<Dish> dishes;
 }
