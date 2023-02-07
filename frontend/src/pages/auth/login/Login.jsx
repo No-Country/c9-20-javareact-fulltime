@@ -1,9 +1,22 @@
 import React from 'react'
 
-function Login() {
+import styled from 'styled-components'
+import AuthForm from '../../../components/AuthForm/AuthForm'
+
+const SignupBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+`
+
+const Signup = () => {
   return (
-    <div>Login</div>
+    <SignupBox>
+      <AuthForm />
+    </SignupBox>
   )
 }
 
-export default Login
+export default Signup

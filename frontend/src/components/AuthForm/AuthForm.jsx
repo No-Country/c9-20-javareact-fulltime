@@ -1,138 +1,90 @@
-import styled from 'styled-components'
-import Icon from './assets/Icon.jsx'
-import { useState } from 'react'
-
-const FormWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  width: 30%;
-  min-width: 300px;
-  margin: auto;
-  padding: 1em;
-`
-
-const Label = styled.label`
-  /* margin: 10px; */
-`
-
-const Input = styled.input`
-  border-radius: 10px;
-  padding: 10px;
-  margin: 10px;
-  margin-bottom: 20px;
-  margin-left: 0;
-  &:ms-reveal {
-    border: 1px solid transparent;
-    border-radius: 50%;
-    box-shadow: 0 0 3px currentColor;
-  }
-`
-
-const PasswordInput = styled.input`
-  border: none;
-  width: 100%;
-  &:focus {
-    outline: none;
-  }
-`
-
-const PaswordContainer = styled.div`
-  border: 1px solid #000;
-  display: flex;
-  position: relative;
-  border-radius: 10px;
-  padding: 5px;
-  margin: 10px;
-  margin-bottom: 20px;
-  margin-left: 0;
- `
-
-const Button = styled.button`
-  background-color: #49454F;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  padding: 10px;
-  margin: 10px;
-  margin-top: 40px;
- `
-
-const ShowPasswordIcon = styled.button`
-  &:focus {
-    outline: none;
-    background: none;
-  }
-  background: none;
-  border: none;
-`
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  border-radius: 10px;
-`
+import styled from "styled-components";
+import Icon from "./assets/Icon.jsx";
+import { useState } from "react";
+import { useLocation,Link } from "react-router-dom";
+import {FormWrapper,Label,Input,PasswordInput,PasswordContainer,Button,ShowPasswordIcon,Form,Title,Wrapperremember,Wrappersignup } from "./AuthForm.component";
 
 
-
-const Title =  styled.h3`
-
-`
 
 function AuthForm() {
-  const [showPassword, setShowPassword] = useState(true)
-  const [showPassword2, setShowPassword2] = useState(true)
-  const handleSubmit = (e) => {
-    e.preventDefault()
-  }
+	const [showPassword, setShowPassword] = useState(true);
+	const [showPassword2, setShowPassword2] = useState(true);
+	const { pathname } = useLocation();
+	const handleSubmit = (e) => {
+		e.preventDefault();
+	};
 
-  return (
-    <FormWrapper>
-      <Title>Signup</Title>
+	return (
+		<FormWrapper>
+			<Title>{pathname === "/signup" ? "signup" : "login"}</Title>
 
-      <Form onSubmit={(e) => handleSubmit(e)}>
-        <Label htmlFor="email">Email</Label>
-        <Input
-          type="email"
-          id="email"
-          name='email'
-         />
+			<Form onSubmit={(e) => handleSubmit(e)}>
+				<Label htmlFor="email">Email</Label>
+				<Input type="email" id="email" name='email' />
 
-        <Label htmlFor="name">Nombre</Label>
-        <Input type="text" id="name" name='name'/>
+				{pathname === "/signup" && (
+					<>
+						<Label htmlFor="name">Nombre</Label>
+						<Input type="text" id="name" name='name' />
+					</>
+				)}
 
-
-        <Label htmlFor="password">Contraseña</Label>
-        <PaswordContainer>
-          <PasswordInput
-            type={showPassword ? 'password' : 'text'}
-            id="password"
-            name='password'
-          />
-          <ShowPasswordIcon type='button' onClick={() => setShowPassword(!showPassword)}>
-            <Icon />
-          </ShowPasswordIcon>
-        </PaswordContainer>
-
-        <Label htmlFor="confirmPassword">Confirmar Contraseña</Label>
-        <PaswordContainer>
-          <PasswordInput
-            type={showPassword2 ? 'password' : 'text'}
-            id="password"
-            name='password'
-            />
-          <ShowPasswordIcon type='button' onClick={() => setShowPassword2(!showPassword2)}>
-            <Icon />
-          </ShowPasswordIcon>
-        </PaswordContainer>
-
-
-        <Button type='submit'>Register</Button>  
-      </Form>
-      
-    </FormWrapper>
-  )
+				<Label htmlFor="password">Contraseña</Label>
+				<PasswordContainer>
+					<PasswordInput
+						type={showPassword ? "password" : "text"}
+						id="password"
+						name='password'
+					/>
+					<ShowPasswordIcon
+						type='button'
+						onClick={() => setShowPassword(!showPassword)}
+					>
+						<Icon />
+					</ShowPasswordIcon>
+				</PasswordContainer>
+				{pathname === "/signup" && (
+					<>
+						<Label htmlFor="confirmPassword">Confirmar Contraseña</Label>
+						<PasswordContainer>
+							<PasswordInput
+								type={showPassword2 ? "password" : "text"}
+								id="password"
+								name='password'
+							/>
+							<ShowPasswordIcon
+								type='button'
+								onClick={() => setShowPassword2(!showPassword2)}
+							>
+								<Icon />
+							</ShowPasswordIcon>
+						</PasswordContainer>
+					</>
+				)}
+				{pathname === "/login" && (
+					<Wrapperremember>
+						<div>
+              <input name="checkbox" type="checkbox" />
+						<label htmlFor="checkbox">Recordar</label>
+            </div>
+						<Link to="/users/123" className="Link">
+							¿Haz olvidado tu contraeña?
+						</Link>
+					</Wrapperremember>
+				)}
+				<Button type='submit'>Register</Button>
+				{pathname === "/login" && (
+					<>
+						<Wrappersignup><p>¿No tienes cuenta?</p>{" "}
+						<Link to="/signup" className="Link">
+							Registrate
+						</Link>
+            </Wrappersignup>
+					</>
+				)}
+			</Form>
+		</FormWrapper>
+	);
 }
 
-export default AuthForm
+export default AuthForm;
