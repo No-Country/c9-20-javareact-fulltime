@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-export const HeaderSubtitleStyled = styled.header`
-    text-align: ${({ textAlign }) => textAlign}; 
-`;
-
 export const SectionStyled = styled.section`
     padding: 30px;
 `;
