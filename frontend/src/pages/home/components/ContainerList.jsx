@@ -3,8 +3,9 @@ import { ContainerListStyled } from "../styled-components";
 const ContainerList = ({ items }) => {
 	return (
 		<ContainerListStyled>
-			{items.map((item) => (
-				<li>{item}</li>
+			{items.map((item, index) => (
+				// rome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+				<li key={index}>{item}</li>
 			))}
 		</ContainerListStyled>
 	);

@@ -25,7 +25,7 @@ export const ContainerFormClaimsStyled = styled.form`
         resize: none;
 
     }
-`
+`;
 /* Card Resposive abieto a que lo configuren */
 export const CardContainer = styled.div`
 height: 300px;
@@ -50,7 +50,7 @@ h1{
     margin: 15px;
     font-size: 1.5rem;
 }
-`
+`;
 export const CardContent = styled.div`
 height: 180px;
 margin: 10px;
@@ -58,7 +58,7 @@ img{
     width: 100%;
     height: 100%;
 }
-`
+`;
 /* Container del item responsive abierto a que lo modifiquen */
 export const ItemContainer = styled.div`
 height: 500px;
@@ -114,15 +114,4 @@ border-radius: 15px;
     background-color: #6666f7;
     color: antiquewhite;
 }
-`
-/* Div responsive abierto a modificar */
-export const Div = styled.div`
-display: flex;
-margin:15px;
-justify-content: space-around;
-flex-wrap: wrap;
-h1{
-	text-align: center;
-}
 `;
-;

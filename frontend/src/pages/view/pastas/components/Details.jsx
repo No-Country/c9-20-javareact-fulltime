@@ -3,8 +3,9 @@ const Details = ({ titleSummary, list }) => {
 		<details>
 			<summary>{titleSummary}</summary>
 			<ul>
-				{list.map((item) => (
-					<li>{item}</li>
+				{list.map((item, index) => (
+					// rome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+					<li key={index}>{item}</li>
 				))}
 			</ul>
 		</details>

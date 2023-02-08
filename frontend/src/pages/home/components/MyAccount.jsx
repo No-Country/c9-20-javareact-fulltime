@@ -4,7 +4,7 @@ import Input from "./Input";
 const MyAccount = () => {
 	return (
 		<SectionStyled>
-			<HeaderSubTitle title='Mi cuenta' textAlign='left' level={2} />
+			<HeaderSubTitle title='Mi cuenta' textAlign='left' level={1} />
 			<div>
 				<form>
 					<Input type='text' name='text' />

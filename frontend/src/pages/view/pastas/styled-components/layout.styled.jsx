@@ -1,30 +1,15 @@
-import styled, { css } from "styled-components";
-
-const FlexBoxCenter = css`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`;
+import styled from "styled-components";
+import { FlexBoxCenter } from "../../../../styled-components";
 
 export const PastasStyled = styled.section`
     min-block-size: 100vh;
-    padding: 22px;
+    
     text-align: center;
 
     span{
         display: inline-block;
         margin-block-start: 40px;
     }
-`;
-
-export const HeroImageStyled = styled.div`
-    
-    block-size: ${({ blockSize }) => blockSize};
-    inline-size: ${({ inlineSize }) => inlineSize};
-    text-align: center;
-    background-color: rgba(218, 220, 224, 1);
-
-
 `;
 
 export const ContainerDetailsStyled = styled.div`
