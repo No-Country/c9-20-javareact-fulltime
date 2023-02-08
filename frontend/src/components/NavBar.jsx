@@ -1,8 +1,9 @@
 import React from 'react'
+import { NavBarStyled } from "../styled-components/NavBarComponent";
 
 const NavBar = () => {
   return (
-    <nav>
+    <NavBarStyled>
       LOGO
       <input type="text" placeholder='Buscar'/>
       <ul>
@@ -12,7 +13,7 @@ const NavBar = () => {
         <li>Mi Cuenta</li>
       </ul>
       Cart
-    </nav>
+    </NavBarStyled>
   )
 }
 
