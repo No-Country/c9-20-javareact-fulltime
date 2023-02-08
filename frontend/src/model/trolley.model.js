@@ -1,6 +1,7 @@
 class Trolley {
 	constructor(
-		amount = "",
+		id = 0,
+		amount = 0,
 		name = "",
 		cost = "",
 		subTotal = "",
@@ -8,6 +9,8 @@ class Trolley {
 		total = "",
 		DiscountCode = "",
 	) {
+		this.id = id;
+		this.cargar;
 		this.amount = amount;
 		this.name = name;
 		this.cost = cost;
