@@ -2,9 +2,9 @@ class Trolley {
 	constructor(
 		id = 0,
 		amount = 0,
-		name = "",
-		cost = "",
-		subTotal = "",
+		name = "Ñoquis",
+		cost = 0,
+		subTotal = 740,
 		ShippingCost = "",
 		total = "",
 		DiscountCode = "",

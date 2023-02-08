@@ -1,7 +1,3 @@
-class Card {
-	constructor(card = []) {
-		this.card = card;
-	}
-}
+const Card = [];
 
 export default Card;

@@ -7,21 +7,36 @@ export const AppetizerData = createSlice({
 	initialState,
 	reducers: {
 		increment: (state) => {
-			state.amount += 1;
+			return {
+				...initialState,
+				amount: state.amount + 1,
+			};
 		},
 		decrement: (state) => {
 			if (state.amount <= 0) {
-				state.amount = 0;
+				return {
+					...initialState,
+					amount: 0,
+				};
 			}
 
-			state.amount -= 1;
-		},
-		resetValue: (state) => {
-			state.amount = 0;
+			return {
+				...initialState,
+				amount: state.amount - 1,
+			};
 		},
 
-		getInformation: (state, { payload }) => {
-			state = payload;
+		resetValue: (state) => {
+			return {
+				...initialState,
+				amount: 0,
+			};
+		},
+
+		getInformation: (state) => {
+			return {
+				...initialState,
+			};
 		},
 	},
 });
