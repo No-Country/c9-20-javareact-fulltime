@@ -1,59 +1,39 @@
 package ar.com.country.restaurant.dao.entities;
 
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
-import java.util.Date;
+import java.util.Calendar;
 
 @Entity
+@Table(name = "orders")
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_id")
     private Long id;
-    private Long userId;
+
+    @Column
     private String number;
-    private Date createdAt;
-    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+
+    @Column(nullable = false, updatable = false)
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar createdAt;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @ToString.Exclude
+    private User user;
+
+    @OneToOne(mappedBy = "order")
+    @ToString.Exclude
     private OrderDetail orderDetail;
-
-    public Order() {
-    }
-
-    public Order(Long id, Long userId ,String number, String description, Date createdAt) {
-        this.id = id;
-        this.userId = userId;
-        this.number = number;
-        this.createdAt = createdAt;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
 }

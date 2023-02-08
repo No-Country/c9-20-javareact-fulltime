@@ -20,7 +20,6 @@
         <java.version>17</java.version>
         <lombok.version>1.18.24</lombok.version>
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
-        <h2.version>1.4.200</h2.version>
     </properties>
 
     <dependencies>
@@ -65,7 +64,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
+            <scope>runtime</scope>
         </dependency>
 
         <!-- Utils -->
@@ -101,6 +100,35 @@
         </dependency>
 
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>with-integration-tests</id>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-failsafe-plugin</artifactId>
+                            <executions>
+                                <execution>
+                                    <goals>
+                                        <goal>integration-test</goal>
+                                        <goal>verify</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                            <configuration>
+                                <includes>
+                                    <include>**/*IT.java</include>
+                                </includes>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+    </profiles>
 
     <build>
         <plugins>
