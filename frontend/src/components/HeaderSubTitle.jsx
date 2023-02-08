@@ -1,9 +1,12 @@
-// TODO reusable caption component
 import { HeaderSubtitleStyled } from "../styled-components";
-const HeaderSubTitle = ({ title, textAlign }) => {
+// TODO reusable caption component
+
+const HeaderSubTitle = ({ title, textAlign, level }) => {
+	const Title = `h${level || 1}`;
+
 	return (
 		<HeaderSubtitleStyled textAlign={textAlign}>
-			<h2>{title}</h2>
+			<Title>{title}</Title>
 		</HeaderSubtitleStyled>
 	);
 };

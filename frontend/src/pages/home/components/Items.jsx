@@ -3,9 +3,9 @@ import {
 	ItemContainer,
 	ItemDescription,
 	ItemImg,
-} from "../styled-components/ItemsComponents.jsx";
+} from "../styled-components";
 import React from "/assets/react.svg";
-const Items = () => {
+const Items = ({ onClick }) => {
 	return (
 		<>
 			<ItemContainer>
@@ -22,7 +22,7 @@ const Items = () => {
 						nam{" "}
 					</p>
 				</ItemDescription>
-				<ItemButton>
+				<ItemButton onClick={onClick}>
 					<h4>Agregar al Carrito</h4>
 				</ItemButton>
 			</ItemContainer>

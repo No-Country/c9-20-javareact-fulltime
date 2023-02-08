@@ -1,10 +1,10 @@
 import { SectionStyled } from "../styled-components";
-import HeaderSubTitle from "./HeaderSubTitle";
+import HeaderSubTitle from "./../../../components/HeaderSubTitle";
 import Input from "./Input";
 const MyAccount = () => {
 	return (
 		<SectionStyled>
-			<HeaderSubTitle title='Mi cuenta' textAlign='left' />
+			<HeaderSubTitle title='Mi cuenta' textAlign='left' level={1} />
 			<div>
 				<form>
 					<Input type='text' name='text' />
