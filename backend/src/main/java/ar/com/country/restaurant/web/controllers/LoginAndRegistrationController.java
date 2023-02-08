@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
-@RestController
+@RestController("/api")
 @Validated
 public class LoginAndRegistrationController {
     private final UserService userService;
