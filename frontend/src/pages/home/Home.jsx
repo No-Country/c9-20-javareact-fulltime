@@ -5,7 +5,6 @@ import Promotions from "./components/Promotions";
 
 const Home = () => {
 	const { pathname } = useResolvedPath();
-	console.log(pathname);
 	return (
 		<>
 			{pathname === "/" ? (
