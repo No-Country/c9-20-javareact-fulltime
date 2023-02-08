@@ -21,8 +21,8 @@ const Checkout = () => {
                 </CheckData>
                 <CheckPayment>
                     <form>
-                        <h2>Metodo de Pago</h2>
-                        <h3>Seleccione el metodo de pago</h3>
+                        <h2>Método de Pago</h2>
+                        <h3>Seleccione el método de pago</h3>
                         <div>
                         <input type="checkbox" name="card" id="" />
                         <label htmlFor="">Tarjeta</label>
