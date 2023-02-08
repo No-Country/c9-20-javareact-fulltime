@@ -8,7 +8,4 @@ export const BannerContainer = styled.div`
   font-family: 'Inter';
   font-weight: 400;
   font-size: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `
