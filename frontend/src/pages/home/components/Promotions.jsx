@@ -8,7 +8,7 @@ const Promotions = () => {
 			<HeaderSubTitle
 				title=' Conoce nuestra Carta'
 				textAlign='center'
-				level={"2"}
+				level={2}
 			/>
 			<ItemListContainer />
 		</SectionStyled>

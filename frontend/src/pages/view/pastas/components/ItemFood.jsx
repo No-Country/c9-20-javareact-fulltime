@@ -1,12 +1,11 @@
 import HeaderSubTitle from "../../../../components/HeaderSubTitle";
+import HeroImage from "../../../../components/HeroImage";
 import { ItemFoodStyled } from "../styled-components/layout.styled";
-import HeroImage from "./HeroImage";
 import react from "/assets/react.svg";
 
-const ItemFood = () => {
+const ItemFood = ({ onClick }) => {
 	return (
-		<ItemFoodStyled>
-             
+		<ItemFoodStyled onClick={onClick}>
 			<div>
 				<HeroImage
 					img={react}
@@ -16,7 +15,7 @@ const ItemFood = () => {
 				/>
 			</div>
 			<div>
-				<HeaderSubTitle title='Tallarines' textAlign='left' level='3' />
+				<HeaderSubTitle title='Tallarines' textAlign='left' level={3} />
 				<p>Descripción</p>
 				<footer>$740</footer>
 			</div>

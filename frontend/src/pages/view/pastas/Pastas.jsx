@@ -1,18 +1,24 @@
-import HeaderSubTitle from "./../../../components/HeaderSubTitle";
+import { HeaderSubTitle, HeroImage, Modal } from "../../../components";
+import { useFunctionalityModal } from "../../../hooks";
+import { Div } from "../../../styled-components";
 import Details from "./components/Details";
-import HeroImage from "./components/HeroImage";
 import ItemFood from "./components/ItemFood";
 import {
 	ContainerDetailsStyled,
 	PastasStyled,
 } from "./styled-components/layout.styled";
 import react from "/assets/react.svg";
+
 const Pastas = () => {
+	const { handleOpen, open, handleCloset } = useFunctionalityModal();
+
 	return (
 		<PastasStyled>
+			<Modal open={open} handleCloset={handleCloset} />
+
 			<HeaderSubTitle title="Pastas" textAlign='center' level={1} />
 
-			<HeroImage img={react} alt='comida' blockSize={"240px"} />
+			<HeroImage img={react} alt='comida' blockSize="268px" inlineSize='100%' />
 
 			<span>15 A 20 Min de demora</span>
 
@@ -27,9 +33,14 @@ const Pastas = () => {
 				/>
 			</ContainerDetailsStyled>
 
-			<div>
-				<ItemFood />
-			</div>
+			<Div gap='46px'>
+				<ItemFood onClick={handleOpen} />
+				<ItemFood onClick={handleOpen} />
+				<ItemFood onClick={handleOpen} />
+				<ItemFood onClick={handleOpen} />
+				<ItemFood onClick={handleOpen} />
+				<ItemFood onClick={handleOpen} />
+			</Div>
 		</PastasStyled>
 	);
 };

@@ -17,3 +17,5 @@ class Trolley {
 		this.DiscountCode = DiscountCode;
 	}
 }
+
+export default Trolley;

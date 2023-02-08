@@ -1,4 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
+import AppetizerDataSlice from "./slice/AppetizerData.slice";
 export default configureStore({
-	reducer: {},
+	reducer: {
+		AppetizerData: AppetizerDataSlice,
+	},
 });
