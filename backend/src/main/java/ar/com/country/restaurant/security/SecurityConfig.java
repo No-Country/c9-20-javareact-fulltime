@@ -31,12 +31,13 @@ import org.springframework.security.web.SecurityFilterChain;
 @RequiredArgsConstructor
 public class SecurityConfig {
     private static final String[] AUTH_WHITELIST = {
-            "/login",
-            "/register",
-            "/refresh-token",
-            "/swagger-ui/**",
-            "/swagger-resources/**",
-            "/v3/api-docs/**"
+            "/app/**",
+            "/api/login",
+            "/api/register",
+            "/api/refresh-token",
+            "/api/swagger-ui/**",
+            "/api/swagger-resources/**",
+            "/api/v3/api-docs/**"
     };
     private final JwtToSecurityUserConverter jwtToUserConverter;
     private final KeyPairProvider keyPairProvider;

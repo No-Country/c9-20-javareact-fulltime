@@ -74,7 +74,7 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
         @Test
         void shouldLogin_whenValidCredentials() throws Exception {
             String response = mockMvc.perform(
-                            post("/login")
+                            post("/api/login")
                                     .contentType(MediaType.APPLICATION_JSON)
                                     .content(JsonUtils.asJsonString(getRegisteredUserForLogin()))
                     )
@@ -98,7 +98,7 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
             user.setEmail("not.found.email@gmail.com");
 
             mockMvc.perform(
-                            post("/login")
+                            post("/api/login")
                                     .contentType(MediaType.APPLICATION_JSON)
                                     .content(JsonUtils.asJsonString(user)))
                     .andExpect(status().isUnauthorized());
@@ -110,7 +110,7 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
             user.setPassword("invalid-password");
 
             mockMvc.perform(
-                            post("/login")
+                            post("/api/login")
                                     .contentType(MediaType.APPLICATION_JSON)
                                     .content(JsonUtils.asJsonString(user))
                     )
@@ -127,7 +127,7 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
             User newUser = createUnregisteredDummyUser();
 
             String response = mockMvc.perform(
-                            post("/register")
+                            post("/api/register")
                                     .contentType(MediaType.APPLICATION_JSON)
                                     .content(JsonUtils.asJsonString(newUser))
                     )
@@ -153,7 +153,7 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
             userWithEmailAlreadyTaken.setEmail("julion.alvarez@gmail.com");
 
             mockMvc.perform(
-                            post("/register")
+                            post("/api/register")
                                     .contentType(MediaType.APPLICATION_JSON)
                                     .content(JsonUtils.asJsonString(userWithEmailAlreadyTaken))
                     )
@@ -166,7 +166,7 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
             userWithInvalidEmail.setEmail("invalid_email@");
 
             mockMvc.perform(
-                            post("/register")
+                            post("/api/register")
                                     .contentType(MediaType.APPLICATION_JSON)
                                     .content(JsonUtils.asJsonString(userWithInvalidEmail))
                     )
@@ -179,7 +179,7 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
             userPasswordLess6Chars.setPassword("passw");
 
             mockMvc.perform(
-                            post("/register")
+                            post("/api/register")
                                     .contentType(MediaType.APPLICATION_JSON)
                                     .content(JsonUtils.asJsonString(userPasswordLess6Chars))
                     )
@@ -189,7 +189,7 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
             userPasswordMore16Chars.setPassword("very-very-very-large-password");
 
             mockMvc.perform(
-                            post("/register")
+                            post("/api/register")
                                     .contentType(MediaType.APPLICATION_JSON)
                                     .content(JsonUtils.asJsonString(userPasswordMore16Chars))
                     )
@@ -209,7 +209,7 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
             given(clock.getZone()).willReturn(Clock.systemDefaultZone().getZone());
 
             String response = mockMvc.perform(
-                            post("/refresh-token")
+                            post("/api/refresh-token")
                                     .contentType(MediaType.APPLICATION_JSON)
                                     .content(JsonUtils.asJsonString(body))
                     )
@@ -238,7 +238,7 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
             Map<String, String> body = Map.of("refreshToken", refreshToken);
 
             String response = mockMvc.perform(
-                            post("/refresh-token")
+                            post("/api/refresh-token")
                                     .contentType(MediaType.APPLICATION_JSON)
                                     .content(JsonUtils.asJsonString(body))
                     )
