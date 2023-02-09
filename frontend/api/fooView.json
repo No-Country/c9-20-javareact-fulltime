@@ -1,0 +1,49 @@
+{
+
+    "food":[
+
+        {
+            "id": 1,
+            "name": "pastas",
+            "list":[
+                {
+                    "id": 1,
+                    "nameFood": "Ñoquis",
+                    "description": "" ,
+                    "price": 840
+                },
+                {
+                    "id": 2,
+                    "nameFood": "Ñoquis",
+                    "description": "" ,
+                    "price": 840
+                },
+                {
+                    "id": 3,
+                    "nameFood": "Ñoquis",
+                    "description": "" ,
+                    "price": 840
+                },
+                {
+                    "id": 4,
+                    "nameFood": "Ñoquis",
+                    "description": "" ,
+                    "price": 840
+                },
+                {
+                    "id": 5,
+                    "nameFood": "Ñoquis",
+                    "description": "" ,
+                    "price": 840
+                },
+                {
+                    "id": 6,
+                    "nameFood": "Ñoquis",
+                    "description": "" ,
+                    "price": 840
+                }
+
+            ]
+        }
+    ]
+}

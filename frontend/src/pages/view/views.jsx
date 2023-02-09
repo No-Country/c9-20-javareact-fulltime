@@ -1,19 +1,19 @@
-import { HeaderSubTitle, HeroImage, Modal } from "../../../components";
-import { useFunctionalityModal } from "../../../hooks";
-import { Div } from "../../../styled-components";
+import { HeaderSubTitle, HeroImage, Modal } from "../../components";
+import { useFunctionalityModal } from "../../hooks";
+import { Div } from "../../styled-components";
 import Details from "./components/Details";
 import ItemFood from "./components/ItemFood";
 import {
 	ContainerDetailsStyled,
-	PastasStyled,
+	ViewStyled,
 } from "./styled-components/layout.styled";
 import react from "/assets/react.svg";
 
-const Pastas = () => {
+const View = () => {
 	const { handleOpen, open, handleCloset } = useFunctionalityModal();
 
 	return (
-		<PastasStyled>
+		<ViewStyled>
 			<Modal open={open} handleCloset={handleCloset} />
 
 			<HeaderSubTitle title="Pastas" textAlign='center' level={1} />
@@ -41,8 +41,8 @@ const Pastas = () => {
 				<ItemFood onClick={handleOpen} />
 				<ItemFood onClick={handleOpen} />
 			</Div>
-		</PastasStyled>
+		</ViewStyled>
 	);
 };
 
-export default Pastas;
+export default View;

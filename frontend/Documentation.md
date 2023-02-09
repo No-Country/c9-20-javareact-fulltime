@@ -35,11 +35,11 @@ clear architecture
 
 - utilities : En caso de que detectemos cierta lógica que se pueda reutilizar en toda la aplicación , debemos crear un archivo que la contenga dentro de esta carpeta y hacerla exportable. 
 
-## Json Pleach Joder
+## Jsonplaceholder
 
 ejecuta el la api falsa de la carpeta api con el siguiente comando 
 
-``` 
-    json-server --watch  api/tuAPiFalsa.json
-    
+```
+  json-server --watch  api/tuAPiFalsa.json
+  
 ```

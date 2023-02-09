@@ -4,7 +4,7 @@ const Card = () => {
 	return (
 		<>
 			<CardContainer>
-				<Link to="/pastas">
+				<Link to="/view">
 					<h1>Pastas</h1>
 					<CardContent>
 						<img src='\assets\react.svg' alt="image" />
