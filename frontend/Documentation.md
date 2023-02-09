@@ -39,5 +39,7 @@ clear architecture
 
 ejecuta el la api falsa de la carpeta api con el siguiente comando 
 
-``` json-server --watch  api/tuAPiFalsa.json
+``` 
+    json-server --watch  api/tuAPiFalsa.json
+    
 ```
