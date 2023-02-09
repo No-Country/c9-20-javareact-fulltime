@@ -8,11 +8,7 @@ const ItemListContainer = () => {
 	const { open, handleCloset, handleOpen } = useFunctionalityModal();
 	return (
 		<>
-			<Modal
-				open={open}
-				handleCloset={handleCloset}
-				handleCloset={handleCloset}
-			/>
+			<Modal open={open} handleCloset={handleCloset} />
 
 			<Div>
 				<Card />

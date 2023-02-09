@@ -34,3 +34,10 @@ clear architecture
 - styled-components : Si necesitas diseñar un determinado elemento del DOM y se utilizara en mas de un lugar, debe crear un componente con estilo.
 
 - utilities : En caso de que detectemos cierta lógica que se pueda reutilizar en toda la aplicación , debemos crear un archivo que la contenga dentro de esta carpeta y hacerla exportable. 
+
+## Json Pleach Joder
+
+ejecuta el la api falsa de la carpeta api con el siguiente comando 
+
+``` json-server --watch  api/tuAPiFalsa.json
+```
