@@ -6,6 +6,7 @@ import {
     CheckPayment,
 } from "./CheckoutStyled.jsx";
 import { useSelector } from "react-redux";
+import { DivCol } from '../../styled-components/layout/layout.styled'
 
 const Checkout = () => {
     const cart = useSelector(state => state.card)
@@ -47,10 +48,26 @@ const Checkout = () => {
                     </form>
                 </CheckPayment>
                 <CheckCart>
-                    {cart.map(cr => <div key={cr.id}>
-                        {cr.name}
-                        {cr.name}
-                    </div>)}
+                    {cart.map(cr => <DivCol key={cr.id}>
+                        <h1>
+                            {cr.name}
+                        </h1>
+                        <h3>
+                            Monto: {cr.amount}
+                        </h3>
+                        <h3>
+                            Costo: ${cr.cost}
+                        </h3>
+                        <h3>
+                            Subtotal: ${cr.subTotal}
+                        </h3>
+                        <h4>
+                            Total: ${cr.total}
+                        </h4>
+                        <h4>
+                            Descuento por código:{cr.DiscountCode}
+                        </h4>
+                    </DivCol>)}
                 </CheckCart>
             </CheckContainer>
         </>
