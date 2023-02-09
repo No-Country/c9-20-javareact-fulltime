@@ -6,8 +6,10 @@ import {
 	CheckData,
 	CheckPayment,
 } from "./CheckoutStyled.jsx";
+
 const Checkout = () => {
 	const cart = useSelector((state) => state.card);
+	console.log(cart);
 	return (
 		<>
 			<h1>Logo</h1>
@@ -18,11 +20,11 @@ const Checkout = () => {
 						<h2>Confirmar datos</h2>
 						<label htmlFor="name">Nombre</label>
 						<input type="text" />
-						<label htmlFor="adress">Dirección</label>
+						<label htmlFor="address">Dirección</label>
 						<input type="text" />
-						<label htmlFor="phone">Teléfono</label>
+						<label htmlFor="phone">Telefono</label>
 						<input type="text" />
-						<label htmlFor="aclaracion">Aclaración</label>
+						<label htmlFor="aclaracion">Aclaracion</label>
 						<input type="text" />
 					</form>
 				</CheckData>

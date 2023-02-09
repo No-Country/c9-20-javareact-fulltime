@@ -15,7 +15,13 @@ export const Div = styled.div`
     justify-content: space-around;
     flex-wrap: wrap;
     gap: ${({ gap }) => gap || "0px"};
-
+`;
+export const DivCol = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin:15px;
+    justify-content: space-around;
+    flex-wrap: wrap;
 `;
 
 export const ModalStyled = styled.div`
