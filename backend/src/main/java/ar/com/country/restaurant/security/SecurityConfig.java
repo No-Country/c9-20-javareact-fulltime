@@ -31,6 +31,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @RequiredArgsConstructor
 public class SecurityConfig {
     private static final String[] AUTH_WHITELIST = {
+            "/app/**",
             "/api/login",
             "/api/register",
             "/api/refresh-token",
