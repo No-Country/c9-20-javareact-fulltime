@@ -29,7 +29,7 @@ public class AbstractIntegrationTest {
         var body = Map.of("email", registeredUser.getEmail(), "password", registeredUser.getPassword());
 
         String response = mockMvc.perform(
-                        post("/login")
+                        post("/api/login")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(JsonUtils.asJsonString(body))
                 )
