@@ -38,7 +38,8 @@ public class SecurityConfig {
             "/api/refresh-token",
             "/api/swagger-ui/**",
             "/api/swagger-resources/**",
-            "/api/v3/api-docs/**"
+            "/api/v3/api-docs/**",
+            "/h2-console/**"
     };
     private final JwtToSecurityUserConverter jwtToUserConverter;
     private final KeyPairProvider keyPairProvider;
@@ -72,6 +73,8 @@ public class SecurityConfig {
                 .oauth2ResourceServer(oauth2 ->
                         oauth2.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtToUserConverter))
                 )
+                .headers().frameOptions().disable()
+                .and()
                 .build();
     }
 
