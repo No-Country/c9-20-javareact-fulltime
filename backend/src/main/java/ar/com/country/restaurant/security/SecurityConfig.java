@@ -31,13 +31,15 @@ import org.springframework.security.web.SecurityFilterChain;
 @RequiredArgsConstructor
 public class SecurityConfig {
     private static final String[] AUTH_WHITELIST = {
+            "/**/*.{js,html,css}",
             "/app/**",
             "/api/login",
             "/api/register",
             "/api/refresh-token",
             "/api/swagger-ui/**",
             "/api/swagger-resources/**",
-            "/api/v3/api-docs/**"
+            "/api/v3/api-docs/**",
+            "/h2-console/**"
     };
     private final JwtToSecurityUserConverter jwtToUserConverter;
     private final KeyPairProvider keyPairProvider;
@@ -71,6 +73,8 @@ public class SecurityConfig {
                 .oauth2ResourceServer(oauth2 ->
                         oauth2.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtToUserConverter))
                 )
+                .headers().frameOptions().disable()
+                .and()
                 .build();
     }
 
