@@ -38,7 +38,7 @@ public class SecurityConfig {
             "/api/refresh-token",
             "/api/swagger-ui/**",
             "/api/swagger-resources/**",
-            "/api/v3/api-docs/**",
+            "/v3/api-docs/**",
             "/h2-console/**"
     };
     private final JwtToSecurityUserConverter jwtToUserConverter;
