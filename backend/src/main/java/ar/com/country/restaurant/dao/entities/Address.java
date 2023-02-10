@@ -3,24 +3,25 @@ package ar.com.country.restaurant.dao.entities;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name = "adresses")
+@Table(name = "addresses")
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Getter
-@Setter
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "adress_id")
+    @Column(name = "address_id")
     private Long id;
-
     @Column
     private String street;
 
     @Column
+    @NotEmpty
     private String number;
 
     @Column
@@ -32,10 +33,10 @@ public class Address {
     @Column
     private String country;
 
-    @Column
+    @Column(name = "zip_code")
     private String zipCode;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
     private User user;
 }

@@ -1,39 +1,40 @@
 package ar.com.country.restaurant.dao.entities;
 
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
-@Getter
-@Setter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Getter
+@Setter
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_id")
     private Long id;
-
     @Column
-    private String number;
+    private Date createdAt;
+    @Column
+    private Double subtotal;
 
-    @Column(nullable = false, updatable = false)
-    @CreationTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    private Calendar createdAt;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-    @ToString.Exclude
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne(mappedBy = "order")
-    @ToString.Exclude
-    private OrderDetail orderDetail;
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<ItemCart> itemCart;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Payment payment;
+
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY, optional = false)
+    private Receipt receipt;
+
 }
