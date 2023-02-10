@@ -1,89 +1,42 @@
 package ar.com.country.restaurant.dao.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import lombok.*;
+
+import javax.persistence.*;
 
 @Entity
+@Table(name = "payments")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Getter
+@Setter
 public class Payment {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long orderId;
+
+    @Column(name = "payment_method")
     private String paymentMethod;
+
+    @Column(name = "card_number")
     private String cardNumber;
+
+    @Column(name = "card_holder")
     private String cardHolder;
+
+    @Column(name = "expiration_date")
     private String expirationDate;
+
+    @Column
     private String cvv;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
-    public Payment() {
-    }
+    @OneToOne(mappedBy = "payment", cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_id")
+    private Order orderId;
 
-    public Payment(Long id, Long orderId, String paymentMethod, String cardNumber, String cardHolder, String expirationDate, String cvv) {
-        this.id = id;
-        this.orderId = orderId;
-        this.paymentMethod = paymentMethod;
-        this.cardNumber = cardNumber;
-        this.cardHolder = cardHolder;
-        this.expirationDate = expirationDate;
-        this.cvv = cvv;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
-    }
-
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
-
-    public String getCardNumber() {
-        return cardNumber;
-    }
-
-    public void setCardNumber(String cardNumber) {
-        this.cardNumber = cardNumber;
-    }
-
-    public String getCardHolder() {
-        return cardHolder;
-    }
-
-    public void setCardHolder(String cardHolder) {
-        this.cardHolder = cardHolder;
-    }
-
-    public String getExpirationDate() {
-        return expirationDate;
-    }
-
-    public void setExpirationDate(String expirationDate) {
-        this.expirationDate = expirationDate;
-    }
-
-    public String getCvv() {
-        return cvv;
-    }
-
-    public void setCvv(String cvv) {
-        this.cvv = cvv;
-    }
 }

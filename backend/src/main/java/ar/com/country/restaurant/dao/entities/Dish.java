@@ -6,33 +6,31 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "dishes")
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Getter
+@Setter
 public class Dish {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "dish_id")
     private Long id;
 
-    @Column
+    @Column(nullable = false)
     private String name;
 
-    @Column
+    @Column(nullable = false)
     private String description;
-
     @Column
     private String image;
 
-    @Column
+    @Column(nullable = false)
     private Double price;
 
-    @Column
-    private String category;
+    @OneToOne(fetch = FetchType.LAZY)
+    private DishCategory dishCategory;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "promotion_id", referencedColumnName = "promotion_id")
+    @OneToOne(fetch = FetchType.LAZY)
     private Promotion promotion;
+
 }
