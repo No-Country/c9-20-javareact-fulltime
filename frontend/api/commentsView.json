@@ -1,0 +1,12 @@
+{
+    "comments":[
+        {
+            "id":1,
+            "idFoo": 0,
+            "nameUser": "",
+            "qualification": 0,
+            "comments": "",
+            "date": "" 
+        }
+    ]
+}

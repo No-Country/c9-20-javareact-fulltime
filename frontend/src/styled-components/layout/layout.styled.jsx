@@ -28,19 +28,12 @@ export const ModalStyled = styled.div`
     position: fixed;
     inset: 0;
     ${FlexBoxCenter};
-    background-color: rgba(85, 84, 84, 0.73); 
+    block-size: 100vh;
+    inline-size: 100%;
+    background-color: rgba(255, 252, 252, 1); 
     z-index: 2;
     visibility: ${({ visibility }) => visibility};
 
-    & > div{
-        position: relative;
-        ${FlexBoxCenter};
-        flex-direction: column;
-        block-size: 843px;
-        inline-size: 932px;
-        background-color: rgba(255, 252, 252, 1);
-                
-    }
 
 `;
 

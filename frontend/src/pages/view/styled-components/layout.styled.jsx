@@ -11,7 +11,7 @@ export const ViewStyled = styled.section`
         margin-block-start: 40px;
     }
 `;
-
+// TODO BORRAR ESTE ESTILO
 export const ContainerDetailsStyled = styled.div`
 
     ${FlexBoxCenter}

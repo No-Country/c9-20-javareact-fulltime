@@ -1,3 +1,4 @@
+import { useResolvedPath } from "react-router-dom";
 import { HeaderSubTitle, HeroImage, Modal } from "../../components";
 import { useFunctionalityModal } from "../../hooks";
 import { Div } from "../../styled-components";
@@ -8,20 +9,22 @@ import {
 	ViewStyled,
 } from "./styled-components/layout.styled";
 import react from "/assets/react.svg";
-
-const View = () => {
+const View = ({ img }) => {
 	const { handleOpen, open, handleCloset } = useFunctionalityModal();
+	const { pathname } = useResolvedPath();
+	const nameFood = pathname.substring(1);
+	console.log(img);
 
 	return (
 		<ViewStyled>
 			<Modal open={open} handleCloset={handleCloset} />
 
-			<HeaderSubTitle title="Pastas" textAlign='center' level={1} />
+			<HeaderSubTitle title={nameFood} textAlign='center' level={1} />
 
 			<HeroImage img={react} alt='comida' blockSize="268px" inlineSize='100%' />
 
 			<span>15 A 20 Min de demora</span>
-
+			// TODO BORRAR
 			<ContainerDetailsStyled>
 				<Details
 					titleSummary='Programar pedido'

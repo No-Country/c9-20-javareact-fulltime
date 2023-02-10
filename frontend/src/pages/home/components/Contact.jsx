@@ -8,7 +8,7 @@ const Contact = () => {
 			<HeaderSubTitle title="Nosotros" textAlign='left' level={2} />
 			<p>Breve descripción de la empresa (Restaurante) </p>
 			<article>
-				<HeaderSubTitle title="Contacto" textAlign='left' />
+				<HeaderSubTitle title="Contacto" textAlign='left' level={2} />
 				<ContainerList items={["Teléfono", "WhatsApp", "Sucursales"]} />
 			</article>
 			<Claims />
