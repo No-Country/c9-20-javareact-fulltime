@@ -20,6 +20,12 @@ public class ItemCart {
     @ManyToOne(optional = false)
     private Dish dish;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Order order;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private ShoppingCart cart;
+
     public void addQuantity(int quantity) {
         this.quantity += quantity;
     }
