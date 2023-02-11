@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { CardContainer, CardContent } from "../styled-components";
 const Card = ({ link, name }) => {
+
 	return (
 		<>
 			<CardContainer>

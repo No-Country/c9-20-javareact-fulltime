@@ -4,21 +4,20 @@ import { useFunctionalityModal } from "../../../hooks";
 import { Div } from "../../../styled-components";
 import Items from "../components/Items";
 import Card from "./Card";
+import { SectionStyled } from "../styled-components";
+import HeaderSubTitle from "../../../components/HeaderSubTitle";
+
 const ItemListContainer = () => {
 	const { open, handleCloset, handleOpen } = useFunctionalityModal();
 	return (
-		<>
+		<SectionStyled>
 			<Modal open={open} handleCloset={handleCloset} />
 
-			<Div>
-				<Card name='pastas' link='pastas' />
-				<Card name='postres' link='postres' />
-				<Card name='churrasqueria' link='churrasqueria' />
-				<Card name='cafeteria' link='cafeteria' />
-				<Card name='saludable' link='saludable' />
-				<Card name='pizzas' link='pizzas' />
-			</Div>
-			<h1>Productos Destacados</h1>
+			<HeaderSubTitle
+				title='Productos Destacados'
+				textAlign='center'
+				level={2}
+			/>
 			<Div>
 				<Items onClick={handleOpen} />
 				<Items onClick={handleOpen} />
@@ -26,7 +25,7 @@ const ItemListContainer = () => {
 				<Items onClick={handleOpen} />
 				<Items onClick={handleOpen} />
 			</Div>
-		</>
+		</SectionStyled>
 	);
 };
 

@@ -1,55 +1,60 @@
 import { createBrowserRouter } from "react-router-dom";
+import RootLayout from "../pages/RootLayout";
 import Checkout from "../pages/Checkout/Checkout";
 import Signup from "../pages/auth/Signup/Signup";
 import Login from "../pages/auth/login/Login";
 import View from "../pages/view/Views";
 import Home from "./../pages/home/Home";
+
+import MyAccount from "../pages/home/components/MyAccount"
+import Promotions from "../pages/home/components/Promotions";
+import Contact from "../pages/home/components/Contact"
+import Categorias from "../pages/home/components/Categories";
+
 export const router = createBrowserRouter([
 	{
-		path: "/",
-		element: <Home />,
+		element: <RootLayout />,
 		children: [
 			{
-				path: "/pastas",
-				element: <View img={"pastas"} />,
+				path: "/",
+				element: <Home />,
 				children: [
 					{
-						path: "/pastas/:pastasId",
+						path: "/category",
+						element: <Categorias />,
+					},
+					{
+						path: "/category/:idCategory",
+						element: <View />,
+					},
+					{
+						path: "/promotions",
+						element: <Promotions />,
+					},
+					{
+						path: "/contact",
+						element: <Contact />,
 					},
 				],
 			},
+
 			{
-				path: "/postres",
-				element: <View img={"past"} />,
+				path: "/signup",
+				element: <Signup />,
 			},
 			{
-				path: "/churrasqueria",
-				element: <View img={"p"} />,
+				path: "/myaccount",
+				element: <MyAccount />,
 			},
 			{
-				path: "/cafeteria",
-				element: <View img={"pq"} />,
+				path: "/login",
+				element: <Login />,
 			},
 			{
-				path: "/saludable",
-				element: <View img={"ps"} />,
-			},
-			{
-				path: "/pizzas",
-				element: <View img={"pa"} />,
+				path: "/checkout",
+				element: <Checkout />,
 			},
 		],
 	},
-	{
-		path: "/signup",
-		element: <Signup />,
-	},
-	{
-		path: "/login",
-		element: <Login />,
-	},
-	{
-		path: "/checkout",
-		element: <Checkout />,
-	},
+
 ]);

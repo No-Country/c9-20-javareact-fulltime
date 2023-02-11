@@ -15,7 +15,7 @@ const CardList = () => {
 			))}
 
 			<footer>
-				<Link to={"/checkout"}>Realizar pago</Link>
+				<Link to={"/checkout"}>Cart</Link>
 			</footer>
 		</aside>
 	);

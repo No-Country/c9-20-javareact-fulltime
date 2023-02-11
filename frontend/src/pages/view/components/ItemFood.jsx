@@ -3,7 +3,7 @@ import HeroImage from "../../../components/HeroImage";
 import { ItemFoodStyled } from "../styled-components/layout.styled";
 import react from "/assets/react.svg";
 
-const ItemFood = ({ onClick }) => {
+const ItemFood = ({ title, description, price, onClick }) => {
 	return (
 		<ItemFoodStyled onClick={onClick}>
 			<div>
@@ -15,9 +15,9 @@ const ItemFood = ({ onClick }) => {
 				/>
 			</div>
 			<div>
-				<HeaderSubTitle title='Tallarines' textAlign='left' level={3} />
-				<p>Descripción</p>
-				<footer>$740</footer>
+				<HeaderSubTitle title={title} textAlign='left' level={3} />
+				<p>{description}</p>
+				<footer>${price}</footer>
 			</div>
 		</ItemFoodStyled>
 	);

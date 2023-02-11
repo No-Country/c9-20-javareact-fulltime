@@ -1,5 +1,5 @@
 import { SectionStyled } from "../styled-components";
-import HeaderSubTitle from "./../../../components/HeaderSubTitle";
+import HeaderSubTitle from "../../../components/HeaderSubTitle";
 import Input from "./Input";
 const MyAccount = () => {
 	return (

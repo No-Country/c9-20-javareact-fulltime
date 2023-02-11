@@ -1,5 +1,5 @@
 import { SectionStyled } from "../styled-components";
-import HeaderSubTitle from "./../../../components/HeaderSubTitle";
+import HeaderSubTitle from "../../../components/HeaderSubTitle";
 import Claims from "./Claims";
 import ContainerList from "./ContainerList";
 const Contact = () => {
