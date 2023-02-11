@@ -34,8 +34,7 @@ import java.util.Map;
 @Slf4j
 @RestControllerAdvice
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class HttpExcepctionHandler extends ResponseEntityExceptionHandler {
-
+public class HttpExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Override
     @NonNull
