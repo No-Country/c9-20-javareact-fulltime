@@ -9,7 +9,7 @@ const Claims = () => {
 				<textarea />
 			</ContainerFormClaimsStyled>
 			<article>
-				<HeaderSubTitle title='Reserva' textAlign='left' />
+				<HeaderSubTitle title='Reserva' textAlign='left' level={2} />
 				<p>Descripción </p>
 				<p>Contactos </p>
 			</article>

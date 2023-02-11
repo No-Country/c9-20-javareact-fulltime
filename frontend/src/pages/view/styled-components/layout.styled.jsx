@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { FlexBoxCenter } from "../../../../styled-components";
+import { FlexBoxCenter } from "../../../styled-components";
 
-export const PastasStyled = styled.section`
+export const ViewStyled = styled.section`
     min-block-size: 100vh;
     
     text-align: center;
@@ -11,7 +11,7 @@ export const PastasStyled = styled.section`
         margin-block-start: 40px;
     }
 `;
-
+// TODO BORRAR ESTE ESTILO
 export const ContainerDetailsStyled = styled.div`
 
     ${FlexBoxCenter}

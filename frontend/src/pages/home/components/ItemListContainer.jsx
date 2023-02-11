@@ -11,10 +11,12 @@ const ItemListContainer = () => {
 			<Modal open={open} handleCloset={handleCloset} />
 
 			<Div>
-				<Card />
-				<Card />
-				<Card />
-				<Card />
+				<Card name='pastas' link='pastas' />
+				<Card name='postres' link='postres' />
+				<Card name='churrasqueria' link='churrasqueria' />
+				<Card name='cafeteria' link='cafeteria' />
+				<Card name='saludable' link='saludable' />
+				<Card name='pizzas' link='pizzas' />
 			</Div>
 			<h1>Productos Destacados</h1>
 			<Div>
