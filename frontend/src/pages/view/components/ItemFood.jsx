@@ -2,8 +2,7 @@ import HeaderSubTitle from "../../../components/HeaderSubTitle";
 import HeroImage from "../../../components/HeroImage";
 import { ItemFoodStyled } from "../styled-components/layout.styled";
 import react from "/assets/react.svg";
-
-const ItemFood = ({ onClick }) => {
+const ItemFood = ({ descripción, price, name, onClick }) => {
 	return (
 		<ItemFoodStyled onClick={onClick}>
 			<div>
@@ -15,9 +14,9 @@ const ItemFood = ({ onClick }) => {
 				/>
 			</div>
 			<div>
-				<HeaderSubTitle title='Tallarines' textAlign='left' level={3} />
-				<p>Descripción</p>
-				<footer>$740</footer>
+				<HeaderSubTitle title={name} textAlign='left' level={3} />
+				<p>{descripción}</p>
+				<footer>${price}</footer>
 			</div>
 		</ItemFoodStyled>
 	);

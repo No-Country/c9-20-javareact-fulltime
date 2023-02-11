@@ -1,55 +1,42 @@
-import { useDispatch, useSelector } from "react-redux";
-import {
-	decrement,
-	increment,
-	resetValue,
-} from "../redux/slice/AppetizerData.slice";
-import { addItems } from "../redux/slice/card.slice";
 import { ModalStyled } from "../styled-components";
 import ButtonModal from "./ButtonModal";
 import HeroImage from "./HeroImage";
 import react from "/assets/react.svg";
 import exit from "/icons/exit.svg";
-const Modal = ({ open, handleCloset }) => {
-	const item = useSelector((state) => state.AppetizerData);
-	const dispatch = useDispatch();
-	const handleReset = () => {
-		dispatch(
-			addItems({
-				...item,
-				cost: item.amount * item.subTotal,
-			}),
-		);
-		dispatch(resetValue());
 
-		handleCloset();
-	};
-
+const Modal = ({ open, item }) => {
 	return (
 		<ModalStyled visibility={open ? "visible" : "hidden"}>
 			<div>
+				{/* //TODO Borrar */}
 				<ButtonModal
-					onClick={handleCloset}
+					onClick={() => {}}
 					img={exit}
 					size={"cover"}
 					padding='8px'
 				/>
-				<HeroImage img={react} alt='img' blockSize='305px' inlineSize='383px' />
-				<div>
+				{item !== undefined ? (
 					<div>
-						<h2>Ñoquis</h2>
-						<p>Breve descripción</p>
-					</div>
+						<div>
+							<h2>{item.nameFood}</h2>
+							<p>{item.description}</p>
+							<p>demora de {item.delay}</p>
+							<p>Precio: {item.price}</p>
+						</div>
 
-					<div>
-						<button onClick={() => dispatch(increment())}>+</button>
-						<span>{item.amount}</span>
-						<button onClick={() => dispatch(decrement())}>-</button>
+						<div>
+							<button onClick={() => {}}>+</button>
+							<span>0</span>
+							<button onClick={() => {}}>-</button>
+						</div>
+						<div>
+							<button onClick={() => {}}>Agregar</button>
+						</div>
 					</div>
-					<div>
-						<button onClick={handleReset}>Agregar</button>
-					</div>
-				</div>
+				) : (
+					<div>loading...</div>
+				)}
+				<HeroImage img={react} alt='img' blockSize='305px' inlineSize='383px' />
 			</div>
 		</ModalStyled>
 	);

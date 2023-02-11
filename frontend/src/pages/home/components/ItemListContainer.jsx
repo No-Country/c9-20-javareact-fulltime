@@ -1,30 +1,33 @@
 import React from "react";
-import { Modal } from "../../../components";
-import { useFunctionalityModal } from "../../../hooks";
+import { useResolvedPath } from "react-router-dom";
+import { useGetInfoFoodQuery } from "../../../redux/query/FoodInfo.query";
 import { Div } from "../../../styled-components";
+import useListFood from "../../view/hook/useListFood";
 import Items from "../components/Items";
 import Card from "./Card";
+
 const ItemListContainer = () => {
-	const { open, handleCloset, handleOpen } = useFunctionalityModal();
+	const { data: food, isSuccess } = useGetInfoFoodQuery();
+	const { namePath } = useResolvedPath();
+	const { list, isLoading } = useListFood(food, isSuccess, namePath);
+
 	return (
 		<>
-			<Modal open={open} handleCloset={handleCloset} />
-
 			<Div>
-				<Card name='pastas' link='pastas' />
-				<Card name='postres' link='postres' />
-				<Card name='churrasqueria' link='churrasqueria' />
-				<Card name='cafeteria' link='cafeteria' />
-				<Card name='saludable' link='saludable' />
-				<Card name='pizzas' link='pizzas' />
+				{isSuccess ? (
+					food.map((items) => (
+						<Card key={items.id} name={items.name} link={items.name} />
+					))
+				) : (
+					<div>loading...</div>
+				)}
 			</Div>
 			<h1>Productos Destacados</h1>
 			<Div>
-				<Items onClick={handleOpen} />
-				<Items onClick={handleOpen} />
-				<Items onClick={handleOpen} />
-				<Items onClick={handleOpen} />
-				<Items onClick={handleOpen} />
+				<Items />
+				<Items />
+				<Items />
+				<Items />
 			</Div>
 		</>
 	);

@@ -11,13 +11,6 @@ export const ViewStyled = styled.section`
         margin-block-start: 40px;
     }
 `;
-// TODO BORRAR ESTE ESTILO
-export const ContainerDetailsStyled = styled.div`
-
-    ${FlexBoxCenter}
-    gap: 23px;
-    min-block-size: 160px;
-`;
 
 export const ItemFoodStyled = styled.article`
     ${FlexBoxCenter}
