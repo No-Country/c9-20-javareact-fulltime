@@ -40,6 +40,7 @@ public class User implements Serializable {
 
     @Column
     private String phone;
+
     @OneToMany(
             mappedBy = "user",
             fetch = FetchType.LAZY,
@@ -53,6 +54,7 @@ public class User implements Serializable {
             cascade = CascadeType.ALL
     )
     private List<Address> address;
+
     @OneToMany(
             mappedBy = "user",
             fetch = FetchType.LAZY,

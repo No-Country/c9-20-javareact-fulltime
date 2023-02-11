@@ -2,6 +2,7 @@ package ar.com.country.restaurant.web.controllers;
 
 import ar.com.country.restaurant.AbstractIntegrationTest;
 import ar.com.country.restaurant.dao.entities.User;
+import ar.com.country.restaurant.dao.entities.UserRole;
 import ar.com.country.restaurant.repositories.UserRepository;
 import ar.com.country.restaurant.services.UserService;
 import ar.com.country.restaurant.utils.JsonUtils;
@@ -53,6 +54,7 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
                 .phone("+54 999999-9999")
                 .email("julion.alvarez@gmail.com")
                 .password("12345678")
+                .role(UserRole.NORMAL)
                 .build();
         String unencryptedPassword = user.getPassword();
         userService.createUser(user);
@@ -131,6 +133,7 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
                                     .contentType(MediaType.APPLICATION_JSON)
                                     .content(JsonUtils.asJsonString(newUser))
                     )
+                    .andDo(print())
                     .andExpect(status().isCreated())
                     .andExpect(jsonPath("$.id").exists())
                     .andExpect(jsonPath("$.email").value("ricardoibarra2044@gmail.com"))
@@ -288,6 +291,7 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
                 .email("ricardoibarra2044@gmail.com")
                 .password("password12345")
                 .phone("+52 9999999999")
+                .role(UserRole.NORMAL)
                 .build();
     }
 
