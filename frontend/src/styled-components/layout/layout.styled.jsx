@@ -10,10 +10,11 @@ export const HeaderSubtitleStyled = styled.header`
 
 //TODO Div responsive abierto a modificar */
 export const Div = styled.div`
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(355px, 1fr));
     margin:15px;
     justify-content: space-around;
-    flex-wrap: wrap;
+    justify-items: center;
     gap: ${({ gap }) => gap || "0px"};
 `;
 export const DivCol = styled.div`
