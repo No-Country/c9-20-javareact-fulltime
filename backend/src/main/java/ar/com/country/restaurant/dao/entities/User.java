@@ -3,9 +3,6 @@ package ar.com.country.restaurant.dao.entities;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 
@@ -34,11 +31,16 @@ public class User implements Serializable {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role", nullable = false)
+    private UserRole role;
+
     @Column
     private String password;
 
     @Column
     private String phone;
+
     @OneToMany(
             mappedBy = "user",
             fetch = FetchType.LAZY,
@@ -52,6 +54,7 @@ public class User implements Serializable {
             cascade = CascadeType.ALL
     )
     private List<Address> address;
+
     @OneToMany(
             mappedBy = "user",
             fetch = FetchType.LAZY,

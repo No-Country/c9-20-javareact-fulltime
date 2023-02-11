@@ -2,11 +2,15 @@ package ar.com.country.restaurant.web.controllers;
 
 import ar.com.country.restaurant.AbstractIntegrationTest;
 import ar.com.country.restaurant.dao.entities.User;
+import ar.com.country.restaurant.dao.entities.UserRole;
 import ar.com.country.restaurant.repositories.UserRepository;
 import ar.com.country.restaurant.services.UserService;
 import ar.com.country.restaurant.utils.JsonUtils;
 import com.jayway.jsonpath.JsonPath;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -53,6 +57,7 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
                 .phone("+54 999999-9999")
                 .email("julion.alvarez@gmail.com")
                 .password("12345678")
+                .role(UserRole.NORMAL)
                 .build();
         String unencryptedPassword = user.getPassword();
         userService.createUser(user);
@@ -93,7 +98,7 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
         }
 
         @Test
-        void shouldReturn401_whenEmailNotFound() throws Exception {
+        void shouldReturn400_whenEmailNotFound() throws Exception {
             User user = getRegisteredUserForLogin();
             user.setEmail("not.found.email@gmail.com");
 
@@ -101,11 +106,11 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
                             post("/api/login")
                                     .contentType(MediaType.APPLICATION_JSON)
                                     .content(JsonUtils.asJsonString(user)))
-                    .andExpect(status().isUnauthorized());
+                    .andExpect(status().isBadRequest());
         }
 
         @Test
-        void shouldReturn401_whenIncorrectPassword() throws Exception {
+        void shouldReturn400_whenIncorrectPassword() throws Exception {
             User user = getRegisteredUserForLogin();
             user.setPassword("invalid-password");
 
@@ -114,7 +119,7 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
                                     .contentType(MediaType.APPLICATION_JSON)
                                     .content(JsonUtils.asJsonString(user))
                     )
-                    .andExpect(status().isUnauthorized());
+                    .andExpect(status().isBadRequest());
         }
 
     }
@@ -131,6 +136,7 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
                                     .contentType(MediaType.APPLICATION_JSON)
                                     .content(JsonUtils.asJsonString(newUser))
                     )
+                    .andDo(print())
                     .andExpect(status().isCreated())
                     .andExpect(jsonPath("$.id").exists())
                     .andExpect(jsonPath("$.email").value("ricardoibarra2044@gmail.com"))
@@ -147,8 +153,7 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
         }
 
         @Test
-        @Disabled
-        void shouldReturn400_whenEmailAlreadyTaken() throws Exception {
+        void shouldReturn409ConflictStatusCode_whenEmailAlreadyTaken() throws Exception {
             User userWithEmailAlreadyTaken = createUnregisteredDummyUser();
             userWithEmailAlreadyTaken.setEmail("julion.alvarez@gmail.com");
 
@@ -157,7 +162,7 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
                                     .contentType(MediaType.APPLICATION_JSON)
                                     .content(JsonUtils.asJsonString(userWithEmailAlreadyTaken))
                     )
-                    .andExpect(status().isBadRequest());
+                    .andExpect(status().isConflict());
         }
 
         @Test
@@ -288,6 +293,7 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
                 .email("ricardoibarra2044@gmail.com")
                 .password("password12345")
                 .phone("+52 9999999999")
+                .role(UserRole.NORMAL)
                 .build();
     }
 

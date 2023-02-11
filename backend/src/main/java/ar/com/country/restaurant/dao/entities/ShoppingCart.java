@@ -21,10 +21,6 @@ public class ShoppingCart implements Serializable {
     @OneToOne(fetch = FetchType.LAZY)
     private Order order;
 
-    @OneToMany(
-            mappedBy = "shoppingCart",
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
-            orphanRemoval = true)
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemCart> itemCart;
 }
