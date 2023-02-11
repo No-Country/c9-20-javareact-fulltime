@@ -36,6 +36,7 @@ public class User implements Serializable {
     private UserRole role;
 
     @Column
+    @Transient
     private String password;
 
     @Column
