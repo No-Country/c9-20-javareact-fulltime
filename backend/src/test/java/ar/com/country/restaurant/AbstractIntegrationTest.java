@@ -1,6 +1,7 @@
 package ar.com.country.restaurant;
 
 import ar.com.country.restaurant.dao.entities.User;
+import ar.com.country.restaurant.dao.entities.UserRole;
 import ar.com.country.restaurant.utils.JsonUtils;
 import com.jayway.jsonpath.JsonPath;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,7 @@ public class AbstractIntegrationTest {
                 .phone("+54 999999-9999")
                 .email("julion.alvarez@gmail.com")
                 .password("12345678")
+                .role(UserRole.NORMAL)
                 .build();
     }
 
