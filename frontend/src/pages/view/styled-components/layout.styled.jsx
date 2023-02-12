@@ -37,3 +37,7 @@ export const ItemFoodStyled = styled.article`
     }
 
 `;
+
+export const CarListStyled = styled.aside`
+
+`;

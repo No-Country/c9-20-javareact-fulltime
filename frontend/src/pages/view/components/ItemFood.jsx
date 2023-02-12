@@ -2,6 +2,7 @@ import HeaderSubTitle from "../../../components/HeaderSubTitle";
 import HeroImage from "../../../components/HeroImage";
 import { ItemFoodStyled } from "../styled-components/layout.styled";
 import react from "/assets/react.svg";
+
 const ItemFood = ({ descripción, price, name, onClick }) => {
 	return (
 		<ItemFoodStyled onClick={onClick}>

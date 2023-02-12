@@ -19,7 +19,7 @@ const Items = ({ onClick }) => {
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
 						accusamus repellat impedit, iusto expedita distinctio, blanditiis
 						corrupti libero veritatis quas iure vitae, atque cum exercitationem
-						nam{" "}
+						nam
 					</p>
 				</ItemDescription>
 				<ItemButton onClick={onClick}>

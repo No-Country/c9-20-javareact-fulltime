@@ -1,34 +1,18 @@
-import React from "react";
+import { useDispatch } from "react-redux";
+import { deleteItem } from "../redux/slice/cart.slice";
+const ItemsCard = ({ amount, name, cost, id }) => {
+	const dispatch = useDispatch();
 
-const ItemsCard = ({ amount, name, cost, subTotal }) => {
 	return (
-		<>
-			<header>
-				<h2>
-					{amount}x {name}
-				</h2>
-				<span>${subTotal}</span>
-			</header>
-			<hr />
-			<ul>
-				<li>
-					<p>SubTotal:</p>
-					<span>${subTotal}</span>
-				</li>
-				<li>
-					<p>Costo de envió:</p>
-					<span>$xx</span>
-				</li>
-				<li>
-					<p>Total:</p>
-					<span>${cost}</span>
-				</li>
-				<li>
-					<p>Código des:</p>
-					<span>$xx</span>
-				</li>
-			</ul>
-		</>
+		<article>
+			<span>
+				{amount}X{name}
+			</span>
+			<div>
+				<b>${cost}</b>
+				<button onClick={() => dispatch(deleteItem(id))}>Borrar</button>
+			</div>
+		</article>
 	);
 };
 

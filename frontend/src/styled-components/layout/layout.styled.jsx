@@ -157,3 +157,14 @@ export const SignupBox = styled.div`
 export const Title = styled.h3`
   
 `;
+
+export const CarListStyled = styled.aside`
+
+   position : fixed;
+   inset-inline-end: 0;
+   inset-block: 0;
+   inline-size: 423px;
+   background-color: rgba(131, 131, 131, 1);
+   transform: ${({ translateX }) => translateX};
+   transition: transform 1s ease-in-out; 
+`;

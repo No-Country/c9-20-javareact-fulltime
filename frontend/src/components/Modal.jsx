@@ -1,3 +1,10 @@
+import { useDispatch, useSelector } from "react-redux";
+import {
+	decrement,
+	increment,
+	resetValue,
+} from "../redux/slice/AppetizerData.slice";
+import { addItems } from "../redux/slice/cart.slice";
 import { ModalStyled } from "../styled-components";
 import ButtonModal from "./ButtonModal";
 import HeroImage from "./HeroImage";
@@ -5,6 +12,24 @@ import react from "/assets/react.svg";
 import exit from "/icons/exit.svg";
 
 const Modal = ({ open, item }) => {
+	const amount = useSelector((state) => state.AppetizerData);
+	const dispatch = useDispatch();
+
+	const handleAddItems = () => {
+		dispatch(
+			addItems({
+				id: item.id,
+				amount: amount.value,
+				name: item.nameFood,
+				cost: item.price,
+				subTotal: amount * item.price,
+				ShippingCost: "",
+				DiscountCode: "",
+			}),
+		);
+		dispatch(resetValue());
+	};
+
 	return (
 		<ModalStyled visibility={open ? "visible" : "hidden"}>
 			<div>
@@ -25,12 +50,12 @@ const Modal = ({ open, item }) => {
 						</div>
 
 						<div>
-							<button onClick={() => {}}>+</button>
-							<span>0</span>
-							<button onClick={() => {}}>-</button>
+							<button onClick={() => dispatch(increment())}>+</button>
+							<span>{amount.value}</span>
+							<button onClick={() => dispatch(decrement())}>-</button>
 						</div>
 						<div>
-							<button onClick={() => {}}>Agregar</button>
+							<button onClick={handleAddItems}>Agregar</button>
 						</div>
 					</div>
 				) : (

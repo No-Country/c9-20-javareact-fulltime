@@ -14,10 +14,14 @@ const useModalFunctional = () => {
 		setOpen(true);
 
 		if (isSuccess) {
-			const item = food.filter((items) => items.name === nameFood);
-			const template = item[id - 1];
-			const itemFood = template.list.filter((item) => item.id === id);
-			console.log(itemFood);
+			let template = 0;
+
+			food.forEach((item) => {
+				if (item.name === nameFood) {
+					template = item.list;
+				}
+			});
+			const itemFood = template.filter((item) => item.id === id);
 			setItemFood(...itemFood);
 		}
 	};

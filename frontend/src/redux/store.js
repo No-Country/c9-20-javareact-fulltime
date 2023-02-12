@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { FoodInfoApi } from "./query/FoodInfo.query";
 import AppetizerDataSlice from "./slice/AppetizerData.slice";
-import CardSlice from "./slice/card.slice";
+import CartSlice from "./slice/cart.slice";
 
 export default configureStore({
 	reducer: {
 		AppetizerData: AppetizerDataSlice,
-		card: CardSlice,
+		cart: CartSlice,
 		[FoodInfoApi.reducerPath]: FoodInfoApi.reducer,
 	},
 	middleware: (getDefaultMiddleware) =>
