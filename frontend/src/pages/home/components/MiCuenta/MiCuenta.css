@@ -1,0 +1,18 @@
+.MiCuenta{
+    background-color: bisque;
+}
+.Container{
+    display: flex;
+    flex-flow: row;
+}
+
+.Seleccion{
+    display: flex;
+    flex-flow: column;
+
+}
+
+button:hover{
+    color: brown;
+    text-align: center;
+}
