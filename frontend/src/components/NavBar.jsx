@@ -24,7 +24,7 @@ const NavBar = () => {
           Cart
         </button>
       </NavBarStyled>
-      {open && card.length > 0 && <CardList />}
+      {open && card.length > 0 && <CardList setOpen={setOpen}/>}
     </>
   )
 }

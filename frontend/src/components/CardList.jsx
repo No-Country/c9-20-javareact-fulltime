@@ -2,7 +2,7 @@ import ItemsCard from "./ItemsCard";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-const CardList = () => {
+const CardList = ({setOpen}) => {
 	const card = useSelector((state) => state.card);
 
 	return (
@@ -19,7 +19,9 @@ const CardList = () => {
 				))}
 
 				<footer>
-					<Link to={"/checkout"}>Realizar pago</Link>
+					<Link to={"/checkout"} onClick={() => setOpen(false)}>
+						Realizar pago
+					</Link>
 				</footer>
 			</div>
 		</aside>
