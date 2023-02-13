@@ -15,6 +15,7 @@ div{
 
 `
 export const CheckData = styled.div`
+
 form{
     display: flex;
     flex-direction: column;
@@ -30,9 +31,9 @@ form{
 `;
 
 export const CheckCart = styled.div`
+background-color: lightgray;
 display: flex;
 flex-direction: column;
-background-color: #ffffff;
 border-left: 2px solid black;
 height: 500px;
 h1{

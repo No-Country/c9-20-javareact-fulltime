@@ -59,24 +59,38 @@ const Checkout = () => {
 						<label htmlFor="">Crédito</label>
 					</div>
 					{selectedPaymentOption === 'debito' && (
-						<form action="">
-							<label htmlFor="">Número de tarjeta</label>
-							<input type="number" name="numberCard" id="" />
-							<label htmlFor="">Fecha de vencimiento</label>
-							<input type="month" name="numberCvv" id="" />
-							<label htmlFor="">CVV</label>
-							<input type="password" name="numberCvv" id="" />
-						</form>
+						<>
+							<form action="">
+								<label htmlFor="">Número de tarjeta</label>
+								<input type="number" name="numberCard" id="" />
+								<label htmlFor="">Fecha de vencimiento</label>
+								<input type="month" name="numberCvv" id="" />
+								<label htmlFor="">CVV</label>
+								<input type="password" name="numberCvv" id="" />
+							</form>
+							<Button>Confirmar</Button>
+						</>
 					)}
 					{selectedPaymentOption === 'credito' && (
-						<Unwrapped >
-							<select>
-								<option>Seleccionar Tarjeta</option>
-								<option>VISA</option>
-								<option>MASTERCARD</option>
-								
-							</select>
-						</Unwrapped>
+						<>
+							<Unwrapped >
+								<select>
+									<option>Seleccionar Tarjeta</option>
+									<option>VISA</option>
+									<option>MASTERCARD</option>
+								</select>
+							</Unwrapped>
+							<div>
+								<h3>Cuotas</h3>
+								<input type="radio" name="cuotas" checked />
+								<label htmlFor="">1 Cuota</label>
+								<input type="radio" name="cuotas" />
+								<label htmlFor="">3 Cuotas</label>
+								<input type="radio" name="cuotas" />
+								<label htmlFor="">6 Cuotas</label>
+							</div>
+							<Button>Confirmar</Button>
+						</>
 					)}
 				</CheckData>
 				<CheckCart>

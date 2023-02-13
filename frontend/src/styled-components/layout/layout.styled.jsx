@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {
-	BackgroundImageButtons,
-	FlexBoxCenter,
+  BackgroundImageButtons,
+  FlexBoxCenter,
 } from "../reusable/reusable.styled";
 
 export const HeaderSubtitleStyled = styled.header`
