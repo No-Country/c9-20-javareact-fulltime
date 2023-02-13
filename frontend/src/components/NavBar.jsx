@@ -1,9 +1,14 @@
-import React from 'react'
+import { useState } from 'react'
+import { useSelector } from "react-redux";
 import { Link, Outlet } from 'react-router-dom';
 import { NavBarStyled } from "../styled-components/NavBarComponent";
 import CardList from './CardList';
 
 const NavBar = () => {
+	const card = useSelector((state) => state.card);
+  const [open, setOpen] = useState(false)
+  const toogle = () => open ? setOpen(false) : setOpen(true)
+
   return (
     <>
       <NavBarStyled>
@@ -15,10 +20,12 @@ const NavBar = () => {
           <Link to="contact">Contacto</Link>
           <Link to="myaccount">Mi Cuenta</Link>
         </ul>
-        <CardList />
+        <button style={{ color: 'white' }} onClick={() => toogle()}>
+          Cart
+        </button>
       </NavBarStyled>
+      {open && card.length > 0 && <CardList />}
     </>
-
   )
 }
 
