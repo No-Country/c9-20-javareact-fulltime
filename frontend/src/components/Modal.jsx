@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import Item from "../model/item.model";
 import {
 	decrement,
 	increment,
@@ -10,23 +11,22 @@ import ButtonModal from "./ButtonModal";
 import HeroImage from "./HeroImage";
 import react from "/assets/react.svg";
 import exit from "/icons/exit.svg";
-
 const Modal = ({ open, item }) => {
 	const amount = useSelector((state) => state.AppetizerData);
 	const dispatch = useDispatch();
 
 	const handleAddItems = () => {
-		dispatch(
-			addItems({
-				id: item.id,
-				amount: amount.value,
-				name: item.nameFood,
-				cost: item.price,
-				subTotal: amount * item.price,
-				ShippingCost: "",
-				DiscountCode: "",
-			}),
+		const itemCart = new Item(
+			item.id,
+			amount.value,
+			item.nameFood,
+			item.price,
+			amount.value * item.price,
+			"",
+			"",
 		);
+
+		dispatch(addItems(itemCart));
 		dispatch(resetValue());
 	};
 
