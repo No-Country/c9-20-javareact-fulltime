@@ -12,6 +12,8 @@ export const GlobalStyle = createGlobalStyle`
 
     body{
         margin: 0;
+        font-family: "Poppins", sans-serif;
+        line-height: 1.4;
     }
 
     button{
@@ -20,7 +22,9 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     ul{
-        list-type: none;
+        list-style: none;
+        margin: 0;
+        padding: 0;
     }
 
     a {

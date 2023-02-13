@@ -4,6 +4,7 @@ import Card from "./Card";
 import { SectionStyled } from "../styled-components";
 import HeaderSubTitle from "../../../components/HeaderSubTitle";
 import { useEffect } from 'react';
+import { Footer } from '../../../components';
 
 const Categorias = () => {
   const [categorias, setCategorias] = useState()
@@ -33,6 +34,8 @@ const Categorias = () => {
           return <Card key={i} name={cat} link={cat} />
         })}
       </Div>
+
+      <Footer />
     </>
 
   )

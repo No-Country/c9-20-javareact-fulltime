@@ -61,7 +61,7 @@ img{
 `;
 /* Container del item responsive abierto a que lo modifiquen */
 export const ItemContainer = styled.div`
-height: 500px;
+height: 550px;
 width: 350px;
 margin: 10px;
 background-color: #e6ebe9;

@@ -5,3 +5,4 @@ export { default as HeroImage } from "./HeroImage";
 export { default as ItemsCard } from "./ItemsCard";
 export { default as Modal } from "./Modal";
 export { default as NavBar } from "./NavBar";
+export { default as Footer } from "./Footer"
