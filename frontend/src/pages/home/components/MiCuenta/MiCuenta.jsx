@@ -1,65 +1,71 @@
-import React from 'react'
-import './MiCuenta.css'
-import MisDatos from './MisDatos/MisDatos'
+import React from "react";
+import "./MiCuenta.css";
+import MisDatos from "./MisDatos/MisDatos";
+import MisTarjetas from "./MisTarjetas/MisTarjetas";
 
 export default function MiCuenta() {
-  const [misDatos, setMisDatos] = React.useState(false)
-  const [misTarjetas, setMisTarjetas] = React.useState(false)
-  const [misPedidos, setMisPedidos] = React.useState(false)
-  const [cerrarSesion, setCerrarSesion] = React.useState(false) 
-  
+  const [misDatos, setMisDatos] = React.useState(false);
+  const [misTarjetas, setMisTarjetas] = React.useState(false);
+  const [misPedidos, setMisPedidos] = React.useState(false);
+  const [cerrarSesion, setCerrarSesion] = React.useState(false);
+
+  function setAuto(set) {
+    setMisDatos(false);
+    setMisTarjetas(false);
+    setMisPedidos(false);
+    setCerrarSesion(false);
+    set(true);
+  }
+
   const activacion = (e) => {
-    console.log(e.target.name)
-    let boton = e.target.name
-    switch (boton){
-      case 'Datos':
-        setMisDatos(true)
-        setMisTarjetas(false)
-        setMisPedidos(false)
-        setCerrarSesion(false)
+    let boton = e.target.name;
+    switch (boton) {
+      case "Datos":
+        setAuto(setMisDatos);
+
         break;
-      case 'Tarjetas':
-        setMisDatos(false)
-        setMisTarjetas(true)
-        setMisPedidos(false)
-        setCerrarSesion(false)
+      case "Tarjetas":
+        setAuto(setMisTarjetas);
+
         break;
-      case 'Pedidos':
-        setMisDatos(false)
-        setMisTarjetas(false)
-        setMisPedidos(true)
-        setCerrarSesion(false)
+      case "Pedidos":
+        setAuto(setMisPedidos);
+
         break;
-      case 'Sesion':
-        setMisDatos(false)
-        setMisTarjetas(false)
-        setMisPedidos(false)
-        setCerrarSesion(true)
+      case "Sesion":
+        setAuto(setCerrarSesion);
+
         break;
       default:
-        null
+        null;
     }
-      
-  }
-  
+  };
+
   return (
-    <div className='MiCuenta'>
-        <h1>MiCuenta</h1>
-        <div className='Container'>
-            <div className='Seleccion'>
-              <button name='Datos' onClick={(e) => activacion(e)}>Mis datos</button>
-              <button name='Tarjetas' onClick={(e) => activacion(e)}>Mis tarjetas</button>
-              <button name='Pedidos' onClick={(e) => activacion(e)}>Mis pedidos</button>
-              <button name='Sesion' onClick={(e) => activacion(e)}>Cerrar Sesión</button>
-            </div>
-            <div>
-              
-              { misDatos && <MisDatos/>}
-              { misTarjetas && 'Mis tarjetas componente'}
-              { misPedidos && 'Mis pedidos componente'}
-              { cerrarSesion && 'Mi cerrar  sesion componente'}                            
-            </div>
+    <div className="MiCuenta">
+      <h1>MiCuenta</h1>
+      <div className="Container">
+        <div className="Seleccion">
+          <button name="Datos" onClick={(e) => activacion(e)}>
+            Mis datos
+          </button>
+          <button name="Tarjetas" onClick={(e) => activacion(e)}>
+            Mis tarjetas
+          </button>
+          <button name="Pedidos" onClick={(e) => activacion(e)}>
+            Mis pedidos
+          </button>
+          <button name="Sesion" onClick={(e) => activacion(e)}>
+            Cerrar Sesión
+          </button>
         </div>
+        <div>
+          {misDatos && <MisDatos />}
+          {misTarjetas && <MisTarjetas />}
+          {misPedidos && "Mis pedidos componente"}
+          {cerrarSesion && "Mi cerrar  sesion componente"}
+        </div>
+      </div>
     </div>
-  )
+  );
 }
