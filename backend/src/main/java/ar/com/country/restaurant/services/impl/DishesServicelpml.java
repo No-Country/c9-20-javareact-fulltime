@@ -1,7 +1,7 @@
 package ar.com.country.restaurant.services.impl;
 
 import ar.com.country.restaurant.dao.entities.Dish;
-import ar.com.country.restaurant.exceptions.Dishes.IdNotFoundException;
+import ar.com.country.restaurant.exceptions.DishIdNotFoundException;
 import ar.com.country.restaurant.repositories.DishesRepository;
 import ar.com.country.restaurant.services.DishesServices;
 import ar.com.country.restaurant.web.dto.DishDTO;
@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -38,7 +37,7 @@ public class DishesServicelpml implements DishesServices {
 //        ensureUniqueDish();
         return dishesRepository
                 .findById(id)
-                .orElseThrow(() -> new IdNotFoundException("Id not found", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new DishIdNotFoundException("Id not found", HttpStatus.NOT_FOUND));
     }
 
     @Override
