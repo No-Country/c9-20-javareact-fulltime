@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
 
     public User updateUser(User user) {
         if (user.getId() == null) {
-            throw new UserNotFoundException(user.getId());
+            throw new UserNotFoundException();
         }
         ensureUniqueEmail(user.getEmail());
         return userRepository.save(user);
