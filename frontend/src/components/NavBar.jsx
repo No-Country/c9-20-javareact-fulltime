@@ -1,30 +1,33 @@
 import { useState } from 'react'
 import { useSelector } from "react-redux";
-import { Link, Outlet } from 'react-router-dom';
-import { NavBarStyled } from "../styled-components/NavBarComponent";
+import { NavBarStyled, StyledLink, CartWidget} from "../styled-components/NavBarComponent";
+import { logo, cart } from "../../public/icons"
 import CardList from './CardList';
 
 const NavBar = () => {
-	const card = useSelector((state) => state.card);
+  const card = useSelector((state) => state.card);
   const [open, setOpen] = useState(false)
   const toogle = () => open ? setOpen(false) : setOpen(true)
 
   return (
     <>
       <NavBarStyled>
-        <Link to="/">LOGO</Link>
-        <input type="text" placeholder='Buscar' />
+        <StyledLink to="/">
+          <img src={logo} alt="SVG logo image" />
+        </StyledLink>
+
         <ul>
-          <Link to="category">Carta</Link>
-          <Link to="promotions">Promociones</Link>
-          <Link to="contact">Contacto</Link>
-          <Link to="myaccount">Mi Cuenta</Link>
+          <StyledLink to="category">Carta</StyledLink>
+          <StyledLink to="promotions">Promociones</StyledLink>
+          <StyledLink to="contact">Contacto</StyledLink>
+          <StyledLink to="myaccount">Mi Cuenta</StyledLink>
+          <CartWidget>
+            <img src={cart} onClick={() => toogle()} />
+            {card.length > 0 && <span>{card.length}</span>}
+          </CartWidget>
         </ul>
-        <button style={{ color: 'white' }} onClick={() => toogle()}>
-          Cart
-        </button>
       </NavBarStyled>
-      {open && card.length > 0 && <CardList setOpen={setOpen}/>}
+      {open && card.length > 0 && <CardList setOpen={setOpen} />}
     </>
   )
 }
