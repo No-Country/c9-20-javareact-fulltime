@@ -2,9 +2,11 @@ import React from "react";
 import "./MiCuenta.css";
 import MisDatos from "./MisDatos/MisDatos";
 import MisTarjetas from "./MisTarjetas/MisTarjetas";
+import MisPedidos from "./MisPedidos/MisPedidos";
+import CerrarSesion from "./CerrarSesion/CerrarSesion";
 
 export default function MiCuenta() {
-  const [misDatos, setMisDatos] = React.useState(false);
+  const [misDatos, setMisDatos] = React.useState(true);
   const [misTarjetas, setMisTarjetas] = React.useState(false);
   const [misPedidos, setMisPedidos] = React.useState(false);
   const [cerrarSesion, setCerrarSesion] = React.useState(false);
@@ -62,8 +64,8 @@ export default function MiCuenta() {
         <div>
           {misDatos && <MisDatos />}
           {misTarjetas && <MisTarjetas />}
-          {misPedidos && "Mis pedidos componente"}
-          {cerrarSesion && "Mi cerrar  sesion componente"}
+          {misPedidos && <MisPedidos/> }
+          {cerrarSesion && <CerrarSesion/>}
         </div>
       </div>
     </div>
