@@ -16,6 +16,7 @@ export const Div = styled.div`
     flex-wrap: wrap;
     gap: ${({ gap }) => gap || "0px"};
 `;
+//TODO Div responsive abierto a modificar */
 export const DivCol = styled.div`
     display: flex;
     flex-direction: column;
