@@ -63,7 +63,7 @@ public class User implements Serializable {
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
     )
-    private List<Payment> payments;
+    private List<PaymentMethod> paymentMethods;
 
     public void addAddress(Address address) {
         if (isNull(addresses)) {
@@ -71,6 +71,14 @@ public class User implements Serializable {
         }
         addresses.add(address);
         address.setUser(this);
+    }
+
+    public void addPaymentMethod(PaymentMethod paymentMethod) {
+        if (isNull(paymentMethods)) {
+            paymentMethods = new ArrayList<>();
+        }
+        paymentMethods.add(paymentMethod);
+        paymentMethod.setUser(this);
     }
     
 }
