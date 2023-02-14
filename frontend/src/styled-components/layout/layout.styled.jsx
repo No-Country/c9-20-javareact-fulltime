@@ -24,6 +24,7 @@ export const DivCol = styled.div`
 export const ModalStyled = styled.section`
 
     ${FlexBoxCenter};
+    flex-direction: column;
     min-block-size: 100vh;  
     inline-size: 100%;
     color: var(--text-primary);
@@ -151,6 +152,7 @@ export const CarListStyled = styled.aside`
    background-color: rgba(131, 131, 131, 1);
    transform: ${({ translateX }) => translateX};
    transition: transform 1s ease-in-out; 
+   z-index:3;
 `;
 
 export const ContainerModelStyled = styled.div`
@@ -158,9 +160,8 @@ export const ContainerModelStyled = styled.div`
     align-items: center;
     justify-content: space-evenly;
     inline-size: 100%;
-    div{
-      
-    }
+    min-block-size: 570px;
+
 `;
 
 export const ArticleModal = styled.article` 
@@ -178,10 +179,60 @@ export const ArticleModal = styled.article`
         font-size: 2rem;
         font-weight: 500;
       }
-      div{
+      h2 + div{
         display: inherit;
         align-items: center;
         gap: 12px;
       }
     }
+
+
+    header +  div strong{
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+
+    header + div:nth-child(2) {
+      min-inline-size: 636px;      
+      font-weight: 300;
+    }
+
+    header + div p:last-child{
+      font-size: 2rem;
+      font-weight: 500;
+    } 
+
+    footer{
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      margin-block-start: .6em;
+     button{
+       background-color: var(--button-primary);
+      }
+
+      span{
+        min-inline-size: 19px;
+        text-align: center;
+      }
+
+      div button{
+        padding: 1em ;  
+      }
+
+
+      button:nth-child(3){
+        display: flex;
+        align-items: center;
+        gap: 17px;
+        padding: 1em 5em;
+        border-radius: 4px;
+        span{ 
+          font-weight: bold;
+          font-size: 1rem;
+        }
+      }
+
+    }
+
 `;

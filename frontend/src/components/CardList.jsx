@@ -16,8 +16,9 @@ const CardList = () => {
 	useEffect(() => {
 		if (cart.length !== 0) {
 			setIsLoading(true);
-
-			cart.forEach((i) => setTotal(total + i.subTotal));
+			cart.forEach((i) => {
+				setTotal(total + i.subTotal);
+			});
 		} else {
 			setIsLoading(false);
 		}

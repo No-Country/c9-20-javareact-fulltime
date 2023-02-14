@@ -28,3 +28,7 @@ export const ItemFoodStyled = styled.article`
     }
 
 `;
+
+export const CategoryStyled = styled.section`
+    inline-size: 100%;
+`;

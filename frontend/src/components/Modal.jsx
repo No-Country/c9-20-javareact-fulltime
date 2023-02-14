@@ -15,6 +15,7 @@ import {
 } from "./../styled-components/layout/layout.styled";
 import HeroImage from "./HeroImage";
 import star from "/icons/Star.svg";
+import cart from "/icons/cart.svg";
 import platoPasta from "/img/platoPasta2.png";
 const Modal = () => {
 	const amount = useSelector((state) => state.AppetizerData);
@@ -25,10 +26,10 @@ const Modal = () => {
 	const handleAddItems = () => {
 		const itemCart = new Item(
 			itemFood.id,
-			itemFood.value,
+			amount.value,
 			itemFood.nameFood,
 			itemFood.price,
-			itemFood.value * itemFood.price,
+			amount.value * itemFood.price,
 			"",
 			"",
 		);
@@ -56,23 +57,28 @@ const Modal = () => {
 							</div>
 						</header>
 						<div>
+							<strong>Descripción del Plato</strong>
 							<p>{itemFood.description}</p>
-							<p>demora de {itemFood.delay}</p>
-							<p>Precio: {itemFood.price}</p>
+							<p>{itemFood.delay.toUpperCase()}</p>
+							<p>${itemFood.price}</p>
 						</div>
 						<footer>
-							<button onClick={() => dispatch(increment())}>+</button>
 							<span>{amount.value}</span>
-							<button onClick={() => dispatch(decrement())}>-</button>
+							<div>
+								<button onClick={() => dispatch(increment())}>+</button>
+								<button onClick={() => dispatch(decrement())}>-</button>
+							</div>
+							<button onClick={handleAddItems}>
+								<span>Agregar</span>
+								<img src={cart} alt='cart' />
+							</button>
 						</footer>
-						<div>
-							<button onClick={handleAddItems}>Agregar</button>
-						</div>
 					</ArticleModal>
 				) : (
 					<div>loading...</div>
 				)}
 			</ContainerModelStyled>
+			<hr />
 			<div>algo</div>
 		</ModalStyled>
 	);

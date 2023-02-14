@@ -1,15 +1,15 @@
 import { Outlet, useParams } from "react-router-dom";
-import { HeaderSubTitle } from "../../../components";
+import { CardList, HeaderSubTitle } from "../../../components";
 import { Div } from "../../../styled-components";
 import ItemFood from "./components/ItemFood";
 import useListFood from "./hook/useListFood";
-
 const Category = () => {
 	const { idCategory, idFood } = useParams();
 	const { list, isLoading } = useListFood(idCategory);
 
 	return (
 		<>
+			<CardList />
 			{!idFood ? (
 				<section>
 					<HeaderSubTitle

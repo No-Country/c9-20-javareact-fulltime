@@ -1,10 +1,10 @@
 import { useDispatch } from "react-redux";
 import { deleteItem } from "../redux/slice/cart.slice";
-const ItemsCard = ({ amount, name, cost, id }) => {
+const ItemsCard = ({ amount, name, cost }) => {
 	const dispatch = useDispatch();
 
 	return (
-		<article key={id}>
+		<article>
 			<span>
 				{amount}X{name}
 			</span>

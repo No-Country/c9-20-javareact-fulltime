@@ -9,7 +9,7 @@
                 {
                     "id": 1,
                     "nameFood": "Ñoquis",
-                    "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                     "price": 840,
                     "promotions": false,
                     "delay": "15 a 20 min de demora",
