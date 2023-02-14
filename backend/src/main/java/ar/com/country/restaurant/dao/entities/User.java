@@ -4,7 +4,10 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+
+import static java.util.Objects.isNull;
 
 @Entity
 @Table(name = "users")
@@ -46,19 +49,28 @@ public class User implements Serializable {
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
     )
-    private List<Order> order;
+    private List<Order> orders;
 
     @OneToMany(
             mappedBy = "user",
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
     )
-    private List<Address> address;
+    private List<Address> addresses;
 
     @OneToMany(
             mappedBy = "user",
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
     )
-    private List<Payment> payment;
+    private List<Payment> payments;
+
+    public void addAddress(Address address) {
+        if (isNull(addresses)) {
+            addresses = new ArrayList<>();
+        }
+        addresses.add(address);
+        address.setUser(this);
+    }
+    
 }
