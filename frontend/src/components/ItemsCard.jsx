@@ -4,7 +4,7 @@ const ItemsCard = ({ amount, name, cost, id }) => {
 	const dispatch = useDispatch();
 
 	return (
-		<article>
+		<article key={id}>
 			<span>
 				{amount}X{name}
 			</span>

@@ -3,26 +3,23 @@ import { Modal } from "../components";
 import Checkout from "../pages/Checkout/Checkout";
 import Signup from "../pages/auth/Signup/Signup";
 import Login from "../pages/auth/login/Login";
-import View from "../pages/view/views";
+import Category from "../pages/view/categoria/category";
 import Home from "./../pages/home/Home";
 export const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <Home />,
+	},
+	{
+		path: "categoria/:idCategory",
+		element: <Category />,
 		children: [
 			{
-				path: "/:idCategory",
-				element: <View />,
-				children: [
-					{
-						path: "/:idCategory/:idItem",
-						element: <Modal />,
-					},
-				],
+				path: "/categoria/:idCategory/:idFood",
+				element: <Modal />,
 			},
 		],
 	},
-
 	{
 		path: "/signup",
 		element: <Signup />,

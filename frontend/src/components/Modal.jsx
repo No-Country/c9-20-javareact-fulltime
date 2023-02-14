@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import Item from "../model/item.model";
+import { useParams } from "react-router-dom";
 import {
 	decrement,
 	increment,
@@ -7,21 +7,28 @@ import {
 } from "../redux/slice/AppetizerData.slice";
 import { addItems } from "../redux/slice/cart.slice";
 import { ModalStyled } from "../styled-components";
-import ButtonModal from "./ButtonModal";
+import useModalFunctional from "./../hooks/useModalFunctional";
+import Item from "./../model/item.model";
+import {
+	ArticleModal,
+	ContainerModelStyled,
+} from "./../styled-components/layout/layout.styled";
 import HeroImage from "./HeroImage";
-import react from "/assets/react.svg";
-import exit from "/icons/exit.svg";
-const Modal = ({ open, item }) => {
+import star from "/icons/Star.svg";
+import platoPasta from "/img/platoPasta2.png";
+const Modal = () => {
 	const amount = useSelector((state) => state.AppetizerData);
 	const dispatch = useDispatch();
+	const { idCategory, idFood } = useParams();
+	const { itemFood } = useModalFunctional(idFood, idCategory);
 
 	const handleAddItems = () => {
 		const itemCart = new Item(
-			item.id,
-			amount.value,
-			item.nameFood,
-			item.price,
-			amount.value * item.price,
+			itemFood.id,
+			itemFood.value,
+			itemFood.nameFood,
+			itemFood.price,
+			itemFood.value * itemFood.price,
 			"",
 			"",
 		);
@@ -31,38 +38,42 @@ const Modal = ({ open, item }) => {
 	};
 
 	return (
-		<ModalStyled visibility={open ? "visible" : "hidden"}>
-			<div>
-				{/* //TODO Borrar */}
-				<ButtonModal
-					onClick={() => {}}
-					img={exit}
-					size={"cover"}
-					padding='8px'
+		<ModalStyled>
+			<ContainerModelStyled>
+				<HeroImage
+					img={platoPasta}
+					alt='plato'
+					blockSize='305px'
+					inlineSize='383px'
 				/>
-				{item !== undefined ? (
-					<div>
+				{itemFood !== undefined ? (
+					<ArticleModal>
+						<header>
+							<h2>{itemFood.nameFood}</h2>
+							<div>
+								<img src={star} alt='start' />
+								<p>4.9</p>
+							</div>
+						</header>
 						<div>
-							<h2>{item.nameFood}</h2>
-							<p>{item.description}</p>
-							<p>demora de {item.delay}</p>
-							<p>Precio: {item.price}</p>
+							<p>{itemFood.description}</p>
+							<p>demora de {itemFood.delay}</p>
+							<p>Precio: {itemFood.price}</p>
 						</div>
-
-						<div>
+						<footer>
 							<button onClick={() => dispatch(increment())}>+</button>
 							<span>{amount.value}</span>
 							<button onClick={() => dispatch(decrement())}>-</button>
-						</div>
+						</footer>
 						<div>
 							<button onClick={handleAddItems}>Agregar</button>
 						</div>
-					</div>
+					</ArticleModal>
 				) : (
 					<div>loading...</div>
 				)}
-				<HeroImage img={react} alt='img' blockSize='305px' inlineSize='383px' />
-			</div>
+			</ContainerModelStyled>
+			<div>algo</div>
 		</ModalStyled>
 	);
 };

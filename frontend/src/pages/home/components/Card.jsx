@@ -5,7 +5,7 @@ const Card = ({ link, name }) => {
 	return (
 		<>
 			<CardContainer>
-				<Link to={`/${link}`}>
+				<Link to={`categoria/${link}`}>
 					<h2>{name}</h2>
 					<CardContent>
 						<img src='\assets\react.svg' alt="image" />

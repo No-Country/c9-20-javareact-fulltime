@@ -1,8 +1,5 @@
 import styled from "styled-components";
-import {
-	BackgroundImageButtons,
-	FlexBoxCenter,
-} from "../reusable/reusable.styled";
+import { FlexBoxCenter } from "../reusable/reusable.styled";
 
 export const HeaderSubtitleStyled = styled.header`
     text-align: ${({ textAlign }) => textAlign}; 
@@ -24,37 +21,24 @@ export const DivCol = styled.div`
     flex-wrap: wrap;
 `;
 
-export const ModalStyled = styled.div`
-    position: fixed;
-    inset: 0;
+export const ModalStyled = styled.section`
+
     ${FlexBoxCenter};
-    block-size: 100vh;
+    min-block-size: 100vh;  
     inline-size: 100%;
-    background-color: rgba(255, 252, 252, 1); 
+    color: var(--text-primary);
+    background-color: var(--background-primary); 
     z-index: 2;
-    visibility: ${({ visibility }) => visibility};
-
-
 `;
 
 export const HeroImageStyled = styled.div`
-    
+  
     block-size: ${({ blockSize }) => blockSize};
     inline-size: ${({ inlineSize }) => inlineSize};
     text-align: center;
     background-color: rgba(218, 220, 224, 1);
 
 
-`;
-
-export const ButtonModalStyled = styled.button`
-
-    position: absolute;
-    inset-block-start: 17%;
-    inset-inline-end: 9%;
-    padding: ${({ padding }) => padding} ; 
-    ${BackgroundImageButtons};
-    
 `;
 
 export const Wrapperremember = styled.div`
@@ -167,4 +151,37 @@ export const CarListStyled = styled.aside`
    background-color: rgba(131, 131, 131, 1);
    transform: ${({ translateX }) => translateX};
    transition: transform 1s ease-in-out; 
+`;
+
+export const ContainerModelStyled = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    inline-size: 100%;
+    div{
+      
+    }
+`;
+
+export const ArticleModal = styled.article` 
+    display: flex;
+    flex-direction: column;
+    block-size: 307px;
+    inline-size: 468px;
+    
+    header{
+      display: inherit;
+      align-items: center;
+      justify-content: space-between;
+      inline-size: 100%;
+      h2{
+        font-size: 2rem;
+        font-weight: 500;
+      }
+      div{
+        display: inherit;
+        align-items: center;
+        gap: 12px;
+      }
+    }
 `;

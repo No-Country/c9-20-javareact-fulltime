@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useGetInfoFoodQuery } from "../../../redux/query/FoodInfo.query";
+import { useGetInfoFoodQuery } from "../../../../redux/query/FoodInfo.query";
 
 const useListFood = (namePath) => {
 	const [list, setList] = useState();

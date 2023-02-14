@@ -1,17 +1,5 @@
 import styled from "styled-components";
-import { FlexBoxCenter } from "../../../styled-components";
-
-export const ViewStyled = styled.section`
-    min-block-size: 100vh;
-    
-    text-align: center;
-
-    span{
-        display: inline-block;
-        margin-block-start: 40px;
-    }
-`;
-
+import { FlexBoxCenter } from "../../../../styled-components";
 export const ItemFoodStyled = styled.article`
     ${FlexBoxCenter}
     gap: 30px;
@@ -21,7 +9,10 @@ export const ItemFoodStyled = styled.article`
     box-shadow :  0px 4px 4px rgba(0, 0, 0, 0.25);
     transform : scale(100%);
     transition: transform  1s  ease-in; 
-
+    a{
+        display: flex;
+    }
+    
     &:hover{
         transform : scale(102%);
     }
@@ -35,9 +26,5 @@ export const ItemFoodStyled = styled.article`
              block-size: 100%;
         }
     }
-
-`;
-
-export const CarListStyled = styled.aside`
 
 `;
