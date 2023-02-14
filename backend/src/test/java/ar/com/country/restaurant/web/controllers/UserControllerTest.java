@@ -98,7 +98,6 @@ class UserControllerTest extends AbstractIntegrationTest {
             user.setPhone("+54 999999-9999");
             user.setLastName("Fischer");
 
-
             String response = mockMvc.perform(
                             put("/api/user/" + user.getId())
                                     .contentType(MediaType.APPLICATION_JSON)
@@ -112,7 +111,6 @@ class UserControllerTest extends AbstractIntegrationTest {
                     .andExpect(jsonPath("$.email").value(user.getEmail()))
                     .andReturn()
                     .getResponse().getContentAsString();
-
         }
 
         @Test
@@ -129,61 +127,59 @@ class UserControllerTest extends AbstractIntegrationTest {
                     .getResponse().getContentAsString();
 
         }
-
     }
 
+    @Test
+    @DisplayName("Register should work with valid user")
+    void registeringUser() throws Exception {
+        User newUser = createUnregisteredDummyUser();
 
-        @Test
-        @DisplayName("Register should work with valid user")
-        void registeringUser() throws Exception {
-            User newUser = createUnregisteredDummyUser();
+        String response = mockMvc.perform(
+                        post("/api/register")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(JsonUtils.asJsonString(newUser))
+                )
+                .andDo(print())
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.id").exists())
+                .andExpect(jsonPath("$.email").value("ricardoibarra2044@gmail.com"))
+                .andExpect(jsonPath("$.accessToken").exists())
+                .andExpect(jsonPath("$.refreshToken").exists())
+                .andReturn()
+                .getResponse().getContentAsString();
 
-            String response = mockMvc.perform(
-                            post("/api/register")
-                                    .contentType(MediaType.APPLICATION_JSON)
-                                    .content(JsonUtils.asJsonString(newUser))
-                    )
-                    .andDo(print())
-                    .andExpect(status().isCreated())
-                    .andExpect(jsonPath("$.id").exists())
-                    .andExpect(jsonPath("$.email").value("ricardoibarra2044@gmail.com"))
-                    .andExpect(jsonPath("$.accessToken").exists())
-                    .andExpect(jsonPath("$.refreshToken").exists())
-                    .andReturn()
-                    .getResponse().getContentAsString();
+        String accessToken = JsonPath.read(response, "$.accessToken");
+        String refreshToken = JsonPath.read(response, "$.refreshToken");
 
-            String accessToken = JsonPath.read(response, "$.accessToken");
-            String refreshToken = JsonPath.read(response, "$.refreshToken");
+        assertValidAccessToken(accessToken);
+        assertValidRefreshToken(refreshToken);
+    }
 
-            assertValidAccessToken(accessToken);
-            assertValidRefreshToken(refreshToken);
+    private void assertValidAccessToken(String token) {
+        assertValidToken(token, accessTokenDecoder);
+    }
+
+    private void assertValidRefreshToken(String token) {
+        assertValidToken(token, refreshTokenDecoder);
+    }
+
+    private void assertValidToken(String token, JwtDecoder decoder) {
+        try {
+            decoder.decode(token);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
+    }
 
-        private void assertValidAccessToken(String token) {
-            assertValidToken(token, accessTokenDecoder);
-        }
-
-        private void assertValidRefreshToken(String token) {
-            assertValidToken(token, refreshTokenDecoder);
-        }
-
-        private void assertValidToken(String token, JwtDecoder decoder) {
-            try {
-                decoder.decode(token);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-        private User createUnregisteredDummyUser() {
-            return User.builder()
-                    .dni("123456789BC")
-                    .name("Nicolás")
-                    .lastName("C. Ibarra")
-                    .email("ricardoibarra2044@gmail.com")
-                    .password("password12345")
-                    .phone("+52 9999999999")
-                    .role(UserRole.NORMAL)
-                    .build();
-        }
+    private User createUnregisteredDummyUser() {
+        return User.builder()
+                .dni("123456789BC")
+                .name("Nicolás")
+                .lastName("C. Ibarra")
+                .email("ricardoibarra2044@gmail.com")
+                .password("password12345")
+                .phone("+52 9999999999")
+                .role(UserRole.NORMAL)
+                .build();
+    }
 }
