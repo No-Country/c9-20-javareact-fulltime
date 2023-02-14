@@ -16,7 +16,7 @@ export const NavBarStyled = styled.nav`
   ul {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     padding: 0px;
     gap: 30px;
     list-style-type: none;
@@ -24,16 +24,12 @@ export const NavBarStyled = styled.nav`
 `
 
 export const CartWidget = styled.div`
-  /* img:nth-child(2){
-    position: relative;
-    top: -.5em;
-    left: -.5em;
-  } */
+
   span {
     position: relative;
-    top: -2.5em;
-    left: 1em;
-    display: flex;
+    top: -1em;
+    left: -.5em;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
     font-size: 13px;
