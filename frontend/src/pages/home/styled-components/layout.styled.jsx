@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const SectionStyled = styled.section`
     margin: 5em 3em;
@@ -78,13 +78,17 @@ button{
 }
 `;
 export const ItemImg = styled.div`
-width: 300px;
-height: 192px;
 img{
     border-radius: 30px;
-    width: 100%;
-    height: 100%;
 }
+${props => props.circle === 'true' && css`
+    width: 200px;
+    height: 200px;
+  `}
+${props => props.circle === 'false' && css`
+    width: 300px;
+    height: 192px;
+  `}
 `;
 export const ItemDescription = styled.div`
     font-size: 12px;
