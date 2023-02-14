@@ -30,7 +30,7 @@ public class Receipt {
     private Order order;
 
     @OneToOne(fetch = FetchType.LAZY)
-    private Payment paymentId;
+    private PaymentMethod paymentMethod;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
