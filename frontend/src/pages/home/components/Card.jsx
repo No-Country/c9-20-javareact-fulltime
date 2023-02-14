@@ -8,8 +8,11 @@ const Card = ({ link, name }) => {
 				<Link to={`categoria/${link}`}>
 					<h2>{name}</h2>
 					<CardContent>
-						<img src='\assets\react.svg' alt="image" />
+						<img src='' alt="image" />
 					</CardContent>
+					<CardTitle>
+						<h2>{name}</h2>
+					</CardTitle>
 				</Link>
 			</CardContainer>
 		</>

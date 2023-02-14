@@ -1,1 +1,2 @@
-export { default as useFunctionalityModal } from "./useFunctionalityModal";
+export * from "./index";
+export { default as useModalFunctional } from "./useModalFunctional";

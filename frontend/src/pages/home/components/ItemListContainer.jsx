@@ -1,5 +1,4 @@
 import React from "react";
-import { useResolvedPath } from "react-router-dom";
 import { useGetInfoFoodQuery } from "../../../redux/query/FoodInfo.query";
 import { Div } from "../../../styled-components";
 import Items from "../components/Items";
@@ -7,7 +6,6 @@ import Card from "./Card";
 
 const ItemListContainer = () => {
 	const { data: food, isSuccess } = useGetInfoFoodQuery();
-	const { namePath } = useResolvedPath();
 
 	return (
 		<>

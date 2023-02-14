@@ -1,21 +1,22 @@
 import { useResolvedPath } from "react-router-dom";
-import { CardList } from "../../components";
-import Banner from "./components/Banner";
-import Contact from "./components/Contact";
-import MyAccount from "./components/MyAccount";
-import Promotions from "./components/Promotions";
+import Footer from "../../components/Footer";
+import InputSearch from "../../components/InputSearch";
+import CommentsSection from "./components/CommentsSection";
+import ItemListContainer from "./components/ItemListContainer";
+import { HomeContainer } from "./styled-components/HomeComponents";
+
 const Home = () => {
 	const { pathname } = useResolvedPath();
+
 	return (
 		<>
-			<CardList />
 			{pathname === "/" ? (
-				<>
-					<Banner />
-					<Promotions />
-					<Contact />
-					<MyAccount />
-				</>
+				<HomeContainer>
+					<InputSearch />
+					<ItemListContainer />
+					<CommentsSection />
+					<Footer />
+				</HomeContainer>
 			) : (
 				<></>
 			)}

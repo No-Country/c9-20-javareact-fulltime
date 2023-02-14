@@ -22,7 +22,7 @@ h1{
     margin: 15px;
     font-size: 1.5rem;
 }
-`
+`;
 export const CardContent = styled.div`
 height: 180px;
 margin: 10px;
@@ -30,7 +30,7 @@ img{
     width: 100%;
     height: 100%;
 }
-`
+`;
 /* export const cardContainer = styled.div`
 
 `

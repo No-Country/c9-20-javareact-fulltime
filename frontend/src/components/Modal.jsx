@@ -14,11 +14,13 @@ import {
 	ContainerModelStyled,
 } from "./../styled-components/layout/layout.styled";
 import HeroImage from "./HeroImage";
+
 import star from "/icons/Star.svg";
 import cart from "/icons/cart.svg";
 import platoPasta from "/img/platoPasta2.png";
 const Modal = () => {
 	const amount = useSelector((state) => state.AppetizerData);
+
 	const dispatch = useDispatch();
 	const { idCategory, idFood } = useParams();
 	const { itemFood } = useModalFunctional(idFood, idCategory);

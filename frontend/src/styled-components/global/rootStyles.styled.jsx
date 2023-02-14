@@ -24,6 +24,9 @@ export const GlobalStyle = createGlobalStyle`
     body{
         margin: 0;
         font-family: var(--font-family);
+        font-family: "Poppins", sans-serif;
+        line-height: 1.4;
+        background-color: #000;
     }
 
     button{
@@ -38,5 +41,15 @@ export const GlobalStyle = createGlobalStyle`
     img{
         max-width: 100%;
         inline-size: auto;
+    }
+    ul{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
     }
 `;

@@ -2,15 +2,19 @@ import styled from "styled-components";
 import { FlexBoxCenter } from "../reusable/reusable.styled";
 
 export const HeaderSubtitleStyled = styled.header`
+    color: #FFF;
+    padding: 1em;
     text-align: ${({ textAlign }) => textAlign}; 
 `;
 
 //TODO Div responsive abierto a modificar */
 export const Div = styled.div`
-    display: flex;
-    margin:15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(${({ ancho }) =>
+			ancho || "0px"}, 1fr));
+    margin: 5em 0;
     justify-content: space-around;
-    flex-wrap: wrap;
+    justify-items: center;
     gap: ${({ gap }) => gap || "0px"};
 `;
 export const DivCol = styled.div`
@@ -235,4 +239,29 @@ export const ArticleModal = styled.article`
 
     }
 
+`;
+export const LineStyle = styled.div`
+  color: #FFF;
+  font-size: 18px;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4em;
+  p {
+    flex-shrink: 0;
+  }
+
+  ::before {
+    content: " ";
+    display:block;
+    border: 1px solid #ccc;
+    flex-grow: 2;
+  }
+  ::after {
+    content: " ";
+    display:block;
+    border: 1px solid #ccc;
+    flex-grow: 1;
+  }
 `;
