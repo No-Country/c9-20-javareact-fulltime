@@ -3,7 +3,6 @@ package ar.com.country.restaurant.dao.entities;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.List;
 
@@ -21,19 +20,15 @@ public class User implements Serializable {
     private Long id;
 
     @Column(nullable = false, unique = true)
-    @NotBlank
     private String dni;
 
     @Column
-    @NotBlank
     private String name;
 
     @Column
-    @NotBlank
     private String lastName;
 
     @Column(nullable = false, unique = true)
-    @NotBlank
     private String email;
 
     @Enumerated(EnumType.STRING)
@@ -41,12 +36,9 @@ public class User implements Serializable {
     private UserRole role;
 
     @Column
-    @Transient
-    @NotBlank
     private String password;
 
     @Column
-    @NotBlank
     private String phone;
 
     @OneToMany(
