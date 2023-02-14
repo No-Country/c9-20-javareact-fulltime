@@ -1,7 +1,9 @@
 package ar.com.country.restaurant.web.controllers;
 
 import ar.com.country.restaurant.dao.entities.User;
-import ar.com.country.restaurant.repositories.UserRepository;
+import ar.com.country.restaurant.services.UserService;
+import ar.com.country.restaurant.web.dto.UserDTO;
+import ar.com.country.restaurant.web.mappers.UserMapper;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,29 +13,30 @@ import javax.validation.Valid;
 @RequestMapping("/api")
 @Validated
 public class UserController {
+    private final UserService userService;
+    private final UserMapper userMapper;
 
-    private final UserRepository userRepository;
-
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserController(UserService userService, UserMapper userMapper) {
+        this.userService = userService;
+        this.userMapper = userMapper;
     }
 
     @GetMapping("/user/{id}")
-    public User getUserById(@PathVariable Long id) {
-        return userRepository.findById(id).orElseThrow();
+    public UserDTO getUserById(@PathVariable Long id) {
+        return userMapper.toDto(userService.findById(id));
     }
 
     @PutMapping("/user/{id}")
     public User updateUser(@PathVariable Long id, @RequestBody @Valid User user) {
-        User userToUpdate = userRepository.findById(id).orElseThrow();
+        User userToUpdate = userService.findById(id);
         updateMethod(user, userToUpdate);
-        return userRepository.save(userToUpdate);
+        return userService.updateUser(userToUpdate);
     }
 
     @DeleteMapping("/user/{id}")
     public void deleteUser(@PathVariable Long id) {
-        if(userRepository.existsById(id)) {
-            userRepository.deleteById(id);
+        if(userService.existsById(id)) {
+            userService.deleteUser(id);
         }
     }
 
