@@ -3,7 +3,6 @@ package ar.com.country.restaurant.dao.entities;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "addresses")
@@ -17,11 +16,11 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "address_id")
     private Long id;
+
     @Column
     private String street;
 
-    @Column
-    @NotEmpty
+    @Column(nullable = false)
     private String number;
 
     @Column
