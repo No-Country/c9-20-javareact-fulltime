@@ -13,7 +13,9 @@ import javax.validation.Valid;
 @RequestMapping("/api")
 @Validated
 public class UserController {
+
     private final UserService userService;
+
     private final UserMapper userMapper;
 
     public UserController(UserService userService, UserMapper userMapper) {
