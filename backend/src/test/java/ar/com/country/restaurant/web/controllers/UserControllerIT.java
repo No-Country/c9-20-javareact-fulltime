@@ -18,7 +18,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.Clock;
 
-import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -59,13 +58,15 @@ class UserControllerIT extends AbstractIntegrationTest {
                 .password("12345678")
                 .role(UserRole.NORMAL)
                 .build();
+
         String unencryptedPassword = user.getPassword();
         userService.createUser(user);
         user.setPassword(unencryptedPassword);
+    }
 
-        Clock defaultClock = Clock.systemDefaultZone();
-        given(clock.instant()).willReturn(defaultClock.instant());
-        given(clock.getZone()).willReturn(defaultClock.getZone());
+    @Override
+    protected User getRegisteredUserForLogin() {
+        return user;
     }
 
     @AfterEach
@@ -76,18 +77,25 @@ class UserControllerIT extends AbstractIntegrationTest {
     @Nested
     class crudMethods {
         @Test
-        @DisplayName("Should return user created by id and return 200")
+        @DisplayName("Should return user by id and return 200")
         void getUserById() throws Exception {
-            String response = mockMvc.perform(
-                            get("/api/user/" + user.getId())
+
+            // do login
+            doLogin();
+
+            // given an id of an existing user should return the user using bearer token authentication
+            mockMvc.perform(
+                            get("/api/users/" + user.getId())
+                                    .headers(authHeader())
                                     .contentType(MediaType.APPLICATION_JSON)
                     )
                     .andDo(print())
                     .andExpect(status().isOk())
                     .andExpect(jsonPath("$.id").value(user.getId()))
-                    .andExpect(jsonPath("$.email").value(user.getEmail()))
-                    .andReturn()
-                    .getResponse().getContentAsString();
+                    .andExpect(jsonPath("$.name").value(user.getName()))
+                    .andExpect(jsonPath("$.lastName").value(user.getLastName()))
+                    .andExpect(jsonPath("$.email").value(user.getEmail()));
+
         }
 
         @Test
@@ -99,7 +107,7 @@ class UserControllerIT extends AbstractIntegrationTest {
             user.setLastName("Fischer");
 
             String response = mockMvc.perform(
-                            put("/api/user/" + user.getId())
+                            put("/api/users/" + user.getId())
                                     .contentType(MediaType.APPLICATION_JSON)
                                     .content(JsonUtils.asJsonString(user))
                     )
@@ -118,7 +126,7 @@ class UserControllerIT extends AbstractIntegrationTest {
         void deleteUser() throws Exception {
 
             String response = mockMvc.perform(
-                            delete("/api/user/" + user.getId())
+                            delete("/api/users/" + user.getId())
                                     .contentType(MediaType.APPLICATION_JSON)
                     )
                     .andDo(print())
@@ -127,59 +135,5 @@ class UserControllerIT extends AbstractIntegrationTest {
                     .getResponse().getContentAsString();
 
         }
-    }
-
-    @Test
-    @DisplayName("Register should work with valid user")
-    void registeringUser() throws Exception {
-        User newUser = createUnregisteredDummyUser();
-
-        String response = mockMvc.perform(
-                        post("/api/register")
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content(JsonUtils.asJsonString(newUser))
-                )
-                .andDo(print())
-                .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.id").exists())
-                .andExpect(jsonPath("$.email").value("ricardoibarra2044@gmail.com"))
-                .andExpect(jsonPath("$.accessToken").exists())
-                .andExpect(jsonPath("$.refreshToken").exists())
-                .andReturn()
-                .getResponse().getContentAsString();
-
-        String accessToken = JsonPath.read(response, "$.accessToken");
-        String refreshToken = JsonPath.read(response, "$.refreshToken");
-
-        assertValidAccessToken(accessToken);
-        assertValidRefreshToken(refreshToken);
-    }
-
-    private void assertValidAccessToken(String token) {
-        assertValidToken(token, accessTokenDecoder);
-    }
-
-    private void assertValidRefreshToken(String token) {
-        assertValidToken(token, refreshTokenDecoder);
-    }
-
-    private void assertValidToken(String token, JwtDecoder decoder) {
-        try {
-            decoder.decode(token);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private User createUnregisteredDummyUser() {
-        return User.builder()
-                .dni("123456789BC")
-                .name("Nicolás")
-                .lastName("C. Ibarra")
-                .email("ricardoibarra2044@gmail.com")
-                .password("password12345")
-                .phone("+52 9999999999")
-                .role(UserRole.NORMAL)
-                .build();
     }
 }

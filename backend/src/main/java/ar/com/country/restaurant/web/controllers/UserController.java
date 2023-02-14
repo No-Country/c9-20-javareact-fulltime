@@ -21,19 +21,19 @@ public class UserController {
         this.userMapper = userMapper;
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/users/{id}")
     public UserDTO getUserById(@PathVariable Long id) {
         return userMapper.toDto(userService.findById(id));
     }
 
-    @PutMapping("/user/{id}")
+    @PutMapping("/users/{id}")
     public User updateUser(@PathVariable Long id, @RequestBody @Valid User user) {
         User userToUpdate = userService.findById(id);
         updateMethod(user, userToUpdate);
         return userService.updateUser(userToUpdate);
     }
 
-    @DeleteMapping("/user/{id}")
+    @DeleteMapping("/users/{id}")
     public void deleteUser(@PathVariable Long id) {
         if(userService.existsById(id)) {
             userService.deleteUser(id);
