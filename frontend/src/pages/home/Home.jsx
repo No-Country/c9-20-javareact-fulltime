@@ -1,5 +1,5 @@
-import { Outlet, useResolvedPath } from "react-router-dom";
-import CardList from "./../../components/CardList";
+import { useResolvedPath } from "react-router-dom";
+import { CardList } from "../../components";
 import Banner from "./components/Banner";
 import Contact from "./components/Contact";
 import MyAccount from "./components/MyAccount";
@@ -17,9 +17,7 @@ const Home = () => {
 					<MyAccount />
 				</>
 			) : (
-				<>
-					<Outlet />
-				</>
+				<></>
 			)}
 		</>
 	);

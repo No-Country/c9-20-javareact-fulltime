@@ -1,8 +1,5 @@
 import styled from "styled-components";
-import {
-  BackgroundImageButtons,
-  FlexBoxCenter,
-} from "../reusable/reusable.styled";
+import { FlexBoxCenter } from "../reusable/reusable.styled";
 
 export const HeaderSubtitleStyled = styled.header`
     text-align: ${({ textAlign }) => textAlign}; 
@@ -25,44 +22,25 @@ export const DivCol = styled.div`
     flex-wrap: wrap;
 `;
 
-export const ModalStyled = styled.div`
-    position: fixed;
-    inset: 0;
+export const ModalStyled = styled.section`
+
     ${FlexBoxCenter};
-    background-color: rgba(85, 84, 84, 0.73); 
+    flex-direction: column;
+    min-block-size: 100vh;  
+    inline-size: 100%;
+    color: var(--text-primary);
+    background-color: var(--background-primary); 
     z-index: 2;
-    visibility: ${({ visibility }) => visibility};
-
-    & > div{
-        position: relative;
-        ${FlexBoxCenter};
-        flex-direction: column;
-        block-size: 843px;
-        inline-size: 932px;
-        background-color: rgba(255, 252, 252, 1);
-                
-    }
-
 `;
 
 export const HeroImageStyled = styled.div`
-    
+  
     block-size: ${({ blockSize }) => blockSize};
     inline-size: ${({ inlineSize }) => inlineSize};
     text-align: center;
     background-color: rgba(218, 220, 224, 1);
 
 
-`;
-
-export const ButtonModalStyled = styled.button`
-
-    position: absolute;
-    inset-block-start: 17%;
-    inset-inline-end: 9%;
-    padding: ${({ padding }) => padding} ; 
-    ${BackgroundImageButtons};
-    
 `;
 
 export const Wrapperremember = styled.div`
@@ -164,4 +142,98 @@ export const SignupBox = styled.div`
 
 export const Title = styled.h3`
   
+`;
+
+export const CarListStyled = styled.aside`
+
+   position : fixed;
+   inset-inline-end: 0;
+   inset-block: 0;
+   inline-size: 423px;
+   background-color: rgba(131, 131, 131, 1);
+   transform: ${({ translateX }) => translateX};
+   transition: transform 1s ease-in-out; 
+   z-index:3;
+`;
+
+export const ContainerModelStyled = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    inline-size: 100%;
+    min-block-size: 570px;
+
+`;
+
+export const ArticleModal = styled.article` 
+    display: flex;
+    flex-direction: column;
+    block-size: 307px;
+    inline-size: 468px;
+    
+    header{
+      display: inherit;
+      align-items: center;
+      justify-content: space-between;
+      inline-size: 100%;
+      h2{
+        font-size: 2rem;
+        font-weight: 500;
+      }
+      h2 + div{
+        display: inherit;
+        align-items: center;
+        gap: 12px;
+      }
+    }
+
+
+    header +  div strong{
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+
+    header + div:nth-child(2) {
+      min-inline-size: 636px;      
+      font-weight: 300;
+    }
+
+    header + div p:last-child{
+      font-size: 2rem;
+      font-weight: 500;
+    } 
+
+    footer{
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      margin-block-start: .6em;
+     button{
+       background-color: var(--button-primary);
+      }
+
+      span{
+        min-inline-size: 19px;
+        text-align: center;
+      }
+
+      div button{
+        padding: 1em ;  
+      }
+
+
+      button:nth-child(3){
+        display: flex;
+        align-items: center;
+        gap: 17px;
+        padding: 1em 5em;
+        border-radius: 4px;
+        span{ 
+          font-weight: bold;
+          font-size: 1rem;
+        }
+      }
+
+    }
+
 `;
