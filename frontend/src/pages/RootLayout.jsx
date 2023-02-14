@@ -5,9 +5,9 @@ import { NavBar } from '../components'
 const RootLayout = () => {
   return (
     <>
-      <div>
+      <header>
         <NavBar />
-      </div>
+      </header>
       <main>
         <Outlet />
       </main>

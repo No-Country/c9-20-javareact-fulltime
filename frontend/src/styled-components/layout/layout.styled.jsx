@@ -5,6 +5,7 @@ import {
 } from "../reusable/reusable.styled";
 
 export const HeaderSubtitleStyled = styled.header`
+    color: #FFF;
     text-align: ${({ textAlign }) => textAlign}; 
 `;
 

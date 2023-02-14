@@ -8,8 +8,8 @@ import { addItems } from "../redux/slice/card.slice";
 import { ModalStyled } from "../styled-components";
 import ButtonModal from "./ButtonModal";
 import HeroImage from "./HeroImage";
-import react from "/assets/react.svg";
 import exit from "/icons/exit.svg";
+
 const Modal = ({ open, handleCloset }) => {
 	const item = useSelector((state) => state.AppetizerData);
 	const dispatch = useDispatch();
@@ -34,7 +34,7 @@ const Modal = ({ open, handleCloset }) => {
 					size={"cover"}
 					padding='8px'
 				/>
-				<HeroImage img={react} alt='img' blockSize='305px' inlineSize='383px' />
+				<HeroImage img={""} alt='img' blockSize='305px' inlineSize='383px' />
 				<div>
 					<div>
 						<h2>Ñoquis</h2>

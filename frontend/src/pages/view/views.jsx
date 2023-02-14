@@ -10,7 +10,6 @@ import {
 	ContainerDetailsStyled,
 	ViewStyled,
 } from "./styled-components/layout.styled";
-import react from "/assets/react.svg";
 
 const View = ({ img }) => {
 	const [comida, setComida] = useState()
@@ -37,7 +36,7 @@ const View = ({ img }) => {
 
 			<HeaderSubTitle title={nameFood} textAlign='center' level={1} />
 
-			<HeroImage img={react} alt='comida' blockSize="268px" inlineSize='100%' />
+			<HeroImage img={img} alt='comida' blockSize="268px" inlineSize='100%' />
 
 			<span>15 A 20 Min de demora</span>
 			// TODO BORRAR

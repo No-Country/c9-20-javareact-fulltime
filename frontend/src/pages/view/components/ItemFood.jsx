@@ -1,14 +1,13 @@
 import HeaderSubTitle from "../../../components/HeaderSubTitle";
 import HeroImage from "../../../components/HeroImage";
 import { ItemFoodStyled } from "../styled-components/layout.styled";
-import react from "/assets/react.svg";
 
-const ItemFood = ({ title, description, price, onClick }) => {
+const ItemFood = ({ title, image, description, price, onClick }) => {
 	return (
 		<ItemFoodStyled onClick={onClick}>
 			<div>
 				<HeroImage
-					img={react}
+					img={image}
 					alt='comida'
 					blockSize="196px"
 					inlineSize='100%'
