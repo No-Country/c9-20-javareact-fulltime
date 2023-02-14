@@ -3,6 +3,7 @@ package ar.com.country.restaurant.services;
 import ar.com.country.restaurant.dao.entities.Dish;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface DishesServices {
 
@@ -10,7 +11,7 @@ public interface DishesServices {
 
     Dish createDish(Dish dish);
 
-    Dish findById(Long id);
+    Optional<Dish> findById(Long id);
 
     Dish deleteById(Long id);
 

@@ -7,11 +7,11 @@ import ar.com.country.restaurant.services.DishesServices;
 import ar.com.country.restaurant.web.dto.DishDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -33,11 +33,9 @@ public class DishesServicelpml implements DishesServices {
     }
 
     @Override
-    public Dish findById(Long id) {
-//        ensureUniqueDish();
-        return dishesRepository
-                .findById(id)
-                .orElseThrow(() -> new DishIdNotFoundException("Id not found", HttpStatus.NOT_FOUND));
+    public Optional<Dish> findById(Long id) {
+        ensureUniqueDish(id);
+        return dishesRepository.findById(id);
     }
 
     @Override
@@ -46,12 +44,8 @@ public class DishesServicelpml implements DishesServices {
         return null;
     }
 
-//    private void ensureUniqueDish(Long id) {
-//        Boolean dishExist = dishesRepository.existsDish(id);
-//        System.out.println(dishExist);
-//        if (dishExist) {
-//            throw new IdNotFoundException("Not found", HttpStatus.NOT_FOUND);
-//        }
-//    }
+    private void ensureUniqueDish(Long id) {
+        dishesRepository.findById(id).orElseThrow(()-> new DishIdNotFoundException());
+    }
 
 }

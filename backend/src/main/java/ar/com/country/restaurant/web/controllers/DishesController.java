@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/dishes")
@@ -30,7 +31,7 @@ public class DishesController {
     }
 
     @GetMapping("/{id}")
-    public <Optional>Dish getDishById(@PathVariable Long id){
+    public Optional<Dish> getDishById(@PathVariable Long id){
         return dishesServices.findById(id);
     }
 
@@ -43,8 +44,8 @@ public class DishesController {
 
     @PutMapping("/{id}")
     public Dish updateDish(@PathVariable Long id, @RequestBody Dish newDish){
-        Dish oldDish = dishesServices.findById(id);
-        newDish.setId(oldDish.getId());
+        Optional<Dish> oldDish = dishesServices.findById(id);
+        newDish.setId(oldDish.get().getId());
         return dishesServices.createDish(newDish);
     }
 

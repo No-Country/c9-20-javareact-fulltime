@@ -1,18 +1,10 @@
 package ar.com.country.restaurant.exceptions;
 
-import org.springframework.http.HttpStatus;
+import java.util.function.Supplier;
 
 public class DishIdNotFoundException extends RuntimeException{
-//    public IdNotFoundException(Long id) {
-//        super(String.format("Dish with id: %s not found", id));
-//    }
-
-    private String message;
-    private HttpStatus httpStatus;
-
-    public DishIdNotFoundException(String message, HttpStatus httpStatus) {
-        super(message);
-        this.message = message;
-        this.httpStatus = httpStatus;
+    public DishIdNotFoundException() {
+        super(String.format("Dish not found"));
     }
+
 }
