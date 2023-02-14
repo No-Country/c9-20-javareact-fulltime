@@ -1,5 +1,6 @@
 package ar.com.country.restaurant.exceptions.handler;
 
+import ar.com.country.restaurant.exceptions.AddressNotFoundException;
 import ar.com.country.restaurant.exceptions.EmailAlreadyTakenException;
 import ar.com.country.restaurant.exceptions.UserNotFoundException;
 import ar.com.country.restaurant.exceptions.response.ErrorResponse;
@@ -27,6 +28,11 @@ public class ApplicationExceptionHandler {
 
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<Object> userNotFoundHandler(final UserNotFoundException e) {
+        return throwCustomException(e, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(AddressNotFoundException.class)
+    public ResponseEntity<Object> addressNotFoundHandler(final AddressNotFoundException e) {
         return throwCustomException(e, HttpStatus.NOT_FOUND);
     }
 
