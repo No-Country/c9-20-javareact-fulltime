@@ -17,7 +17,7 @@ const ItemListContainer = () => {
 				textAlign='center'
 				level={2}
 			/>
-			<Div gap={"50px"} style={{transform: "translateY(4em)"}}>
+			<Div gap={"50px"} ancho={"335px"} style={{transform: "translateY(4em)"}}>
 				<Items
 					title={"Tabla I"} 
 					image={item90} 

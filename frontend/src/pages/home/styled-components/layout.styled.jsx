@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const SectionStyled = styled.section`
-    padding: 30px;
+    margin: 5em 3em;
+    display: grid;
 `;
 
 export const ContainerListStyled = styled.ul`
@@ -125,4 +126,37 @@ export const ItemPrice = styled.div`
     font-size: 24px;
     font-weight: 600;
     margin: .5em;
+`;
+
+/* ------------------------------ COMENTS ITEMS ----------------------------- */
+
+export const CommentContainer = styled.section`
+    width: 563px;
+    height: 142px;
+    color: #FFF;
+    display: flex;
+    border: 1px solid #FFFFFF;
+    border-radius: 8px;
+`;
+export const CommentImg = styled.div`
+    width: 150px;
+    height: 150px;
+    margin: 0 1.5em;
+    transform: translateY(-1.5em);
+    border-radius: 208px;
+`;
+export const CommentName = styled.p`
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 10px;
+`;
+export const Comment = styled.p`
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+`;
+export const CommentDate = styled.span`
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
 `;

@@ -12,8 +12,8 @@ export const HeaderSubtitleStyled = styled.header`
 //TODO Div responsive abierto a modificar */
 export const Div = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(355px, 1fr));
-    margin:15px;
+    grid-template-columns: repeat(auto-fit, minmax(${({ ancho }) => ancho || "0px"}, 1fr));
+    margin: 5em 0;
     justify-content: space-around;
     justify-items: center;
     gap: ${({ gap }) => gap || "0px"};

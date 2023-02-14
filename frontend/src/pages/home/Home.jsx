@@ -1,6 +1,7 @@
 import { Outlet, useResolvedPath } from "react-router-dom";
 import Footer from "../../components/Footer";
 import InputSearch from "../../components/InputSearch";
+import CommentsSection from "./components/CommentsSection";
 import ItemListContainer from "./components/ItemListContainer";
 import { HomeContainer } from "./styled-components/HomeComponents";
 
@@ -13,6 +14,7 @@ const Home = () => {
 				<HomeContainer>
 					<InputSearch />
 					<ItemListContainer />
+					<CommentsSection />
 					<Footer />
 				</HomeContainer>
 			) : (
