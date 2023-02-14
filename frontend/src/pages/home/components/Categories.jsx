@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Div } from "../../../styled-components";
 import Card from "./Card";
-import { SectionStyled } from "../styled-components";
+import { SectionStyled, CategoriesContainer } from "../styled-components";
 import HeaderSubTitle from "../../../components/HeaderSubTitle";
 import { useEffect } from 'react';
 import { Footer } from '../../../components';
@@ -20,23 +20,23 @@ const Categorias = () => {
     }, [])
 
   return (
-    <>
-      <SectionStyled>
+    <CategoriesContainer>
+
         <HeaderSubTitle
           title=' Conoce nuestra Carta'
           textAlign='center'
           level={2}
         />
-      </SectionStyled>
-      <Div>
+      <Div gap={"50px"} ancho={"300px"}>
         {!categorias ? <span>Loading...</span> :
         categorias.map((cat, i)=>{
           return <Card key={i} name={cat} link={cat} />
         })}
       </Div>
 
+
       <Footer />
-    </>
+    </CategoriesContainer>
 
   )
 }

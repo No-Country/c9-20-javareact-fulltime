@@ -5,6 +5,7 @@ import Items from "../components/Items";
 import { SectionStyled } from "../styled-components";
 import HeaderSubTitle from "../../../components/HeaderSubTitle";
 import { item90, item91, item92 } from "../../../../public/assets";
+import DivisionLine from "../../../components/DivisionLine";
 
 const ItemListContainer = () => {
 	const { open, handleCloset, handleOpen } = useFunctionalityModal();
@@ -17,6 +18,9 @@ const ItemListContainer = () => {
 				textAlign='center'
 				level={2}
 			/>
+			
+			<DivisionLine title={"Tablas para compartir"} />
+
 			<Div gap={"50px"} ancho={"335px"} style={{transform: "translateY(4em)"}}>
 				<Items
 					title={"Tabla I"} 

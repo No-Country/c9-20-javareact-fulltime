@@ -14,6 +14,7 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
         font-family: "Poppins", sans-serif;
         line-height: 1.4;
+        background-color: #000;
     }
 
     button{

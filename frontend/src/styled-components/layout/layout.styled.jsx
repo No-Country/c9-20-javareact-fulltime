@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import {
-	BackgroundImageButtons,
-	FlexBoxCenter,
+  BackgroundImageButtons,
+  FlexBoxCenter,
 } from "../reusable/reusable.styled";
 
 export const HeaderSubtitleStyled = styled.header`
     color: #FFF;
+    padding: 1em;
     text-align: ${({ textAlign }) => textAlign}; 
 `;
 
@@ -158,4 +159,30 @@ export const SignupBox = styled.div`
 
 export const Title = styled.h3`
   
+`;
+
+export const LineStyle = styled.div`
+  color: #FFF;
+  font-size: 18px;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4em;
+  p {
+    flex-shrink: 0;
+  }
+
+  ::before {
+    content: " ";
+    display:block;
+    border: 1px solid #ccc;
+    flex-grow: 2;
+  }
+  ::after {
+    content: " ";
+    display:block;
+    border: 1px solid #ccc;
+    flex-grow: 1;
+  }
 `;
