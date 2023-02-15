@@ -1,5 +1,8 @@
 import styled from "styled-components";
-import { FlexBoxCenter } from "../reusable/reusable.styled";
+import {
+	BackgroundImageButtons,
+	FlexBoxCenter,
+} from "../reusable/reusable.styled";
 
 export const HeaderSubtitleStyled = styled.header`
     text-align: ${({ textAlign }) => textAlign}; 
@@ -31,6 +34,9 @@ export const ModalStyled = styled.section`
     color: var(--text-primary);
     background-color: var(--background-primary); 
     z-index: 2;
+    hr{
+      inline-size: 97%;
+    }
 `;
 
 export const HeroImageStyled = styled.div`
@@ -146,6 +152,7 @@ export const Title = styled.h3`
 
 export const CarListStyled = styled.aside`
 
+<<<<<<< HEAD
   position : fixed;
   inset-inline-end: 0;
   inset-block: 0;
@@ -154,6 +161,116 @@ export const CarListStyled = styled.aside`
   transform: ${({ translateX }) => translateX};
   transition: transform 1s ease-in-out; 
   z-index:3;
+=======
+   position : fixed;
+   inset-inline-end: 0;
+   inset-block: 0;
+   inline-size: 423px;
+   padding-top: 3em;
+   padding-left:1em;
+   padding-right:1em;
+   background-color: var(--background-secondary);
+   transform: ${({ translateX }) => translateX};
+   transition: transform 1s ease-in-out; 
+   z-index:3;
+
+   header{
+    display: flex;
+    align-items: center;
+    inline-size: 70%;
+    gap: 12px;
+    color: var(--button-primary);
+   }
+  
+   section{
+     block-size: 245px;
+     overflow-y: scroll;
+      ${({ length }) => {
+				if (length === 0) {
+					return `
+          ${FlexBoxCenter};
+             color: var(--text-primary);
+         `;
+				}
+			}}
+      
+   }
+   section + hr{
+    inline-size: 100%;
+   }
+   footer{
+    margin-top: 17px;
+   }
+
+   footer div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    inline-size: 100%;
+    margin-top: 17px;
+    color: var(--text-primary);
+    b{
+      font-weight: 400;
+    }
+   }
+  
+   footer div:nth-child(2){
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 20px;
+      a{
+        color: var(--background-primary);
+      }
+      a:nth-child(1){
+        padding: .7em 2.7em;
+        border-radius: 4px;
+        background-color: var(--button-primary);
+        transition: background-color 1s ease-in-out; 
+        &:hover{
+          background-color: var(--button-secondary);
+        }
+      }
+      a:nth-child(2){
+        color: var(--text-primary);
+        text-decoration:  underline ;
+      }
+   }
+
+`;
+
+export const ItemCartStyled = styled.article`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 19px;
+    color: var(--text-primary);
+    p{
+      display: flex;
+      gap: 10px;
+    }
+    div{
+      display: inherit;
+      align-items: inherit;
+      gap: 12px;
+    }
+
+  `;
+
+export const ButtonDeleteItemCartStyled = styled.button`
+    padding: 1em;
+    ${BackgroundImageButtons};
+    background-position: center; 
+
+`;
+
+export const ButtonCarListExitStyled = styled.button`
+  position: absolute;
+  inset-block-start: 4%;
+  inset-inline-end: 5%;
+ ${BackgroundImageButtons};
+  padding: .6em;
+>>>>>>> view-and-cart-SM
 `;
 
 export const ContainerModelStyled = styled.div`
@@ -236,4 +353,11 @@ export const ArticleModal = styled.article`
 
     }
 
+`;
+
+export const StarIconStyled = styled.svg`
+
+    --size: 25px;
+      block-size: var(--size);
+      inline-size: var(--size);
 `;

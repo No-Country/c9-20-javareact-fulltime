@@ -39,4 +39,8 @@ export const GlobalStyle = createGlobalStyle`
         max-width: 100%;
         inline-size: auto;
     }
+
+    a{
+        text-decoration: none;
+    }
 `;

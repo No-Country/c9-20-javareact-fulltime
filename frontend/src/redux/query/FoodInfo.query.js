@@ -8,7 +8,24 @@ export const FoodInfoApi = createApi({
 		getInfoFood: builder.query({
 			query: () => "/food",
 		}),
+
+		addNewPost: builder.mutation({
+			query: (initialPost) => ({
+				url: "/comments",
+				method: "POST",
+				body: initialPost,
+				headers: { "Content-Type": "application/json; charset=UTF-8" },
+			}),
+		}),
+
+		getComments: builder.query({
+			query: () => "/comments",
+		}),
 	}),
 });
 
-export const { useGetInfoFoodQuery } = FoodInfoApi;
+export const {
+	useGetInfoFoodQuery,
+	useAddNewPostMutation,
+	useGetCommentsQuery,
+} = FoodInfoApi;
