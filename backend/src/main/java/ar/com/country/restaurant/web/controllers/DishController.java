@@ -18,12 +18,12 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/dishes")
 @Validated
-public class DishesController {
+public class DishController {
 
     private final DishesServices dishesServices;
     private final DishMapper dishMapper;
 
-    public DishesController(DishesServices dishesServices, DishMapper dishMapper) {
+    public DishController(DishesServices dishesServices, DishMapper dishMapper) {
         this.dishesServices = dishesServices;
         this.dishMapper = dishMapper;
     }
