@@ -56,8 +56,7 @@ export const CardTitle = styled.div`
 /* Container del item responsive abierto a que lo modifiquen */
 export const ItemContainer = styled.div`
 width: 365px;
-height: 426px;
-padding: 1em;
+height: fit-content;
 background-color: #FFF;
 border-radius: 20px;
 
@@ -78,9 +77,15 @@ button{
 }
 `;
 export const ItemImg = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+/* margin: auto; */
 img{
     border-radius: 30px;
 }
+
 ${props => props.circle === 'true' && css`
     width: 200px;
     height: 200px;

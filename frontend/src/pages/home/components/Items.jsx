@@ -8,12 +8,13 @@ import {
 } from "../styled-components";
 import { cart } from "../../../../public/icons"
 
-const Items = ({ title, image, description, people, price, onClick }) => {
+const Items = ({ title, image, description, people, price, onClick, children }) => {
 	return (
 		<ItemContainer>
 			<section>
 				<ItemImg>
 					<img src={image} alt="image" />
+					{children}
 				</ItemImg>
 				<h2>{title}</h2>
 				<ItemDescription>

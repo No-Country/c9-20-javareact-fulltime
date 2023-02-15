@@ -267,3 +267,14 @@ export const ArticleModal = styled.article`
     }
 
 `;
+
+export const BadgeStar = styled.div`
+  width: 84.7px;
+  height: 47.72px;
+  color: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, #323232 0%, #0B0B0B 100%);
+  border-radius: 50px;
+`;
