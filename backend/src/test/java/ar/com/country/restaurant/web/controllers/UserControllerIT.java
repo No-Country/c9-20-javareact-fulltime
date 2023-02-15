@@ -4,122 +4,173 @@ import ar.com.country.restaurant.AbstractIntegrationTest;
 import ar.com.country.restaurant.dao.entities.User;
 import ar.com.country.restaurant.dao.entities.UserRole;
 import ar.com.country.restaurant.repositories.UserRepository;
-import ar.com.country.restaurant.services.UserService;
 import ar.com.country.restaurant.utils.JsonUtils;
-import org.junit.jupiter.api.*;
-import org.mockito.Mock;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
-
+import org.springframework.test.context.jdbc.Sql;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@Sql("/user/data.sql")
+@Sql(value = "/user/clear-data.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 class UserControllerIT extends AbstractIntegrationTest {
-
     @Autowired
-    private UserService userService;
-
-    @Autowired
-    @Mock
     private UserRepository userRepository;
-
-    @Autowired
-    protected MockMvc mockMvc;
-
-    private User user;
-
-    @BeforeEach
-    void init() {
-        user = User.builder()
-                .dni("12345678A")
-                .name("Julio")
-                .lastName("Álvarez")
-                .phone("+54 999999-9999")
-                .email("julion.alvarez@gmail.com")
-                .password("12345678")
-                .role(UserRole.NORMAL)
-                .build();
-
-        String unencryptedPassword = user.getPassword();
-        userService.createUser(user);
-        user.setPassword(unencryptedPassword);
-    }
 
     @Override
     protected User getRegisteredUserForLogin() {
-        return user;
-    }
-
-    @AfterEach
-    void deleteUsers() {
-        userRepository.deleteAll();
+        User firstSavedUser = getFirstSavedUser();
+        firstSavedUser.setPassword("12345678");
+        return firstSavedUser;
     }
 
     @Nested
-    class crudMethods {
+    class GetUser {
+
         @Test
-        @DisplayName("Should return user by id and return 200")
-        void getUserById() throws Exception {
+        void shouldReturnUserById() throws Exception {
             doLogin();
+            User user = getFirstSavedUser();
+
             mockMvc.perform(
                             get("/api/users/" + user.getId())
                                     .headers(authHeader())
-                                    .contentType(MediaType.APPLICATION_JSON)
                     )
-                    .andDo(print())
                     .andExpect(status().isOk())
                     .andExpect(jsonPath("$.id").value(user.getId()))
+                    .andExpect(jsonPath("$.dni").value(user.getDni()))
                     .andExpect(jsonPath("$.name").value(user.getName()))
                     .andExpect(jsonPath("$.lastName").value(user.getLastName()))
                     .andExpect(jsonPath("$.email").value(user.getEmail()));
         }
 
         @Test
-        @DisplayName("Should update user and return 200")
-        void updateUser() throws Exception {
-
+        void shouldReturn404_whenUserNotFound() throws Exception {
             doLogin();
+            long noSuchUserId = -50L;
 
-            user.setEmail("bobbyfischer@mail.com");
-            user.setPhone("+54 999999-9999");
-            user.setLastName("Fischer");
+            mockMvc.perform(
+                            get("/api/users/" + noSuchUserId)
+                                    .headers(authHeader())
+                    )
+                    .andExpect(status().isNotFound());
+        }
 
-            String response = mockMvc.perform(
-                            put("/api/users/" + user.getId())
+    }
+
+    @Nested
+    class UpdateUser {
+
+        @Test
+        void shouldUpdateUser_whenValidFields() throws Exception {
+            doLogin();
+            User firstSavedUser = getFirstSavedUser();
+            User updatedUser = User.builder()
+                    .name("Julio")
+                    .lastName("Fischer")
+                    .dni("12345678A")
+                    .email("bobbyfischer@gmail.com")
+                    .phone("+54 999999-9999")
+                    .role(UserRole.NORMAL)
+                    .build();
+
+            mockMvc.perform(
+                            put("/api/users/" + firstSavedUser.getId())
                                     .headers(authHeader())
                                     .contentType(MediaType.APPLICATION_JSON)
-                                    .content(JsonUtils.asJsonString(user))
+                                    .content(JsonUtils.asJsonString(updatedUser))
                     )
-                    .andDo(print())
                     .andExpect(status().isOk())
-                    .andExpect(jsonPath("$.id").value(user.getId()))
-                    .andExpect(jsonPath("$.name").value(user.getName()))
-                    .andExpect(jsonPath("$.lastName").value(user.getLastName()))
-                    .andExpect(jsonPath("$.email").value(user.getEmail()))
-                    .andReturn()
-                    .getResponse().getContentAsString();
+                    .andExpect(jsonPath("$.id").value(firstSavedUser.getId()))
+                    .andExpect(jsonPath("$.name").value("Julio"))
+                    .andExpect(jsonPath("$.lastName").value("Fischer"))
+                    .andExpect(jsonPath("$.email").value("bobbyfischer@gmail.com"))
+                    .andExpect(jsonPath("$.phone").value("+54 999999-9999"))
+                    .andExpect(jsonPath("$.role").value("NORMAL"));
         }
 
         @Test
-        @DisplayName("Should delete user and return 200")
-        void deleteUser() throws Exception {
-
+        void shouldReturn409Conflict_whenUpdatedEmailAlreadyExists() throws Exception {
             doLogin();
+            User firstSavedUser = getFirstSavedUser();
+            User updatedUserWithEmailTaken = User.builder()
+                    .name("Julio")
+                    .lastName("Fischer")
+                    .dni("12345678A")
+                    .email("nicolas.hiking@gmail.com")
+                    .phone("+54 999999-9999")
+                    .role(UserRole.NORMAL)
+                    .build();
 
-            String response = mockMvc.perform(
-                            delete("/api/users/" + user.getId())
+            mockMvc.perform(
+                            put("/api/users/" + firstSavedUser.getId())
                                     .headers(authHeader())
                                     .contentType(MediaType.APPLICATION_JSON)
+                                    .content(JsonUtils.asJsonString(updatedUserWithEmailTaken))
                     )
-                    .andDo(print())
-                    .andExpect(status().isOk())
-                    .andReturn()
-                    .getResponse().getContentAsString();
-
+                    .andExpect(status().isConflict());
         }
+
+        @Test
+        void shouldReturn409Conflict_whenUpdatedDniAlreadyExists() throws Exception {
+            doLogin();
+            User firstSavedUser = getFirstSavedUser();
+            User updatedUserWithDniTaken = User.builder()
+                    .name("Julio")
+                    .lastName("Fischer")
+                    .dni("87654321A")
+                    .email("nicolas.hiking@gmail.com")
+                    .phone("+54 999999-9999")
+                    .role(UserRole.NORMAL)
+                    .build();
+
+            mockMvc.perform(
+                            put("/api/users/" + firstSavedUser.getId())
+                                    .headers(authHeader())
+                                    .contentType(MediaType.APPLICATION_JSON)
+                                    .content(JsonUtils.asJsonString(updatedUserWithDniTaken))
+                    )
+                    .andExpect(status().isConflict());
+        }
+
     }
+
+    @Nested
+    class DeleteUser {
+
+        @Test
+        void shouldDeleteUser() throws Exception {
+            doLogin();
+            User firstSavedUser = getFirstSavedUser();
+
+            mockMvc.perform(
+                            delete("/api/users/" + firstSavedUser.getId())
+                                    .headers(authHeader())
+                    )
+                    .andExpect(status().isOk())
+                    .andExpect(jsonPath("$.id").exists());
+        }
+
+        @Test
+        void shouldReturn404_whenUserNotFound() throws Exception {
+            doLogin();
+            long noSuchUserId = -50L;
+
+            mockMvc.perform(
+                            delete("/api/users/" + noSuchUserId)
+                                    .headers(authHeader())
+                    )
+                    .andExpect(status().isNotFound());
+        }
+
+    }
+
+    public User getFirstSavedUser() {
+        return userRepository.findAll().get(0);
+    }
+
 }
