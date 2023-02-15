@@ -27,63 +27,76 @@ export const ContainerStyled = styled.div`
 
 export const ArticleStyled = styled.article`
 
-display: flex;
+    display: flex;
     flex-direction: column;
-    block-size: 307px;
+   min-block-size: 307px;
     inline-size: 468px;
-    
-    header{
-      display: inherit;
-      align-items: center;
-      justify-content: space-between;
-      inline-size: 100%;
+
+`;
+
+export const HeaderArticleStyled = styled.header`
+      
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    inline-size: 100%;
+    font-size:  1.5rem;
       h2{
-        font-size: 2rem;
         font-weight: 500;
       }
-      h2 + div{
+       div{
         display: inherit;
         align-items: center;
         gap: 12px;
+        p{
+          font-size: 1.2rem;
+        }
       }
-    }
 
+`;
 
-    header +  div strong{
+export const DescriptionStyled = styled.div`
+   strong{
       font-size: 1.5rem;
       font-weight: 500;
     }
 
-    header + div:nth-child(2) {
+    p:nth-child(2) {
       min-inline-size: 636px;      
       font-weight: 300;
     }
 
-    header + div p:last-child{
+    p:nth-child(4) {
       font-size: 2rem;
       font-weight: 500;
     } 
+`;
 
-    footer{
+export const FooterArticleStyled = styled.footer`
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    inline-size: 500px;
+    margin-block-start: .6em;
+
+    span{
+      min-inline-size: 19px;
+      text-align: center;
+    }
+    button{
+      background-color: var(--button-primary);
+     }
+
+    div{
       display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-      margin-block-start: .6em;
-     button{
-       background-color: var(--button-primary);
+      button{
+   
+        padding: 1em ;
       }
+    }
 
-      span{
-        min-inline-size: 19px;
-        text-align: center;
-      }
-
-      div button{
-        padding: 1em ;  
-      }
-
-
-      button:nth-child(3){
+      button{
         display: flex;
         align-items: center;
         gap: 17px;
@@ -95,8 +108,7 @@ display: flex;
         }
       }
 
-    }
-
+    
 `;
 
 export const StarIconStyled = styled.svg`

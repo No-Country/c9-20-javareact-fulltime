@@ -20,6 +20,7 @@ const RatingIcon = ({
 
 	const handleClick = () => onSaveRating(index);
 	const handleMouseEnter = () => onMouseEnter(index);
+
 	return (
 		// rome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
 		<div

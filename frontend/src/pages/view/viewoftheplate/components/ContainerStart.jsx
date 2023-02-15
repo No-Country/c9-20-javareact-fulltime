@@ -1,10 +1,13 @@
-import { useState } from "react";
 import { ContainerStartStyled } from "../styled-components/layout.styled";
 import RatingIcon from "./RatingIcon";
-const ContainerStart = () => {
-	const [rating, setRating] = useState(0);
-	const [hoverRating, setHoverRating] = useState(0);
 
+const ContainerStart = ({
+	pos,
+	rating,
+	hoverRating,
+	setHoverRating,
+	setRating,
+}) => {
 	const onMouseEnter = (index) => {
 		setHoverRating(index);
 	};
@@ -19,7 +22,7 @@ const ContainerStart = () => {
 		<ContainerStartStyled>
 			<h2>Calificación</h2>
 			<div>
-				{[1, 2, 3, 4, 5].map((index) => (
+				{pos.map((index) => (
 					<RatingIcon
 						key={index}
 						index={index}
