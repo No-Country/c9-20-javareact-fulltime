@@ -27,6 +27,7 @@ public record UserDTO(
         String email,
 
         @Password
+        @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
         @NotBlank(groups = OnCreate.class)
         String password,
 
