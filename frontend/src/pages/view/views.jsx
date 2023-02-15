@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { useResolvedPath } from "react-router-dom";
-import { HeaderSubTitle, HeroImage, Modal } from "../../components";
+import { HeaderSubTitle, HeroImage } from "../../components";
 import { useFunctionalityModal } from "../../hooks";
 import { Div } from "../../styled-components";
 import ItemFood from "./components/ItemFood";

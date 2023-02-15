@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "../pages/RootLayout";
-import { Modal } from "../components";
 import Checkout from "../pages/Checkout/Checkout";
 import Signup from "../pages/auth/Signup/Signup";
 import Login from "../pages/auth/login/Login";
@@ -30,7 +29,6 @@ export const router = createBrowserRouter([
 						children: [
 							{
 								path: "/categoria/:idCategory/:idFood",
-								element: <Modal />,
 
 							},
 						],

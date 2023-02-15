@@ -1,4 +1,3 @@
-import { Modal } from "../../../components";
 import { useFunctionalityModal } from "../../../hooks";
 import { Div, BadgeStar } from "../../../styled-components";
 import Items from "../components/Items";

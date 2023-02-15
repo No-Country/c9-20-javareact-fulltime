@@ -1,4 +1,3 @@
-import { Modal } from "../../../components";
 import { useFunctionalityModal } from "../../../hooks";
 import { SectionStyled } from "../styled-components";
 import HeaderSubTitle from "../../../components/HeaderSubTitle";
