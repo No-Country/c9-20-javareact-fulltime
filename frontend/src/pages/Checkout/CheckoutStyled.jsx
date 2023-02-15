@@ -5,17 +5,33 @@ display: flex;
 flex-wrap: wrap;
 justify-content: center;
 align-items: center;
-justify-content: space-around;
-max-height: 100vh;
-div{
-    margin: 10px;
-    width: 400px;
-}
-
+justify-content: space-between;
+min-height: 100vh;
+background-color: var(--background-secondary);
+color: var(--text-primary);
+font-family: var(--font-family);
 
 `
 export const CheckData = styled.div`
+margin: 15px;
+width: 600px;
+input[type="radio"] {
+    accent-color: var(--button-primary);
+    position: relative;
+    margin-right: 10px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
 
+button{
+    background-color: var(--button-primary);
+    color: black;
+    font-weight: bold;
+    width: 100%;
+    height: 50px;
+    font-size: 1.6rem;
+}
 form{
     display: flex;
     flex-direction: column;
@@ -26,16 +42,20 @@ form{
     }
     input{
         height: 30px;
+        background-color: var(--background-secondary);
+        color: white;
     }
 }
 `;
 
 export const CheckCart = styled.div`
-background-color: lightgray;
+background-color: white;
+color: black;
 display: flex;
 flex-direction: column;
 border-left: 2px solid black;
-height: 500px;
+height: 753px;
+width: 700px;
 h1{
     margin-left: 25px;
 }

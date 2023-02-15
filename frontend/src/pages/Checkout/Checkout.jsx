@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector} from "react-redux";
 import {
 	CheckCart,
 	CheckContainer,
@@ -9,14 +9,12 @@ import {
 import { Button, DivCol } from "../../styled-components/layout/layout.styled"
 
 const Checkout = () => {
-	const cart = useSelector(state => state.card);
+	const cart = useSelector(state => state.cart.items);
 	const [selectedDeliveryOption, setSelectedDeliveryOption] = useState('local');
 	const [selectedPaymentOption, setSelectedPaymentOption] = useState('debito');
 	console.log(cart);
 	return (
 		<>
-			<h1>Logo</h1>
-			<h2 className="text-center">Checkout</h2>
 			<CheckContainer>
 				<CheckData>
 					<div>
@@ -94,6 +92,7 @@ const Checkout = () => {
 					)}
 				</CheckData>
 				<CheckCart>
+					<div>
 					<h1>Resumen</h1>
 					{cart.map((cr) => (
 						<DivCol key={cr.id}>
@@ -106,6 +105,7 @@ const Checkout = () => {
 							Total: ${cr.total}
 						</DivCol>
 					))}
+					</div>
 				</CheckCart>
 			</CheckContainer>
 		</>
