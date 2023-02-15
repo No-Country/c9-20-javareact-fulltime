@@ -3,7 +3,7 @@ package ar.com.country.restaurant.services.impl;
 import ar.com.country.restaurant.dao.entities.Dish;
 import ar.com.country.restaurant.exceptions.DishIdNotFoundException;
 import ar.com.country.restaurant.repositories.DishRepository;
-import ar.com.country.restaurant.services.DishesServices;
+import ar.com.country.restaurant.services.DishService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class DishesServicelpml implements DishesServices {
+public class DishServiceImpl implements DishService {
     private final DishRepository dishRepository;
 
     @Override

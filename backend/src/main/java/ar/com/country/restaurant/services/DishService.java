@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.Optional;
 
-public interface DishesServices {
+public interface DishService {
 
     Page<Dish> searchDishByNameAndDescription(String query, Pageable pageable);
 
