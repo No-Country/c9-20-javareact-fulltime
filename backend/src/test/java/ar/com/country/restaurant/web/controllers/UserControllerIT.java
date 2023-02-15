@@ -70,7 +70,6 @@ class UserControllerIT extends AbstractIntegrationTest {
             User updatedUser = User.builder()
                     .name("Julio")
                     .email("bobbyfischer@gmail.com")
-                    .phone("+54 999999-9999")
                     .role(UserRole.NORMAL)
                     .build();
 
@@ -84,7 +83,6 @@ class UserControllerIT extends AbstractIntegrationTest {
                     .andExpect(jsonPath("$.id").value(firstSavedUser.getId()))
                     .andExpect(jsonPath("$.name").value("Julio"))
                     .andExpect(jsonPath("$.email").value("bobbyfischer@gmail.com"))
-                    .andExpect(jsonPath("$.phone").value("+54 999999-9999"))
                     .andExpect(jsonPath("$.role").value("NORMAL"));
         }
 
@@ -95,7 +93,6 @@ class UserControllerIT extends AbstractIntegrationTest {
             User updatedUserWithEmailTaken = User.builder()
                     .name("Julio")
                     .email("nicolas.hiking@gmail.com")
-                    .phone("+54 999999-9999")
                     .role(UserRole.NORMAL)
                     .build();
 
@@ -115,7 +112,6 @@ class UserControllerIT extends AbstractIntegrationTest {
             User updatedUserWithDniTaken = User.builder()
                     .name("Julio")
                     .email("nicolas.hiking@gmail.com")
-                    .phone("+54 999999-9999")
                     .role(UserRole.NORMAL)
                     .build();
 

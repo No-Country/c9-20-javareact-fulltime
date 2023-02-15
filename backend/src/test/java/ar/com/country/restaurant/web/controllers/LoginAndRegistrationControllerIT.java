@@ -52,7 +52,6 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
     void init() {
         user = User.builder()
                 .name("Julio")
-                .phone("+54 999999-9999")
                 .email("julion.alvarez@gmail.com")
                 .password("12345678")
                 .role(UserRole.NORMAL)
@@ -288,7 +287,6 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
                 .name("Nicolás")
                 .email("ricardoibarra2044@gmail.com")
                 .password("password12345")
-                .phone("+52 9999999999")
                 .role(UserRole.NORMAL)
                 .build();
     }

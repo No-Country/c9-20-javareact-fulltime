@@ -35,9 +35,6 @@ public class User implements Serializable {
     @Column
     private String password;
 
-    @Column
-    private String phone;
-
     @OneToMany(
             mappedBy = "user",
             fetch = FetchType.LAZY,
