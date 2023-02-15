@@ -14,9 +14,6 @@ public record UserDTO(
         Long id,
 
         @NotBlank(groups = OnCreate.class)
-        String dni,
-
-        @NotBlank(groups = OnCreate.class)
         String name,
 
         @NotBlank(groups = OnCreate.class)

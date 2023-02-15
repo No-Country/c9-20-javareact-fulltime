@@ -51,7 +51,6 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
     @BeforeEach
     void init() {
         user = User.builder()
-                .dni("12345678A")
                 .name("Julio")
                 .lastName("Álvarez")
                 .phone("+54 999999-9999")
@@ -287,7 +286,6 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
 
     private User createUnregisteredDummyUser() {
         return User.builder()
-                .dni("123456789BC")
                 .name("Nicolás")
                 .lastName("C. Ibarra")
                 .email("ricardoibarra2044@gmail.com")

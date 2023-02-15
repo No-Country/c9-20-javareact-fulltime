@@ -43,7 +43,6 @@ public class AbstractIntegrationTest {
 
     protected User getRegisteredUserForLogin() {
         return User.builder()
-                .dni("12345678A")
                 .name("Julio")
                 .lastName("Álvarez")
                 .phone("+54 999999-9999")

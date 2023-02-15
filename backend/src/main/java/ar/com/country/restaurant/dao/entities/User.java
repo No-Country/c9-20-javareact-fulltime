@@ -22,9 +22,6 @@ public class User implements Serializable {
     @Column(name = "user_id")
     private Long id;
 
-    @Column(nullable = false, unique = true)
-    private String dni;
-
     @Column
     private String name;
 
@@ -80,5 +77,5 @@ public class User implements Serializable {
         paymentMethods.add(paymentMethod);
         paymentMethod.setUser(this);
     }
-    
+
 }
