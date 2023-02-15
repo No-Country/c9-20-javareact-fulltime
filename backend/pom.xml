@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>backend</artifactId>
+    <description>RESTful API development for a No Country Project</description>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -24,6 +25,8 @@
         <mysql-connector.version>8.0.32</mysql-connector.version>
         <springdoc-openapi-ui.version>1.6.14</springdoc-openapi-ui.version>
         <hibernate-search.version>6.1.8.Final</hibernate-search.version>
+        <springdoc-openapi-maven-plugin.version>1.4</springdoc-openapi-maven-plugin.version>
+        <springdoc-openapi-webflux-ui.version>1.6.4</springdoc-openapi-webflux-ui.version>
     </properties>
 
     <dependencyManagement>
@@ -117,21 +120,21 @@
         </dependency>
 
         <!-- API documentation -->
-<!--        <dependency>-->
-<!--            <groupId>org.springdoc</groupId>-->
-<!--            <artifactId>springdoc-openapi-ui</artifactId>-->
-<!--            <version>${springdoc-openapi-ui.version}</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springdoc</groupId>-->
-<!--            <artifactId>springdoc-openapi-security</artifactId>-->
-<!--            <version>${springdoc-openapi-ui.version}</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springdoc</groupId>-->
-<!--            <artifactId>springdoc-openapi-hateoas</artifactId>-->
-<!--            <version>${springdoc-openapi-ui.version}</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>${springdoc-openapi-ui.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-security</artifactId>
+            <version>${springdoc-openapi-ui.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-hateoas</artifactId>
+            <version>${springdoc-openapi-ui.version}</version>
+        </dependency>
     </dependencies>
 
     <profiles>
@@ -162,7 +165,6 @@
             </build>
         </profile>
     </profiles>
-
     <build>
         <plugins>
             <plugin>
@@ -176,6 +178,19 @@
                         </exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-maven-plugin</artifactId>
+                <version>${springdoc-openapi-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

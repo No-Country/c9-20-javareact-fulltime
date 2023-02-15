@@ -23,6 +23,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getUserById(Long id) {
+        return userRepository
+                .findById(id)
+                .orElseThrow(() -> new UserNotFoundException(id));
+    }
+
+    @Override
     public User createUser(User user) {
         ensureUniqueEmail(user.getEmail());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
