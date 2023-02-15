@@ -49,8 +49,8 @@ public class ApplicationExceptionHandler {
         return throwCustomException(e, HttpStatus.CONFLICT);
     }
 
-    @ExceptionHandler(DishIdNotFoundException.class)
-    public ResponseEntity<Object> dishIdNotFoundException(final DishIdNotFoundException e) {
+    @ExceptionHandler(DishNotFoundException.class)
+    public ResponseEntity<Object> dishIdNotFoundException(final DishNotFoundException e) {
         return throwCustomException(e, HttpStatus.NOT_FOUND);
     }
 

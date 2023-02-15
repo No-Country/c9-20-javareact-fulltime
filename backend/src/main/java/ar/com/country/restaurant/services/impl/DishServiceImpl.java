@@ -1,16 +1,14 @@
 package ar.com.country.restaurant.services.impl;
 
 import ar.com.country.restaurant.dao.entities.Dish;
-import ar.com.country.restaurant.exceptions.DishIdNotFoundException;
+import ar.com.country.restaurant.exceptions.DishNotFoundException;
 import ar.com.country.restaurant.repositories.DishRepository;
 import ar.com.country.restaurant.services.DishService;
+import ar.com.country.restaurant.util.BeanUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -23,8 +21,15 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
-    public List<Dish> getAllDishes() {
-        return dishRepository.findAll();
+    public Page<Dish> getDishes(Pageable pageable) {
+        return dishRepository.findAll(pageable);
+    }
+
+    @Override
+    public Dish getDishById(Long dishId) {
+        return dishRepository
+                .findById(dishId)
+                .orElseThrow(() -> new DishNotFoundException(dishId));
     }
 
     @Override
@@ -33,19 +38,17 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
-    public Optional<Dish> findById(Long id) {
-        ensureUniqueDish(id);
-        return dishRepository.findById(id);
+    public Dish updateDish(Long dishId, Dish updatedDish) {
+        Dish oldDish = getDishById(dishId);
+        BeanUtils.copyProperties(updatedDish, oldDish);
+        return dishRepository.save(oldDish);
     }
 
     @Override
-    public Dish deleteById(Long id) {
-        dishRepository.deleteById(id);
-        return null;
-    }
-
-    private void ensureUniqueDish(Long id) {
-        dishRepository.findById(id).orElseThrow(() -> new DishIdNotFoundException());
+    public Dish deleteById(Long dishId) {
+        Dish dishToDelete = getDishById(dishId);
+        dishRepository.deleteById(dishId);
+        return dishToDelete;
     }
 
 }

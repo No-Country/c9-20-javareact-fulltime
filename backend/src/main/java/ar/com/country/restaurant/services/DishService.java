@@ -4,19 +4,18 @@ import ar.com.country.restaurant.dao.entities.Dish;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
-import java.util.Optional;
-
 public interface DishService {
 
     Page<Dish> searchDishByNameAndDescription(String query, Pageable pageable);
 
-    List<Dish> getAllDishes();
+    Page<Dish> getDishes(Pageable pageable);
+
+    Dish getDishById(Long id);
 
     Dish createDish(Dish dish);
 
-    Optional<Dish> findById(Long id);
+    Dish updateDish(Long dishId, Dish dish);
 
-    Dish deleteById(Long id);
+    Dish deleteById(Long dishId);
 
 }
