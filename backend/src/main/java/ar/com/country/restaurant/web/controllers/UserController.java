@@ -4,50 +4,35 @@ import ar.com.country.restaurant.dao.entities.User;
 import ar.com.country.restaurant.services.UserService;
 import ar.com.country.restaurant.web.dto.UserDTO;
 import ar.com.country.restaurant.web.mappers.UserMapper;
-import org.springframework.validation.annotation.Validated;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/api")
-@Validated
+@RequestMapping("/api/users")
+@RequiredArgsConstructor
 public class UserController {
-
     private final UserService userService;
-
     private final UserMapper userMapper;
 
-    public UserController(UserService userService, UserMapper userMapper) {
-        this.userService = userService;
-        this.userMapper = userMapper;
+    @GetMapping("/{userId}")
+    public UserDTO getUserById(@PathVariable Long userId) {
+        User result = userService.getUserById(userId);
+        return userMapper.toDto(result);
     }
 
-    @GetMapping("/users/{id}")
-    public UserDTO getUserById(@PathVariable Long id) {
-        return userMapper.toDto(userService.findById(id));
+    @PutMapping("/{userId}")
+    public UserDTO updateUser(@PathVariable Long userId, @RequestBody @Valid UserDTO userDto) {
+        User updatedUser = userMapper.toEntity(userDto);
+        User result = userService.updateUser(userId, updatedUser);
+        return userMapper.toDto(result);
     }
 
-    @PutMapping("/users/{id}")
-    public User updateUser(@PathVariable Long id, @RequestBody @Valid User user) {
-        User userToUpdate = userService.findById(id);
-        updateMethod(user, userToUpdate);
-        return userService.updateUser(userToUpdate);
+    @DeleteMapping("/{userId}")
+    public UserDTO deleteUser(@PathVariable Long userId) {
+        User result = userService.deleteUser(userId);
+        return userMapper.toDto(result);
     }
 
-    @DeleteMapping("/users/{id}")
-    public void deleteUser(@PathVariable Long id) {
-        if(userService.existsById(id)) {
-            userService.deleteUser(id);
-        }
-    }
-
-    private static void updateMethod(User user, User userToUpdate) {
-        userToUpdate.setName(user.getName());
-        userToUpdate.setLastName(user.getLastName());
-        userToUpdate.setEmail(user.getEmail());
-        userToUpdate.setPhone(user.getPhone());
-        userToUpdate.setAddress(user.getAddress());
-        userToUpdate.setRole(user.getRole());
-    }
 }
