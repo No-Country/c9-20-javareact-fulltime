@@ -29,11 +29,6 @@ public class ApplicationExceptionHandler {
         return throwCustomException(e, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(DniAlreadyExistsException.class)
-    public ResponseEntity<Object> dniAlreadyExistsHandler(final DniAlreadyExistsException e) {
-        return throwCustomException(e, HttpStatus.CONFLICT);
-    }
-
     @ExceptionHandler(AddressNotFoundException.class)
     public ResponseEntity<Object> addressNotFoundHandler(final AddressNotFoundException e) {
         return throwCustomException(e, HttpStatus.NOT_FOUND);

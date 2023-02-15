@@ -51,10 +51,7 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
     @BeforeEach
     void init() {
         user = User.builder()
-                .dni("12345678A")
                 .name("Julio")
-                .lastName("Álvarez")
-                .phone("+54 999999-9999")
                 .email("julion.alvarez@gmail.com")
                 .password("12345678")
                 .role(UserRole.NORMAL)
@@ -287,12 +284,9 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
 
     private User createUnregisteredDummyUser() {
         return User.builder()
-                .dni("123456789BC")
                 .name("Nicolás")
-                .lastName("C. Ibarra")
                 .email("ricardoibarra2044@gmail.com")
                 .password("password12345")
-                .phone("+52 9999999999")
                 .role(UserRole.NORMAL)
                 .build();
     }

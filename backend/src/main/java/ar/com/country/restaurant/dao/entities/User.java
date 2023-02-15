@@ -22,14 +22,8 @@ public class User implements Serializable {
     @Column(name = "user_id")
     private Long id;
 
-    @Column(nullable = false, unique = true)
-    private String dni;
-
     @Column
     private String name;
-
-    @Column
-    private String lastName;
 
     @Column(nullable = false, unique = true)
     private String email;
@@ -40,9 +34,6 @@ public class User implements Serializable {
 
     @Column
     private String password;
-
-    @Column
-    private String phone;
 
     @OneToMany(
             mappedBy = "user",
@@ -80,5 +71,5 @@ public class User implements Serializable {
         paymentMethods.add(paymentMethod);
         paymentMethod.setUser(this);
     }
-    
+
 }

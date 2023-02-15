@@ -14,13 +14,7 @@ public record UserDTO(
         Long id,
 
         @NotBlank(groups = OnCreate.class)
-        String dni,
-
-        @NotBlank(groups = OnCreate.class)
         String name,
-
-        @NotBlank(groups = OnCreate.class)
-        String lastName,
 
         @Email
         @NotBlank(groups = OnCreate.class)
@@ -30,9 +24,6 @@ public record UserDTO(
         @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
         @NotBlank(groups = OnCreate.class)
         String password,
-
-        @NotBlank(groups = OnCreate.class)
-        String phone,
 
         @NotNull(groups = OnCreate.class)
         UserRole role
