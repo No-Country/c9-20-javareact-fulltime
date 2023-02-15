@@ -7,6 +7,8 @@ import ar.com.country.restaurant.services.DishesServices;
 import ar.com.country.restaurant.web.dto.DishDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,11 @@ public class DishesServicelpml implements DishesServices {
     private DishesRepository dishesRepository;
 
     private DishDTO dishDTO;
+
+    @Override
+    public Page<Dish> searchDishByNameAndDescription(String query, Pageable pageable) {
+        return dishesRepository.searchDishByNameAndDescription(query, pageable);
+    }
 
     @Override
     public List<Dish> getAllDishes() {
@@ -45,7 +52,7 @@ public class DishesServicelpml implements DishesServices {
     }
 
     private void ensureUniqueDish(Long id) {
-        dishesRepository.findById(id).orElseThrow(()-> new DishIdNotFoundException());
+        dishesRepository.findById(id).orElseThrow(() -> new DishIdNotFoundException());
     }
 
 }
