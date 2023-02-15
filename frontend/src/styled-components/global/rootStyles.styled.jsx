@@ -32,15 +32,17 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     ul,li{
-        list-type: none;
+        list-style: none;
+        margin: 0;
         padding: 0;
     }
-    img{
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    /* img{
         max-width: 100%;
         inline-size: auto;
-    }
-
-    a{
-        text-decoration: none;
-    }
+    } */
 `;

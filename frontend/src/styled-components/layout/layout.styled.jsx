@@ -1,19 +1,22 @@
 import styled from "styled-components";
 import {
-	BackgroundImageButtons,
-	FlexBoxCenter,
+  BackgroundImageButtons,
+  FlexBoxCenter,
 } from "../reusable/reusable.styled";
 
 export const HeaderSubtitleStyled = styled.header`
+    color: #FFF;
+    padding: 1em;
     text-align: ${({ textAlign }) => textAlign}; 
 `;
 
 //TODO Div responsive abierto a modificar */
 export const Div = styled.div`
-    display: flex;
-    margin:15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(${({ ancho }) => ancho || "0px"}, 1fr));
+    margin: 5em 0;
     justify-content: space-around;
-    flex-wrap: wrap;
+    justify-items: center;
     gap: ${({ gap }) => gap || "0px"};
 `;
 //TODO Div responsive abierto a modificar */
@@ -150,6 +153,31 @@ export const Title = styled.h3`
   
 `;
 
+export const LineStyle = styled.div`
+  color: #FFF;
+  font-size: 18px;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4em;
+  p {
+    flex-shrink: 0;
+  }
+
+  ::before {
+    content: " ";
+    display:block;
+    border: 1px solid #ccc;
+    flex-grow: 2;
+  }
+  ::after {
+    content: " ";
+    display:block;
+    border: 1px solid #ccc;
+    flex-grow: 1;
+  }
+`;
 export const CarListStyled = styled.aside`
 
 <<<<<<< HEAD
@@ -355,9 +383,13 @@ export const ArticleModal = styled.article`
 
 `;
 
-export const StarIconStyled = styled.svg`
-
-    --size: 25px;
-      block-size: var(--size);
-      inline-size: var(--size);
+export const BadgeStar = styled.div`
+  width: 84.7px;
+  height: 47.72px;
+  color: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, #323232 0%, #0B0B0B 100%);
+  border-radius: 50px;
 `;
