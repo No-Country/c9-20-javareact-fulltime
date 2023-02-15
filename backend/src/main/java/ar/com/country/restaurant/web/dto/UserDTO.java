@@ -1,40 +1,40 @@
 package ar.com.country.restaurant.web.dto;
 
 import ar.com.country.restaurant.dao.entities.UserRole;
-import ar.com.country.restaurant.web.dto.validation.OnCreate;
 import ar.com.country.restaurant.web.dto.validation.Password;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-public record UserDTO(
-        @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-        Long id,
+@Data
+public final class UserDTO {
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private final Long id;
 
-        @NotBlank(groups = OnCreate.class)
-        String dni,
+    @NotBlank
+    private final String dni;
 
-        @NotBlank(groups = OnCreate.class)
-        String name,
+    @NotBlank
+    private final String name;
 
-        @NotBlank(groups = OnCreate.class)
-        String lastName,
+    @NotBlank
+    private final String lastName;
 
-        @Email
-        @NotBlank(groups = OnCreate.class)
-        String email,
+    @Email
+    @NotBlank
+    private final String email;
 
-        @Password
-        @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-        @NotBlank(groups = OnCreate.class)
-        String password,
+    @Password
+    @NotBlank
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private final String password;
 
-        @NotBlank(groups = OnCreate.class)
-        String phone,
+    @NotBlank
+    private final String phone;
 
-        @NotNull(groups = OnCreate.class)
-        UserRole role
-) {
+    @NotNull
+    private final UserRole role;
 }
