@@ -1,10 +1,9 @@
 import HeaderSubTitle from "../../../components/HeaderSubTitle";
 import HeroImage from "../../../components/HeroImage";
-import { ItemFoodStyled } from "../styled-components/layout.styled";
 
 const ItemFood = ({ title, image, description, price, onClick }) => {
 	return (
-		<ItemFoodStyled onClick={onClick}>
+		<>
 			<div>
 				<HeroImage
 					img={image}
@@ -18,7 +17,7 @@ const ItemFood = ({ title, image, description, price, onClick }) => {
 				<p>{description}</p>
 				<footer>${price}</footer>
 			</div>
-		</ItemFoodStyled>
+		</>
 	);
 };
 

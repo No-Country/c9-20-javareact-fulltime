@@ -24,7 +24,9 @@ export const NavBarStyled = styled.nav`
 `
 
 export const CartWidget = styled.div`
-
+  img {
+    filter: invert(100%);
+  }
   span {
     position: relative;
     top: -1em;
@@ -42,6 +44,6 @@ export const CartWidget = styled.div`
 
 export const StyledLink = styled(NavLink)`
   &.active {
-    color: #FFA800;
+    color: var(--button-primary);
   }
 `

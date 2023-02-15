@@ -18,9 +18,7 @@ const Home = () => {
 					<Footer />
 				</HomeContainer>
 			) : (
-				<>
-					<Outlet />
-				</>
+				<Outlet />
 			)}
 		</>
 	);

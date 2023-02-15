@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const SectionStyled = styled.section`
-    margin: 5em 3em;
+    padding: 5em 3em;
     display: grid;
 `;
 
@@ -94,7 +94,7 @@ export const ItemDescription = styled.div`
     font-size: 12px;
 `;
 export const ItemButton = styled.button`
-background-color: #FFA800; //TODO cambiar a variable
+background-color: var(--button-primary);
 font-family: 'Poppins', sans-serif;
 font-size: 20px;
 width: 289px;
@@ -107,7 +107,6 @@ border-radius: 4px;
 
 img {
     margin-left: .5em;
-    filter: invert(100%);
 }
 &:hover{
 }
