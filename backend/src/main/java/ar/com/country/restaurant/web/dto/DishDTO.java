@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.PositiveOrZero;
 
 @Data
 public final class DishDTO {
@@ -19,7 +20,7 @@ public final class DishDTO {
     @NotBlank
     private final String image;
 
-    @NotBlank
+    @PositiveOrZero
     private final Double price;
 
     @NotBlank
