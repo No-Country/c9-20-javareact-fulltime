@@ -39,7 +39,9 @@ public class SecurityConfig {
             "/api/swagger-ui/**",
             "/api/swagger-resources/**",
             "/v3/api-docs/**",
-            "/h2-console/**"
+            "/h2-console/**",
+            "/api/dishes/",
+            "/api/dishes/*",
     };
     private final JwtToSecurityUserConverter jwtToUserConverter;
     private final KeyPairProvider keyPairProvider;

@@ -3,37 +3,35 @@ package ar.com.country.restaurant.dao.entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
-@Table(name = "addresses")
-@Getter
-@Setter
+@Table(name = "payment_methods")
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Builder
-public class Address {
+public class PaymentMethod {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "address_id")
+    @Column(name = "payment_method_id")
     private Long id;
 
-    @Column
-    private String street;
+    @Enumerated(EnumType.STRING)
+    private CardType type;
 
-    @Column(nullable = false)
+    @Column(unique = true)
     private String number;
 
     @Column
-    private String city;
+    private String holder;
+
+    @Column(name = "expiration_date")
+    private LocalDate expirationDate;
 
     @Column
-    private String state;
-
-    @Column
-    private String country;
-
-    @Column(name = "zip_code")
-    private String zipCode;
+    private String cvv;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
