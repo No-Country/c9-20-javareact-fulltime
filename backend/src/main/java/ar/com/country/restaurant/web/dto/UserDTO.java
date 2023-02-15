@@ -16,9 +16,6 @@ public record UserDTO(
         @NotBlank(groups = OnCreate.class)
         String name,
 
-        @NotBlank(groups = OnCreate.class)
-        String lastName,
-
         @Email
         @NotBlank(groups = OnCreate.class)
         String email,

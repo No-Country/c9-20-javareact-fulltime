@@ -44,7 +44,6 @@ public class AbstractIntegrationTest {
     protected User getRegisteredUserForLogin() {
         return User.builder()
                 .name("Julio")
-                .lastName("Álvarez")
                 .phone("+54 999999-9999")
                 .email("julion.alvarez@gmail.com")
                 .password("12345678")

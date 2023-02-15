@@ -25,9 +25,6 @@ public class User implements Serializable {
     @Column
     private String name;
 
-    @Column
-    private String lastName;
-
     @Column(nullable = false, unique = true)
     private String email;
 
