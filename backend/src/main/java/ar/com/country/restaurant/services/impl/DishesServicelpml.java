@@ -2,14 +2,11 @@ package ar.com.country.restaurant.services.impl;
 
 import ar.com.country.restaurant.dao.entities.Dish;
 import ar.com.country.restaurant.exceptions.DishIdNotFoundException;
-import ar.com.country.restaurant.repositories.DishesRepository;
+import ar.com.country.restaurant.repositories.DishRepository;
 import ar.com.country.restaurant.services.DishesServices;
-import ar.com.country.restaurant.web.dto.DishDTO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,42 +14,38 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-@Component
 public class DishesServicelpml implements DishesServices {
-    @Autowired
-    private DishesRepository dishesRepository;
-
-    private DishDTO dishDTO;
+    private final DishRepository dishRepository;
 
     @Override
     public Page<Dish> searchDishByNameAndDescription(String query, Pageable pageable) {
-        return dishesRepository.searchDishByNameAndDescription(query, pageable);
+        return dishRepository.searchDishByNameAndDescription(query, pageable);
     }
 
     @Override
     public List<Dish> getAllDishes() {
-        return dishesRepository.findAll();
+        return dishRepository.findAll();
     }
 
     @Override
     public Dish createDish(Dish dish) {
-        return dishesRepository.save(dish);
+        return dishRepository.save(dish);
     }
 
     @Override
     public Optional<Dish> findById(Long id) {
         ensureUniqueDish(id);
-        return dishesRepository.findById(id);
+        return dishRepository.findById(id);
     }
 
     @Override
     public Dish deleteById(Long id) {
-        dishesRepository.deleteById(id);
+        dishRepository.deleteById(id);
         return null;
     }
 
     private void ensureUniqueDish(Long id) {
-        dishesRepository.findById(id).orElseThrow(() -> new DishIdNotFoundException());
+        dishRepository.findById(id).orElseThrow(() -> new DishIdNotFoundException());
     }
 
 }
