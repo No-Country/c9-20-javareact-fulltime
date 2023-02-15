@@ -1,46 +1,49 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { HeroImage } from "../../../components";
+import Item from "../../../model/item.model";
 import {
 	decrement,
 	increment,
 	resetValue,
-} from "../redux/slice/AppetizerData.slice";
-import { addItems } from "../redux/slice/cart.slice";
-import { ModalStyled } from "../styled-components";
-import useModalFunctional from "./../hooks/useModalFunctional";
-import Item from "./../model/item.model";
+} from "../../../redux/slice/AppetizerData.slice";
+import { addItems } from "../../../redux/slice/cart.slice";
+import Container from "./components/Container";
+import ContainerStart from "./components/ContainerStart";
+import Form from "./components/Form";
+import useItemFood from "./hook/useItemFood";
 import {
-	ArticleModal,
-	ContainerModelStyled,
-} from "./../styled-components/layout/layout.styled";
-import HeroImage from "./HeroImage";
-import star from "/icons/Star.svg";
+	ArticleStyled,
+	ViewOfThePlateStyled,
+} from "./styled-components/layout.styled";
+import start from "/icons/Star.svg";
 import cart from "/icons/cart.svg";
 import platoPasta from "/img/platoPasta2.png";
-const Modal = () => {
+const ViewOfThePlate = () => {
 	const amount = useSelector((state) => state.AppetizerData);
 	const dispatch = useDispatch();
 	const { idCategory, idFood } = useParams();
-	const { itemFood } = useModalFunctional(idFood, idCategory);
+	const { itemFood } = useItemFood(idFood, idCategory);
 
 	const handleAddItems = () => {
-		const itemCart = new Item(
-			itemFood.id,
-			amount.value,
-			itemFood.nameFood,
-			itemFood.price,
-			amount.value * itemFood.price,
-			"",
-			"",
-		);
-
-		dispatch(addItems(itemCart));
+		if (amount.value !== 0) {
+			const itemCart = new Item(
+				itemFood.id,
+				amount.value,
+				itemFood.nameFood,
+				itemFood.price,
+				amount.value * itemFood.price,
+				"",
+				"",
+			);
+			dispatch(addItems(itemCart));
+		}
 		dispatch(resetValue());
 	};
 
 	return (
-		<ModalStyled>
-			<ContainerModelStyled>
+		<ViewOfThePlateStyled>
+			<Container>
 				<HeroImage
 					img={platoPasta}
 					alt='plato'
@@ -48,11 +51,11 @@ const Modal = () => {
 					inlineSize='383px'
 				/>
 				{itemFood !== undefined ? (
-					<ArticleModal>
+					<ArticleStyled>
 						<header>
 							<h2>{itemFood.nameFood}</h2>
 							<div>
-								<img src={star} alt='start' />
+								<img src={start} alt='start' />
 								<p>4.9</p>
 							</div>
 						</header>
@@ -73,15 +76,24 @@ const Modal = () => {
 								<img src={cart} alt='cart' />
 							</button>
 						</footer>
-					</ArticleModal>
+					</ArticleStyled>
 				) : (
 					<div>loading...</div>
 				)}
-			</ContainerModelStyled>
+			</Container>
 			<hr />
-			<div>algo</div>
-		</ModalStyled>
+			<Container
+				flexDirection='column'
+				padding='0em 6em'
+				alignItems='flex-start'
+			>
+				<Container flexDirection='column' alignItems='flex-start'>
+					<ContainerStart />
+					<Form />
+				</Container>
+			</Container>
+		</ViewOfThePlateStyled>
 	);
 };
 
-export default Modal;
+export default ViewOfThePlate;

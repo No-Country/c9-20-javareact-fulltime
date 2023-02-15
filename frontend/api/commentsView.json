@@ -3,10 +3,12 @@
         {
             "id":1,
             "idFoo": 0,
-            "nameUser": "",
+            "nameUser": "Sebastian",
             "qualification": 0,
             "comments": "",
-            "date": "" 
+            "date": " " 
         }
     ]
+    
 }
+

@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { closetCart } from "../redux/slice/cart.slice";
-import { CarListStyled } from "../styled-components";
+import { ButtonCarListExitStyled, CarListStyled } from "../styled-components";
 import ItemsCard from "./ItemsCard";
-
+import cartYellow from "/icons/cartYellow.svg";
+import exit from "/icons/exit.svg";
 const CardList = () => {
 	const cart = useSelector((state) => state.cart.items);
 	const open = useSelector((state) => state.cart.open);
@@ -25,11 +26,19 @@ const CardList = () => {
 	}, [cart]);
 
 	return (
-		<CarListStyled translateX={open ? "translateX(0%)" : "translateX(100%)"}>
-			<button onClick={() => dispatch(closetCart())}>X</button>
+		<CarListStyled
+			translateX={open ? "translateX(0%)" : "translateX(100%)"}
+			length={cart.length}
+		>
+			<ButtonCarListExitStyled
+				onClick={() => dispatch(closetCart())}
+				img={exit}
+				size='cover'
+			/>
 			<header>
 				<h2>Mi pedido</h2>
-				<div>icon</div>
+				<button />
+				<img src={cartYellow} alt='cart' />
 			</header>
 
 			<section>
@@ -49,11 +58,13 @@ const CardList = () => {
 
 			<footer>
 				<div>
-					<p>SubTotal</p>
-					<b>${total}</b>
+					<b>SubTotal</b>
+					<p>${total}</p>
 				</div>
-				<Link to={"/checkout"}>Realizar pago</Link>
-				<a href=''>Seguir comprando</a>
+				<div>
+					<Link to={"/checkout"}>Realizar pago</Link>
+					<a href=''>Seguir comprando</a>
+				</div>
 			</footer>
 		</CarListStyled>
 	);
