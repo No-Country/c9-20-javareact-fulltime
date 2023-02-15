@@ -1,5 +1,8 @@
 package ar.com.country.restaurant.exceptions.handler;
 
+import ar.com.country.restaurant.exceptions.DishIdNotFoundException;
+import ar.com.country.restaurant.exceptions.EmailAlreadyTakenException;
+import ar.com.country.restaurant.exceptions.UserNotFoundException;
 import ar.com.country.restaurant.exceptions.*;
 import ar.com.country.restaurant.exceptions.response.ErrorResponse;
 import org.springframework.core.Ordered;
@@ -30,6 +33,11 @@ public class ApplicationExceptionHandler {
     @ExceptionHandler(UserNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<Object> userNotFoundHandler(final UserNotFoundException e) {
+        return throwCustomException(e, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(DishIdNotFoundException.class)
+    public ResponseEntity<Object> dishIdNotFoundException(final DishIdNotFoundException e){
         return throwCustomException(e, HttpStatus.NOT_FOUND);
     }
 
