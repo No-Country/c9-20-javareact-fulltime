@@ -1,7 +1,6 @@
 package ar.com.country.restaurant.exceptions.handler;
 
-import ar.com.country.restaurant.exceptions.EmailAlreadyTakenException;
-import ar.com.country.restaurant.exceptions.UserNotFoundException;
+import ar.com.country.restaurant.exceptions.*;
 import ar.com.country.restaurant.exceptions.response.ErrorResponse;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -27,6 +26,31 @@ public class ApplicationExceptionHandler {
 
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<Object> userNotFoundHandler(final UserNotFoundException e) {
+        return throwCustomException(e, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(DniAlreadyExistsException.class)
+    public ResponseEntity<Object> dniAlreadyExistsHandler(final DniAlreadyExistsException e) {
+        return throwCustomException(e, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(AddressNotFoundException.class)
+    public ResponseEntity<Object> addressNotFoundHandler(final AddressNotFoundException e) {
+        return throwCustomException(e, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(PaymentMethodNotFoundException.class)
+    public ResponseEntity<Object> paymentMethodNotFoundHandler(final PaymentMethodNotFoundException e) {
+        return throwCustomException(e, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(CardNumberAlreadyExistsException.class)
+    public ResponseEntity<Object> cardNumberAlreadyExistsHandler(final CardNumberAlreadyExistsException e) {
+        return throwCustomException(e, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(DishIdNotFoundException.class)
+    public ResponseEntity<Object> dishIdNotFoundException(final DishIdNotFoundException e) {
         return throwCustomException(e, HttpStatus.NOT_FOUND);
     }
 

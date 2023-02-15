@@ -9,6 +9,7 @@ import ar.com.country.restaurant.web.dto.auth.LoginDTO;
 import ar.com.country.restaurant.web.dto.auth.TokenDTO;
 import ar.com.country.restaurant.web.dto.validation.OnCreate;
 import ar.com.country.restaurant.web.mappers.UserMapper;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -46,6 +47,7 @@ public class LoginAndRegistrationController {
         this.refreshTokenAuthProvider = refreshTokenAuthProvider;
     }
 
+    @Operation(summary = "Login a user", description = "Login a user and return a JWT token")
     @PostMapping("/login")
     public TokenDTO login(@RequestBody @Valid LoginDTO payload) {
         var token = UsernamePasswordAuthenticationToken.unauthenticated(payload.email(), payload.password());
@@ -53,6 +55,7 @@ public class LoginAndRegistrationController {
         return tokenGenerator.issueToken(authentication);
     }
 
+    @Operation(summary = "Register a new user", description = "Register a new user and return a JWT token")
     @PostMapping("/register")
     @Validated(OnCreate.class)
     @ResponseStatus(HttpStatus.CREATED)
@@ -64,6 +67,7 @@ public class LoginAndRegistrationController {
         return tokenGenerator.issueToken(authentication);
     }
 
+    @Operation(summary = "Refresh a JWT token")
     @PostMapping("/refresh-token")
     public TokenDTO refreshToken(@RequestBody TokenDTO payload) {
         Authentication authentication = refreshTokenAuthProvider.authenticate(new BearerTokenAuthenticationToken(payload.refreshToken()));
