@@ -84,8 +84,18 @@ public class ApplicationExceptionTranslator implements AdviceTrait {
     }
 
     @ExceptionHandler
-    public ResponseEntity<Problem> dishIdNotFoundException(final DishNotFoundException e, NativeWebRequest request) {
+    public ResponseEntity<Problem> dishNotFoundExceptionHandler(final DishNotFoundException e, NativeWebRequest request) {
         return create(Status.NOT_FOUND, e, request);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<Problem> dishCategoryNotFoundExceptionHandler(final DishCategoryNotFoundException e, NativeWebRequest request) {
+        return create(Status.NOT_FOUND, e, request);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<Problem> dishCategoryNameAlreadyExceptionHandler(final DishCategoryNameAlreadyExistsException e, NativeWebRequest request) {
+        return create(Status.CONFLICT, e, request);
     }
 
 }

@@ -33,7 +33,8 @@ public class Dish {
     @Column(nullable = false)
     private Double price;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "dish_category_id")
     private DishCategory dishCategory;
 
     @OneToOne(fetch = FetchType.LAZY)
