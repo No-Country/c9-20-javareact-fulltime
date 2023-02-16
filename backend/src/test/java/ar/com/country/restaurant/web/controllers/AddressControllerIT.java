@@ -7,11 +7,13 @@ import ar.com.country.restaurant.utils.JsonUtils;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.MediaTypes;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.jdbc.Sql;
 
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @Sql("/address/data.sql")
@@ -39,8 +41,9 @@ class AddressControllerIT extends AbstractIntegrationTest {
                             get("/api/addresses")
                                     .headers(authHeader())
                     )
+                    .andDo(print())
                     .andExpect(status().isOk())
-                    .andExpect(jsonPath("$.size()", is(1)));
+                    .andExpect(jsonPath("$._embedded.addresses.size()", is(1)));
         }
 
         @Test
@@ -53,11 +56,14 @@ class AddressControllerIT extends AbstractIntegrationTest {
                                     .headers(authHeader())
                     )
                     .andExpect(status().isOk())
+                    .andExpect(content().contentType(MediaTypes.HAL_JSON_VALUE))
                     .andExpect(jsonPath("$.id").value(firstAddress.getId()))
                     .andExpect(jsonPath("$.street").value(firstAddress.getStreet()))
                     .andExpect(jsonPath("$.city").value(firstAddress.getCity()))
                     .andExpect(jsonPath("$.state").value(firstAddress.getState()))
-                    .andExpect(jsonPath("$.country").value(firstAddress.getCountry()));
+                    .andExpect(jsonPath("$.country").value(firstAddress.getCountry()))
+                    .andExpect(jsonPath("$._links.self.href").value("http://localhost/api/addresses/" + firstAddress.getId()))
+                    .andExpect(jsonPath("$._links.user.href").value("http://localhost/api/users/1"));
         }
 
         @Test
@@ -96,11 +102,14 @@ class AddressControllerIT extends AbstractIntegrationTest {
                                     .headers(authHeader())
                     )
                     .andExpect(status().isCreated())
+                    .andExpect(content().contentType(MediaTypes.HAL_JSON_VALUE))
                     .andExpect(header().exists("Location"))
                     .andExpect(jsonPath("$.id").exists())
                     .andExpect(jsonPath("$.city").value("Mérida"))
                     .andExpect(jsonPath("$.state").value("Yucatán"))
-                    .andExpect(jsonPath("$.country").value("México"));
+                    .andExpect(jsonPath("$.country").value("México"))
+                    .andExpect(jsonPath("$._links.self").exists())
+                    .andExpect(jsonPath("$._links.user.href").value("http://localhost/api/users/1"));
         }
 
         @Test
@@ -157,13 +166,16 @@ class AddressControllerIT extends AbstractIntegrationTest {
                                     .headers(authHeader())
                     )
                     .andExpect(status().isOk())
+                    .andExpect(content().contentType(MediaTypes.HAL_JSON_VALUE))
                     .andExpect(jsonPath("$.id").exists())
                     .andExpect(jsonPath("$.street").value("Street 50"))
                     .andExpect(jsonPath("$.number").value("540"))
                     .andExpect(jsonPath("$.city").value("Kanasín"))
                     .andExpect(jsonPath("$.state").value("Yucatán"))
                     .andExpect(jsonPath("$.country").value("México"))
-                    .andExpect(jsonPath("$.zipCode").value("97150"));
+                    .andExpect(jsonPath("$.zipCode").value("97150"))
+                    .andExpect(jsonPath("$._links.self").exists())
+                    .andExpect(jsonPath("$._links.user.href").value("http://localhost/api/users/1"));
         }
 
         @Test
@@ -222,6 +234,7 @@ class AddressControllerIT extends AbstractIntegrationTest {
                                     .headers(authHeader())
                     )
                     .andExpect(status().isOk())
+                    .andExpect(content().contentType(MediaTypes.HAL_JSON_VALUE))
                     .andExpect(jsonPath("$.id").exists());
         }
 
