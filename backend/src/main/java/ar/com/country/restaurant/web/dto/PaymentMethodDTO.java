@@ -2,29 +2,30 @@ package ar.com.country.restaurant.web.dto;
 
 import ar.com.country.restaurant.dao.entities.CardType;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public record PaymentMethodDTO(
-        @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-        Long id,
+@Data
+public final class PaymentMethodDTO implements Serializable {
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private final Long id;
 
-        @NotNull
-        CardType type,
+    @NotNull
+    private final CardType type;
 
-        @NotBlank
-        String number,
+    @NotBlank
+    private final String number;
 
-        @NotBlank
-        String holder,
+    @NotBlank
+    private final String holder;
 
-        @NotNull
-        LocalDate expirationDate,
+    @NotNull
+    private final LocalDate expirationDate;
 
-        @NotBlank
-        String cvv
-) implements Serializable {
+    @NotBlank
+    private final String cvv;
 }
