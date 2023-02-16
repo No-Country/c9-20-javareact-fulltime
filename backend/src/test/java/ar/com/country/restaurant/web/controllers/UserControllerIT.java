@@ -8,12 +8,12 @@ import ar.com.country.restaurant.utils.JsonUtils;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.MediaTypes;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.jdbc.Sql;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @Sql("/user/data.sql")
 @Sql(value = "/user/clear-data.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
@@ -41,11 +41,14 @@ class UserControllerIT extends AbstractIntegrationTest {
                                     .headers(authHeader())
                     )
                     .andExpect(status().isOk())
+                    .andExpect(content().contentType(MediaTypes.HAL_JSON_VALUE))
                     .andExpect(jsonPath("$.id").value(user.getId()))
                     .andExpect(jsonPath("$.dni").value(user.getDni()))
                     .andExpect(jsonPath("$.name").value(user.getName()))
                     .andExpect(jsonPath("$.lastName").value(user.getLastName()))
-                    .andExpect(jsonPath("$.email").value(user.getEmail()));
+                    .andExpect(jsonPath("$.email").value(user.getEmail()))
+                    .andExpect(jsonPath("$._links.addresses.href").value("http://localhost/api/addresses"))
+                    .andExpect(jsonPath("$._links.payment_methods.href").value("http://localhost/api/payment_methods"));
         }
 
         @Test
@@ -85,12 +88,15 @@ class UserControllerIT extends AbstractIntegrationTest {
                                     .content(JsonUtils.asJsonString(updatedUser))
                     )
                     .andExpect(status().isOk())
+                    .andExpect(content().contentType(MediaTypes.HAL_JSON_VALUE))
                     .andExpect(jsonPath("$.id").value(firstSavedUser.getId()))
                     .andExpect(jsonPath("$.name").value("Julio"))
                     .andExpect(jsonPath("$.lastName").value("Fischer"))
                     .andExpect(jsonPath("$.email").value("bobbyfischer@gmail.com"))
                     .andExpect(jsonPath("$.phone").value("+54 999999-9999"))
-                    .andExpect(jsonPath("$.role").value("NORMAL"));
+                    .andExpect(jsonPath("$.role").value("NORMAL"))
+                    .andExpect(jsonPath("$._links.addresses.href").value("http://localhost/api/addresses"))
+                    .andExpect(jsonPath("$._links.payment_methods.href").value("http://localhost/api/payment_methods"));
         }
 
         @Test
@@ -152,6 +158,7 @@ class UserControllerIT extends AbstractIntegrationTest {
                                     .headers(authHeader())
                     )
                     .andExpect(status().isOk())
+                    .andExpect(content().contentType(MediaTypes.HAL_JSON_VALUE))
                     .andExpect(jsonPath("$.id").exists());
         }
 
