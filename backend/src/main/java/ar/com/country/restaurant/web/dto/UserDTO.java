@@ -1,6 +1,7 @@
 package ar.com.country.restaurant.web.dto;
 
 import ar.com.country.restaurant.dao.entities.UserRole;
+import ar.com.country.restaurant.web.dto.validation.OnCreate;
 import ar.com.country.restaurant.web.dto.validation.Password;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -28,7 +29,7 @@ public final class UserDTO {
     private final String email;
 
     @Password
-    @NotBlank
+    @NotBlank(groups = OnCreate.class)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private final String password;
 
