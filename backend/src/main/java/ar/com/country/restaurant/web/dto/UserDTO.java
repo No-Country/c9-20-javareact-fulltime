@@ -5,13 +5,18 @@ import ar.com.country.restaurant.web.dto.validation.OnCreate;
 import ar.com.country.restaurant.web.dto.validation.Password;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.springframework.hateoas.RepresentationModel;
+import org.springframework.hateoas.server.core.Relation;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Data
-public final class UserDTO {
+@EqualsAndHashCode(callSuper = true)
+@Relation(itemRelation = "user", collectionRelation = "users")
+public final class UserDTO extends RepresentationModel<UserDTO> {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private final Long id;
 
