@@ -4,8 +4,10 @@ import ar.com.country.restaurant.dao.entities.Address;
 import ar.com.country.restaurant.security.SecurityUser;
 import ar.com.country.restaurant.services.AddressService;
 import ar.com.country.restaurant.web.dto.AddressDTO;
+import ar.com.country.restaurant.web.hateoas.assemblers.AddressModelAssembler;
 import ar.com.country.restaurant.web.mappers.AddressMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -20,14 +22,15 @@ import java.util.List;
 public class AddressController {
     private final AddressService addressService;
     private final AddressMapper addressMapper;
+    private final AddressModelAssembler addressModelAssembler;
 
     @GetMapping
-    public List<AddressDTO> getAddressOfLoggedUser(
+    public CollectionModel<AddressDTO> getAddressOfLoggedUser(
             @AuthenticationPrincipal SecurityUser loggedUser
     ) {
         Long userId = loggedUser.getId();
-        List<Address> addressesOfUser = addressService.getAddressesOfUser(userId);
-        return addressMapper.toDtoList(addressesOfUser);
+        List<Address> result = addressService.getAddressesOfUser(userId);
+        return addressModelAssembler.toCollectionModel(result);
     }
 
     @GetMapping("/{addressId}")
@@ -36,8 +39,8 @@ public class AddressController {
             @PathVariable Long addressId
     ) {
         Long userId = loggedUser.getId();
-        Address address = addressService.getAddressById(userId, addressId);
-        return addressMapper.toDto(address);
+        Address result = addressService.getAddressById(userId, addressId);
+        return addressModelAssembler.toModel(result);
     }
 
     @PostMapping
@@ -50,7 +53,7 @@ public class AddressController {
         Address result = addressService.addAddressToUser(userId, providedAddress);
         return ResponseEntity
                 .created(URI.create("/addresses/" + result.getId()))
-                .body(addressMapper.toDto(result));
+                .body(addressModelAssembler.toModel(result));
     }
 
     @PutMapping("/{addressId}")
@@ -62,7 +65,7 @@ public class AddressController {
         Long userId = loggedUser.getId();
         Address updatedAddress = addressMapper.toEntity(payload);
         Address result = addressService.updateAddress(userId, addressId, updatedAddress);
-        return addressMapper.toDto(result);
+        return addressModelAssembler.toModel(result);
     }
 
     @DeleteMapping("/{addressId}")
