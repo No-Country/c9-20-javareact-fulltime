@@ -1,28 +1,26 @@
 import { Outlet, useResolvedPath } from "react-router-dom";
-import CardList from "./../../components/CardList";
-import Banner from "./components/Banner";
-import Contact from "./components/Contact";
-import MiCuenta from "./components/MiCuenta/MiCuenta";
-import MyAccount from "./components/MyAccount";
-import Promotions from "./components/Promotions";
+import { CardList } from "../../components";
+import Footer from "../../components/Footer";
+import InputSearch from "../../components/InputSearch";
+import CommentsSection from "./components/CommentsSection";
+import ItemListContainer from "./components/ItemListContainer";
+import { HomeContainer } from "./styled-components/HomeComponents";
 const Home = () => {
   const { pathname } = useResolvedPath();
+
   return (
     <>
-      <CardList />
       {pathname === "/" ? (
-        <>
-          <Banner />
-          <Promotions />
-          <Contact />
-          <MiCuenta />
-          <MyAccount />
-        </>
+        <HomeContainer>
+          <CardList />
+          <InputSearch />
+          <ItemListContainer />
+          <CommentsSection />
+        </HomeContainer>
       ) : (
-        <>
-          <Outlet />
-        </>
+        <Outlet />
       )}
+      <Footer />
     </>
   );
 };

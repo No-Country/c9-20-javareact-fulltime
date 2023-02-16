@@ -1,32 +1,43 @@
+import { Link } from "react-router-dom";
+import { cart } from "../../../../public/icons";
 import {
 	ItemButton,
 	ItemContainer,
 	ItemDescription,
 	ItemImg,
+	ItemPeople,
+	ItemPrice,
 } from "../styled-components";
-import React from "/assets/react.svg";
-const Items = ({ onClick }) => {
+
+const Items = ({
+	title,
+	image,
+	description,
+	people,
+	price,
+	onClick,
+	children,
+	id,
+}) => {
 	return (
-		<>
-			<ItemContainer>
-				<h1>Pizza</h1>
+		<ItemContainer id={id}>
+			<section>
 				<ItemImg>
-					<img src={React} alt="image" />
+					<img src={image} alt="image" />
+					{children}
 				</ItemImg>
-				<ItemDescription>
-					<h2>Descripcion</h2>
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
-						accusamus repellat impedit, iusto expedita distinctio, blanditiis
-						corrupti libero veritatis quas iure vitae, atque cum exercitationem
-						nam{" "}
-					</p>
-				</ItemDescription>
-				<ItemButton onClick={onClick}>
-					<h4>Agregar al Carrito</h4>
-				</ItemButton>
-			</ItemContainer>
-		</>
+				<h2>{title}</h2>
+				<ItemDescription>{description}</ItemDescription>
+				<ItemPeople>Para {people} personas</ItemPeople>
+				<ItemPrice>${price}</ItemPrice>
+				<Link to={`${id}`}>
+					<ItemButton onClick={onClick}>
+						<h4>Agregar al Carrito</h4>
+						<img src={cart} alt="image-cart" />
+					</ItemButton>
+				</Link>
+			</section>
+		</ItemContainer>
 	);
 };
 

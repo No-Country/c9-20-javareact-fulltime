@@ -1,34 +1,29 @@
-import React from "react";
+import { useDispatch } from "react-redux";
+import { deleteItem } from "../redux/slice/cart.slice";
+import {
+	ButtonDeleteItemCartStyled,
+	ItemCartStyled,
+} from "../styled-components";
+import dele from "/icons/delete.svg";
 
-const ItemsCard = ({ amount, name, cost, subTotal }) => {
+const ItemsCard = ({ amount, name, cost }) => {
+	const dispatch = useDispatch();
+
 	return (
-		<>
-			<header>
-				<h2>
-					{amount}x {name}
-				</h2>
-				<span>${subTotal}</span>
-			</header>
-			<hr />
-			<ul>
-				<li>
-					<p>SubTotal:</p>
-					<span>${subTotal}</span>
-				</li>
-				<li>
-					<p>Costo de envió:</p>
-					<span>$xx</span>
-				</li>
-				<li>
-					<p>Total:</p>
-					<span>${cost}</span>
-				</li>
-				<li>
-					<p>Código des:</p>
-					<span>$xx</span>
-				</li>
-			</ul>
-		</>
+		<ItemCartStyled>
+			<p>
+				<span>{amount}X</span>
+				<span>{name}</span>
+			</p>
+			<div>
+				<p>${cost}</p>
+				<ButtonDeleteItemCartStyled
+					onClick={() => dispatch(deleteItem(id))}
+					img={dele}
+					size='50%'
+				/>
+			</div>
+		</ItemCartStyled>
 	);
 };
 

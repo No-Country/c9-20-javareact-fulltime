@@ -5,17 +5,23 @@ import {
 } from "../reusable/reusable.styled";
 
 export const HeaderSubtitleStyled = styled.header`
+    color: #FFF;
+    padding: 1em;
     text-align: ${({ textAlign }) => textAlign}; 
 `;
 
 //TODO Div responsive abierto a modificar */
 export const Div = styled.div`
-    display: flex;
-    margin:15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(${({ ancho }) =>
+			ancho || "0px"}, 1fr));
+    margin-top: 5em;
+    padding-bottom: 5em;
     justify-content: space-around;
-    flex-wrap: wrap;
+    justify-items: center;
     gap: ${({ gap }) => gap || "0px"};
 `;
+//TODO Div responsive abierto a modificar */
 export const DivCol = styled.div`
     display: flex;
     flex-direction: column;
@@ -24,44 +30,28 @@ export const DivCol = styled.div`
     flex-wrap: wrap;
 `;
 
-export const ModalStyled = styled.div`
-    position: fixed;
-    inset: 0;
+export const ModalStyled = styled.section`
+
     ${FlexBoxCenter};
-    background-color: rgba(85, 84, 84, 0.73); 
+    flex-direction: column;
+    min-block-size: 100vh;  
+    inline-size: 100%;
+    color: var(--text-primary);
+    background-color: var(--background-primary); 
     z-index: 2;
-    visibility: ${({ visibility }) => visibility};
-
-    & > div{
-        position: relative;
-        ${FlexBoxCenter};
-        flex-direction: column;
-        block-size: 843px;
-        inline-size: 932px;
-        background-color: rgba(255, 252, 252, 1);
-                
+    hr{
+      inline-size: 97%;
     }
-
 `;
 
 export const HeroImageStyled = styled.div`
-    
+  
     block-size: ${({ blockSize }) => blockSize};
     inline-size: ${({ inlineSize }) => inlineSize};
     text-align: center;
     background-color: rgba(218, 220, 224, 1);
 
 
-`;
-
-export const ButtonModalStyled = styled.button`
-
-    position: absolute;
-    inset-block-start: 17%;
-    inset-inline-end: 9%;
-    padding: ${({ padding }) => padding} ; 
-    ${BackgroundImageButtons};
-    
 `;
 
 export const Wrapperremember = styled.div`
@@ -163,4 +153,235 @@ export const SignupBox = styled.div`
 
 export const Title = styled.h3`
   
+`;
+
+export const LineStyle = styled.div`
+  color: #FFF;
+  font-size: 18px;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4em;
+  p {
+    flex-shrink: 0;
+  }
+
+  ::before {
+    content: " ";
+    display:block;
+    border: 1px solid #ccc;
+    flex-grow: 2;
+  }
+  ::after {
+    content: " ";
+    display:block;
+    border: 1px solid #ccc;
+    flex-grow: 1;
+  }
+`;
+export const CarListStyled = styled.aside`
+
+   position : fixed;
+   inset-inline-end: 0;
+   inset-block: 0;
+   inline-size: 423px;
+   padding-top: 3em;
+   padding-left:1em;
+   padding-right:1em;
+   background-color: var(--background-secondary);
+   transform: ${({ translateX }) => translateX};
+   transition: transform 1s ease-in-out; 
+   z-index:3;
+
+   header{
+    display: flex;
+    align-items: center;
+    inline-size: 70%;
+    gap: 12px;
+    color: var(--button-primary);
+   }
+  
+   section{
+     block-size: 245px;
+     overflow-y: scroll;
+      ${({ length }) => {
+				if (length === 0) {
+					return `
+          ${FlexBoxCenter};
+             color: var(--text-primary);
+         `;
+				}
+			}}
+      
+   }
+   section + hr{
+    inline-size: 100%;
+   }
+   footer{
+    margin-top: 17px;
+   }
+
+   footer div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    inline-size: 100%;
+    margin-top: 17px;
+    color: var(--text-primary);
+    b{
+      font-weight: 400;
+    }
+   }
+  
+   footer div:nth-child(2){
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 20px;
+      a{
+        color: var(--background-primary);
+      }
+      a:nth-child(1){
+        padding: .7em 2.7em;
+        border-radius: 4px;
+        background-color: var(--button-primary);
+        transition: background-color 1s ease-in-out; 
+        &:hover{
+          background-color: var(--button-secondary);
+        }
+      }
+      a:nth-child(2){
+        color: var(--text-primary);
+        text-decoration:  underline ;
+      }
+   }
+
+`;
+
+export const ItemCartStyled = styled.article`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 19px;
+    color: var(--text-primary);
+    p{
+      display: flex;
+      gap: 10px;
+    }
+    div{
+      display: inherit;
+      align-items: inherit;
+      gap: 12px;
+    }
+
+  `;
+
+export const ButtonDeleteItemCartStyled = styled.button`
+    padding: 1em;
+    ${BackgroundImageButtons};
+    background-position: center; 
+
+`;
+
+export const ButtonCarListExitStyled = styled.button`
+  position: absolute;
+  inset-block-start: 4%;
+  inset-inline-end: 5%;
+ ${BackgroundImageButtons};
+  padding: .6em;
+`;
+
+export const ContainerModelStyled = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    inline-size: 100%;
+    min-block-size: 570px;
+
+`;
+
+export const ArticleModal = styled.article` 
+    display: flex;
+    flex-direction: column;
+    block-size: 307px;
+    inline-size: 468px;
+    
+    header{
+      display: inherit;
+      align-items: center;
+      justify-content: space-between;
+      inline-size: 100%;
+      h2{
+        font-size: 2rem;
+        font-weight: 500;
+      }
+      h2 + div{
+        display: inherit;
+        align-items: center;
+        gap: 12px;
+      }
+    }
+
+
+    header +  div strong{
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+
+    header + div:nth-child(2) {
+      min-inline-size: 636px;      
+      font-weight: 300;
+    }
+
+    header + div p:last-child{
+      font-size: 2rem;
+      font-weight: 500;
+    } 
+
+    footer{
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      margin-block-start: .6em;
+     button{
+       background-color: var(--button-primary);
+      }
+
+      span{
+        min-inline-size: 19px;
+        text-align: center;
+      }
+
+      div button{
+        padding: 1em ;  
+      }
+
+
+      button:nth-child(3){
+        display: flex;
+        align-items: center;
+        gap: 17px;
+        padding: 1em 5em;
+        border-radius: 4px;
+        span{ 
+          font-weight: bold;
+          font-size: 1rem;
+        }
+      }
+
+    }
+
+`;
+
+export const BadgeStar = styled.div`
+  transform: translateY(-1em);
+  width: 84.7px;
+  height: 47.72px;
+  color: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, #323232 0%, #0B0B0B 100%);
+  border-radius: 50px;
 `;

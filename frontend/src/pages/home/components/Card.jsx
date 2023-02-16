@@ -1,17 +1,16 @@
 import { Link } from "react-router-dom";
-import { CardContainer, CardContent } from "../styled-components";
-const Card = () => {
+import { CardContainer, CardTitle } from "../styled-components";
+
+const Card = ({ link, img, name }) => {
 	return (
-		<>
-			<CardContainer>
-				<Link to="/pastas">
-					<h1>Pastas</h1>
-					<CardContent>
-						<img src='\assets\react.svg' alt="image" />
-					</CardContent>
-				</Link>
-			</CardContainer>
-		</>
+		<CardContainer>
+			<Link to={link}>
+				<img src={`../../../../public/img/${img}`} alt="image" />
+				<CardTitle>
+					<h2>{name}</h2>
+				</CardTitle>
+			</Link>
+		</CardContainer>
 	);
 };
 

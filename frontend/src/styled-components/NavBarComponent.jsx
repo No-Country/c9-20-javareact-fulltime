@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { NavLink } from 'react-router-dom';
 
 export const NavBarStyled = styled.nav`
   display: flex;
@@ -7,23 +8,42 @@ export const NavBarStyled = styled.nav`
   align-items: center;
   width: auto;
   height: 106px;
-  padding: 0 2em;
+  padding: 0 5em;
   color: white;
   background-color: black;
   border-radius: 0px 0px 10px 10px;
 
-  input {
-    flex-grow: 1;
-    height: 38px;
-    width: 400px;
-    border-radius: 8px;
-  }
   ul {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     padding: 0px;
     gap: 30px;
     list-style-type: none;
+  }
+`
+
+export const CartWidget = styled.div`
+  img {
+    filter: invert(100%);
+  }
+  span {
+    position: relative;
+    top: -1em;
+    left: -.5em;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    background-color: red;
+    width: 1.7em;
+    height: 1.7em;
+    border-radius: 1em;
+  }
+`
+
+export const StyledLink = styled(NavLink)`
+  &.active {
+    color: var(--button-primary);
   }
 `
