@@ -32,11 +32,16 @@ export const CardContainer = styled.div`
 width: 300px;
 height: 366px;
 background-color: #FFF;
-display: flex;
-flex-direction: column;
-justify-content: space-around;
 border-radius: 20px;
+a {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
 
+}
+img {
+    border-radius: 20px 20px 0 0;
+}
 h1{
     margin: 15px;
     font-size: 1.5rem;
@@ -114,6 +119,7 @@ img {
     margin-left: .5em;
 }
 &:hover{
+    background-color: var(--button-secondary);
 }
 h4 {
     font-weight: 400;
@@ -150,6 +156,7 @@ export const CommentName = styled.p`
     font-weight: 700;
     font-size: 24px;
     line-height: 10px;
+    margin: .7em 0;
 `;
 export const Comment = styled.p`
     font-weight: 400;

@@ -3,6 +3,7 @@
     {
       "id": 1,
       "name": "pastas",
+      "image": "pastas.jpg",
       "list": [
         {
           "id": 1,
@@ -63,6 +64,7 @@
     {
       "id": 2,
       "name": "postres",
+      "image": "postres.jpg",
       "list": [
         {
           "id": 1,
@@ -123,6 +125,7 @@
     {
       "id": 3,
       "name": "Churrasqueria",
+      "image": "churrasqueria.jpg",
       "list": [
         {
           "id": 1,
@@ -183,6 +186,7 @@
     {
       "id": 4,
       "name": "Cafeteria",
+      "image": "cafe.jpg",
       "list": [
         {
           "id": 1,
@@ -243,6 +247,7 @@
     {
       "id": 5,
       "name": "Saludable",
+      "image": "saludable.jpg",
       "list": [
         {
           "id": 1,
@@ -303,126 +308,7 @@
     {
       "id": 6,
       "name": "Pizzas",
-      "list": [
-        {
-          "id": 1,
-          "nameFood": "Ñoquis",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
-          "price": 840,
-          "promotions": false,
-          "delay": "15 a 20 min de demora",
-          "qualification": 0
-        },
-        {
-          "id": 2,
-          "nameFood": "Tallarines",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
-          "price": 740,
-          "delay": "20 a 30 min de demora",
-          "promotions": false,
-          "qualification": 0
-        },
-        {
-          "id": 3,
-          "nameFood": "Ñoquis",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
-          "price": 840,
-          "delay": "15 a 20 min de demora",
-          "promotions": false,
-          "qualification": 0
-        },
-        {
-          "id": 4,
-          "nameFood": "Tallarines",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
-          "price": 840,
-          "delay": "10 a 40 min de demora",
-          "promotions": true,
-          "qualification": 0
-        },
-        {
-          "id": 5,
-          "nameFood": "Ñoquis",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
-          "price": 740,
-          "delay": "15 a 20 min de demora",
-          "promotions": false,
-          "qualification": 0
-        },
-        {
-          "id": 6,
-          "nameFood": "Tallarines",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
-          "price": 840,
-          "delay": "15 a 20 min de demora",
-          "promotions": true,
-          "qualification": 0
-        }
-      ]
-    },
-    {
-      "id": 7,
-      "name": "Alfajores",
-      "list": [
-        {
-          "id": 1,
-          "nameFood": "Ñoquis",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
-          "price": 840,
-          "promotions": false,
-          "delay": "15 a 20 min de demora",
-          "qualification": 0
-        },
-        {
-          "id": 2,
-          "nameFood": "Tallarines",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
-          "price": 740,
-          "delay": "20 a 30 min de demora",
-          "promotions": false,
-          "qualification": 0
-        },
-        {
-          "id": 3,
-          "nameFood": "Ñoquis",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
-          "price": 840,
-          "delay": "15 a 20 min de demora",
-          "promotions": false,
-          "qualification": 0
-        },
-        {
-          "id": 4,
-          "nameFood": "Tallarines",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
-          "price": 840,
-          "delay": "10 a 40 min de demora",
-          "promotions": true,
-          "qualification": 0
-        },
-        {
-          "id": 5,
-          "nameFood": "Ñoquis",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
-          "price": 740,
-          "delay": "15 a 20 min de demora",
-          "promotions": false,
-          "qualification": 0
-        },
-        {
-          "id": 6,
-          "nameFood": "Tallarines",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
-          "price": 840,
-          "delay": "15 a 20 min de demora",
-          "promotions": true,
-          "qualification": 0
-        }
-      ]
-    },
-    {
-      "id": 8,
-      "name": "Fernets",
+      "image": "pizza.jpg",
       "list": [
         {
           "id": 1,
@@ -535,6 +421,24 @@
       "qualification": 5,
       "comment": "hola como estas ",
       "date": "15 de Febrero 2023  14:1Hs "
+    },
+    {
+      "id": 2680,
+      "nameCategory": "Churrasqueria",
+      "idFood": "4",
+      "nameUser": "Usuario X",
+      "qualification": 5,
+      "comment": "xcbcx",
+      "date": "15 de Febrero 2023  23:19Hs "
+    },
+    {
+      "id": 2589,
+      "nameCategory": "postres",
+      "idFood": "5",
+      "nameUser": "Usuario X",
+      "qualification": 5,
+      "comment": "sd,fdsl,fsdlf,dñk",
+      "date": "16 de Febrero 2023  0:13Hs "
     }
   ]
 }

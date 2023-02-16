@@ -6,7 +6,6 @@ export const FooterStyled = styled.footer`
   align-items: center;
   width: 100%;
   height: 205px;
-  margin-top: 5em;
   color: #FFF;
   background-color: #000;
   

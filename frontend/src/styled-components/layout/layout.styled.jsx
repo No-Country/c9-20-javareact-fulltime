@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {
-  BackgroundImageButtons,
-  FlexBoxCenter,
+	BackgroundImageButtons,
+	FlexBoxCenter,
 } from "../reusable/reusable.styled";
 
 export const HeaderSubtitleStyled = styled.header`
@@ -13,8 +13,10 @@ export const HeaderSubtitleStyled = styled.header`
 //TODO Div responsive abierto a modificar */
 export const Div = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(${({ ancho }) => ancho || "0px"}, 1fr));
-    margin: 5em 0;
+    grid-template-columns: repeat(auto-fit, minmax(${({ ancho }) =>
+			ancho || "0px"}, 1fr));
+    margin-top: 5em;
+    padding-bottom: 5em;
     justify-content: space-around;
     justify-items: center;
     gap: ${({ gap }) => gap || "0px"};
@@ -180,16 +182,6 @@ export const LineStyle = styled.div`
 `;
 export const CarListStyled = styled.aside`
 
-<<<<<<< HEAD
-  position : fixed;
-  inset-inline-end: 0;
-  inset-block: 0;
-  inline-size: 423px;
-  background-color: rgba(131, 131, 131, 1);
-  transform: ${({ translateX }) => translateX};
-  transition: transform 1s ease-in-out; 
-  z-index:3;
-=======
    position : fixed;
    inset-inline-end: 0;
    inset-block: 0;
@@ -298,7 +290,6 @@ export const ButtonCarListExitStyled = styled.button`
   inset-inline-end: 5%;
  ${BackgroundImageButtons};
   padding: .6em;
->>>>>>> view-and-cart-SM
 `;
 
 export const ContainerModelStyled = styled.div`
@@ -384,6 +375,7 @@ export const ArticleModal = styled.article`
 `;
 
 export const BadgeStar = styled.div`
+  transform: translateY(-1em);
   width: 84.7px;
   height: 47.72px;
   color: #FFF;
