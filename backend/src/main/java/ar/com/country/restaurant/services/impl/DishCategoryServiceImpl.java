@@ -1,6 +1,7 @@
 package ar.com.country.restaurant.services.impl;
 
 import ar.com.country.restaurant.dao.entities.DishCategory;
+import ar.com.country.restaurant.exceptions.DishCategoryNameAlreadyExistsException;
 import ar.com.country.restaurant.exceptions.DishCategoryNotFoundException;
 import ar.com.country.restaurant.repositories.DishCategoryRepository;
 import ar.com.country.restaurant.services.DishCategoryService;
@@ -23,6 +24,7 @@ public class DishCategoryServiceImpl implements DishCategoryService {
 
     @Override
     public DishCategory createDishCategory(DishCategory dishCategory) {
+        ensureUniqueDishCategoryName(dishCategory.getName());
         return dishCategoryRepository.save(dishCategory);
     }
 
@@ -42,4 +44,10 @@ public class DishCategoryServiceImpl implements DishCategoryService {
         dishCategoryRepository.findById(id).orElseThrow(() -> new DishCategoryNotFoundException());
     }
 
+   private void ensureUniqueDishCategoryName(String name){
+        boolean nameAlreadyExists = dishCategoryRepository.existsByName(name);
+        if (nameAlreadyExists) {
+            throw new DishCategoryNameAlreadyExistsException(name);
+        }
+    }
 }
