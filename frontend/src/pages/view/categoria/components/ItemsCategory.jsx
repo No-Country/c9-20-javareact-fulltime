@@ -1,39 +1,51 @@
-import { Outlet, useParams } from "react-router-dom";
+import { Outlet, useParams, useResolvedPath } from "react-router-dom";
 import { HeaderSubTitle } from "../../../../components";
-import { Div } from "../../../../styled-components";
+import { Div, BadgeStar } from "../../../../styled-components";
 import useListFood from "../hook/useListFood";
 import ItemFood from "./ItemFood";
+import plato from "../../../../../public/assets/plato-pasta.png";
+import star from "../../../../../public/icons/Star.svg";
+
+
 const ItemsCategory = () => {
+	const { pathname } = useResolvedPath();
 	const { idCategory, idFood } = useParams();
 	const { list, isLoading } = useListFood(idCategory);
+
 	return (
 		<>
-			{!idFood ? (
-				<section>
-					<HeaderSubTitle
-						title={` Conoce nuestra carta mejores ${idCategory}`}
-						textAlign='center'
-						level={2}
-					/>
-					<Div gap='46px'>
+			<section>
+				<HeaderSubTitle
+					title={` Conoce nuestra carta mejores ${idCategory}`}
+					textAlign='center'
+					level={2}
+				/>
+				</section>
+				{pathname == `/categoria/${idCategory}` ? (
+					<Div gap={"80px"} ancho={"300px"} style={{padding: "0 4em"}}>
 						{isLoading ? (
-							list.map((item) => (
+							list && list.map((item) => (
 								<ItemFood
-									description={item.description}
-									id={item.id}
-									name={item.nameFood}
-									nameFood={idCategory}
-									price={item.price}
-									key={item.id}
-								/>
+								key={item.id}
+								id={item.id}
+								nameFood={item.nameFood}
+								image={plato}
+								circle={"true"}
+								description={item.description}
+								portion={"1"}
+								price={item.price}>
+								<BadgeStar>
+									<img src={star} alt="star svg image" />
+									4.9
+								</BadgeStar>
+							</ItemFood>
 							))
 						) : (
 							<div>loading...</div>
 						)}
 					</Div>
-				</section>
 			) : (
-				<Outlet />
+			<Outlet />
 			)}
 		</>
 	);

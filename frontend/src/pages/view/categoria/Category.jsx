@@ -18,10 +18,10 @@ const Category = () => {
 						textAlign='center'
 						level={2}
 					/>
-					<Div gap={"50px"} ancho={"300px"}>
-						{!idCategory ? (
+					<Div gap={"50px"} ancho={"290px"}>
+						{!idCategory && food ? (
 							food.map((item) => (
-								<Card id={item.id} link={item.name} name={item.name} />
+								<Card key={item.id} img={item.image} link={item.name} name={item.name} />
 							))
 						) : (
 							<div>loading...</div>

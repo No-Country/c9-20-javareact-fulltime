@@ -9,6 +9,7 @@ export const ViewOfThePlateStyled = styled.section`
     color: var(--text-primary);
     background-color: var(--background-primary); 
     z-index: 2;
+    overflow: hidden;
     hr{
         inline-size: 88%;
         margin-top: 60px;
@@ -64,6 +65,7 @@ export const DescriptionStyled = styled.div`
     p:nth-child(2) {
       min-inline-size: 636px;      
       font-weight: 300;
+      padding-right: 1em;
     }
 
     p:nth-child(4) {

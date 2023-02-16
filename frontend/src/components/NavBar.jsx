@@ -7,9 +7,8 @@ import CardList from './CardList';
 
 const NavBar = () => {
   const dispatch = useDispatch();
-  const card = useSelector((state) => state.card);
+	const carrito = useSelector((state) => state.cart.items);
   const [open, setOpen] = useState(false)
-  const toogle = () => open ? setOpen(false) : setOpen(true)
 
   return (
     <>
@@ -28,7 +27,7 @@ const NavBar = () => {
               <img src={cart} />
             </button>
             {/* badge indica el numero en el carrito */}
-            {/* {card && card.length > 0 && <span>{card.length}</span>} */}
+            {carrito && carrito.length > 0 && <span>{carrito.length}</span>}
           </CartWidget>
         </ul>
       </NavBarStyled>

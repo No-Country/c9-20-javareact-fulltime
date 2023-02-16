@@ -4,7 +4,7 @@ import CommentLisContainer from "./CommentLisContainer"
 
 const CommentsSection = () => {
   return (
-    <section style={{ margin: "6em 3em", display: "grid" }}>
+    <section style={{ margin: "6em 3em 0", display: "grid" }}>
       <HeaderSubTitle
         title='Lo que dicen nuestros clientes'
         textAlign='center'

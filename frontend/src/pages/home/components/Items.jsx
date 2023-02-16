@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { cart } from "../../../../public/icons";
 import {
 	ItemButton,
@@ -29,10 +30,12 @@ const Items = ({
 				<ItemDescription>{description}</ItemDescription>
 				<ItemPeople>Para {people} personas</ItemPeople>
 				<ItemPrice>${price}</ItemPrice>
-				<ItemButton onClick={onClick}>
-					<h4>Agregar al Carrito</h4>
-					<img src={cart} alt="image-cart" />
-				</ItemButton>
+				<Link to={`${id}`}>
+					<ItemButton onClick={onClick}>
+						<h4>Agregar al Carrito</h4>
+						<img src={cart} alt="image-cart" />
+					</ItemButton>
+				</Link>
 			</section>
 		</ItemContainer>
 	);

@@ -23,7 +23,7 @@ const Promotions = () => {
 
 				<DivisionLine title={"Platos con descuentos"} />
 
-				<Div gap={"180px"} ancho={"300px"}>
+				<Div gap={"80px"} ancho={"300px"}>
 					<Items
 						title={"Tallarines"}
 						image={platoPasta}

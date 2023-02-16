@@ -15,7 +15,8 @@ export const Div = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(${({ ancho }) =>
 			ancho || "0px"}, 1fr));
-    margin: 5em 0;
+    margin-top: 5em;
+    padding-bottom: 5em;
     justify-content: space-around;
     justify-items: center;
     gap: ${({ gap }) => gap || "0px"};
@@ -374,6 +375,7 @@ export const ArticleModal = styled.article`
 `;
 
 export const BadgeStar = styled.div`
+  transform: translateY(-1em);
   width: 84.7px;
   height: 47.72px;
   color: #FFF;
