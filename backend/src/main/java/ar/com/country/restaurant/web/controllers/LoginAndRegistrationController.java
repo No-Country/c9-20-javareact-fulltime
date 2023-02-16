@@ -63,7 +63,7 @@ public class LoginAndRegistrationController {
         User newUser = userMapper.toEntity(userDto);
         User result = userService.createUser(newUser);
         SecurityUser securityUser = new SecurityUser(result);
-        Authentication authentication = UsernamePasswordAuthenticationToken.authenticated(securityUser, userDto.password(), securityUser.getAuthorities());
+        Authentication authentication = UsernamePasswordAuthenticationToken.authenticated(securityUser, userDto.getPassword(), securityUser.getAuthorities());
         return tokenGenerator.issueToken(authentication);
     }
 
