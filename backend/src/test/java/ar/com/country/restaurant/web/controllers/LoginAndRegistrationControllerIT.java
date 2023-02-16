@@ -150,6 +150,21 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
         }
 
         @Test
+        void shouldReturn400_whenMissingFields() throws Exception {
+            User userWithMissingFields = User.builder()
+                    .name("Nicolás")
+                    .email("nicolas.hiking@gmail.com")
+                    .build();
+
+            mockMvc.perform(
+                            post("/api/register")
+                                    .contentType(MediaType.APPLICATION_JSON)
+                                    .content(JsonUtils.asJsonString(userWithMissingFields))
+                    )
+                    .andExpect(status().isBadRequest());
+        }
+
+        @Test
         void shouldReturn409ConflictStatusCode_whenEmailAlreadyTaken() throws Exception {
             User userWithEmailAlreadyTaken = createUnregisteredDummyUser();
             userWithEmailAlreadyTaken.setEmail("julion.alvarez@gmail.com");
@@ -207,6 +222,8 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
         void shouldReturnNewAccessToken_andKeepSameRefreshToken() throws Exception {
             doLogin();
             Map<String, String> body = Map.of("refreshToken", refreshToken);
+            // After logging, we must wait at least 1 second
+            // before calling the "refresh-token" endpoint.
             given(clock.instant()).willReturn(Instant.now().plusSeconds(1));
             given(clock.getZone()).willReturn(Clock.systemDefaultZone().getZone());
 
@@ -232,7 +249,7 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
         @Test
         void shouldReturnNewRefreshToken_whenLessThan1WeekBeforeExpiration() throws Exception {
             doLogin();
-            // Travel 6 days to the future. Refresh token has 4 more days before expiration
+            // Travel 6 days to the future. Refresh token has 4 more days until expiration
             LocalDate timeToTheFuture = LocalDate.now().plusDays(6);
             ZoneId zoneId = ZoneId.systemDefault();
             given(clock.instant()).willReturn(timeToTheFuture.atStartOfDay(zoneId).toInstant());
