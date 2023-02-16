@@ -1,30 +1,31 @@
 package ar.com.country.restaurant.web.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
-public record AddressDTO(
-        @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-        Long id,
+@Data
+public final class AddressDTO implements Serializable {
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private final Long id;
 
-        @NotBlank
-        String street,
+    @NotBlank
+    private final String street;
 
-        @NotBlank
-        String number,
+    @NotBlank
+    private final String number;
 
-        @NotBlank
-        String city,
+    @NotBlank
+    private final String city;
 
-        @NotBlank
-        String state,
+    @NotBlank
+    private final String state;
 
-        @NotBlank
-        String country,
+    @NotBlank
+    private final String country;
 
-        @NotBlank
-        String zipCode
-) implements Serializable {
+    @NotBlank
+    private final String zipCode;
 }
