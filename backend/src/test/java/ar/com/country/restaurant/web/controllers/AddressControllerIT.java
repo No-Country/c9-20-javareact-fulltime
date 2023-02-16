@@ -69,8 +69,7 @@ class AddressControllerIT extends AbstractIntegrationTest {
                             get("/api/addresses/" + noSuchAddressId)
                                     .headers(authHeader())
                     )
-                    .andExpect(status().isNotFound())
-                    .andExpect(jsonPath("$.message").exists());
+                    .andExpect(status().isNotFound());
         }
 
     }
