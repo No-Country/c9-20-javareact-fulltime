@@ -7,12 +7,31 @@ Se requiere tener instalado:
 - Maven 3
 - Java 17
 
-Y ejecutamos:
+Y ejecutamos en la raíz del proyecto:
 
 ```
 mvn clean package
 mvn -pl backend spring-boot:run
 ```
+
+Para desarrollo, es suficiente con ejecutar lo siguiente:
+
+```
+mvn -pl backend spring-boot:run -Dspring-boot.run.profiles=dev
+```
+
+El backend está configurado para retornar el header `Access-Control-Allow-Origin: *` para el
+origin `http://localhost:5173`
+
+Para correr los tests, debe ejecutarse el siguiente comando en la raíz del proyecto:
+
+```
+mvn clean test failsafe:integration-test failsafe:verify -pl backend
+```
+
+## Documentación de la API
+
+- [Swagger](http://localhost:8080/api/swagger-ui)
 
 ## Links
 
@@ -306,8 +325,8 @@ Por el momento no se han considerado interfaces de hardware.
 - Railway
 
 ##### Modelo de entidad-relación
-![image](https://user-images.githubusercontent.com/90712394/216748128-0ef0ad6b-b5a6-4127-9d68-b9ae6481b5f3.png)
 
+![image](https://user-images.githubusercontent.com/90712394/216748128-0ef0ad6b-b5a6-4127-9d68-b9ae6481b5f3.png)
 
 #### Requerimientos de licencia
 
