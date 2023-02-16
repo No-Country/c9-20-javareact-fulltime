@@ -5,6 +5,7 @@ export const MyAccountStyle = styled.div`
   height: 1024px;
   width: 100%;
   border-radius: 0;
+  padding: 180px 80px;
 
   h1 {
     margin: 0;
@@ -24,18 +25,35 @@ export const MyAccountStyle = styled.div`
     margin: 41px 0px 64px 0px;
   }
 
-  .Container {
-    display: flex;
-    flex-flow: row;
+  .line2 {
+    border: 0.5px solid #fff;
+    margin: 0 25px 0 50px;
   }
 
-  .Seleccion {
+  .selection {
     display: flex;
     flex-flow: column;
+  }
+
+  .selection div {
+    display: flex;
   }
 
   button:hover {
     color: brown;
     text-align: center;
+  }
+
+  .container {
+    display: flex;
+  }
+  .postalCode_localidad {
+    height: fit-content;
+  }
+
+  input {
+    border: solid #acacac 1px;
+    border-radius: 3px;
+    background-color: transparent;
   }
 `;

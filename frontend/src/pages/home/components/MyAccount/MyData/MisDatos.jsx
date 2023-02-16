@@ -16,75 +16,98 @@ export default function MisDatos() {
     <>
       <form action="">
         <label htmlFor="name">Nombre y apellido</label>
+        <br />
         <input
+          placeholder="Ingrese su nombre y apellido"
+          size="169px"
           required
           type="text"
           id="name"
           onChange={(e) => setNameAndSurname(e.target.value)}
           value={NameAndSurname}
         />
-        <label htmlFor="postalCode">Codigo postal</label>
+        <br />
+        <div className="postalCode_localidad">
+          <label htmlFor="postalCode">Codigo postal</label>
+          <label htmlFor="location">Localidad</label>
+        </div>
         <input
           required
+          placeholder="Ingrese el codigo postal"
+          size="80px"
           type="text"
           id="postalCode"
           onChange={(e) => setPostalCode(e.target.value)}
           value={postalCode}
         />
-        <label htmlFor="location">Localidad</label>
         <input
           required
+          placeholder="Ingrese su localidad (ciudad)"
+          size="80px"
           type="text"
           id="location"
           onChange={(e) => setLocation(e.target.value)}
           value={location}
         />
+        <br />
         <label htmlFor="street">Calle</label>
+        <label htmlFor="number">Numero</label>
+        <label htmlFor="floor">Piso(opcional)</label>
+        <br />
         <input
+          placeholder="Ingrese la direccion de su domicilio"
           required
           type="text"
           id="street"
           onChange={(e) => setStreet(e.target.value)}
           value={street}
         />
-        <label htmlFor="number">Numero</label>
         <input
+          placeholder="Ingrese el numero"
           required
           type="text"
           id="number"
           onChange={(e) => setNumber(e.target.value)}
           value={number}
         />
-        <label htmlFor="floor">Piso(opcional)</label>
         <input
+          placeholder="Ingrese el numero"
           type="text"
           id="floor"
           onChange={(e) => setFloor(e.target.value)}
           value={floor}
         />
+        <br />
         <label htmlFor="contact">Contacto</label>
+        <label htmlFor="email">Correo electronico</label>
+        <br />
         <input
+          placeholder="Ingrese su numero de telefono"
           required
           type="text"
           id="contact"
           onChange={(e) => setContact(e.target.value)}
           value={contact}
         />
-        <label htmlFor="email">Correo electronico</label>
         <input
+          placeholder="Ingrese su correo electronico"
           required
           type="text"
           id="email"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
+        <br />
         <label htmlFor="moreDetails">Aclaracion (opcional)</label>
+        <br />
         <input
+          placeholder="Deje una aclaracion de su domicilio aqui"
           type="text"
           id="moreDetails"
           onChange={(e) => setmoreDetails(e.target.value)}
           value={moreDetails}
         />
+        <br />
         <button>Guardar</button>
       </form>
     </>

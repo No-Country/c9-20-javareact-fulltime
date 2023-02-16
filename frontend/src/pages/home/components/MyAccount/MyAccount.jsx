@@ -52,22 +52,34 @@ export default function MyAccount() {
       <div className="MyAccount">
         <h1>MiCuenta</h1>
         <div className="line"></div>
-        <div className="Container">
-          <div className="Seleccion">
-            <img src={userImg}></img>
-            <button name="Datos" onClick={(e) => activacion(e)}>
-              Mis datos
-            </button>
-            <button name="Tarjetas" onClick={(e) => activacion(e)}>
-              Mis tarjetas
-            </button>
-            <button name="Pedidos" onClick={(e) => activacion(e)}>
-              Mis pedidos
-            </button>
-            <button name="Sesion" onClick={(e) => activacion(e)}>
-              Cerrar Sesión
-            </button>
+        <div className="container">
+          <div className="selection">
+            <div className="myData">
+              <img width="19px" src={userImg}></img>
+              <button name="Datos" onClick={(e) => activacion(e)}>
+                Mis datos
+              </button>
+            </div>
+            <div className="myCards">
+              <img width="19px" src={cardImg}></img>
+              <button name="Tarjetas" onClick={(e) => activacion(e)}>
+                Mis tarjetas
+              </button>
+            </div>
+            <div className="myOrders">
+              <img width="19px" src={cartImg}></img>
+              <button name="Pedidos" onClick={(e) => activacion(e)}>
+                Mis pedidos
+              </button>
+            </div>
+            <div className="logOut">
+              <img width="19px" src={logOutImg}></img>
+              <button name="Sesion" onClick={(e) => activacion(e)}>
+                Cerrar Sesión
+              </button>
+            </div>
           </div>
+          <div className="line2"></div>
           <div>
             {misDatos && <MisDatos />}
             {misTarjetas && <MisTarjetas />}
