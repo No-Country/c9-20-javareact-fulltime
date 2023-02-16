@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.hateoas.MediaTypes;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.jdbc.Sql;
 
@@ -56,7 +57,8 @@ class PaymentMethodControllerIT extends AbstractIntegrationTest {
                                     .headers(authHeader())
                     )
                     .andExpect(status().isOk())
-                    .andExpect(jsonPath("$.size()", is(2)));
+                    .andExpect(content().contentType(MediaTypes.HAL_JSON_VALUE))
+                    .andExpect(jsonPath("$._embedded.payment_methods.size()", is(2)));
         }
 
         @Test
@@ -69,7 +71,10 @@ class PaymentMethodControllerIT extends AbstractIntegrationTest {
                                     .headers(authHeader())
                     )
                     .andExpect(status().isOk())
-                    .andExpect(jsonPath("$.id").value(firstPaymentMethodOfLoggedUser.getId()));
+                    .andExpect(content().contentType(MediaTypes.HAL_JSON_VALUE))
+                    .andExpect(jsonPath("$.id").value(firstPaymentMethodOfLoggedUser.getId()))
+                    .andExpect(jsonPath("$._links.self.href").value("http://localhost/api/payment_methods/" + firstPaymentMethodOfLoggedUser.getId()))
+                    .andExpect(jsonPath("$._links.user.href").value("http://localhost/api/users/1"));
         }
 
         @Test
@@ -107,13 +112,16 @@ class PaymentMethodControllerIT extends AbstractIntegrationTest {
                                     .headers(authHeader())
                     )
                     .andExpect(status().isCreated())
+                    .andExpect(content().contentType(MediaTypes.HAL_JSON_VALUE))
                     .andExpect(header().exists("Location"))
                     .andExpect(jsonPath("$.id").exists())
                     .andExpect(jsonPath("$.type").value("CREDIT"))
                     .andExpect(jsonPath("$.number").value("1111 1111 1111 1111"))
                     .andExpect(jsonPath("$.holder").value("Julion Alvarez"))
                     .andExpect(jsonPath("$.expirationDate").value("2023-02-14"))
-                    .andExpect(jsonPath("$.cvv").value("1234"));
+                    .andExpect(jsonPath("$.cvv").value("1234"))
+                    .andExpect(jsonPath("$._links.self.href").exists())
+                    .andExpect(jsonPath("$._links.user.href").value("http://localhost/api/users/1"));
         }
 
         @Test
@@ -178,11 +186,14 @@ class PaymentMethodControllerIT extends AbstractIntegrationTest {
                                     .headers(authHeader())
                     )
                     .andExpect(status().isOk())
+                    .andExpect(content().contentType(MediaTypes.HAL_JSON_VALUE))
                     .andExpect(jsonPath("$.type").value("DEBIT"))
                     .andExpect(jsonPath("$.number").value("1234 5678 1234 5678"))
                     .andExpect(jsonPath("$.holder").value("Julion Alvarez"))
                     .andExpect(jsonPath("$.expirationDate").value("2023-02-15"))
-                    .andExpect(jsonPath("$.cvv").value("123"));
+                    .andExpect(jsonPath("$.cvv").value("123"))
+                    .andExpect(jsonPath("$._links.self.href").value("http://localhost/api/payment_methods/" + firstPaymentMethodOfLoggedUser.getId()))
+                    .andExpect(jsonPath("$._links.user.href").value("http://localhost/api/users/1"));
         }
 
         @Test
@@ -242,6 +253,7 @@ class PaymentMethodControllerIT extends AbstractIntegrationTest {
                                     .headers(authHeader())
                     )
                     .andExpect(status().isOk())
+                    .andExpect(content().contentType(MediaTypes.HAL_JSON_VALUE))
                     .andExpect(jsonPath("$.id").exists());
         }
 

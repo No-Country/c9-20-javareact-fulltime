@@ -1,6 +1,7 @@
 package ar.com.country.restaurant.security;
 
 import ar.com.country.restaurant.dao.entities.User;
+import ar.com.country.restaurant.dao.entities.UserRole;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,11 +15,15 @@ public class SecurityUser implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(() -> "ADMIN");
+        return List.of(() -> getRole().name());
     }
 
     public Long getId() {
         return user.getId();
+    }
+
+    public UserRole getRole() {
+        return user.getRole();
     }
 
     @Override
