@@ -46,6 +46,7 @@ public class TokenGenerator {
         return TokenDTO.builder()
                 .id(user.getId())
                 .email(user.getUsername())
+                .role(user.getRole())
                 .accessToken(generateAccessToken(authentication))
                 .refreshToken(refreshToken)
                 .build();
