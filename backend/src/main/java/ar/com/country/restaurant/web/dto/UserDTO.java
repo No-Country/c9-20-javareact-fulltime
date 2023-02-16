@@ -21,13 +21,7 @@ public final class UserDTO extends RepresentationModel<UserDTO> {
     private final Long id;
 
     @NotBlank
-    private final String dni;
-
-    @NotBlank
     private final String name;
-
-    @NotBlank
-    private final String lastName;
 
     @Email
     @NotBlank
@@ -37,9 +31,6 @@ public final class UserDTO extends RepresentationModel<UserDTO> {
     @NotBlank(groups = OnCreate.class)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private final String password;
-
-    @NotBlank
-    private final String phone;
 
     @NotNull
     private final UserRole role;
