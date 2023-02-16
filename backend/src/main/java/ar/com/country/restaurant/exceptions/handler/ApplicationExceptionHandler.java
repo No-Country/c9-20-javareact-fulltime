@@ -45,7 +45,7 @@ public class ApplicationExceptionHandler {
     }
 
     @ExceptionHandler(DishIdNotFoundException.class)
-    public ResponseEntity<Object> dishIdNotFoundException(final DishIdNotFoundException e) {
+    public ResponseEntity<Object> dishIdNotFoundHandler(final DishIdNotFoundException e) {
         return throwCustomException(e, HttpStatus.NOT_FOUND);
     }
 
@@ -55,6 +55,11 @@ public class ApplicationExceptionHandler {
 
     @ExceptionHandler(DishCategoryNotFoundException.class)
     private ResponseEntity<Object> dishCategoryNotFoundException(final DishCategoryNotFoundException e, final HttpStatus status) {
+        return new ResponseEntity<>(new ErrorResponse(e, status), status);
+    }
+
+    @ExceptionHandler(DishCategoryNameAlreadyExistsException.class)
+    private ResponseEntity<Object> dishCategoryNameAlreadyExistsHandler(final DishCategoryNameAlreadyExistsException e, final HttpStatus status) {
         return new ResponseEntity<>(new ErrorResponse(e, status), status);
     }
 }
