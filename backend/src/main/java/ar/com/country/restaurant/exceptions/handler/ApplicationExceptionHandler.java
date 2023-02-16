@@ -53,4 +53,8 @@ public class ApplicationExceptionHandler {
         return new ResponseEntity<>(new ErrorResponse(e, status), status);
     }
 
+    @ExceptionHandler(DishCategoryNotFoundException.class)
+    private ResponseEntity<Object> dishCategoryNotFoundException(final DishCategoryNotFoundException e, final HttpStatus status) {
+        return new ResponseEntity<>(new ErrorResponse(e, status), status);
+    }
 }
