@@ -1,7 +1,7 @@
 import { Link, Outlet, useParams } from "react-router-dom";
 import { HeaderSubTitle, HeroImage } from "../../../../components";
 import { ItemFoodStyled } from "../styled-components/layout.styled";
-import react from "/assets/react.svg";
+import plato from "/img/platoPasta2.png";
 
 const ItemFood = ({ description, price, name, nameFood, id }) => {
 	const { namePath } = useParams();
@@ -12,7 +12,7 @@ const ItemFood = ({ description, price, name, nameFood, id }) => {
 				<ItemFoodStyled>
 					<Link to={`/categoria/${nameFood}/${id}`}>
 						<HeroImage
-							img={react}
+							img={plato}
 							alt='comida'
 							blockSize="196px"
 							inlineSize='100%'

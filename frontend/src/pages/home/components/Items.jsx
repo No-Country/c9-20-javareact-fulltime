@@ -1,3 +1,4 @@
+import { cart } from "../../../../public/icons";
 import {
 	ItemButton,
 	ItemContainer,
@@ -6,20 +7,26 @@ import {
 	ItemPeople,
 	ItemPrice,
 } from "../styled-components";
-import { cart } from "../../../../public/icons"
 
-const Items = ({ title, image, description, people, price, onClick, children }) => {
+const Items = ({
+	title,
+	image,
+	description,
+	people,
+	price,
+	onClick,
+	children,
+	id,
+}) => {
 	return (
-		<ItemContainer>
+		<ItemContainer id={id}>
 			<section>
 				<ItemImg>
 					<img src={image} alt="image" />
 					{children}
 				</ItemImg>
 				<h2>{title}</h2>
-				<ItemDescription>
-					{description}
-				</ItemDescription>
+				<ItemDescription>{description}</ItemDescription>
 				<ItemPeople>Para {people} personas</ItemPeople>
 				<ItemPrice>${price}</ItemPrice>
 				<ItemButton onClick={onClick}>

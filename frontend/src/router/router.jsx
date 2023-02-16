@@ -1,16 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
-import RootLayout from "../pages/RootLayout";
 import Checkout from "../pages/Checkout/Checkout";
+import RootLayout from "../pages/RootLayout";
 import Signup from "../pages/auth/Signup/Signup";
 import Login from "../pages/auth/login/Login";
-
-import Home from "./../pages/home/Home";
-import View from "../pages/view/views";
-import MyAccount from "../pages/home/components/MyAccount"
+import Contact from "../pages/home/components/Contact";
+import MyAccount from "../pages/home/components/MyAccount";
 import Promotions from "../pages/home/components/Promotions";
-import Contact from "../pages/home/components/Contact"
-import Category from "../pages/home/components/Category";
-
+import Category from "../pages/view/categoria/Category";
+import ItemsCategory from "../pages/view/categoria/components/ItemsCategory";
+import ViewOfThePlate from "../pages/view/viewoftheplate/ViewOfThePlate";
+import Home from "./../pages/home/Home";
 export const router = createBrowserRouter([
 	{
 		element: <RootLayout />,
@@ -22,14 +21,16 @@ export const router = createBrowserRouter([
 					{
 						path: "/categoria",
 						element: <Category />,
-					},
-					{
-						path: "/categoria/:idCategory",
-						element: <View />,
 						children: [
 							{
-								path: "/categoria/:idCategory/:idFood",
-
+								path: "/categoria/:idCategory",
+								element: <ItemsCategory />,
+								children: [
+									{
+										path: "/categoria/:idCategory/:idFood",
+										element: <ViewOfThePlate />,
+									},
+								],
 							},
 						],
 					},
@@ -62,5 +63,4 @@ export const router = createBrowserRouter([
 			},
 		],
 	},
-
 ]);
