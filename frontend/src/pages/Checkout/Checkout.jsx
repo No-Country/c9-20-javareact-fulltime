@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useSelector} from "react-redux";
+import { useSelector } from "react-redux";
+import {Link} from 'react-router-dom'
 import {
 	CheckCart,
 	CheckContainer,
@@ -8,11 +9,13 @@ import {
 } from "./CheckoutStyled.jsx";
 import { Button, DivCol } from "../../styled-components/layout/layout.styled"
 
+
 const Checkout = () => {
 	const cart = useSelector(state => state.cart.items);
 	const [selectedDeliveryOption, setSelectedDeliveryOption] = useState('local');
 	const [selectedPaymentOption, setSelectedPaymentOption] = useState('debito');
 	console.log(cart);
+
 	return (
 		<>
 			<CheckContainer>
@@ -66,7 +69,7 @@ const Checkout = () => {
 								<label htmlFor="">CVV</label>
 								<input type="password" name="numberCvv" id="" />
 							</form>
-							<Button>Confirmar</Button>
+							<Link to={'/thanks'}><Button>Confirmar</Button></Link>
 						</>
 					)}
 					{selectedPaymentOption === 'credito' && (
@@ -87,24 +90,25 @@ const Checkout = () => {
 								<input type="radio" name="cuotas" />
 								<label htmlFor="">6 Cuotas</label>
 							</div>
-							<Button>Confirmar</Button>
+							<Link to={'/thanks'}><Button>Confirmar</Button></Link>
 						</>
 					)}
 				</CheckData>
 				<CheckCart>
 					<div>
-					<h1>Resumen</h1>
-					{cart.map((cr) => (
-						<DivCol key={cr.id}>
-							{cr.name}
-							<br />
-							Subtotal: ${cr.subTotal}
-							<br />
-							Envío
-							<br />
-							Total: ${cr.total}
-						</DivCol>
-					))}
+						<h1>Resumen</h1>
+						{cart.map((cr) => (
+							<DivCol key={cr.id}>
+								{cr.name}
+								<br />
+								Subtotal: ${cr.subTotal}
+								<br />
+								Envío
+								<br />
+								Total: ${cr.total}
+							</DivCol>
+
+						))}
 					</div>
 				</CheckCart>
 			</CheckContainer>
