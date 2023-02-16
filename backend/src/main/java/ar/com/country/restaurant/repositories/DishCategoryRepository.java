@@ -5,11 +5,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface DishCategoryRepository extends JpaRepository<DishCategory, Long> {
 
     @Query("select dc from DishCategory dc order by dc.name asc")
     List<DishCategory> findAllDishCategoriesByOrderByNameAsc();
+
+    boolean existsByName(String name);
 
     // to implement in DishesRepository
 
