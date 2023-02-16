@@ -326,7 +326,7 @@ Por el momento no se han considerado interfaces de hardware.
 
 ##### Modelo de entidad-relación
 
-![image](https://user-images.githubusercontent.com/90712394/216748128-0ef0ad6b-b5a6-4127-9d68-b9ae6481b5f3.png)
+![entityManagerFactory(EntityManagerFactoryBuilder)](https://user-images.githubusercontent.com/90712394/219444684-a8cfdfe5-cf14-4152-a1e5-70b239487988.png)
 
 #### Requerimientos de licencia
 
