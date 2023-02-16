@@ -84,7 +84,7 @@ public class ApplicationExceptionTranslator implements AdviceTrait {
     }
 
     @ExceptionHandler
-    public ResponseEntity<Problem> dishIdNotFoundException(final DishIdNotFoundException e, NativeWebRequest request) {
+    public ResponseEntity<Problem> dishIdNotFoundException(final DishNotFoundException e, NativeWebRequest request) {
         return create(Status.NOT_FOUND, e, request);
     }
 
