@@ -42,9 +42,7 @@ class UserControllerIT extends AbstractIntegrationTest {
                     )
                     .andExpect(status().isOk())
                     .andExpect(jsonPath("$.id").value(user.getId()))
-                    .andExpect(jsonPath("$.dni").value(user.getDni()))
                     .andExpect(jsonPath("$.name").value(user.getName()))
-                    .andExpect(jsonPath("$.lastName").value(user.getLastName()))
                     .andExpect(jsonPath("$.email").value(user.getEmail()));
         }
 
@@ -71,10 +69,7 @@ class UserControllerIT extends AbstractIntegrationTest {
             User firstSavedUser = getFirstSavedUser();
             User updatedUser = User.builder()
                     .name("Julio")
-                    .lastName("Fischer")
-                    .dni("12345678A")
                     .email("bobbyfischer@gmail.com")
-                    .phone("+54 999999-9999")
                     .role(UserRole.NORMAL)
                     .build();
 
@@ -87,9 +82,7 @@ class UserControllerIT extends AbstractIntegrationTest {
                     .andExpect(status().isOk())
                     .andExpect(jsonPath("$.id").value(firstSavedUser.getId()))
                     .andExpect(jsonPath("$.name").value("Julio"))
-                    .andExpect(jsonPath("$.lastName").value("Fischer"))
                     .andExpect(jsonPath("$.email").value("bobbyfischer@gmail.com"))
-                    .andExpect(jsonPath("$.phone").value("+54 999999-9999"))
                     .andExpect(jsonPath("$.role").value("NORMAL"));
         }
 
@@ -99,10 +92,7 @@ class UserControllerIT extends AbstractIntegrationTest {
             User firstSavedUser = getFirstSavedUser();
             User updatedUserWithEmailTaken = User.builder()
                     .name("Julio")
-                    .lastName("Fischer")
-                    .dni("12345678A")
                     .email("nicolas.hiking@gmail.com")
-                    .phone("+54 999999-9999")
                     .role(UserRole.NORMAL)
                     .build();
 
@@ -121,10 +111,7 @@ class UserControllerIT extends AbstractIntegrationTest {
             User firstSavedUser = getFirstSavedUser();
             User updatedUserWithDniTaken = User.builder()
                     .name("Julio")
-                    .lastName("Fischer")
-                    .dni("87654321A")
                     .email("nicolas.hiking@gmail.com")
-                    .phone("+54 999999-9999")
                     .role(UserRole.NORMAL)
                     .build();
 

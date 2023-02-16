@@ -69,11 +69,6 @@ public class ApplicationExceptionTranslator implements AdviceTrait {
     }
 
     @ExceptionHandler
-    public ResponseEntity<Problem> dniAlreadyExistsHandler(final DniAlreadyExistsException e, NativeWebRequest request) {
-        return create(Status.CONFLICT, e, request);
-    }
-
-    @ExceptionHandler
     public ResponseEntity<Problem> addressNotFoundHandler(final AddressNotFoundException e, NativeWebRequest request) {
         return create(Status.NOT_FOUND, e, request);
     }
