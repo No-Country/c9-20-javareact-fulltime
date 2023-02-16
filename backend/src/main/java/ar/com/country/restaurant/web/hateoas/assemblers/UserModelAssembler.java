@@ -1,4 +1,4 @@
-package ar.com.country.restaurant.hateoas.assemblers;
+package ar.com.country.restaurant.web.hateoas.assemblers;
 
 import ar.com.country.restaurant.dao.entities.User;
 import ar.com.country.restaurant.web.controllers.AddressController;

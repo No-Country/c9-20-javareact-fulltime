@@ -1,9 +1,9 @@
 package ar.com.country.restaurant.web.controllers;
 
 import ar.com.country.restaurant.dao.entities.User;
-import ar.com.country.restaurant.hateoas.assemblers.UserModelAssembler;
 import ar.com.country.restaurant.services.UserService;
 import ar.com.country.restaurant.web.dto.UserDTO;
+import ar.com.country.restaurant.web.hateoas.assemblers.UserModelAssembler;
 import ar.com.country.restaurant.web.mappers.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
