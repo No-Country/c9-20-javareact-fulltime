@@ -1,7 +1,7 @@
 import { Link, Outlet, useParams } from "react-router-dom";
 import { HeaderSubTitle, HeroImage } from "../../../../components";
 import { ItemFoodStyled } from "../styled-components/layout.styled";
-import react from "/assets/react.svg";
+
 
 const ItemFood = ({ description, price, name, nameFood, id }) => {
 	const { namePath } = useParams();

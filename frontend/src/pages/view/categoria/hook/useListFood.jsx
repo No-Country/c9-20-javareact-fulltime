@@ -3,6 +3,7 @@ import { useGetInfoFoodQuery } from "../../../../redux/query/FoodInfo.query";
 
 const useListFood = (namePath) => {
 	const [list, setList] = useState();
+	
 	const [isLoading, setIsLoading] = useState(false);
 	const { data: food, isSuccess } = useGetInfoFoodQuery();
 

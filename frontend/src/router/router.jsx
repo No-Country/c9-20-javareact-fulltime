@@ -10,7 +10,7 @@ import View from "../pages/view/views";
 import MyAccount from "../pages/home/components/MyAccount"
 import Promotions from "../pages/home/components/Promotions";
 import Contact from "../pages/home/components/Contact"
-import Category from "../pages/home/components/Category";
+import Category from "../pages/view/categoria/Category";
 
 export const router = createBrowserRouter([
 	{
@@ -26,7 +26,7 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: "/categoria/:idCategory",
-						element: <View />,
+						element: <Category />,
 						children: [
 							{
 								path: "/categoria/:idCategory/:idFood",

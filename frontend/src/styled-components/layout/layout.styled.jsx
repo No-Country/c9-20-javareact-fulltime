@@ -269,6 +269,7 @@ export const ArticleModal = styled.article`
 `;
 
 export const BadgeStar = styled.div`
+  transform: translateY(-1em);
   width: 84.7px;
   height: 47.72px;
   color: #FFF;
