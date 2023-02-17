@@ -1,6 +1,7 @@
 package ar.com.country.restaurant.services.impl;
 
 import ar.com.country.restaurant.dao.entities.Dish;
+import ar.com.country.restaurant.dao.entities.criteria.DishFilterCriteria;
 import ar.com.country.restaurant.exceptions.DishNotFoundException;
 import ar.com.country.restaurant.repositories.DishRepository;
 import ar.com.country.restaurant.services.DishService;
@@ -21,8 +22,11 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
-    public Page<Dish> getDishes(Pageable pageable) {
-        return dishRepository.findAll(pageable);
+    public Page<Dish> getDishes(DishFilterCriteria filterCriteria) {
+        if (filterCriteria.filterByCategory()) {
+            return dishRepository.findDishesByDishCategoryId(filterCriteria.categoryId(), filterCriteria.pageable());
+        }
+        return dishRepository.findAll(filterCriteria.pageable());
     }
 
     @Override
