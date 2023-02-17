@@ -32,8 +32,18 @@ export const HeaderSubtitleStyled = styled.header`
 
 //TODO Div responsive abierto a modificar */
 export const Div = styled.div`
+<<<<<<< HEAD
     ${FlexBoxCenter};
     flex-wrap: wrap;
+=======
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(${({ ancho }) =>
+			ancho || "0px"}, 1fr));
+    margin-top: 5em;
+    padding-bottom: 5em;
+    justify-content: space-around;
+    justify-items: center;
+>>>>>>> 7c7bc5441e552a90d16a60b135447f157f971d0e
     gap: ${({ gap }) => gap || "0px"};
 `;
 //TODO Div responsive abierto a modificar */
@@ -365,6 +375,7 @@ export const ArticleModal = styled.article`
 `;
 
 export const BadgeStar = styled.div`
+  transform: translateY(-1em);
   width: 84.7px;
   height: 47.72px;
   color: #FFF;

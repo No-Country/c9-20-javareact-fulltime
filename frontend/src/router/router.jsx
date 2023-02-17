@@ -42,35 +42,3 @@ export const router = createBrowserRouter([
 		element: <Checkout />,
 	},
 ]);
-/* 	element: <RootLayout />,
-		children: [
-			{
-				path: "/",
-				element: <Home />,
-				children: [
-					{
-						path: "/categoria",
-						element: <Category />,
-						children: [
-							{
-								path: "/categoria/:idCategory",
-								element: <ItemsCategory />,
-								children: [
-									{
-										path: "/categoria/:idCategory/:idFood",
-										element: <ViewOfThePlate />,
-									},
-								],
-							},
-						],
-					},
-					{
-						path: "/promotions",
-						element: <Promotions />,
-					},
-					{
-						path: "/contact",
-						element: <Contact />,
-					},
-				],
-			}, */

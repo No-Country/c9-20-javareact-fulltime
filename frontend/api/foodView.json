@@ -3,6 +3,7 @@
     {
       "id": 1,
       "name": "pastas",
+      "image": "pastas.jpg",
       "list": [
         {
           "id": 1,
@@ -63,6 +64,7 @@
     {
       "id": 2,
       "name": "postres",
+      "image": "postres.jpg",
       "list": [
         {
           "id": 1,
@@ -123,6 +125,7 @@
     {
       "id": 3,
       "name": "Churrasqueria",
+      "image": "churrasqueria.jpg",
       "list": [
         {
           "id": 1,
@@ -183,6 +186,7 @@
     {
       "id": 4,
       "name": "Cafeteria",
+      "image": "cafe.jpg",
       "list": [
         {
           "id": 1,
@@ -243,6 +247,7 @@
     {
       "id": 5,
       "name": "Saludable",
+      "image": "saludable.jpg",
       "list": [
         {
           "id": 1,
@@ -303,6 +308,7 @@
     {
       "id": 6,
       "name": "Pizzas",
+      "image": "pizza.jpg",
       "list": [
         {
           "id": 1,

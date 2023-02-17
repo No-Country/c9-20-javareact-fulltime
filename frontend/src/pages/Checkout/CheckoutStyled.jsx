@@ -91,3 +91,14 @@ select {
 }
     }
 `;
+
+/* --------THANKS---------- */
+export const ThxContainer = styled.div`
+    height: 100vh;
+    margin: 0px;
+    background-color: var(--background-primary);
+    color: white;
+    h1,p,h2{
+        text-align: center;
+    }
+`;
