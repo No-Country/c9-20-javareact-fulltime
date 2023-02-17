@@ -3,17 +3,17 @@ package ar.com.country.restaurant.services;
 import ar.com.country.restaurant.dao.entities.DishCategory;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface DishCategoryService {
 
-    List<DishCategory> getAllDishCategories();
-
+    List<DishCategory> getDishCategories();
+    
     DishCategory getDishCategoryById(Long categoryId);
 
-    DishCategory createDishCategory(DishCategory dishCategory);
+    DishCategory createDishCategory(DishCategory newDishCategory);
+
+    DishCategory updateDishCategory(Long categoryId, DishCategory updatedDishCategory);
 
     DishCategory deleteDishCategory(Long id);
 
-    Optional<DishCategory> findById(Long id);
 }

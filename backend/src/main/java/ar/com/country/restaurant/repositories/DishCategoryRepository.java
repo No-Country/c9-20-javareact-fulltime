@@ -11,8 +11,9 @@ import java.util.List;
 public interface DishCategoryRepository extends JpaRepository<DishCategory, Long> {
 
     @Query("select dc from DishCategory dc order by dc.name asc")
-    List<DishCategory> findAllDishCategoriesByOrderByNameAsc();
+    List<DishCategory> findAllDishCategoriesByNameAsc();
 
-    boolean existsByName(String name);
+    @Query("select (count(d) > 0) from DishCategory d where upper(d.name) = upper(?1)")
+    boolean existsByNameIgnoreCase(String name);
 
 }

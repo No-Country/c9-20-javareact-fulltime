@@ -6,47 +6,56 @@ import ar.com.country.restaurant.web.dto.DishCategoryDTO;
 import ar.com.country.restaurant.web.mappers.DishCategoryMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/dish-categories")
+@RequestMapping("/api/categories")
 @RequiredArgsConstructor
 public class DishCategoryController {
-
     private final DishCategoryService dishCategoryService;
-
     private final DishCategoryMapper dishCategoryMapper;
 
-    @GetMapping("/")
-    public List<DishCategory> getAllDishCategories() {
-        return dishCategoryService.getAllDishCategories();
+    @GetMapping
+    public List<DishCategoryDTO> getAllDishCategories() {
+        List<DishCategory> result = dishCategoryService.getDishCategories();
+        return dishCategoryMapper.toDtoList(result);
     }
 
-    @GetMapping("/{id}")
-    public Optional<DishCategory> getDishCategoryById(@PathVariable Long id) {
-        return dishCategoryService.findById(id);
+    @GetMapping("/{categoryId}")
+    public DishCategoryDTO getDishCategoryById(@PathVariable Long categoryId) {
+        DishCategory result = dishCategoryService.getDishCategoryById(categoryId);
+        return dishCategoryMapper.toDto(result);
     }
 
-    @PostMapping("/")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public DishCategory createDishCategoryById(@RequestBody @Valid DishCategoryDTO dishCategoryDTO) {
-        DishCategory newDishCategory = dishCategoryMapper.toEntity(dishCategoryDTO);
-        return dishCategoryService.createDishCategory(newDishCategory);
+    public ResponseEntity<DishCategoryDTO> createDishCategory(@RequestBody @Valid DishCategoryDTO dishCategoryDto) {
+        DishCategory newDishCategory = dishCategoryMapper.toEntity(dishCategoryDto);
+        DishCategory result = dishCategoryService.createDishCategory(newDishCategory);
+        return ResponseEntity
+                .created(URI.create("/api/categories/" + result.getId()))
+                .body(dishCategoryMapper.toDto(result));
     }
 
-    @PutMapping("/{id}")
-    public DishCategory updateDishCategory(@PathVariable Long id, @RequestBody DishCategory newDishCategory) {
-        Optional<DishCategory> oldDishCategory = dishCategoryService.findById(id);
-        newDishCategory.setId(oldDishCategory.get().getId());
-        return dishCategoryService.createDishCategory(newDishCategory);
+    @PutMapping("/{categoryId}")
+    public DishCategoryDTO updateDishCategory(
+            @PathVariable Long categoryId,
+            @RequestBody DishCategoryDTO dishCategoryDto
+    ) {
+        DishCategory updatedDishCategory = dishCategoryMapper.toEntity(dishCategoryDto);
+        DishCategory result = dishCategoryService.updateDishCategory(categoryId, updatedDishCategory);
+        return dishCategoryMapper.toDto(result);
     }
 
-    @DeleteMapping("/{id}")
-    public DishCategory deleteDishCategoryById(@PathVariable Long id) {
-        return dishCategoryService.deleteDishCategory(id);
+    @DeleteMapping("/{categoryId}")
+    public DishCategoryDTO deleteDishCategoryById(@PathVariable Long categoryId) {
+        DishCategory result = dishCategoryService.deleteDishCategory(categoryId);
+        return dishCategoryMapper.toDto(result);
     }
+
 }
