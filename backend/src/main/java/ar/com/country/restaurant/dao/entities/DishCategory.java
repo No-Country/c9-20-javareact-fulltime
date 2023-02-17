@@ -20,6 +20,9 @@ public class DishCategory {
     @Column
     private String name;
 
+    @Column
+    private String imgUrl;
+
     @OneToMany(fetch = FetchType.LAZY)
     private List<Dish> dishes;
 }
