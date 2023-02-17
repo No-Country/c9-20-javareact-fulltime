@@ -1,6 +1,7 @@
 package ar.com.country.restaurant.web.controllers;
 
 import ar.com.country.restaurant.dao.entities.User;
+import ar.com.country.restaurant.security.SecurityUser;
 import ar.com.country.restaurant.services.UserService;
 import ar.com.country.restaurant.web.dto.UserDTO;
 import ar.com.country.restaurant.web.hateoas.assemblers.UserModelAssembler;
@@ -12,6 +13,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -38,7 +41,11 @@ public class UserController {
             @Content(schema = @Schema(implementation = UserDTO.class))
     })
     @GetMapping("/{userId}")
-    public UserDTO getUserById(@PathVariable Long userId) {
+    @PreAuthorize("#loggedUser.id == #userId")
+    public UserDTO getUserById(
+            @AuthenticationPrincipal SecurityUser loggedUser,
+            @PathVariable Long userId
+    ) {
         User result = userService.getUserById(userId);
         return userModelAssembler.toModel(result);
     }
@@ -51,7 +58,12 @@ public class UserController {
             @ApiResponse(ref = FORBIDDEN_RESPONSE_REF, responseCode = "403")
     })
     @PutMapping("/{userId}")
-    public UserDTO updateUser(@PathVariable Long userId, @RequestBody @Valid UserDTO userDto) {
+    @PreAuthorize("#loggedUser.id == #userId")
+    public UserDTO updateUser(
+            @AuthenticationPrincipal SecurityUser loggedUser,
+            @PathVariable Long userId,
+            @RequestBody @Valid UserDTO userDto
+    ) {
         User updatedUser = userMapper.toEntity(userDto);
         User result = userService.updateUser(userId, updatedUser);
         return userModelAssembler.toModel(result);
@@ -65,7 +77,11 @@ public class UserController {
             @ApiResponse(ref = FORBIDDEN_RESPONSE_REF, responseCode = "403")
     })
     @DeleteMapping("/{userId}")
-    public UserDTO deleteUser(@PathVariable Long userId) {
+    @PreAuthorize("#loggedUser.id == #userId")
+    public UserDTO deleteUser(
+            @AuthenticationPrincipal SecurityUser loggedUser,
+            @PathVariable Long userId
+    ) {
         User result = userService.deleteUser(userId);
         return userMapper.toDto(result);
     }
