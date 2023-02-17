@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { CardContainer, CardContent, CardTitle } from "../styled-components";
 import img from "/img/cafe.jpg";
 const Card = ({ link, name, id }) => {
 	return (
