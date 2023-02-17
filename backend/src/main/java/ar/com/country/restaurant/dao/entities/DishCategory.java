@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "dish_category")
+@Table(name = "dish_categories")
 @Getter
 @Setter
 @AllArgsConstructor
