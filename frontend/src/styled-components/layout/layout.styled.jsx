@@ -4,22 +4,38 @@ import {
 	FlexBoxCenter,
 } from "../reusable/reusable.styled";
 
+export const HeaderStyled = styled.header`
+    position:sticky;
+    inset-block-start:0;
+    inset-inline:0 ;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 35%;
+    block-size: 106px;
+    inline-size: 100%;
+    background-color: var(--background-primary);
+    z-index: 1;
+    a{
+         display: inline-block;
+    }
+`;
+
 export const HeaderSubtitleStyled = styled.header`
-    color: #FFF;
     padding: 1em;
+    font-size:${({ fontSize }) => fontSize || "1rem"};
+    font-weight:${({ fontWeight }) => fontWeight || "bold"};
+    color: #FFF;
     text-align: ${({ textAlign }) => textAlign}; 
+
 `;
 
 //TODO Div responsive abierto a modificar */
 export const Div = styled.div`
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(${({ ancho }) =>
-			ancho || "0px"}, 1fr));
-    margin-top: 5em;
-    padding-bottom: 5em;
-    justify-content: space-around;
-    justify-items: center;
+    ${FlexBoxCenter};
+    flex-wrap: wrap;
     gap: ${({ gap }) => gap || "0px"};
+    margin: ${({ margin }) => margin || "0px"};
 `;
 //TODO Div responsive abierto a modificar */
 export const DivCol = styled.div`
@@ -155,31 +171,6 @@ export const Title = styled.h3`
   
 `;
 
-export const LineStyle = styled.div`
-  color: #FFF;
-  font-size: 18px;
-  font-weight: 300;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 4em;
-  p {
-    flex-shrink: 0;
-  }
-
-  ::before {
-    content: " ";
-    display:block;
-    border: 1px solid #ccc;
-    flex-grow: 2;
-  }
-  ::after {
-    content: " ";
-    display:block;
-    border: 1px solid #ccc;
-    flex-grow: 1;
-  }
-`;
 export const CarListStyled = styled.aside`
 
    position : fixed;
@@ -384,4 +375,162 @@ export const BadgeStar = styled.div`
   align-items: center;
   background: linear-gradient(180deg, #323232 0%, #0B0B0B 100%);
   border-radius: 50px;
+`;
+
+export const ButtonActionStyled = styled.button`
+    position: relative;
+    padding: ${({ padding }) => padding};
+    color: ${({ color }) => color || "none"};
+    background-color: ${({ backgroundColor }) => backgroundColor};
+    ${BackgroundImageButtons};
+    transition: background-color 1s ${({ transition }) => transition};
+    &::before{
+      --size: 20px;
+      position:absolute;
+      inset-block-start: -17%;
+      inset-inline-end: -47%;
+      content: attr(data-length);
+      block-size: var(--size);
+      inline-size: var(--size);
+      line-height: 20px;
+      color: var(--text-primary);
+      border-radius: 50%;
+      background-color: rgba(204, 16, 16, 1);
+    }
+    &:hover{
+      background-color: ${({ backgroundColorHover }) =>
+				backgroundColorHover || "none"};
+    }
+`;
+
+export const NavBarStyled = styled.nav`
+    inline-size: 424px;
+    menu{
+      display: flex;
+      gap: 20px;
+      inline-size: 100%;
+      padding: 0;
+    }
+
+    menu li a{
+
+      color: var(--text-primary);
+      transition: color 1s ease-in-out;
+      &: hover{
+        color: #FFA800;
+      }
+    }
+`;
+
+/* Container del item responsive abierto a que lo modifiquen */
+export const ItemContainerStyled = styled.article`
+
+  block-size: fit-content;
+  inline-size: 365px;
+  border-radius: 20px;
+  padding: 0 25px;
+  background-color: #FFF;
+  color: var(--background-primary);
+  text-align: center;
+
+  header{
+    position: relative;
+    block-size: 178px;
+  }
+
+  h2{
+      margin: 10px;
+      font-size: 28px;
+      font-weight: 500;
+  } 
+
+  footer{
+    block-size: 90px;
+  }
+`;
+export const ItemImgStyled = styled.img`
+    position: absolute;
+    inset-block-start: -25%;
+    inset-inline: 2%;
+    block-size: ${({ blockSize }) => blockSize};
+    inline-size:${({ inlineSize }) => inlineSize};
+    border-radius:${({ borderRadius }) => borderRadius};
+    text-align:center;  
+`;
+
+export const ItemDescription = styled.div`
+    font-size: 12px;
+`;
+export const ItemButtonStyled = styled.button`
+ 
+   width: 289px;
+   height: 55px;
+   font-size: 20px;
+   margin: auto;
+   border-radius: 4px;
+   background-color: var(--button-primary);
+   transition: background-color 1s ease-in-out;
+
+    img {
+        margin-left: .5em;
+    }
+    &:hover{
+      background-color : var(--button-secondary);
+    }
+
+    span {
+        font-weight: 600;
+    }
+`;
+export const ItemPeople = styled.div`
+    font-size: 16px;
+    margin: .5em;
+`;
+export const ItemPrice = styled.div`
+    font-size: 24px;
+    font-weight: 600;
+    margin: .5em;
+`;
+
+export const FooterStyled = styled.footer`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 205px;
+  margin-top: 4rem;
+`;
+
+export const FooterContainerStyled = styled.div`
+      display: inherit;
+      justify-content: space-between;
+      inline-size: 825px;
+      div ul li{
+        display: flex;
+        gap:12px;
+
+        p{
+          margin: 5px 0;
+        }
+      }
+
+    div strong{
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+`;
+
+export const FooterContainerTwo = styled.div`
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    strong{
+      margin-bottom: 34px;
+    } 
+    inline-size: 200px;
+      ul{
+        display: flex;
+        gap:18px;
+      }
 `;

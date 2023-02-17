@@ -1,4 +1,11 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
+import { BackgroundImageButtons } from "../../../styled-components";
+import { FlexBoxCenter } from "./../../../styled-components/reusable/reusable.styled";
+
+export const ButtonCarStyled = styled.button`
+    ${BackgroundImageButtons};
+
+`;
 
 export const SectionStyled = styled.section`
     padding: 5em 3em;
@@ -32,16 +39,11 @@ export const CardContainer = styled.div`
 width: 300px;
 height: 366px;
 background-color: #FFF;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
 border-radius: 20px;
-a {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
 
-}
-img {
-    border-radius: 20px 20px 0 0;
-}
 h1{
     margin: 15px;
     font-size: 1.5rem;
@@ -57,82 +59,6 @@ img{
 `;
 export const CardTitle = styled.div`
     text-align: center;
-`;
-/* Container del item responsive abierto a que lo modifiquen */
-export const ItemContainer = styled.div`
-width: 365px;
-height: fit-content;
-background-color: #FFF;
-border-radius: 20px;
-
-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    transform: translateY(-3em);
-}
-h2{
-    margin: 10px;
-    font-size: 28px;
-}
-button{
-
-}
-`;
-export const ItemImg = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-/* margin: auto; */
-img{
-    border-radius: 30px;
-}
-
-${props => props.circle === 'true' && css`
-    width: 200px;
-    height: 200px;
-  `}
-${props => props.circle === 'false' && css`
-    width: 300px;
-    height: 192px;
-  `}
-`;
-export const ItemDescription = styled.div`
-    font-size: 12px;
-`;
-export const ItemButton = styled.button`
-background-color: var(--button-primary);
-font-family: 'Poppins', sans-serif;
-font-size: 20px;
-width: 289px;
-height: 55px;
-display: flex;
-justify-content: center;
-align-items: center;
-margin: auto;
-border-radius: 4px;
-
-img {
-    margin-left: .5em;
-}
-&:hover{
-    background-color: var(--button-secondary);
-}
-h4 {
-    font-weight: 400;
-}
-`;
-export const ItemPeople = styled.div`
-    font-size: 16px;
-    margin: .5em;
-`;
-export const ItemPrice = styled.div`
-    font-size: 24px;
-    font-weight: 600;
-    margin: .5em;
 `;
 
 /* ------------------------------ COMENTS ITEMS ----------------------------- */
@@ -156,7 +82,6 @@ export const CommentName = styled.p`
     font-weight: 700;
     font-size: 24px;
     line-height: 10px;
-    margin: .7em 0;
 `;
 export const Comment = styled.p`
     font-weight: 400;
@@ -167,4 +92,156 @@ export const CommentDate = styled.span`
     font-weight: 400;
     font-size: 12px;
     line-height: 18px;
+`;
+
+export const LineStyle = styled.div`
+  color: #FFF;
+  font-size: 18px;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4em;
+  p {
+    flex-shrink: 0;
+  }
+
+  ::before {
+    content: " ";
+    display:block;
+    border: 1px solid #ccc;
+    flex-grow: 2;
+  }
+  ::after {
+    content: " ";
+    display:block;
+    border: 1px solid #ccc;
+    flex-grow: 1;
+  }
+`;
+
+export const SearchStyle = styled.form`
+  font-family: 'Poppins';
+  display: flex;
+  justify-content: center;
+  padding-top: 5em;
+  
+  input {
+    color: #ffffff;
+    width: 548px;
+    height: 50px;
+    padding: 0 2em;
+    background: transparent;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 129.5%;
+    border: 1px solid #FFFFFF;
+    border-radius: 4px;
+  }
+  img {
+    position: relative;
+    left: -4em;
+  }
+`;
+
+export const SectionHeroStyled = styled.section`
+
+    block-size: 1092px;
+    border-radius: 0px 0px 100px 100px;
+    ${BackgroundImageButtons};
+    padding-top: 39px;
+
+    h1{
+    font-weight: 200;
+    font-size: 2rem;
+    text-align: center;
+    color: var(--text-primary);
+  }
+`;
+
+export const FormStyled = styled.form`
+    position: relative;
+    block-size: 50px;
+    inline-size: 548px;
+    margin-top: 12px;
+    margin-left : auto;
+    margin-right : auto;
+
+`;
+export const ButtonSearchStyled = styled.button`
+    
+    position: absolute;
+    inset-block-start: 26%;
+    inset-inline-end: 4%;
+    ${BackgroundImageButtons};
+    padding:.7em;
+`;
+
+export const InputStyled = styled.input`
+    padding: 0 1.6em;
+    block-size: 100%;
+    inline-size: 100%;
+    border-radius: 4px;
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    background-color: transparent ;  
+
+    &::placeholder{
+        color: white;
+    }
+`;
+
+export const ParagraphStyled = styled.p`
+    padding: 0 18rem;
+    font-weight:200;
+    line-height: 23px;
+    text-align: center; 
+`;
+
+export const ItemsCommentsStyled = styled.article`
+    position: relative;
+    ${FlexBoxCenter};
+    max-block-size: 177px;
+    inline-size: 620px;
+    padding: 21px 0;
+    border: 1px solid var(--text-primary);
+    border-radius: 4px;
+    gap: 12px;
+
+    header{
+        position: relative;
+        inline-size: 140px;
+        block-size: 199px;
+
+        img{
+            position: absolute;
+            inset-block-start: -3%;
+         }
+    }
+
+
+    div{
+        inline-size: 70%;
+        text-align: left;
+        padding:0 12px;
+        h3{
+            margin: 0;
+        }
+        
+         hr{
+            display: inline-block;
+            inline-size : 94%;
+        }
+        p{
+            margin:0;
+        }
+        span{
+
+            display: inline-block;
+            padding: 10px 0;
+        }
+        
+
+    }
 `;

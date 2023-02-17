@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import { CardContainer, CardTitle } from "../styled-components";
-
-const Card = ({ link, img, name }) => {
+import img from "/img/cafe.jpg";
+const Card = ({ link, name, id }) => {
 	return (
 		<CardContainer>
 			<Link to={link}>

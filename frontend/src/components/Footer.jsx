@@ -1,55 +1,58 @@
 import {
-	facebook,
-	location,
-	logo,
-	phone,
-	twitter,
-	whatsapp,
-} from "../../public/icons";
-import { FooterStyled } from "../styled-components/FooterComponent";
-
+	FooterContainerStyled,
+	FooterContainerTwo,
+	FooterStyled,
+} from "../styled-components";
+import face from "/icons/facebook.svg";
+import location from "/icons/location.svg";
+import logo from "/icons/logo.svg";
+import phone from "/icons/phone.svg";
+import twitter from "/icons/twitter.svg";
+import WhatsApp from "/icons/whatsapp.svg";
 const Footer = () => {
 	return (
 		<FooterStyled>
-			<section>
+			<FooterContainerStyled>
 				<img src={logo} alt="SVG logo image" />
-
 				<div>
-					<h3>Encontranos</h3>
+					<strong>Encontranos</strong>
 					<ul>
 						<li>
 							<img src={location} alt="SVG location image" />
-							Loremipsum00
+							<p>Loremipsum00</p>
 						</li>
 						<li>
 							<img src={location} alt="SVG location image" />
-							Loremipsum00
+							<p>Loremipsum00</p>
 						</li>
 					</ul>
 				</div>
-
 				<div>
-					<h3>Contactos</h3>
+					<strong>Contactos</strong>
 					<ul>
 						<li>
 							<img src={phone} alt="SVG phone image" />
-							000000000
+							<p>000000000</p>
 						</li>
 						<li>
-							<img src={whatsapp} alt="SVG whatsapp image" />
-							01010101010
+							<img src={WhatsApp} alt="SVG whatsapp image" />
+							<p>01010101010</p>
 						</li>
 					</ul>
 				</div>
+			</FooterContainerStyled>
 
-				<div>
-					<h3>Seguinos</h3>
-					<ul>
-						<img src={facebook} alt="SVG facebook image" />
+			<FooterContainerTwo>
+				<strong>Seguinos</strong>
+				<ul>
+					<li>
+						<img src={face} alt="SVG facebook image" />
+					</li>
+					<li>
 						<img src={twitter} alt="SVG twitter image" />
-					</ul>
-				</div>
-			</section>
+					</li>
+				</ul>
+			</FooterContainerTwo>
 		</FooterStyled>
 	);
 };
