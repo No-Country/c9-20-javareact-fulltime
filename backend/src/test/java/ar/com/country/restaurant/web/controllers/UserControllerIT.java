@@ -50,15 +50,15 @@ class UserControllerIT extends AbstractIntegrationTest {
         }
 
         @Test
-        void shouldReturn404_whenUserNotFound() throws Exception {
+        void shouldReturn403_whenRequestAnotherUser() throws Exception {
             doLogin();
-            long noSuchUserId = -50L;
+            long anotherUserId = 2L;
 
             mockMvc.perform(
-                            get("/api/users/" + noSuchUserId)
+                            get("/api/users/" + anotherUserId)
                                     .headers(authHeader())
                     )
-                    .andExpect(status().isNotFound());
+                    .andExpect(status().isForbidden());
         }
 
     }
@@ -130,6 +130,25 @@ class UserControllerIT extends AbstractIntegrationTest {
                     .andExpect(status().isConflict());
         }
 
+        @Test
+        void shouldReturn403_whenTryingToUpdateAnotherUser() throws Exception {
+            doLogin();
+            long anotherUserId = 2L;
+            User updatedUser = User.builder()
+                    .name("Julio")
+                    .email("bobbyfischer@gmail.com")
+                    .role(UserRole.NORMAL)
+                    .build();
+
+            mockMvc.perform(
+                            put("/api/users/" + anotherUserId)
+                                    .contentType(MediaType.APPLICATION_JSON)
+                                    .content(JsonUtils.asJsonString(updatedUser))
+                                    .headers(authHeader())
+                    )
+                    .andExpect(status().isForbidden());
+        }
+
     }
 
     @Nested
@@ -150,15 +169,15 @@ class UserControllerIT extends AbstractIntegrationTest {
         }
 
         @Test
-        void shouldReturn404_whenUserNotFound() throws Exception {
+        void shouldReturn403_whenTryingToDeleteAnotherUser() throws Exception {
             doLogin();
-            long noSuchUserId = -50L;
+            long anotherUserId = 2L;
 
             mockMvc.perform(
-                            delete("/api/users/" + noSuchUserId)
+                            delete("/api/users/" + anotherUserId)
                                     .headers(authHeader())
                     )
-                    .andExpect(status().isNotFound());
+                    .andExpect(status().isForbidden());
         }
 
     }
