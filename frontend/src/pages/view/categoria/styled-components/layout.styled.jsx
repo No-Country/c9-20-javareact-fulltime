@@ -1,5 +1,8 @@
 import styled from "styled-components";
-import { FlexBoxCenter } from "../../../../styled-components";
+import {
+	BackgroundImageButtons,
+	FlexBoxCenter,
+} from "../../../../styled-components";
 export const ItemFoodStyled = styled.article`
     ${FlexBoxCenter}
     gap: 30px;
@@ -31,4 +34,20 @@ export const ItemFoodStyled = styled.article`
 
 export const CategoryStyled = styled.section`
     inline-size: 100%;
+`;
+
+export const CardStyled = styled.article`
+    position: relative;
+    --size: 300px;
+    block-size: var(--size);
+    inline-size: var(--size);
+    border-radius: 20px ;
+    ${BackgroundImageButtons}
+    a{
+        position: absolute;
+        inset-block-end: 0;
+        inset-inline: 0;
+        color:var(--background-primary);
+        text-align: center;
+    }
 `;

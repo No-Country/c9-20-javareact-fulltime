@@ -8,25 +8,48 @@ import cart from "/icons/carWhite.svg";
 const NavBar = ({ items }) => {
 	const dispatch = useDispatch();
 	const car = useSelector((state) => state.cart.items);
-	const activeStyle = {
-		backgroundColor: " #FFA800",
+	let activeStyle = {
+		color: "#FFA800",
 	};
 
 	const handleOpen = () => dispatch(openCart());
 	return (
 		<NavBarStyled>
 			<menu>
-				{items.map((name, index) => (
-					// rome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-					<li key={index}>
-						<NavLink
-							to={name}
-							style={({ isActive }) => (isActive ? activeStyle : undefined)}
-						>
-							{name}
-						</NavLink>
-					</li>
-				))}
+				<li>
+					<NavLink
+						to={"/carta"}
+						style={({ isActive }) => (isActive ? activeStyle : undefined)}
+					>
+						carta
+					</NavLink>
+				</li>
+
+				<li>
+					<NavLink
+						to={"/promociones"}
+						style={({ isActive }) => (isActive ? activeStyle : undefined)}
+					>
+						promociones
+					</NavLink>
+				</li>
+				<li>
+					<NavLink
+						to={"/contacto"}
+						style={({ isActive }) => (isActive ? activeStyle : undefined)}
+					>
+						contacto
+					</NavLink>
+				</li>
+				<li>
+					<NavLink
+						to={"/MiCuenta"}
+						style={({ isActive }) => (isActive ? activeStyle : undefined)}
+					>
+						mi cuenta
+					</NavLink>
+				</li>
+
 				<ButtonAction
 					img={cart}
 					size='cover'

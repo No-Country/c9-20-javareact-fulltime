@@ -1,41 +1,15 @@
 import { Outlet, useParams } from "react-router-dom";
-import { CardList, HeaderSubTitle } from "../../../components";
-import { useGetInfoFoodQuery } from "../../../redux/query/FoodInfo.query";
-import { Div } from "../../../styled-components";
+import { CardList, Footer, Header } from "../../../components";
+import Section from "./components/Section";
 
-import Card from "./../../home/components/Card";
 const Category = () => {
-	const { data: food } = useGetInfoFoodQuery();
 	const { idCategory } = useParams();
-
 	return (
 		<>
+			<Header />
 			<CardList />
-			{!idCategory ? (
-				<>
-					<HeaderSubTitle
-						title=' Conoce nuestra Carta'
-						textAlign='center'
-						level={2}
-					/>
-					<Div gap={"50px"} ancho={"300px"}>
-						{!idCategory && food ? (
-							food.map((item) => (
-								<Card
-									key={item.id}
-									img={item.image}
-									link={item.name}
-									name={item.name}
-								/>
-							))
-						) : (
-							<div>loading...</div>
-						)}
-					</Div>
-				</>
-			) : (
-				<Outlet />
-			)}
+			{!idCategory ? <Section idCategory={idCategory} /> : <Outlet />}
+			<Footer />
 		</>
 	);
 };

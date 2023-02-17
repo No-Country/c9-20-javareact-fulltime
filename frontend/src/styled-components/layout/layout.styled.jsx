@@ -35,6 +35,8 @@ export const Div = styled.div`
     ${FlexBoxCenter};
     flex-wrap: wrap;
     gap: ${({ gap }) => gap || "0px"};
+    block-size: ${({ blockSize }) => blockSize};
+    inline-size: ${({ inlineSize }) => inlineSize};
     margin: ${({ margin }) => margin || "0px"};
 `;
 //TODO Div responsive abierto a modificar */
@@ -419,6 +421,11 @@ export const NavBarStyled = styled.nav`
       &: hover{
         color: #FFA800;
       }
+
+      .isActive{
+        color: rgba(255, 168, 0, 1);
+      }
+
     }
 `;
 
@@ -458,7 +465,7 @@ export const ItemImgStyled = styled.img`
     text-align:center;  
 `;
 
-export const ItemDescription = styled.div`
+export const ItemDescription = styled.p`
     font-size: 12px;
 `;
 export const ItemButtonStyled = styled.button`
@@ -482,11 +489,11 @@ export const ItemButtonStyled = styled.button`
         font-weight: 600;
     }
 `;
-export const ItemPeople = styled.div`
+export const ItemPeople = styled.p`
     font-size: 16px;
     margin: .5em;
 `;
-export const ItemPrice = styled.div`
+export const ItemPrice = styled.p`
     font-size: 24px;
     font-weight: 600;
     margin: .5em;

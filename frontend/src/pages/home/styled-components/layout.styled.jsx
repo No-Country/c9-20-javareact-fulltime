@@ -245,3 +245,32 @@ export const ItemsCommentsStyled = styled.article`
 
     }
 `;
+
+export const CarruselStyled = styled.div`
+    
+    ${FlexBoxCenter};
+    gap: 100px;
+    block-size: 510px;
+    inline-size: 1378px;
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    div{
+
+        display: flex;
+        gap: 110px;
+        transform: translateX(${({ translateX }) => translateX});
+        transition: transform 1s cubic-bezier(.45,.05,.55,.95); 
+    }
+`;
+
+export const ContainerButtonStyled = styled.div`
+    ${FlexBoxCenter};
+    gap: 17px;
+    button{
+
+        padding: .4em .9em;
+        background-color: var(--button-primary);
+    }
+`;
