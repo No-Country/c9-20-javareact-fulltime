@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -40,8 +41,6 @@ public class SecurityConfig {
             "/api/swagger-resources/**",
             "/v3/api-docs/**",
             "/h2-console/**",
-            "/api/dishes/",
-            "/api/dishes/*",
     };
     private final JwtToSecurityUserConverter jwtToUserConverter;
     private final KeyPairProvider keyPairProvider;
@@ -69,6 +68,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeRequests(auth -> auth
                         .antMatchers(AUTH_WHITELIST).permitAll()
+                        .antMatchers(HttpMethod.GET, "/api/dishes/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
