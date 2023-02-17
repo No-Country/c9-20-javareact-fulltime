@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ThxContainer } from './CheckoutStyled.jsx';
 import Loader from "./Loader.jsx";
-
+import img from '/icons/cartYellow.svg'
 const Thanks = () => {
     const [isLoading, setIsLoading] = useState(true);
 
@@ -19,9 +20,13 @@ const Thanks = () => {
                 <div>
                     <h1>Gracias por su compra</h1>
                     <br />
-                    <p>Icono de carrito</p>
+                    <img src={img} alt="Carrito" />
                     <br />
                     <h2>Orden #123RGR231567Y Confirmado</h2>
+                    <Link to={'/'}><button>Seguir Comprando</button></Link>
+                    <Link to={'/'}><button>Salir</button></Link>
+                    
+                    
                 </div>
 
             )}

@@ -24,6 +24,7 @@ export const GlobalStyle = createGlobalStyle`
     body{
         margin: 0;
         font-family: var(--font-family);
+        background-color: var(--background-primary);
     }
 
     button{

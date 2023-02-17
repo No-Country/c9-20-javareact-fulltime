@@ -98,7 +98,20 @@ export const ThxContainer = styled.div`
     margin: 0px;
     background-color: var(--background-primary);
     color: white;
-    h1,p,h2{
-        text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    img{
+        height: 50px;
+        width: 50px;
+    }
+    button{
+        background-color: var(--button-primary);
+        color: black;
+        border-radius: 4px; 
+        height: 50px;
+        width: 70px;
     }
 `;
