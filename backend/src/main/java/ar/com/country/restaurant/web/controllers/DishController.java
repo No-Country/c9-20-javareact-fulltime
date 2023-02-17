@@ -20,6 +20,7 @@ import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.data.web.SortDefault;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -88,6 +89,7 @@ public class DishController {
             @ApiResponse(ref = FORBIDDEN_RESPONSE_REF, responseCode = "403"),
     })
     @PostMapping
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<DishDTO> createDish(@RequestBody @Valid DishDTO dishDto) {
         Dish newDish = dishMapper.toEntity(dishDto);
         Dish result = dishService.createDish(newDish);
@@ -106,6 +108,7 @@ public class DishController {
             @ApiResponse(ref = NOT_FOUND_RESPONSE_REF, responseCode = "404")
     })
     @PutMapping("/{dishId}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public DishDTO updateDish(
             @PathVariable Long dishId,
             @RequestBody @Valid DishDTO dishDto
@@ -125,6 +128,7 @@ public class DishController {
             @ApiResponse(ref = NOT_FOUND_RESPONSE_REF, responseCode = "404")
     })
     @DeleteMapping("/{dishId}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public DishDTO deleteDishById(@PathVariable Long dishId) {
         Dish result = dishService.deleteById(dishId);
         return dishMapper.toDto(result);
