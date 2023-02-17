@@ -1,11 +1,15 @@
 package ar.com.country.restaurant.web.controllers;
 
 import ar.com.country.restaurant.dao.entities.Dish;
+import ar.com.country.restaurant.dao.entities.criteria.DishFilterCriteria;
+import ar.com.country.restaurant.dao.entities.spec.DishSpec;
 import ar.com.country.restaurant.services.DishService;
 import ar.com.country.restaurant.web.dto.DishDTO;
+import ar.com.country.restaurant.web.dto.DishResponseDTO;
 import ar.com.country.restaurant.web.hateoas.assemblers.DishModelAssembler;
 import ar.com.country.restaurant.web.mappers.DishMapper;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -20,6 +24,7 @@ import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.data.web.SortDefault;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -43,10 +48,10 @@ public class DishController {
 
     @Operation(summary = "Returns the dishes that matches with the given query. Fields to match are name and description")
     @ApiResponse(responseCode = "200", description = "OK", content = {
-            @Content(array = @ArraySchema(schema = @Schema(implementation = DishDTO.class)))
+            @Content(array = @ArraySchema(schema = @Schema(implementation = DishResponseDTO.class)))
     })
     @GetMapping("/search")
-    public PagedModel<DishDTO> searchDishesByNameAndDescription(
+    public PagedModel<DishResponseDTO> searchDishesByNameAndDescription(
             @RequestParam String query,
             @PageableDefault Pageable pageable
     ) {
@@ -56,25 +61,32 @@ public class DishController {
 
     @Operation(summary = "Returns the restaurant dishes in a paginated form")
     @ApiResponse(responseCode = "200", description = "OK", content = {
-            @Content(array = @ArraySchema(schema = @Schema(implementation = DishDTO.class)))
+            @Content(array = @ArraySchema(schema = @Schema(implementation = DishResponseDTO.class)))
     })
+    @Parameter(
+            name = "categoryId",
+            description = "Returns the dishes with the specified category",
+            schema = @Schema(type = "long")
+    )
     @GetMapping
-    public PagedModel<DishDTO> getDishes(
+    public PagedModel<DishResponseDTO> getDishes(
+            @RequestParam(required = false) Long categoryId,
             @PageableDefault @SortDefault Pageable pageable
     ) {
-        Page<Dish> result = dishService.getDishes(pageable);
+        DishFilterCriteria filterCriteria = new DishFilterCriteria(categoryId, pageable);
+        Page<Dish> result = dishService.getDishes(filterCriteria);
         return dishPagedResourcesAssembler.toModel(result, dishModelAssembler);
     }
 
     @Operation(summary = "Returns the dish associated with the given ID")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Dish found", content = {
-                    @Content(schema = @Schema(implementation = DishDTO.class))
+                    @Content(schema = @Schema(implementation = DishResponseDTO.class))
             }),
             @ApiResponse(ref = NOT_FOUND_RESPONSE_REF, responseCode = "404")
     })
     @GetMapping("/{dishId}")
-    public DishDTO getDishById(@PathVariable Long dishId) {
+    public DishResponseDTO getDishById(@PathVariable Long dishId) {
         Dish result = dishService.getDishById(dishId);
         return dishModelAssembler.toModel(result);
     }
@@ -82,15 +94,16 @@ public class DishController {
     @Operation(summary = "Creates a dish")
     @ApiResponses({
             @ApiResponse(responseCode = "201", description = "Dish created", content = {
-                    @Content(schema = @Schema(implementation = DishDTO.class))
+                    @Content(schema = @Schema(implementation = DishResponseDTO.class))
             }),
             @ApiResponse(ref = UNAUTHORIZED_RESPONSE_REF, responseCode = "401"),
             @ApiResponse(ref = FORBIDDEN_RESPONSE_REF, responseCode = "403"),
     })
     @PostMapping
-    public ResponseEntity<DishDTO> createDish(@RequestBody @Valid DishDTO dishDto) {
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public ResponseEntity<DishResponseDTO> createDish(@RequestBody @Valid DishDTO dishDto) {
         Dish newDish = dishMapper.toEntity(dishDto);
-        Dish result = dishService.createDish(newDish);
+        Dish result = dishService.createDish(new DishSpec(newDish, dishDto.categoryId()));
         return ResponseEntity
                 .created(URI.create("/api/dishes/" + result.getId()))
                 .body(dishModelAssembler.toModel(result));
@@ -99,35 +112,37 @@ public class DishController {
     @Operation(summary = "Updates the dish with the given payload. All fields must be provided.")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Dish updated", content = {
-                    @Content(schema = @Schema(implementation = DishDTO.class))
+                    @Content(schema = @Schema(implementation = DishResponseDTO.class))
             }),
             @ApiResponse(ref = UNAUTHORIZED_RESPONSE_REF, responseCode = "401"),
             @ApiResponse(ref = FORBIDDEN_RESPONSE_REF, responseCode = "403"),
             @ApiResponse(ref = NOT_FOUND_RESPONSE_REF, responseCode = "404")
     })
     @PutMapping("/{dishId}")
-    public DishDTO updateDish(
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public DishResponseDTO updateDish(
             @PathVariable Long dishId,
             @RequestBody @Valid DishDTO dishDto
     ) {
         Dish dish = dishMapper.toEntity(dishDto);
-        Dish result = dishService.updateDish(dishId, dish);
+        Dish result = dishService.updateDish(dishId, new DishSpec(dish, dishDto.categoryId()));
         return dishModelAssembler.toModel(result);
     }
 
     @Operation(summary = "Deletes a dish with the given ID")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Dish deleted", content = {
-                    @Content(schema = @Schema(implementation = DishDTO.class))
+                    @Content(schema = @Schema(implementation = DishResponseDTO.class))
             }),
             @ApiResponse(ref = UNAUTHORIZED_RESPONSE_REF, responseCode = "401"),
             @ApiResponse(ref = FORBIDDEN_RESPONSE_REF, responseCode = "403"),
             @ApiResponse(ref = NOT_FOUND_RESPONSE_REF, responseCode = "404")
     })
     @DeleteMapping("/{dishId}")
-    public DishDTO deleteDishById(@PathVariable Long dishId) {
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public DishResponseDTO deleteDishById(@PathVariable Long dishId) {
         Dish result = dishService.deleteById(dishId);
-        return dishMapper.toDto(result);
+        return dishMapper.toResponseDto(result);
     }
 
 }

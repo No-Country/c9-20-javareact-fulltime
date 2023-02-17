@@ -9,6 +9,8 @@ public interface DishCategoryService {
 
     List<DishCategory> getAllDishCategories();
 
+    DishCategory getDishCategoryById(Long categoryId);
+
     DishCategory createDishCategory(DishCategory dishCategory);
 
     DishCategory deleteDishCategory(Long id);
