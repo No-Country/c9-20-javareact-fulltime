@@ -39,16 +39,11 @@ export const CardContainer = styled.div`
 width: 300px;
 height: 366px;
 background-color: #FFF;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
 border-radius: 20px;
-a {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
 
-}
-img {
-    border-radius: 20px 20px 0 0;
-}
 h1{
     margin: 15px;
     font-size: 1.5rem;
@@ -65,85 +60,6 @@ img{
 export const CardTitle = styled.div`
     text-align: center;
 `;
-<<<<<<< HEAD
-=======
-/* Container del item responsive abierto a que lo modifiquen */
-export const ItemContainer = styled.div`
-width: 365px;
-height: fit-content;
-background-color: #FFF;
-border-radius: 20px;
-
-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    transform: translateY(-3em);
-}
-h2{
-    margin: 10px;
-    font-size: 28px;
-}
-button{
-
-}
-`;
-export const ItemImg = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-/* margin: auto; */
-img{
-    border-radius: 30px;
-}
-
-${props => props.circle === 'true' && css`
-    width: 200px;
-    height: 200px;
-  `}
-${props => props.circle === 'false' && css`
-    width: 300px;
-    height: 192px;
-  `}
-`;
-export const ItemDescription = styled.div`
-    font-size: 12px;
-`;
-export const ItemButton = styled.button`
-background-color: var(--button-primary);
-font-family: 'Poppins', sans-serif;
-font-size: 20px;
-width: 289px;
-height: 55px;
-display: flex;
-justify-content: center;
-align-items: center;
-margin: auto;
-border-radius: 4px;
-
-img {
-    margin-left: .5em;
-}
-&:hover{
-    background-color: var(--button-secondary);
-}
-h4 {
-    font-weight: 400;
-}
-`;
-export const ItemPeople = styled.div`
-    font-size: 16px;
-    margin: .5em;
-`;
-export const ItemPrice = styled.div`
-    font-size: 24px;
-    font-weight: 600;
-    margin: .5em;
-`;
->>>>>>> 7c7bc5441e552a90d16a60b135447f157f971d0e
 
 /* ------------------------------ COMENTS ITEMS ----------------------------- */
 
@@ -166,7 +82,6 @@ export const CommentName = styled.p`
     font-weight: 700;
     font-size: 24px;
     line-height: 10px;
-    margin: .7em 0;
 `;
 export const Comment = styled.p`
     font-weight: 400;
@@ -280,14 +195,14 @@ export const InputStyled = styled.input`
 export const ParagraphStyled = styled.p`
     padding: 0 18rem;
     font-weight:200;
-    text-align: center;
-
+    line-height: 23px;
+    text-align: center; 
 `;
 
 export const ItemsCommentsStyled = styled.article`
     position: relative;
     ${FlexBoxCenter};
-    max-block-size: 162px;
+    max-block-size: 177px;
     inline-size: 620px;
     padding: 21px 0;
     border: 1px solid var(--text-primary);
@@ -298,6 +213,7 @@ export const ItemsCommentsStyled = styled.article`
         position: relative;
         inline-size: 140px;
         block-size: 199px;
+
         img{
             position: absolute;
             inset-block-start: -3%;
@@ -306,9 +222,9 @@ export const ItemsCommentsStyled = styled.article`
 
 
     div{
-        inline-size: 75%;
-        padding: 5px 17px;
+        inline-size: 70%;
         text-align: left;
+        padding:0 12px;
         h3{
             margin: 0;
         }

@@ -9,6 +9,7 @@ const ButtonAction = ({
 	backgroundColor,
 	transition,
 	backgroundColorHover,
+	dataLength,
 }) => {
 	return (
 		<ButtonActionStyled
@@ -20,6 +21,7 @@ const ButtonAction = ({
 			backgroundColor={backgroundColor}
 			transition={transition}
 			backgroundColorHover={backgroundColorHover}
+			data-length={dataLength}
 		/>
 	);
 };

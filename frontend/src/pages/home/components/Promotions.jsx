@@ -2,7 +2,6 @@ import HeaderSubTitle from "../../../components/HeaderSubTitle";
 import Items from "../../../components/Items";
 import { BadgeStar, Div } from "../../../styled-components";
 import { SectionStyled } from "../styled-components";
-
 import DivisionLine from "./DivisionLine";
 
 const Promotions = () => {
@@ -17,7 +16,7 @@ const Promotions = () => {
 
 				<DivisionLine title={"Platos con descuentos"} />
 
-				<Div gap={"80px"} ancho={"300px"}>
+				<Div gap={"180px"} ancho={"300px"}>
 					<Items
 						title={"Tallarines"}
 						image={platoPasta}

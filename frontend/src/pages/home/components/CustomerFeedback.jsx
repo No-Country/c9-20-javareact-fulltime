@@ -6,6 +6,7 @@ import persona1 from "/assets/persona1.png";
 import persona2 from "/assets/persona2.png";
 import persona3 from "/assets/persona3.png";
 import persona4 from "/assets/persona4.png";
+
 const CustomerFeedback = () => {
 	return (
 		<section>
@@ -23,7 +24,7 @@ const CustomerFeedback = () => {
 				nuestros platos destacados en la ciudad de Buenos Aires.
 			</ParagraphStyled>
 
-			<Div gap='50px'>
+			<Div gap='50px' margin=' 7rem 0 0 0'>
 				<ItemsComments
 					img={persona1}
 					name={"Adriana"}

@@ -32,19 +32,10 @@ export const HeaderSubtitleStyled = styled.header`
 
 //TODO Div responsive abierto a modificar */
 export const Div = styled.div`
-<<<<<<< HEAD
     ${FlexBoxCenter};
     flex-wrap: wrap;
-=======
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(${({ ancho }) =>
-			ancho || "0px"}, 1fr));
-    margin-top: 5em;
-    padding-bottom: 5em;
-    justify-content: space-around;
-    justify-items: center;
->>>>>>> 7c7bc5441e552a90d16a60b135447f157f971d0e
     gap: ${({ gap }) => gap || "0px"};
+    margin: ${({ margin }) => margin || "0px"};
 `;
 //TODO Div responsive abierto a modificar */
 export const DivCol = styled.div`
@@ -387,11 +378,25 @@ export const BadgeStar = styled.div`
 `;
 
 export const ButtonActionStyled = styled.button`
-    ${BackgroundImageButtons};
+    position: relative;
     padding: ${({ padding }) => padding};
     color: ${({ color }) => color || "none"};
     background-color: ${({ backgroundColor }) => backgroundColor};
+    ${BackgroundImageButtons};
     transition: background-color 1s ${({ transition }) => transition};
+    &::before{
+      --size: 20px;
+      position:absolute;
+      inset-block-start: -17%;
+      inset-inline-end: -47%;
+      content: attr(data-length);
+      block-size: var(--size);
+      inline-size: var(--size);
+      line-height: 20px;
+      color: var(--text-primary);
+      border-radius: 50%;
+      background-color: rgba(204, 16, 16, 1);
+    }
     &:hover{
       background-color: ${({ backgroundColorHover }) =>
 				backgroundColorHover || "none"};
@@ -425,6 +430,7 @@ export const ItemContainerStyled = styled.article`
   border-radius: 20px;
   padding: 0 25px;
   background-color: #FFF;
+  color: var(--background-primary);
   text-align: center;
 
   header{
@@ -484,4 +490,47 @@ export const ItemPrice = styled.div`
     font-size: 24px;
     font-weight: 600;
     margin: .5em;
+`;
+
+export const FooterStyled = styled.footer`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 205px;
+  margin-top: 4rem;
+`;
+
+export const FooterContainerStyled = styled.div`
+      display: inherit;
+      justify-content: space-between;
+      inline-size: 825px;
+      div ul li{
+        display: flex;
+        gap:12px;
+
+        p{
+          margin: 5px 0;
+        }
+      }
+
+    div strong{
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+`;
+
+export const FooterContainerTwo = styled.div`
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    strong{
+      margin-bottom: 34px;
+    } 
+    inline-size: 200px;
+      ul{
+        display: flex;
+        gap:18px;
+      }
 `;

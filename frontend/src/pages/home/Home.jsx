@@ -1,8 +1,8 @@
 import { useResolvedPath } from "react-router-dom";
-import { CardList } from "../../components";
-import Header from "../../components/Header";
+import { CardList, Footer, Header } from "../../components";
 import CustomerFeedback from "./components/CustomerFeedback";
 import SectionHero from "./components/SectionHero";
+Header
 const Home = () => {
 	const { pathname } = useResolvedPath();
 
@@ -14,8 +14,7 @@ const Home = () => {
 				<SectionHero />
 				<CustomerFeedback />
 			</main>
-
-			{/* <Footer /> */}
+			<Footer />
 		</>
 	);
 };
