@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DishRepository extends JpaRepository<Dish, Long>, SearchDishRepository {
 
-    @Query("select d from Dish d where d.dishCategory.id = ?1")
+    @Query("select d from Dish d where d.category.id = ?1")
     Page<Dish> findDishesByDishCategoryId(Long dishCategoryId, Pageable pageable);
 
 }
