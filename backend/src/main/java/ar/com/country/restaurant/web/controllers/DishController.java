@@ -1,6 +1,7 @@
 package ar.com.country.restaurant.web.controllers;
 
 import ar.com.country.restaurant.dao.entities.Dish;
+import ar.com.country.restaurant.dao.entities.criteria.DishFilterCriteria;
 import ar.com.country.restaurant.dao.entities.spec.DishSpec;
 import ar.com.country.restaurant.services.DishService;
 import ar.com.country.restaurant.web.dto.DishDTO;
@@ -8,6 +9,7 @@ import ar.com.country.restaurant.web.dto.DishResponseDTO;
 import ar.com.country.restaurant.web.hateoas.assemblers.DishModelAssembler;
 import ar.com.country.restaurant.web.mappers.DishMapper;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -60,11 +62,18 @@ public class DishController {
     @ApiResponse(responseCode = "200", description = "OK", content = {
             @Content(array = @ArraySchema(schema = @Schema(implementation = DishResponseDTO.class)))
     })
+    @Parameter(
+            name = "categoryId",
+            description = "Returns the dishes with the specified category",
+            schema = @Schema(type = "long")
+    )
     @GetMapping
     public PagedModel<DishResponseDTO> getDishes(
+            @RequestParam(required = false) Long categoryId,
             @PageableDefault @SortDefault Pageable pageable
     ) {
-        Page<Dish> result = dishService.getDishes(pageable);
+        DishFilterCriteria filterCriteria = new DishFilterCriteria(categoryId, pageable);
+        Page<Dish> result = dishService.getDishes(filterCriteria);
         return dishPagedResourcesAssembler.toModel(result, dishModelAssembler);
     }
 
