@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface DishCategoryMapper {
 
-    DishCategory toEntity(DishCategoryDTO dishCategoryDTO);
+    DishCategory toEntity(DishCategoryDTO dishCategoryDto);
 
     DishCategoryDTO toDto(DishCategory dishCategory);
 
