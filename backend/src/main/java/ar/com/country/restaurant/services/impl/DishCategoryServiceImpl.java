@@ -14,12 +14,18 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class DishCategoryServiceImpl implements DishCategoryService {
-
-    private DishCategoryRepository dishCategoryRepository;
+    private final DishCategoryRepository dishCategoryRepository;
 
     @Override
     public List<DishCategory> getAllDishCategories() {
         return dishCategoryRepository.findAllDishCategoriesByOrderByNameAsc();
+    }
+
+    @Override
+    public DishCategory getDishCategoryById(Long categoryId) {
+        return dishCategoryRepository
+                .findById(categoryId)
+                .orElseThrow(() -> new DishCategoryNotFoundException(categoryId));
     }
 
     @Override
@@ -44,10 +50,11 @@ public class DishCategoryServiceImpl implements DishCategoryService {
         dishCategoryRepository.findById(id).orElseThrow(() -> new DishCategoryNotFoundException());
     }
 
-   private void ensureUniqueDishCategoryName(String name){
+    private void ensureUniqueDishCategoryName(String name) {
         boolean nameAlreadyExists = dishCategoryRepository.existsByName(name);
         if (nameAlreadyExists) {
             throw new DishCategoryNameAlreadyExistsException(name);
         }
     }
+
 }
