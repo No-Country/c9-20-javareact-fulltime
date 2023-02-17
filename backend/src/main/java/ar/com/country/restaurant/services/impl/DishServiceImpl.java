@@ -1,8 +1,11 @@
 package ar.com.country.restaurant.services.impl;
 
 import ar.com.country.restaurant.dao.entities.Dish;
+import ar.com.country.restaurant.dao.entities.DishCategory;
+import ar.com.country.restaurant.dao.entities.spec.DishSpec;
 import ar.com.country.restaurant.exceptions.DishNotFoundException;
 import ar.com.country.restaurant.repositories.DishRepository;
+import ar.com.country.restaurant.services.DishCategoryService;
 import ar.com.country.restaurant.services.DishService;
 import ar.com.country.restaurant.util.BeanUtils;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class DishServiceImpl implements DishService {
+    private final DishCategoryService dishCategoryService;
     private final DishRepository dishRepository;
 
     @Override
@@ -33,15 +37,20 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
-    public Dish createDish(Dish dish) {
-        return dishRepository.save(dish);
+    public Dish createDish(DishSpec dishSpec) {
+        Dish newDish = dishSpec.dish();
+        DishCategory dishCategory = dishCategoryService.getDishCategoryById(dishSpec.categoryId());
+        newDish.setCategory(dishCategory);
+        return dishRepository.save(newDish);
     }
 
     @Override
-    public Dish updateDish(Long dishId, Dish updatedDish) {
-        Dish oldDish = getDishById(dishId);
-        BeanUtils.copyProperties(updatedDish, oldDish);
-        return dishRepository.save(oldDish);
+    public Dish updateDish(Long dishId, DishSpec dishSpec) {
+        Dish dishToUpdate = getDishById(dishId);
+        BeanUtils.copyProperties(dishSpec.dish(), dishToUpdate);
+        DishCategory dishCategory = dishCategoryService.getDishCategoryById(dishSpec.categoryId());
+        dishToUpdate.setCategory(dishCategory);
+        return dishRepository.save(dishToUpdate);
     }
 
     @Override
