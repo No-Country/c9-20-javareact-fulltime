@@ -2,6 +2,7 @@ package ar.com.country.restaurant.services;
 
 import ar.com.country.restaurant.dao.entities.Dish;
 import ar.com.country.restaurant.dao.entities.criteria.DishFilterCriteria;
+import ar.com.country.restaurant.dao.entities.spec.DishSpec;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -13,9 +14,9 @@ public interface DishService {
 
     Dish getDishById(Long id);
 
-    Dish createDish(Dish dish);
+    Dish createDish(DishSpec dishSpec);
 
-    Dish updateDish(Long dishId, Dish dish);
+    Dish updateDish(Long dishId, DishSpec dishSpec);
 
     Dish deleteById(Long dishId);
 
