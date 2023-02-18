@@ -11,11 +11,11 @@ const useListFood = (namePath) => {
 			const response = food
 				.filter((items) => items.name === namePath)
 				.map((items) => items.list);
+
 			setList(...response);
 			setIsLoading(true);
 		}
 	}, []);
-
 	return {
 		list,
 		isLoading,

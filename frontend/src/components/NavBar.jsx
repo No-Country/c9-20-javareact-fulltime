@@ -18,10 +18,10 @@ const NavBar = ({ items }) => {
 			<menu>
 				<li>
 					<NavLink
-						to={"/carta"}
+						to={"/categoria"}
 						style={({ isActive }) => (isActive ? activeStyle : undefined)}
 					>
-						carta
+						categoria
 					</NavLink>
 				</li>
 

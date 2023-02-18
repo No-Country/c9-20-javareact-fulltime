@@ -3,7 +3,7 @@ import {
 	BackgroundImageButtons,
 	FlexBoxCenter,
 } from "../../../../styled-components";
-export const ItemFoodStyled = styled.article`
+/* export const ItemFoodStyled = styled.article`
     ${FlexBoxCenter}
     gap: 30px;
     block-size: 197px;
@@ -31,7 +31,7 @@ export const ItemFoodStyled = styled.article`
     }
 
 `;
-
+ */
 export const CategoryStyled = styled.section`
     inline-size: 100%;
 `;
@@ -41,13 +41,61 @@ export const CardStyled = styled.article`
     --size: 300px;
     block-size: var(--size);
     inline-size: var(--size);
-    border-radius: 20px ;
-    ${BackgroundImageButtons}
     a{
         position: absolute;
         inset-block-end: 0;
         inset-inline: 0;
-        color:var(--background-primary);
+        block-size: 100%;
+        border-radius: 20px ;
         text-align: center;
+        color:var(--background-primary);
+        ${BackgroundImageButtons};
+        h2{
+            position: absolute;
+            inset-block-end: 2%;
+            inset-inline: 12%;
+        }        
     }
+`;
+
+export const ItemsCategoryStyled = styled.section`
+
+  ${BackgroundImageButtons};
+ 
+  
+`;
+
+export const ItemFoodStyled = styled.article`
+    ${FlexBoxCenter};
+    flex-direction: column;
+    block-size: 457px;
+    inline-size: 365px;
+    border-radius: 20px;
+    color: var(--background-primary);
+    background-color: var(--text-primary);
+
+    header{
+        position: relative;
+        block-size: 30px;
+        inline-size: 100%;
+    }
+
+    h2{
+        font-weight: 400;
+    }
+
+    a{  
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: .8em 2em;
+        border-radius: 4px;
+        background-color: var(--button-primary);
+        transition: background-color 1s ease-out;
+        &:hover{
+            background-color: var(--button-secondary);
+        }
+    }
+
 `;

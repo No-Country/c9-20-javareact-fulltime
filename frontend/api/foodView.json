@@ -3,12 +3,12 @@
     {
       "id": 1,
       "name": "pastas",
-      "image": "pastas.jpg",
       "list": [
         {
           "id": 1,
           "nameFood": "Ñoquis",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 840,
           "promotions": false,
           "delay": "15 a 20 min de demora",
@@ -17,7 +17,8 @@
         {
           "id": 2,
           "nameFood": "Tallarines",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+          "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 740,
           "delay": "20 a 30 min de demora",
           "promotions": false,
@@ -26,7 +27,8 @@
         {
           "id": 3,
           "nameFood": "Ñoquis",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+          "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 840,
           "delay": "15 a 20 min de demora",
           "promotions": false,
@@ -35,7 +37,8 @@
         {
           "id": 4,
           "nameFood": "Tallarines",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+          "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 840,
           "delay": "10 a 40 min de demora",
           "promotions": true,
@@ -44,7 +47,8 @@
         {
           "id": 5,
           "nameFood": "Ñoquis",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 740,
           "delay": "15 a 20 min de demora",
           "promotions": false,
@@ -53,7 +57,8 @@
         {
           "id": 6,
           "nameFood": "Tallarines",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 840,
           "delay": "15 a 20 min de demora",
           "promotions": true,
@@ -69,7 +74,8 @@
         {
           "id": 1,
           "nameFood": "Torta",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 840,
           "promotions": false,
           "delay": "15 a 20 min de demora",
@@ -78,7 +84,8 @@
         {
           "id": 2,
           "nameFood": "Dulce de leche xd",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 740,
           "delay": "20 a 30 min de demora",
           "promotions": false,
@@ -87,7 +94,8 @@
         {
           "id": 3,
           "nameFood": "Ñoquis",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 840,
           "delay": "15 a 20 min de demora",
           "promotions": false,
@@ -96,7 +104,8 @@
         {
           "id": 4,
           "nameFood": "Tallarines",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 840,
           "delay": "10 a 40 min de demora",
           "promotions": true,
@@ -105,7 +114,8 @@
         {
           "id": 5,
           "nameFood": "Ñoquis",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 740,
           "delay": "15 a 20 min de demora",
           "promotions": false,
@@ -114,7 +124,8 @@
         {
           "id": 6,
           "nameFood": "Tallarines",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 840,
           "delay": "15 a 20 min de demora",
           "promotions": true,
@@ -130,7 +141,8 @@
         {
           "id": 1,
           "nameFood": "Ñoquis",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 840,
           "promotions": false,
           "delay": "15 a 20 min de demora",
@@ -139,7 +151,8 @@
         {
           "id": 2,
           "nameFood": "Tallarines",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 740,
           "delay": "20 a 30 min de demora",
           "promotions": false,
@@ -148,7 +161,8 @@
         {
           "id": 3,
           "nameFood": "Ñoquis",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 840,
           "delay": "15 a 20 min de demora",
           "promotions": false,
@@ -157,7 +171,8 @@
         {
           "id": 4,
           "nameFood": "Tallarines",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 840,
           "delay": "10 a 40 min de demora",
           "promotions": true,
@@ -166,7 +181,8 @@
         {
           "id": 5,
           "nameFood": "Ñoquis",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 740,
           "delay": "15 a 20 min de demora",
           "promotions": false,
@@ -175,7 +191,8 @@
         {
           "id": 6,
           "nameFood": "Tallarines",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 840,
           "delay": "15 a 20 min de demora",
           "promotions": true,
@@ -186,12 +203,13 @@
     {
       "id": 4,
       "name": "Cafeteria",
-      "image": "cafe.jpg",
+      
       "list": [
         {
           "id": 1,
           "nameFood": "Ñoquis",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 840,
           "promotions": false,
           "delay": "15 a 20 min de demora",
@@ -200,7 +218,8 @@
         {
           "id": 2,
           "nameFood": "Tallarines",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 740,
           "delay": "20 a 30 min de demora",
           "promotions": false,
@@ -209,7 +228,8 @@
         {
           "id": 3,
           "nameFood": "Ñoquis",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 840,
           "delay": "15 a 20 min de demora",
           "promotions": false,
@@ -218,7 +238,8 @@
         {
           "id": 4,
           "nameFood": "Tallarines",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 840,
           "delay": "10 a 40 min de demora",
           "promotions": true,
@@ -227,7 +248,8 @@
         {
           "id": 5,
           "nameFood": "Ñoquis",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 740,
           "delay": "15 a 20 min de demora",
           "promotions": false,
@@ -236,7 +258,8 @@
         {
           "id": 6,
           "nameFood": "Tallarines",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 840,
           "delay": "15 a 20 min de demora",
           "promotions": true,
@@ -247,12 +270,13 @@
     {
       "id": 5,
       "name": "Saludable",
-      "image": "saludable.jpg",
+
       "list": [
         {
           "id": 1,
           "nameFood": "Ñoquis",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 840,
           "promotions": false,
           "delay": "15 a 20 min de demora",
@@ -261,7 +285,8 @@
         {
           "id": 2,
           "nameFood": "Tallarines",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 740,
           "delay": "20 a 30 min de demora",
           "promotions": false,
@@ -270,7 +295,8 @@
         {
           "id": 3,
           "nameFood": "Ñoquis",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 840,
           "delay": "15 a 20 min de demora",
           "promotions": false,
@@ -279,7 +305,8 @@
         {
           "id": 4,
           "nameFood": "Tallarines",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 840,
           "delay": "10 a 40 min de demora",
           "promotions": true,
@@ -288,7 +315,8 @@
         {
           "id": 5,
           "nameFood": "Ñoquis",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 740,
           "delay": "15 a 20 min de demora",
           "promotions": false,
@@ -297,7 +325,8 @@
         {
           "id": 6,
           "nameFood": "Tallarines",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 840,
           "delay": "15 a 20 min de demora",
           "promotions": true,
@@ -308,12 +337,13 @@
     {
       "id": 6,
       "name": "Pizzas",
-      "image": "pizza.jpg",
+      
       "list": [
         {
           "id": 1,
           "nameFood": "Ñoquis",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 840,
           "promotions": false,
           "delay": "15 a 20 min de demora",
@@ -322,7 +352,8 @@
         {
           "id": 2,
           "nameFood": "Tallarines",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 740,
           "delay": "20 a 30 min de demora",
           "promotions": false,
@@ -331,7 +362,8 @@
         {
           "id": 3,
           "nameFood": "Ñoquis",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 840,
           "delay": "15 a 20 min de demora",
           "promotions": false,
@@ -340,7 +372,8 @@
         {
           "id": 4,
           "nameFood": "Tallarines",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 840,
           "delay": "10 a 40 min de demora",
           "promotions": true,
@@ -349,7 +382,8 @@
         {
           "id": 5,
           "nameFood": "Ñoquis",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 740,
           "delay": "15 a 20 min de demora",
           "promotions": false,
@@ -358,7 +392,8 @@
         {
           "id": 6,
           "nameFood": "Tallarines",
-          "description": "La pizza Margarita o Margherita es una receta típica napolitana elaborada con tomate, mozzarella (tradicionalmente se usa el Fior di latte)",
+         "description": "Tomate cherry, albahaca y aceitunas negras.",
+          "portion": "1 porción",
           "price": 840,
           "delay": "15 a 20 min de demora",
           "promotions": true,
@@ -408,7 +443,7 @@
       "id": 6514,
       "nameCategory": "postres",
       "idFood": "2",
-      "nameUser": "Usuario X",
+      "nameUser": "Usuario   X",
       "qualification": 5,
       "comment": "QUE RICO",
       "date": "15 de Febrero 2023  13:58Hs "

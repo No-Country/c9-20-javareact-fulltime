@@ -1,17 +1,8 @@
 import { Link, Outlet, useParams } from "react-router-dom";
-// import { HeaderSubTitle, HeroImage } from "../../../../components";
-// import { ItemFoodStyled } from "../styled-components/layout.styled";
-// import plato from "/img/platoPasta2.png";
-import { cart } from "../../../../../public/icons"
-import {
-	ItemButton,
-	ItemContainer,
-	ItemDescription,
-	ItemImg,
-	ItemPeople,
-	ItemPrice,
-} from "../../../home/styled-components";
-
+import { ItemFoodStyled } from "../styled-components/layout.styled";
+import Star from "./Star";
+import cart from "/icons/cart.svg";
+import plato from "/img/platoPastaDemo.jpg";
 const ItemFood = ({
 	description,
 	price,
@@ -20,45 +11,28 @@ const ItemFood = ({
 	portion,
 	id,
 	onClick,
-	children }) => {
+	children,
+}) => {
 	const { namePath } = useParams();
 
 	return (
 		<>
 			{!namePath ? (
-				// <ItemFoodStyled>
-				// 	<Link to={`/categoria/${nameFood}/${id}`}>
-				// 		<HeroImage
-				// 			img={plato}
-				// 			alt='comida'
-				// 			blockSize="196px"
-				// 			inlineSize='100%'
-				// 		/>
-				// 		<div>
-				// 			<HeaderSubTitle title={name} textAlign='left' level={3} />
-				// 			<p>{description}</p>
-				// 			<footer>${price}</footer>
-				// 		</div>
-				// 	</Link>
-				// </ItemFoodStyled>
-				<ItemContainer>
-					<section>
-						<ItemImg>
-							<img src={image} alt="image" />
-							{children}
-						</ItemImg>
-						<h2>{nameFood}</h2>
-						<ItemDescription>{description}</ItemDescription>
-						<ItemPeople>{portion} porciones</ItemPeople>
-						<ItemPrice>${price}</ItemPrice>
-						<Link to={`${id}`}>
-							<ItemButton onClick={onClick}>
-								<h4>Agregar al Carrito</h4>
-								<img src={cart} alt="image-cart" />
-							</ItemButton>
-						</Link>
-					</section>
-				</ItemContainer>
+				<ItemFoodStyled>
+					<header>
+						<img src={plato} alt="image" />
+						<Star />
+					</header>
+					<h2>{nameFood}</h2>
+					<p>{description}</p>
+					<p>{portion} porciones</p>
+					<p>${price}</p>
+
+					<Link to={`${id}`}>
+						<strong>Agregar al Carrito</strong>
+						<img src={cart} alt="image-cart" />
+					</Link>
+				</ItemFoodStyled>
 			) : (
 				<Outlet />
 			)}

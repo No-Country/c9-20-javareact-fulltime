@@ -35,7 +35,7 @@ export const Div = styled.div`
     ${FlexBoxCenter};
     flex-wrap: wrap;
     gap: ${({ gap }) => gap || "0px"};
-    block-size: ${({ blockSize }) => blockSize};
+    min-block-size: ${({ blockSize }) => blockSize};
     inline-size: ${({ inlineSize }) => inlineSize};
     margin: ${({ margin }) => margin || "0px"};
 `;
@@ -406,7 +406,7 @@ export const ButtonActionStyled = styled.button`
 `;
 
 export const NavBarStyled = styled.nav`
-    inline-size: 424px;
+    min-inline-size: 464px;
     menu{
       display: flex;
       gap: 20px;

@@ -3,6 +3,8 @@ import Checkout from "../pages/Checkout/Checkout";
 import Signup from "../pages/auth/Signup/Signup";
 import Login from "../pages/auth/login/Login";
 import MyAccount from "../pages/home/components/MyAccount";
+import ItemsCategory from "../pages/view/categoria/components/ItemsCategory";
+import ViewOfThePlate from "../pages/view/viewoftheplate/ViewOfThePlate";
 import Home from "./../pages/home/Home";
 import Contact from "./../pages/home/components/Contact";
 import Promotions from "./../pages/home/components/Promotions";
@@ -13,8 +15,20 @@ export const router = createBrowserRouter([
 		element: <Home />,
 	},
 	{
-		path: "/carta",
+		path: "/categoria",
 		element: <Category />,
+		children: [
+			{
+				path: "/categoria/:idCategory",
+				element: <ItemsCategory />,
+				children: [
+					{
+						path: "/categoria/:idCategory/:idFood",
+						element: <ViewOfThePlate />,
+					},
+				],
+			},
+		],
 	},
 
 	{
