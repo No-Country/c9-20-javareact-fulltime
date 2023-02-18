@@ -10,18 +10,19 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 import java.util.Collections;
+import java.util.List;
 
 @Configuration
 public class CorsConfig {
-    @Value("${frontend.url:http://localhost:3000}")
-    private String frontendDevUrl;
+    @Value("#{'${frontend.dev.urls:http://localhost:3000}'.split(',')}")
+    private List<String> frontendDevUrls;
 
     @Bean
     public FilterRegistrationBean<CorsFilter> simpleCorsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.setAllowedOrigins(Collections.singletonList(frontendDevUrl));
+        config.setAllowedOrigins(frontendDevUrls);
         config.setAllowedMethods(Collections.singletonList("*"));
         config.setAllowedHeaders(Collections.singletonList("*"));
         source.registerCorsConfiguration("/**", config);
