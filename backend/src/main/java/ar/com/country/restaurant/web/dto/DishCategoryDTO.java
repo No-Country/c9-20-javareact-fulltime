@@ -1,6 +1,7 @@
 package ar.com.country.restaurant.web.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.hateoas.Link;
 
 import javax.validation.constraints.NotBlank;
 
