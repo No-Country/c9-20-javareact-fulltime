@@ -9,6 +9,9 @@ public record DishCategoryDTO(
         Long id,
 
         @NotBlank
+        String imgUrl,
+
+        @NotBlank
         String name
 ) {
 }
