@@ -3,7 +3,6 @@ package ar.com.country.restaurant.web.controllers;
 import ar.com.country.restaurant.dao.entities.DishCategory;
 import ar.com.country.restaurant.services.DishCategoryService;
 import ar.com.country.restaurant.web.dto.DishCategoryDTO;
-import ar.com.country.restaurant.web.dto.DishCategoryResponseDTO;
 import ar.com.country.restaurant.web.hateoas.assemblers.DishCategoryModelAssembler;
 import ar.com.country.restaurant.web.mappers.DishCategoryMapper;
 import io.swagger.v3.oas.annotations.Operation;
@@ -45,7 +44,7 @@ public class DishCategoryController {
             @Content(array = @ArraySchema(schema = @Schema(implementation = DishCategoryDTO.class)))
     })
     @GetMapping
-    public CollectionModel<DishCategoryResponseDTO> getAllDishCategories() {
+    public CollectionModel<DishCategoryDTO> getAllDishCategories() {
         List<DishCategory> dishCategories = dishCategoryService.getDishCategories();
         return dishCategoryModelAssembler.toCollectionModel(dishCategories);
     }
@@ -59,8 +58,8 @@ public class DishCategoryController {
     })
     @GetMapping("/{categoryId}")
     public DishCategoryDTO getDishCategoryById(@PathVariable Long categoryId) {
-        DishCategory result = dishCategoryService.getDishCategoryById(categoryId);
-        return dishCategoryMapper.toDto(result);
+        DishCategory dishCategory = dishCategoryService.getDishCategoryById(categoryId);
+        return dishCategoryModelAssembler.toModel(dishCategory);
     }
 
     @Operation(summary = "Creates a new dish category")
@@ -73,11 +72,10 @@ public class DishCategoryController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<DishCategoryDTO> createDishCategory(@RequestBody @Valid DishCategoryDTO dishCategoryDto) {
-        DishCategory newDishCategory = dishCategoryMapper.toEntity(dishCategoryDto);
-        DishCategory result = dishCategoryService.createDishCategory(newDishCategory);
-        return ResponseEntity
-                .created(URI.create("/api/categories/" + result.getId()))
-                .body(dishCategoryMapper.toDto(result));
+        DishCategory dishCategory = dishCategoryMapper.toEntity(dishCategoryDto);
+        DishCategory result = dishCategoryService.createDishCategory(dishCategory);
+        DishCategoryDTO resultDto = dishCategoryModelAssembler.toModel(result);
+        return ResponseEntity.created(URI.create(resultDto.getRequiredLink("self").getHref())).body(resultDto);
     }
 
     @Operation(summary = "Updates a dish category")
@@ -93,9 +91,9 @@ public class DishCategoryController {
             @PathVariable Long categoryId,
             @RequestBody DishCategoryDTO dishCategoryDto
     ) {
-        DishCategory updatedDishCategory = dishCategoryMapper.toEntity(dishCategoryDto);
-        DishCategory result = dishCategoryService.updateDishCategory(categoryId, updatedDishCategory);
-        return dishCategoryMapper.toDto(result);
+        DishCategory dishCategory = dishCategoryMapper.toEntity(dishCategoryDto);
+        DishCategory result = dishCategoryService.updateDishCategory(categoryId, dishCategory);
+        return dishCategoryModelAssembler.toModel(result);
     }
 
     @Operation(summary = "Deletes a dish category by id")
