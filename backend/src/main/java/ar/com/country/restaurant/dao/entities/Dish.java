@@ -6,6 +6,8 @@ import org.hibernate.search.mapper.pojo.mapping.definition.annotation.Indexed;
 
 import javax.persistence.*;
 
+import static java.util.Objects.nonNull;
+
 @Entity
 @Table(name = "dishes")
 @AllArgsConstructor
@@ -27,8 +29,8 @@ public class Dish {
     @FullTextField(analyzer = "spanish")
     private String description;
 
-    @Column
-    private String image;
+    @Embedded
+    private DishImage image;
 
     @Column(nullable = false)
     private Double price;
@@ -39,4 +41,9 @@ public class Dish {
 
     @OneToOne(fetch = FetchType.LAZY)
     private Promotion promotion;
+
+    public boolean hasImage() {
+        return nonNull(image) && image.isValidImage();
+    }
+
 }
