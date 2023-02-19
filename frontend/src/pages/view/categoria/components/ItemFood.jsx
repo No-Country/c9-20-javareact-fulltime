@@ -21,12 +21,12 @@ const ItemFood = ({
 				<ItemFoodStyled>
 					<header>
 						<img src={plato} alt="image" />
-						<Star />
 					</header>
+					<Star />
 					<h2>{nameFood}</h2>
-					<p>{description}</p>
+					<b>{description}</b>
 					<p>{portion} porciones</p>
-					<p>${price}</p>
+					<strong>${price}</strong>
 
 					<Link to={`${id}`}>
 						<strong>Agregar al Carrito</strong>

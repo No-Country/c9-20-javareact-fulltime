@@ -57,6 +57,7 @@ const NavBar = ({ items }) => {
 					onClick={handleOpen}
 					padding={"1em"}
 					dataLength={car.length}
+					opacity={car.length === 0}
 				/>
 			</menu>
 		</NavBarStyled>

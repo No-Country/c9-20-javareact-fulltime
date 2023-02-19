@@ -38,6 +38,7 @@ export const Div = styled.div`
     min-block-size: ${({ blockSize }) => blockSize};
     inline-size: ${({ inlineSize }) => inlineSize};
     margin: ${({ margin }) => margin || "0px"};
+    padding:${({ padding }) => padding || "0px"};
 `;
 //TODO Div responsive abierto a modificar */
 export const DivCol = styled.div`
@@ -386,6 +387,7 @@ export const ButtonActionStyled = styled.button`
     background-color: ${({ backgroundColor }) => backgroundColor};
     ${BackgroundImageButtons};
     transition: background-color 1s ${({ transition }) => transition};
+
     &::before{
       --size: 20px;
       position:absolute;
@@ -398,6 +400,8 @@ export const ButtonActionStyled = styled.button`
       color: var(--text-primary);
       border-radius: 50%;
       background-color: rgba(204, 16, 16, 1);
+      opacity: ${({ opacity }) => (opacity ? "visible" : "hidden")};
+      transition: opacity 1s ease-in-out;
     }
     &:hover{
       background-color: ${({ backgroundColorHover }) =>

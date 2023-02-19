@@ -68,21 +68,43 @@ export const ItemsCategoryStyled = styled.section`
 export const ItemFoodStyled = styled.article`
     ${FlexBoxCenter};
     flex-direction: column;
-    block-size: 457px;
+    min-block-size: 457px;
     inline-size: 365px;
+    padding: 20px 0;
     border-radius: 20px;
+    text-align: center;
     color: var(--background-primary);
     background-color: var(--text-primary);
 
     header{
         position: relative;
-        block-size: 30px;
+        min-block-size: 137px;
         inline-size: 100%;
+        img{
+            position: absolute;
+            inset-block-start: -80%;
+            inset-inline: 16%;
+        }
     }
 
     h2{
-        font-weight: 400;
+        font-weight: 500;
     }
+    
+    b{
+        font-size: 12px;
+
+    }
+
+    p{  
+        font-size: 12px;
+        text-align: center;
+        & + strong {
+            margin-bottom: 12px;
+            font-size: 24px;
+        }
+    }
+    
 
     a{  
         display: inline-flex;
