@@ -20,10 +20,10 @@ Para desarrollo, es suficiente con ejecutar lo siguiente:
 mvn -pl backend spring-boot:run -Dspring-boot.run.profiles=dev
 ```
 
-El backend está configurado para retornar el header `Access-Control-Allow-Origin: *` para el
-origin `http://localhost:5173`
+> El backend está configurado para retornar el header `Access-Control-Allow-Origin: *` para el
+> origin `http://localhost:5173`
 
-Para correr los tests, debe ejecutarse el siguiente comando en la raíz del proyecto:
+Para correr los **tests**, debe ejecutarse el siguiente comando en la raíz del proyecto:
 
 ```
 mvn clean test failsafe:integration-test failsafe:verify -pl backend
@@ -53,10 +53,22 @@ mvn clean test failsafe:integration-test failsafe:verify -pl backend
 - Como **usuario no autenticado**, quiero conocer los platillos más relevantes
   dentro del sistema para degustar y posteriormente otorgar una calificación.
 
+- Como **usuario no autenticado**, quiero conocer las promociones vigentes del restaurante para animarme a
+  comprar algún platillo o probar uno nuevo.
+
+- Como **usuario no autenticado**, quiero conocer calificaciones y comentarios con respecto a un platillo en particular
+  para conocer que es lo que piensan otros clientes con relación al platillo.
+
 - Como **usuario no autenticado**, quiero poder iniciar sesión dentro del
   sistema para darme de alta y modificar mis datos generales y bancarios.
 
 ### Usuario autenticado
+
+- Como **usuario autenticado**, quiero poder registrar en el sistema mis direcciones domiciliarias para que no tenga que
+  introducir dicha información cada vez que quiera utilizar el servicio a domicilio del restaurante.
+
+- Como **usuario autenticado**, quiero poder registrar en el sistema mis métodos de pago para que no tenga que
+  introducir dicha información cada vez que quiera realizar una compra.
 
 - Como **usuario autenticado**, quiero ingresar al sistema para visualizar y
   consultar la búsqueda de mis platillos para agregar elementos al carrito de
@@ -64,6 +76,9 @@ mvn clean test failsafe:integration-test failsafe:verify -pl backend
 
 - Como **usuario autenticado**, quiero consultar mi selección de alimentos para
   poder generar mi método de pago y ticket de compra.
+
+- Como **usuario autenticado**, quiero calificar y comentar mis opiniones sobre un platillo en particular para que
+  futuros clientes tengan una mejora idea de lo que están por comprar.
 
 - Como **usuario autenticado**, quiero dejar sugerencias o quejas del servicio
   para mejorar mi experiencia y la de futuros clientes con el restaurante.
@@ -78,7 +93,7 @@ mvn clean test failsafe:integration-test failsafe:verify -pl backend
   generados a través de las ventas.
 
 - Como **usuario administrador**, quiero acceder al sistema y generar altas o
-  bajas de los recursos para tener actualizado el menú electrónico del sistema.
+  bajas de los platillos para tener actualizado el menú electrónico del sistema.
 
 - Como **usuario administrador**, quiero acceder al sistema y conocer a mis
   clientes más frecuentes para notificarles de las promociones a los que son
@@ -152,6 +167,7 @@ Las principales funcionalidades del sistema son las siguientes:
 - Visualización de las promociones del restaurante.
 - Carrito de compras.
 - Compra de platillos utilizando medios electrónicos de pago.
+- Gestión de entrega de ventas a domicilio.
 - Búsqueda facetada de platillos.
 - Gestión de los platillos del restaurante.
 - Autenticación de usuarios.
@@ -164,10 +180,10 @@ a su tipo:
 
 ##### Usuario no autenticado
 
-- Visualización de los platillos.
+- Visualización de los platillos por categorías.
 - Visualización de las promociones del restaurante.
 - Búsquedas de platillos.
-- Ver las calificaciones de un platillo.
+- Ver las calificaciones y comentarios de un platillo.
 
 ##### Usuario autenticado
 
@@ -175,9 +191,11 @@ Este tipo de usuario tendrá acceso a las funcionalidades disponibles para
 *Usuario no autenticado* y también tendrá acceso a las siguientes
 funcionalidades:
 
+- Gestionar direcciones domiciliarias.
+- Gestionar métodos de pago.
 - Acceso al carrito de compras (guardar platillos).
 - Compra de platillos utilizando medios electrónicos de pago.
-- Calificar platillos.
+- Calificar y comentar opiniones sobre platillos.
 
 ##### Usuario administrador
 
@@ -196,43 +214,78 @@ A continuación se presenta la lista de requerimientos funcionales del sistema.
 Los requerimientos se encuentran separados por “Paquetes de funcionalidad” (PF)
 para ayudar a mantener un orden y mejorar la lectura.
 
-##### PF-1 Visualización de platillos
+#### PF-1 Presentación del restaurante
 
-- El sistema permitirá visualizar las siguientes características de un
-  platillo:
+- El sistema deberá contar con una página principal en la que se muestre la siguiente información:
+
+    - Barra de navegación.
+    - Caja de búsqueda de platillos.
+    - Platillos destacados de la semana.
+    - Testimonios relevantes de algunos clientes con respecto al restaurante.
+    - Un pie de página con información de contacto del restaurante.
+
+##### PF-2 Visualización de categorías
+
+- El sistema deberá contar con una sección en la que se pueda visualizar las diferentes categorías de platillos:
+
+    - Nombre de la categoría.
+    - Imagen representativa.
+
+#### PF-3 Promociones de platillos
+
+- El sistema deberá contar con una sección en la que se puedan visualizar las promociones vigentes del restaurante. El
+  tipo de promociones que se pueden incluir son las siguientes:
+
+    - Descuentos.
+
+##### PF-4 Visualización de platillos
+
+- El sistema permitirá visualizar las siguientes características de un platillo:
 
     - Imágenes representativas.
     - Descripción.
     - Precio.
-    - Calificaciones del producto.
+    - Promedio de calificaciones.
 
-##### PF-2 Búsqueda de platillos
+##### PF-5 Búsqueda de platillos
 
 - El sistema deberá permitir al usuario filtrar platillos utilizando los
   siguientes campos:
 
     - Nombre del platillo.
-    - Categoría.
-    - Rango de precios.
+    - Descripción del platillo.
+
+##### PF-6 Previsualización de compra de un platillo
+
+- El sistema deberá contar con una sección para previsualizar la compra de un platillo. Dicha sección deberá mostrar la
+  siguiente información del platillo:
+
+    - Nombre.
+    - Descripción.
+    - Calificaciones promedio.
+    - Precio.
+    - Unidades a comprar.
     - Calificaciones.
+    - Comentarios de clientes.
+    - Acción para poder añadirlo al carrito.
 
-##### PF-3 Inicio de sesión
-
--
-
-##### PF-4 Registro de usuarios
+##### PF-X Inicio de sesión
 
 -
 
-##### PF-5 Carrito de compras
+##### PF-X Registro de usuarios
 
 -
 
-##### PF-6 Pagos electrónicos
+##### PF-X Carrito de compras
 
 -
 
-##### PF-7 Gestión de platillos
+##### PF-X Pagos electrónicos
+
+-
+
+##### PF-X Gestión de platillos
 
 -
 
@@ -313,6 +366,7 @@ siguientes pantallas:
 - **Búsqueda de platillos** (caja de búsqueda, filtros).
 - **Carrito de compras**.
 - **Realización de pago de platillos**.
+- **Panel de cuenta para un usuario** (gestión de direcciones, pagos).
 - **Panel administrador**.
 
 ##### Interfaces de hardware
