@@ -1,1 +1,0 @@
-Recibe información la adaptan y la devuelven. Ejemplo la información de un usuario de un servicios o api externa
