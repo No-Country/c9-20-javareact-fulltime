@@ -1,26 +1,17 @@
-import { Outlet, useResolvedPath } from "react-router-dom";
-import CardList from "./../../components/CardList";
-import Banner from "./components/Banner";
-import Contact from "./components/Contact";
-import MyAccount from "./components/MyAccount";
-import Promotions from "./components/Promotions";
+import { CardList, Footer, Header } from "../../components";
+import CustomerFeedback from "./components/CustomerFeedback";
+import SectionHero from "./components/SectionHero";
+
 const Home = () => {
-	const { pathname } = useResolvedPath();
 	return (
 		<>
+			<Header />
 			<CardList />
-			{pathname === "/" ? (
-				<>
-					<Banner />
-					<Promotions />
-					<Contact />
-					<MyAccount />
-				</>
-			) : (
-				<>
-					<Outlet />
-				</>
-			)}
+			<main>
+				<SectionHero />
+				<CustomerFeedback />
+			</main>
+			<Footer />
 		</>
 	);
 };

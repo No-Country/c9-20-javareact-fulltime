@@ -1,16 +1,21 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import AppetizerDataSlice from "./slice/AppetizerData.slice";
-// import CardSlice from "./slice/card.slice";
+import { FoodInfoApi } from "./query/FoodInfo.query";
+import AppetizerDataSlice from "./slice/AppetizerData.slice";
+import CartSlice from "./slice/cart.slice";
 import { authQueries } from "./query/auth.query";
 import authSlice from "./slice/Auth.slice";
 
 export default configureStore({
 	reducer: {
-		// AppetizerData: AppetizerDataSlice,
-		// card: CardSlice,
+		AppetizerData: AppetizerDataSlice,
+		cart: CartSlice,
+		[FoodInfoApi.reducerPath]: FoodInfoApi.reducer,
     [authQueries.reducerPath]: authQueries.reducer,
     auth: authSlice
 	},
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(authQueries.middleware),
-  devTools: true
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware({ serializableCheck: false }).concat(
+			FoodInfoApi.middleware,
+      authQueries.middleware
+		),
 });
