@@ -237,6 +237,158 @@ public class DishesSeed implements CommandLineRunner {
         dish_23.setCategory(saveDishCategory4);
         DishSpec dish23 = new DishSpec(dish_23, 4L);
 
+        Dish dish_24 = new Dish();
+        dish_24.setName("Desayuno clásico");
+        dish_24.setDescription("Medialunas integrales");
+        dish_24.setImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594899/Dise%C3%B1o_sin_t%C3%ADtulo_98_1_baphfy.png");
+        dish_24.setPrice(850D);
+        dish_24.setCategory(saveDishCategory4);
+        DishSpec dish24 = new DishSpec(dish_24, 4L);
+
+        Dish dish_25 = new Dish();
+        dish_25.setName("Mix primavera");
+        dish_25.setDescription("Yogurt natural, frutos rojos, avenas, banana y durazno");
+        dish_25.setImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594902/tetiana-bykovets-T4Q2NX1GP4w-unsplash_1_zvce4h.png");
+        dish_25.setPrice(850D);
+        dish_25.setCategory(saveDishCategory4);
+        DishSpec dish25 = new DishSpec(dish_25, 4L);
+
+        Dish dish_26 = new Dish();
+        dish_26.setName("Ensalada primavera");
+        dish_26.setDescription("Papas, palta, pepino, choclo, garbanzos y zanahoria asada");
+        dish_26.setImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594894/Dise%C3%B1o_sin_t%C3%ADtulo_77_1_kgbwpm.png");
+        dish_26.setPrice(1050D);
+        dish_26.setCategory(saveDishCategory3);
+        DishSpec dish26 = new DishSpec(dish_26, 3L);
+
+        Dish dish_27 = new Dish();
+        dish_27.setName("Ensalada mixta");
+        dish_27.setDescription("Huevo, rúcula, pollo, tomate, zanahoria salteada");
+        dish_27.setImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594894/Ellipse_12_k7tqxn.png");
+        dish_27.setPrice(840D);
+        dish_27.setCategory(saveDishCategory3);
+        DishSpec dish27 = new DishSpec(dish_27, 3L);
+
+        Dish dish_28 = new Dish();
+        dish_28.setName("Ensalada verano");
+        dish_28.setDescription("Mix de vegetales + carne");
+        dish_28.setImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594901/tania-melnyczuk-xeTv9N2FjXA-unsplash_1_dlasor.png");
+        dish_28.setPrice(900D);
+        dish_28.setCategory(saveDishCategory3);
+        DishSpec dish28 = new DishSpec(dish_28, 3L);
+
+        Dish dish_29 = new Dish();
+        dish_29.setName("Ensalada griega");
+        dish_29.setDescription("Mix de vegetales + pollo");
+        dish_29.setImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594895/anh-nguyen-kcA-c3f_3FE-unsplash_1_upsvn9.png");
+        dish_29.setPrice(800D);
+        dish_29.setCategory(saveDishCategory3);
+        DishSpec dish29 = new DishSpec(dish_29, 3L);
+
+        Dish dish_30 = new Dish();
+        dish_30.setName("Sopa de espinaca");
+        dish_30.setDescription("Espinaca, acelga, papas y huevo");
+        dish_30.setImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594889/t_con_fruto_5_1_xlwoyn.png");
+        dish_30.setPrice(500D);
+        dish_30.setCategory(saveDishCategory3);
+        DishSpec dish30 = new DishSpec(dish_30, 3L);
+
+        Dish dish_31 = new Dish();
+        dish_31.setName("Sopa clásica");
+        dish_31.setDescription("Mix de vegetales");
+        dish_31.setImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594888/t_con_fruto_4_1_ng44of.png");
+        dish_31.setPrice(500D);
+        dish_31.setCategory(saveDishCategory3);
+        DishSpec dish31 = new DishSpec(dish_31, 3L);
+
+        Dish dish_32 = new Dish();
+        dish_32.setName("Tallarines");
+        dish_32.setDescription("Tomate cherry, albahaca y aceitunas negras");
+        dish_32.setImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594883/plato_pasta_1_x6nev6.png");
+        dish_32.setPrice(950D);
+        dish_32.setCategory(saveDishCategory2);
+        DishSpec dish32 = new DishSpec(dish_32, 2L);
+
+        Dish dish_33 = new Dish();
+        dish_33.setName("Ñoquis");
+        dish_33.setDescription("Salsa de tomate, queso crema y albahaca");
+        dish_33.setImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594883/nathalie-klippert-c8anfbnfPRo-unsplash_1_qqedns.png");
+        dish_33.setPrice(950D);
+        dish_33.setCategory(saveDishCategory2);
+        DishSpec dish33 = new DishSpec(dish_33, 2L);
+
+        Dish dish_34 = new Dish();
+        dish_34.setName("Ravioles");
+        dish_34.setDescription("Salsa de calabaza y perejil");
+        dish_34.setImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594879/nicolas-cuestas-xc-067-UsOQ-unsplash_1_txttcz.png");
+        dish_34.setPrice(950D);
+        dish_34.setCategory(saveDishCategory2);
+        DishSpec dish34 = new DishSpec(dish_34, 2L);
+
+        Dish dish_35 = new Dish();
+        dish_35.setName("Ravioles");
+        dish_35.setDescription("Salsa de calabaza y perejil");
+        dish_35.setImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594885/yoav-aziz-EGRJe6BHG9I-unsplash_1_vux1iz.png");
+        dish_35.setPrice(950D);
+        dish_35.setCategory(saveDishCategory2);
+        DishSpec dish35 = new DishSpec(dish_35, 2L);
+
+        Dish dish_36 = new Dish();
+        dish_36.setName("Mostaccioli");
+        dish_36.setDescription("Salsa de tomate, aceitunas y albahaca");
+        dish_36.setImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594884/t_con_fruto_6_1_sisjhr.png");
+        dish_36.setPrice(950D);
+        dish_36.setCategory(saveDishCategory2);
+        DishSpec dish36 = new DishSpec(dish_36, 2L);
+
+        Dish dish_37 = new Dish();
+        dish_37.setName("Carne asada");
+        dish_37.setDescription("Carne asada, tomate y aceitunas negras");
+        dish_37.setImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594891/Dise%C3%B1o_sin_t%C3%ADtulo_93_1_sscdbu.png");
+        dish_37.setPrice(1020D);
+        dish_37.setCategory(saveDishCategory6);
+        DishSpec dish37 = new DishSpec(dish_37, 6L);
+
+        Dish dish_38 = new Dish();
+        dish_38.setName("Carne española");
+        dish_38.setDescription("Carne y salsa picante");
+        dish_38.setImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594875/Dise%C3%B1o_sin_t%C3%ADtulo_94_1_bkekzx.png");
+        dish_38.setPrice(1020D);
+        dish_38.setCategory(saveDishCategory6);
+        DishSpec dish38 = new DishSpec(dish_38, 6L);
+
+        Dish dish_39 = new Dish();
+        dish_39.setName("Matambre");
+        dish_39.setDescription("Verduras salteadas");
+        dish_39.setImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594871/t_con_fruto_8_1_fgl9nk.png");
+        dish_39.setPrice(1050D);
+        dish_39.setCategory(saveDishCategory6);
+        DishSpec dish39 = new DishSpec(dish_39, 6L);
+
+        Dish dish_40 = new Dish();
+        dish_40.setName("Matambre");
+        dish_40.setDescription("Con verduras y papas fritas");
+        dish_40.setImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594871/t_con_fruto_10_1_ckxmms.png");
+        dish_40.setPrice(1050D);
+        dish_40.setCategory(saveDishCategory6);
+        DishSpec dish40 = new DishSpec(dish_40, 6L);
+
+        Dish dish_41 = new Dish();
+        dish_41.setName("Hamburguesa");
+        dish_41.setDescription("Queso cheddar, cebolla salteada y muzzarella");
+        dish_41.setImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594872/t_con_fruto_11_1_gzzwzh.png");
+        dish_41.setPrice(1250D);
+        dish_41.setCategory(saveDishCategory6);
+        DishSpec dish41 = new DishSpec(dish_41, 6L);
+
+        Dish dish_42 = new Dish();
+        dish_42.setName("Arrollado de carne");
+        dish_42.setDescription("Verduras salteadas");
+        dish_42.setImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594871/t_con_fruto_13_1_pesyie.png");
+        dish_42.setPrice(1250D);
+        dish_42.setCategory(saveDishCategory6);
+        DishSpec dish42 = new DishSpec(dish_42, 6L);
+
         Dish saveDish1 = dishService.createDish(dish1);
         Dish saveDish2 = dishService.createDish(dish2);
         Dish saveDish3 = dishService.createDish(dish3);
@@ -260,6 +412,25 @@ public class DishesSeed implements CommandLineRunner {
         Dish saveDish21 = dishService.createDish(dish21);
         Dish saveDish22 = dishService.createDish(dish22);
         Dish saveDish23 = dishService.createDish(dish23);
+        Dish saveDish24 = dishService.createDish(dish24);
+        Dish saveDish25 = dishService.createDish(dish25);
+        Dish saveDish26 = dishService.createDish(dish26);
+        Dish saveDish27 = dishService.createDish(dish27);
+        Dish saveDish28 = dishService.createDish(dish28);
+        Dish saveDish29 = dishService.createDish(dish29);
+        Dish saveDish30 = dishService.createDish(dish30);
+        Dish saveDish31 = dishService.createDish(dish31);
+        Dish saveDish32 = dishService.createDish(dish32);
+        Dish saveDish33 = dishService.createDish(dish33);
+        Dish saveDish34 = dishService.createDish(dish34);
+        Dish saveDish35 = dishService.createDish(dish35);
+        Dish saveDish36 = dishService.createDish(dish36);
+        Dish saveDish37 = dishService.createDish(dish37);
+        Dish saveDish38 = dishService.createDish(dish38);
+        Dish saveDish39 = dishService.createDish(dish39);
+        Dish saveDish40 = dishService.createDish(dish40);
+        Dish saveDish41 = dishService.createDish(dish41);
+        Dish saveDish42 = dishService.createDish(dish42);
 
     }
 }
