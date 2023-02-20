@@ -46,6 +46,7 @@ const CardList = () => {
 					cart.map((item) => (
 						<ItemsCard
 							key={item.id}
+							id={item.id}
 							amount={item.amount}
 							name={item.name}
 							cost={item.cost}

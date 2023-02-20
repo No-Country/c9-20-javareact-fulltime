@@ -28,7 +28,13 @@ export const CartSlice = createSlice({
 			};
 		},
 		deleteItem: (state, { payload }) => {
-			const index = state.items.indexOf(payload);
+			// const index = state.items.indexOf(payload);
+			const filtered = state.items.filter(item => item.id !== payload)
+
+			return {
+				...state,
+				items: [...filtered],
+			};
 		},
 	},
 });

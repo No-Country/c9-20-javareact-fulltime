@@ -6,7 +6,7 @@ import {
 } from "../styled-components";
 import dele from "/icons/delete.svg";
 
-const ItemsCard = ({ amount, name, cost }) => {
+const ItemsCard = ({ id, amount, name, cost }) => {
 	const dispatch = useDispatch();
 
 	return (
