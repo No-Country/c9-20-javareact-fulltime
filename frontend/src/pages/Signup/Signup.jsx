@@ -1,36 +1,52 @@
 import { useState } from "react";
 import Logo from "/assets/logo.svg";
-import { Link } from "react-router-dom";
 import {
 	AuthLayout,
-  LogoContainer,
+	LogoContainer,
 	AuthContainer,
 	FormContainer,
 	Title,
-  Form,
+	Form,
 	Button,
 } from "../../styled-components/Auth.styled";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setCredentials } from "../../redux/slice/Auth.slice";
+import { useSignupMutation } from "../../redux/slice/authApi.slice";
 import Input from "../../components/Input";
 import InputPassword from "../../components/InputPassword";
 
 function Signup() {
-	const [email, setEmail] = useState('')
-	const [emailError, setEmailError] = useState(false)
+	const [email, setEmail] = useState("");
+	const [name, setName] = useState("");
 
-	const [name, setName] = useState('')
-	const [nameError, setNameError] = useState(false)
-  
-	const [password, setPassword] = useState('')
-	const [passwordError, setPasswordError] = useState(false)
+	const [password, setPassword] = useState("");
+	const [passwordError, setPasswordError] = useState(false);
 
-	const [confirmPassword, setConfirmPassword] = useState('')
-	const [confirmPasswordError, setConfirmPasswordError] = useState(false)
+	const [confirmPassword, setConfirmPassword] = useState("");
+	const [confirmPasswordError, setConfirmPasswordError] = useState(false);
 
-	const [showPassword, setShowPassword] = useState(false)
-	const [showPassword2, setShowPassword2] = useState(false)
+	const [showPassword, setShowPassword] = useState(false);
+	const [showPassword2, setShowPassword2] = useState(false);
 
-	const handleSubmit = (e) => {
+	const [signup, { isLoading }] = useSignupMutation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
 		e.preventDefault();
+			try {
+				const response = await signup({ name, email, password }).unwrap();
+				dispatch(setCredentials({ ...response }));
+				setName("");
+				setEmail("");
+				setPassword("");
+        console.log('prenavigate');
+				navigate("/home");
+        console.log('posNavigate');
+			} catch (error) {
+				console.log(error);
+		};
 	};
 
 	return (
@@ -39,29 +55,35 @@ function Signup() {
 				<FormContainer>
 					<Title>Registro</Title>
 
-					<Form>
+					<Form onSubmit={(e) => handleSubmit(e)}>
 						<Input
-							name="Correo"
-							error={email}
-							pattern={true}
-							type="email"
-						/>
+              name="Correo"
+              type="email"
+              data={email}
+              setData={setEmail}
+            />
 						<Input
-              name="Nombre"
-              error={passwordError}
-              pattern={true}
+             name="Nombre"
+             error={passwordError}
+             data={name}
+             setData={setName}
             />
-						<InputPassword 
-              error={passwordError}
-              name="Contraseña"
-            />
+
 						<InputPassword
               error={passwordError}
-              name="Confirmar Contraseña"
+              name="Contraseña"
+              data={password}
+              setData={setPassword}
             />
-						<Button type="submit"> Registrarse </Button>
-					</Form>
+						<InputPassword
+              error={confirmPasswordError}
+              name="Confirmar Contraseña"
+              data={confirmPassword}
+              setData={setConfirmPassword}
+            />
 
+						<Button> Registrarse </Button>
+					</Form>
 				</FormContainer>
 			</AuthContainer>
 			<LogoContainer>
