@@ -145,3 +145,26 @@ export const ContainerStartStyled = styled.header`
         display: flex;
     }
 `;
+
+//TODO no se me ocurrio un mejor nombre. abierto a ser cambiado
+export const ClientsBoxStyled = styled.article`
+  margin: 1.5em 0;
+  
+  header {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+
+    p {
+      font-weight: 300;
+      font-size: 14px;
+      color: #ACACAC;
+    }
+  }
+
+  div > p {
+    font-weight: 300;
+    font-size: 14px;
+    color: #ACACAC;
+  }
+`
