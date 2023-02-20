@@ -3,18 +3,22 @@ import styled from 'styled-components'
 export const CheckContainer = styled.div`
 display: flex;
 flex-wrap: wrap;
-justify-content: center;
-align-items: center;
 justify-content: space-between;
-min-height: 100vh;
+max-height: 100vh;
 background-color: var(--background-secondary);
 color: var(--text-primary);
 font-family: var(--font-family);
+@media (max-width: 1329px){
+    max-height: 100%;
+}
+@media (max-width: 768px){
 
-`
+}
+`;
 export const CheckData = styled.div`
-margin: 15px;
-width: 600px;
+width: 50%;
+height: 100vh;
+padding: 25px;
 input[type="radio"] {
     accent-color: var(--button-primary);
     position: relative;
@@ -46,6 +50,14 @@ form{
         color: white;
     }
 }
+@media (max-width: 1320px){
+    height: 100vh;
+    width: 50%;
+}
+@media (max-width: 576px){
+    height: 100%;
+    width: 100%;
+}
 `;
 
 export const CheckCart = styled.div`
@@ -54,10 +66,19 @@ color: black;
 display: flex;
 flex-direction: column;
 border-left: 2px solid black;
-height: 753px;
-width: 700px;
+height: 100vh;
+width: 50%;
 h1{
     margin-left: 25px;
+}
+@media (max-width: 1320px){
+    height: 100vh;
+    width: 50%;
+}
+@media (max-width: 576px){
+    height: 100vh;
+    width: 100%;
+    border: none;
 }
 `;
 export const Unwrapped = styled.div`
