@@ -50,10 +50,69 @@ export const MyAccountStyle = styled.div`
   .postalCode_localidad {
     height: fit-content;
   }
+`;
 
+export const MyDataStyle = styled.div`
   input {
-    border: solid #acacac 1px;
-    border-radius: 3px;
+    width: 1160px;
+    height: 40px;
+    border: solid #acacac 1.75px;
     background-color: transparent;
+    border-radius: 5px;
+  }
+
+  .postalCode_location,
+  .address {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .contact_email {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .moreDetails {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .location {
+    margin-right: 500px;
+  }
+
+  .number {
+    margin-left: 320px;
+  }
+
+  .piso {
+    margin-right: 260px;
+  }
+
+  .email {
+    margin-right: 430px;
+  }
+
+  #postalCode,
+  #location,
+  #street,
+  #contact,
+  #email {
+    width: 577.5px;
+  }
+
+  #postalCode,
+  #street,
+  #number,
+  #contact {
+    margin-right: 5px;
+  }
+
+  #number,
+  #floor {
+    width: 286.25px;
   }
 `;
