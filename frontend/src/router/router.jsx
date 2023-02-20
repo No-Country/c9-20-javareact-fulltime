@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Checkout from "../pages/Checkout/Checkout";
-import Signup from "../pages/auth/Signup/Signup";
-import Login from "../pages/auth/login/Login";
+import Signup from "../pages/Signup/Signup";
+import Login from "../pages/Login/Login";
 import MyAccount from "../pages/home/components/MyAccount";
 import ItemsCategory from "../pages/view/categoria/components/ItemsCategory";
 import ViewOfThePlate from "../pages/view/viewoftheplate/ViewOfThePlate";
