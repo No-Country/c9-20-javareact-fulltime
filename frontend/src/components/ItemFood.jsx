@@ -1,18 +1,9 @@
 import { Link, Outlet, useParams } from "react-router-dom";
-import { ItemFoodStyled } from "../styled-components/layout.styled";
-import Star from "./Star";
+import Star from "../pages/view/categoria/components/Star";
+import { ItemFoodStyled } from "../pages/view/categoria/styled-components/layout.styled";
 import cart from "/icons/cart.svg";
 import plato from "/img/platoPastaDemo.jpg";
-const ItemFood = ({
-	description,
-	price,
-	nameFood,
-	image,
-	portion,
-	id,
-	onClick,
-	children,
-}) => {
+const ItemFood = ({ description, price, nameFood, portion, id }) => {
 	const { namePath } = useParams();
 
 	return (

@@ -7,8 +7,10 @@ import ItemsCategory from "../pages/view/categoria/components/ItemsCategory";
 import ViewOfThePlate from "../pages/view/viewoftheplate/ViewOfThePlate";
 import Home from "./../pages/home/Home";
 import Contact from "./../pages/home/components/Contact";
-import Promotions from "./../pages/home/components/Promotions";
+
+import Promotions from "../pages/view/promociones/Promotions";
 import Category from "./../pages/view/categoria/Category";
+
 export const router = createBrowserRouter([
 	{
 		path: "/",

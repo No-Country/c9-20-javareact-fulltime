@@ -58,14 +58,8 @@ export const CardStyled = styled.article`
     }
 `;
 
-export const ItemsCategoryStyled = styled.section`
-
-  ${BackgroundImageButtons};
- 
-  
-`;
-
 export const ItemFoodStyled = styled.article`
+    position: relative;
     ${FlexBoxCenter};
     flex-direction: column;
     min-block-size: 457px;
@@ -120,4 +114,17 @@ export const ItemFoodStyled = styled.article`
         }
     }
 
+`;
+
+export const StarStyled = styled.div`
+  position: absolute;
+  inset-block-start: 31%;
+  ${FlexBoxCenter};
+  gap: 12px;
+  block-size: 47px:
+  inline-size: 84px;
+  padding: 12px 16px;
+  color: var(--text-primary);
+  border-radius: 50px;
+  background-image: linear-gradient(180deg, #323232 0%, #0B0B0B 100%);
 `;

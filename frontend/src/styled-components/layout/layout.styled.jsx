@@ -400,7 +400,7 @@ export const ButtonActionStyled = styled.button`
       color: var(--text-primary);
       border-radius: 50%;
       background-color: rgba(204, 16, 16, 1);
-      opacity: ${({ opacity }) => (opacity ? "visible" : "hidden")};
+      opacity: ${({ opacity }) => (opacity ? "hidden" : "visible")};
       transition: opacity 1s ease-in-out;
     }
     &:hover{
@@ -544,4 +544,9 @@ export const FooterContainerTwo = styled.div`
         display: flex;
         gap:18px;
       }
+`;
+
+export const SectionStyledBackground = styled.section`
+
+    ${BackgroundImageButtons};   
 `;

@@ -1,3 +1,4 @@
+import DivisionLine from "../../../components/DivisionLine";
 import useDisplacement from "../hook/useDisplacement";
 import {
 	ButtonSearchStyled,
@@ -6,7 +7,6 @@ import {
 } from "../styled-components";
 import Carrusel from "./Carrusel";
 import ContainerButton from "./ContainerButton";
-import DivisionLine from "./DivisionLine";
 import Input from "./Input";
 import imgHome from "/assets/fondoHome.png";
 import search from "/icons/search.svg";

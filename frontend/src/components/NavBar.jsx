@@ -5,7 +5,7 @@ import { NavBarStyled } from "../styled-components";
 import ButtonAction from "./ButtonAction";
 import cart from "/icons/carWhite.svg";
 
-const NavBar = ({ items }) => {
+const NavBar = () => {
 	const dispatch = useDispatch();
 	const car = useSelector((state) => state.cart.items);
 	let activeStyle = {

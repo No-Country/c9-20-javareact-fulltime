@@ -19,7 +19,7 @@ const Promotions = () => {
 				<Div gap={"180px"} ancho={"300px"}>
 					<Items
 						title={"Tallarines"}
-						image={platoPasta}
+						image={""}
 						circle={"true"}
 						description={"Tomate cherry, rúcula y aceitunas negras"}
 						people={"2"}
@@ -32,7 +32,7 @@ const Promotions = () => {
 					</Items>
 					<Items
 						title={"Pizza"}
-						image={platoPizza}
+						image={""}
 						circle={"true"}
 						description={"Panceta, choclo, aceitunas negras y champiñón"}
 						people={"2"}

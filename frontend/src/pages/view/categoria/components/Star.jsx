@@ -1,11 +1,11 @@
-import React from "react";
+import { StarStyled } from "../styled-components/layout.styled";
 import star from "/icons/Star.svg";
 const Star = () => {
 	return (
-		<div>
+		<StarStyled>
 			<img src={star} alt='star' />
-			<spa>4.9</spa>
-		</div>
+			<span>4.9</span>
+		</StarStyled>
 	);
 };
 

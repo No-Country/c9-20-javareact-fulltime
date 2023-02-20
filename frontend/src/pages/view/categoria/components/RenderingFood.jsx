@@ -1,5 +1,5 @@
+import ItemFood from "../../../../components/ItemFood";
 import { BadgeStar } from "../../../../styled-components";
-import ItemFood from "./ItemFood";
 import plato from "/assets/plato-pizza.png";
 import star from "/icons/Star.svg";
 const RenderingFood = ({ list, isLoading }) => {

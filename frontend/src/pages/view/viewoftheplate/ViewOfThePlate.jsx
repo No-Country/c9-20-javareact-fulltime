@@ -21,7 +21,7 @@ const ViewOfThePlate = () => {
 	const dispatch = useDispatch();
 	const { idCategory, idFood } = useParams();
 	const { itemFood } = useItemFood(idFood, idCategory);
-
+	console.log(itemFood);
 	const handleAddItems = () => {
 		if (amount.value !== 0) {
 			const itemCart = new Item(
