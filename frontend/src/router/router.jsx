@@ -1,11 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import Checkout from "../pages/Checkout/Checkout";
-import Signup from "../pages/auth/Signup/Signup";
-import Login from "../pages/auth/login/Login";
+import Login from "../pages/Login/Login";
+import Signup from "../pages/Signup/Signup";
 import MyAccount from "../pages/home/components/MyAccount";
+import ItemsCategory from "../pages/view/categoria/components/ItemsCategory";
+import Promotions from "../pages/view/promociones/Promotions";
+import ViewOfThePlate from "../pages/view/viewoftheplate/ViewOfThePlate";
 import Home from "./../pages/home/Home";
-import Contact from "./../pages/home/components/Contact";
-import Promotions from "./../pages/home/components/Promotions";
 import Category from "./../pages/view/categoria/Category";
 import Thanks from '../pages/Checkout/Thanks'
 export const router = createBrowserRouter([
@@ -14,8 +15,20 @@ export const router = createBrowserRouter([
 		element: <Home />,
 	},
 	{
-		path: "/carta",
+		path: "/categoria",
 		element: <Category />,
+		children: [
+			{
+				path: "/categoria/:idCategory",
+				element: <ItemsCategory />,
+				children: [
+					{
+						path: "/categoria/:idCategory/:idFood",
+						element: <ViewOfThePlate />,
+					},
+				],
+			},
+		],
 	},
 
 	{
@@ -24,7 +37,7 @@ export const router = createBrowserRouter([
 	},
 	{
 		path: "/contacto",
-		element: <Contact />,
+		element: <>hola</>,
 	},
 	{
 		path: "/myaccount",

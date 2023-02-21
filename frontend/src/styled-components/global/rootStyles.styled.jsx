@@ -44,8 +44,8 @@ export const GlobalStyle = createGlobalStyle`
         text-decoration: none;
         color: inherit;
     }
-    /* img{
+    img{
         max-width: 100%;
         inline-size: auto;
-    } */
+    }
 `;

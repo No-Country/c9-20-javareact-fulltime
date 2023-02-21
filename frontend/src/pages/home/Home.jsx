@@ -1,11 +1,8 @@
-import { useResolvedPath } from "react-router-dom";
 import { CardList, Footer, Header } from "../../components";
 import CustomerFeedback from "./components/CustomerFeedback";
 import SectionHero from "./components/SectionHero";
-Header
-const Home = () => {
-	const { pathname } = useResolvedPath();
 
+const Home = () => {
 	return (
 		<>
 			<Header />

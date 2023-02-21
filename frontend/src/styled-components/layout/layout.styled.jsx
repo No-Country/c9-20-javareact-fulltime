@@ -35,7 +35,10 @@ export const Div = styled.div`
     ${FlexBoxCenter};
     flex-wrap: wrap;
     gap: ${({ gap }) => gap || "0px"};
+    min-block-size: ${({ blockSize }) => blockSize};
+    inline-size: ${({ inlineSize }) => inlineSize};
     margin: ${({ margin }) => margin || "0px"};
+    padding:${({ padding }) => padding || "0px"};
 `;
 //TODO Div responsive abierto a modificar */
 export const DivCol = styled.div`
@@ -70,6 +73,15 @@ export const HeroImageStyled = styled.div`
 
 `;
 
+export const ButtonModalStyled = styled.button`
+
+    position: absolute;
+    inset-block-start: 17%;
+    inset-inline-end: 9%;
+    padding: ${({ padding }) => padding} ; 
+    ${BackgroundImageButtons};
+    
+`;
 export const Wrapperremember = styled.div`
 width:100%;
 display: flex;
@@ -384,6 +396,7 @@ export const ButtonActionStyled = styled.button`
     background-color: ${({ backgroundColor }) => backgroundColor};
     ${BackgroundImageButtons};
     transition: background-color 1s ${({ transition }) => transition};
+
     &::before{
       --size: 20px;
       position:absolute;
@@ -396,6 +409,8 @@ export const ButtonActionStyled = styled.button`
       color: var(--text-primary);
       border-radius: 50%;
       background-color: rgba(204, 16, 16, 1);
+      opacity: ${({ opacity }) => (opacity ? "hidden" : "visible")};
+      transition: opacity 1s ease-in-out;
     }
     &:hover{
       background-color: ${({ backgroundColorHover }) =>
@@ -404,7 +419,7 @@ export const ButtonActionStyled = styled.button`
 `;
 
 export const NavBarStyled = styled.nav`
-    inline-size: 424px;
+    min-inline-size: 464px;
     menu{
       display: flex;
       gap: 20px;
@@ -419,6 +434,11 @@ export const NavBarStyled = styled.nav`
       &: hover{
         color: #FFA800;
       }
+
+      .isActive{
+        color: rgba(255, 168, 0, 1);
+      }
+
     }
 `;
 
@@ -458,7 +478,7 @@ export const ItemImgStyled = styled.img`
     text-align:center;  
 `;
 
-export const ItemDescription = styled.div`
+export const ItemDescription = styled.p`
     font-size: 12px;
 `;
 export const ItemButtonStyled = styled.button`
@@ -482,11 +502,11 @@ export const ItemButtonStyled = styled.button`
         font-weight: 600;
     }
 `;
-export const ItemPeople = styled.div`
+export const ItemPeople = styled.p`
     font-size: 16px;
     margin: .5em;
 `;
-export const ItemPrice = styled.div`
+export const ItemPrice = styled.p`
     font-size: 24px;
     font-weight: 600;
     margin: .5em;
@@ -534,3 +554,9 @@ export const FooterContainerTwo = styled.div`
         gap:18px;
       }
 `;
+
+export const SectionStyledBackground = styled.section`
+
+    ${BackgroundImageButtons};   
+`;
+

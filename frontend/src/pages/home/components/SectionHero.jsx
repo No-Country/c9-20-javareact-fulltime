@@ -1,16 +1,18 @@
-import Items from "../../../components/Items";
-import { Div } from "../../../styled-components";
+import DivisionLine from "../../../components/DivisionLine";
+import useDisplacement from "../hook/useDisplacement";
+
 import {
 	ButtonSearchStyled,
 	FormStyled,
 	SectionHeroStyled,
-} from "../styled-components";
-import DivisionLine from "./DivisionLine";
+} from "../styled-components/layout.styled";
+import Carrusel from "./Carrusel";
+import ContainerButton from "./ContainerButton";
 import Input from "./Input";
 import imgHome from "/assets/fondoHome.png";
-import item from "/assets/item1.jpg";
 import search from "/icons/search.svg";
 const SectionHero = () => {
+	const { move, handleMoveLeft, handleMoveRight } = useDisplacement();
 	return (
 		<SectionHeroStyled img={imgHome} size='cover'>
 			<FormStyled>
@@ -21,40 +23,11 @@ const SectionHero = () => {
 			<h1>DESTACADOS DE ESTA SEMANA</h1>
 
 			<DivisionLine title={"Tablas para compartir"} />
-
-			<Div
-				gap={"50px"}
-				ancho={"335px"}
-				style={{ transform: "translateY(4em)" }}
-			>
-				<Items
-					title={"Tabla I"}
-					image={item}
-					description={
-						"Carne salteada, aceituna, salame, queso roquefort, queso caprese, salsa picante."
-					}
-					people={"2"}
-					price={2500}
-				/>
-				<Items
-					title={"Tabla II"}
-					image={item}
-					description={
-						"Salame, jamón crudo, queso gruyere, aceitunas mixtas, salsa especial."
-					}
-					people={"2"}
-					price={2800}
-				/>
-				<Items
-					title={"Tabla III"}
-					image={item}
-					description={
-						"Salsa picante, salsa cheddar, salsa 4 quesos, choclo asado, mix de chorizos, porción de papas."
-					}
-					people={"3"}
-					price={4800}
-				/>
-			</Div>
+			<Carrusel move={move} />
+			<ContainerButton
+				handleMoveRight={handleMoveRight}
+				handleMoveLeft={handleMoveLeft}
+			/>
 		</SectionHeroStyled>
 	);
 };

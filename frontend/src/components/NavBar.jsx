@@ -5,28 +5,51 @@ import { NavBarStyled } from "../styled-components";
 import ButtonAction from "./ButtonAction";
 import cart from "/icons/carWhite.svg";
 
-const NavBar = ({ items }) => {
+const NavBar = (cd) => {
 	const dispatch = useDispatch();
 	const car = useSelector((state) => state.cart.items);
-	const activeStyle = {
-		backgroundColor: " #FFA800",
+	let activeStyle = {
+		color: "#FFA800",
 	};
 
 	const handleOpen = () => dispatch(openCart());
 	return (
 		<NavBarStyled>
 			<menu>
-				{items.map((name, index) => (
-					// rome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-					<li key={index}>
-						<NavLink
-							to={name}
-							style={({ isActive }) => (isActive ? activeStyle : undefined)}
-						>
-							{name}
-						</NavLink>
-					</li>
-				))}
+				<li>
+					<NavLink
+						to={"/categoria"}
+						style={({ isActive }) => (isActive ? activeStyle : undefined)}
+					>
+						categoria
+					</NavLink>
+				</li>
+
+				<li>
+					<NavLink
+						to={"/promociones"}
+						style={({ isActive }) => (isActive ? activeStyle : undefined)}
+					>
+						promociones
+					</NavLink>
+				</li>
+				<li>
+					<NavLink
+						to={"/contacto"}
+						style={({ isActive }) => (isActive ? activeStyle : undefined)}
+					>
+						contacto
+					</NavLink>
+				</li>
+				<li>
+					<NavLink
+						to={"/MiCuenta"}
+						style={({ isActive }) => (isActive ? activeStyle : undefined)}
+					>
+						mi cuenta
+					</NavLink>
+				</li>
+
 				<ButtonAction
 					img={cart}
 					size='cover'
@@ -34,6 +57,7 @@ const NavBar = ({ items }) => {
 					onClick={handleOpen}
 					padding={"1em"}
 					dataLength={car.length}
+					opacity={car.length === 0}
 				/>
 			</menu>
 		</NavBarStyled>
