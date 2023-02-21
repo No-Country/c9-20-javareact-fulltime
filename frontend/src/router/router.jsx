@@ -7,6 +7,7 @@ import Home from "./../pages/home/Home";
 import Contact from "./../pages/home/components/Contact";
 import Promotions from "./../pages/home/components/Promotions";
 import Category from "./../pages/view/categoria/Category";
+import Thanks from '../pages/Checkout/Thanks'
 export const router = createBrowserRouter([
 	{
 		path: "/",
@@ -40,5 +41,9 @@ export const router = createBrowserRouter([
 	{
 		path: "/checkout",
 		element: <Checkout />,
+	},
+	{
+		path: "/thanks",
+		element: <Thanks />,
 	},
 ]);
