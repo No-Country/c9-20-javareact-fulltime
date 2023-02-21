@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import Checkout from "../pages/Checkout/Checkout";
-import Signup from "../pages/auth/Signup/Signup";
+import Login from "../pages/Login/Login";
+import Signup from "../pages/Signup/Signup";
 import MyAccount from "../pages/home/components/MyAccount";
 import ItemsCategory from "../pages/view/categoria/components/ItemsCategory";
 import Promotions from "../pages/view/promociones/Promotions";
 import ViewOfThePlate from "../pages/view/viewoftheplate/ViewOfThePlate";
-import Login from "./../pages/auth/login/Login";
 import Home from "./../pages/home/Home";
 import Category from "./../pages/view/categoria/Category";
 export const router = createBrowserRouter([

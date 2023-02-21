@@ -73,6 +73,15 @@ export const HeroImageStyled = styled.div`
 
 `;
 
+export const ButtonModalStyled = styled.button`
+
+    position: absolute;
+    inset-block-start: 17%;
+    inset-inline-end: 9%;
+    padding: ${({ padding }) => padding} ; 
+    ${BackgroundImageButtons};
+    
+`;
 export const Wrapperremember = styled.div`
 width:100%;
 display: flex;
@@ -550,3 +559,4 @@ export const SectionStyledBackground = styled.section`
 
     ${BackgroundImageButtons};   
 `;
+
