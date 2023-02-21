@@ -20,6 +20,10 @@ public class DishImage {
     @Column
     private String url;
 
+    public DishImage(String url) {
+        this.url = url;
+    }
+
     public boolean isValidImage() {
         return nonNull(publicId) && nonNull(url);
     }
