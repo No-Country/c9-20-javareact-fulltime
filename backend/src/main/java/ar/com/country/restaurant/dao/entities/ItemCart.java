@@ -22,6 +22,9 @@ public class ItemCart {
 
     @ManyToOne(optional = false)
     private Dish dish;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Order order;
     @Column
     private int quantity;
 
