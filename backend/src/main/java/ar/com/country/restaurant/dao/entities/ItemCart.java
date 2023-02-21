@@ -15,35 +15,22 @@ public class ItemCart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
-    private int quantity;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cart_id")
+    private Cart cart;
+
     @ManyToOne(optional = false)
     private Dish dish;
+    @Column
+    private int quantity;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Order order;
+    @Column
+    private Double subTotal;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private ShoppingCart cart;
 
-    public void addQuantity(int quantity) {
-        this.quantity += quantity;
-    }
-
-    public void removeQuantity(int quantity) {
-        this.quantity -= quantity;
-    }
-
-    public boolean isEmpty() {
-        return quantity == 0;
-    }
-
-    public boolean isNotEmpty() {
-        return !isEmpty();
-    }
-
-    public boolean isSameDish(Dish dish) {
-        return this.dish.getId().equals(dish.getId());
+    public void calculateSubTotal() {
+        this.subTotal = this.dish.getPrice() * this.quantity;
     }
 
 }
