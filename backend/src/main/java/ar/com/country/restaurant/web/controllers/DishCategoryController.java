@@ -3,6 +3,7 @@ package ar.com.country.restaurant.web.controllers;
 import ar.com.country.restaurant.dao.entities.DishCategory;
 import ar.com.country.restaurant.services.DishCategoryService;
 import ar.com.country.restaurant.web.dto.DishCategoryDTO;
+import ar.com.country.restaurant.web.hateoas.assemblers.DishCategoryModelAssembler;
 import ar.com.country.restaurant.web.mappers.DishCategoryMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -12,6 +13,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,15 +37,16 @@ import static ar.com.country.restaurant.util.ApiDocsConstants.NOT_FOUND_RESPONSE
 public class DishCategoryController {
     private final DishCategoryService dishCategoryService;
     private final DishCategoryMapper dishCategoryMapper;
+    private final DishCategoryModelAssembler dishCategoryModelAssembler;
 
     @Operation(summary = "Returns all dish categories")
     @ApiResponse(responseCode = "200", description = "OK", content = {
             @Content(array = @ArraySchema(schema = @Schema(implementation = DishCategoryDTO.class)))
     })
     @GetMapping
-    public List<DishCategoryDTO> getAllDishCategories() {
-        List<DishCategory> result = dishCategoryService.getDishCategories();
-        return dishCategoryMapper.toDtoList(result);
+    public CollectionModel<DishCategoryDTO> getAllDishCategories() {
+        List<DishCategory> dishCategories = dishCategoryService.getDishCategories();
+        return dishCategoryModelAssembler.toCollectionModel(dishCategories);
     }
 
     @Operation(summary = "Returns a dish category by id")
@@ -55,8 +58,8 @@ public class DishCategoryController {
     })
     @GetMapping("/{categoryId}")
     public DishCategoryDTO getDishCategoryById(@PathVariable Long categoryId) {
-        DishCategory result = dishCategoryService.getDishCategoryById(categoryId);
-        return dishCategoryMapper.toDto(result);
+        DishCategory dishCategory = dishCategoryService.getDishCategoryById(categoryId);
+        return dishCategoryModelAssembler.toModel(dishCategory);
     }
 
     @Operation(summary = "Creates a new dish category")
@@ -69,11 +72,10 @@ public class DishCategoryController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<DishCategoryDTO> createDishCategory(@RequestBody @Valid DishCategoryDTO dishCategoryDto) {
-        DishCategory newDishCategory = dishCategoryMapper.toEntity(dishCategoryDto);
-        DishCategory result = dishCategoryService.createDishCategory(newDishCategory);
-        return ResponseEntity
-                .created(URI.create("/api/categories/" + result.getId()))
-                .body(dishCategoryMapper.toDto(result));
+        DishCategory dishCategory = dishCategoryMapper.toEntity(dishCategoryDto);
+        DishCategory result = dishCategoryService.createDishCategory(dishCategory);
+        DishCategoryDTO resultDto = dishCategoryModelAssembler.toModel(result);
+        return ResponseEntity.created(URI.create(resultDto.getRequiredLink("self").getHref())).body(resultDto);
     }
 
     @Operation(summary = "Updates a dish category")
@@ -89,9 +91,9 @@ public class DishCategoryController {
             @PathVariable Long categoryId,
             @RequestBody DishCategoryDTO dishCategoryDto
     ) {
-        DishCategory updatedDishCategory = dishCategoryMapper.toEntity(dishCategoryDto);
-        DishCategory result = dishCategoryService.updateDishCategory(categoryId, updatedDishCategory);
-        return dishCategoryMapper.toDto(result);
+        DishCategory dishCategory = dishCategoryMapper.toEntity(dishCategoryDto);
+        DishCategory result = dishCategoryService.updateDishCategory(categoryId, dishCategory);
+        return dishCategoryModelAssembler.toModel(result);
     }
 
     @Operation(summary = "Deletes a dish category by id")

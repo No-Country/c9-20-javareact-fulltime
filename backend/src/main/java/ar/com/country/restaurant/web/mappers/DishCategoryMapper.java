@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = DishMapper.class)
 public interface DishCategoryMapper {
 
     DishCategory toEntity(DishCategoryDTO dishCategoryDto);
@@ -14,5 +14,4 @@ public interface DishCategoryMapper {
     DishCategoryDTO toDto(DishCategory dishCategory);
 
     List<DishCategoryDTO> toDtoList(List<DishCategory> dishCategoryList);
-
 }
