@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "dish_category")
+@Table(name = "dish_categories")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -19,6 +19,9 @@ public class DishCategory {
 
     @Column
     private String name;
+
+    @Column
+    private String imgUrl;
 
     @OneToMany(fetch = FetchType.LAZY)
     private List<Dish> dishes;
