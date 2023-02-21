@@ -1,9 +1,9 @@
-import { SectionStyled } from "../styled-components";
+/* import { SectionStyled } from "../styled-components"; */
 import HeaderSubTitle from "../../../components/HeaderSubTitle";
 import Input from "./Input";
 const MyAccount = () => {
 	return (
-		<SectionStyled>
+		<section>
 			<HeaderSubTitle title='Mi cuenta' textAlign='left' level={1} />
 			<div>
 				<form>
@@ -13,7 +13,7 @@ const MyAccount = () => {
 					<Input type='text' name='text' />
 				</form>
 			</div>
-		</SectionStyled>
+		</section>
 	);
 };
 

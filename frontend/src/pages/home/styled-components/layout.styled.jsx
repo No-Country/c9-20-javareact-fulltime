@@ -7,11 +7,6 @@ export const ButtonCarStyled = styled.button`
 
 `;
 
-export const SectionStyled = styled.section`
-    padding: 5em 3em;
-    display: grid;
-`;
-
 export const ContainerListStyled = styled.ul`
 
     display: flex;
@@ -22,9 +17,7 @@ export const ContainerListStyled = styled.ul`
 
 export const ContainerFormClaimsStyled = styled.form`
 
-
     inline-size: 1200px;
-
     textarea{
 
         inline-size: 100%;

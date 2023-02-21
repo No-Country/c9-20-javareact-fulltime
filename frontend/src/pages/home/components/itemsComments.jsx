@@ -1,4 +1,4 @@
-import { ItemsCommentsStyled } from "../styled-components";
+import { ItemsCommentsStyled } from "../styled-components/layout.styled";
 const ItemsComments = ({ img, name, comment, date }) => {
 	return (
 		<ItemsCommentsStyled>

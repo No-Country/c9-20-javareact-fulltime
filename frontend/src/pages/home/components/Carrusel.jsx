@@ -1,5 +1,5 @@
 import { Items } from "../../../components";
-import { CarruselStyled } from "../styled-components";
+import { CarruselStyled } from "../styled-components/layout.styled";
 import item from "/assets/item1.jpg";
 
 const Carrusel = ({ move }) => {

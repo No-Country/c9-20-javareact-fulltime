@@ -1,10 +1,11 @@
 import DivisionLine from "../../../components/DivisionLine";
 import useDisplacement from "../hook/useDisplacement";
+
 import {
 	ButtonSearchStyled,
 	FormStyled,
 	SectionHeroStyled,
-} from "../styled-components";
+} from "../styled-components/layout.styled";
 import Carrusel from "./Carrusel";
 import ContainerButton from "./ContainerButton";
 import Input from "./Input";

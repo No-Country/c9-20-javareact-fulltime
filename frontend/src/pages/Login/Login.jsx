@@ -1,24 +1,22 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Icon from "../../components/Icon";
-import Logo from "/assets/logo.svg";
-import {
-	AuthLayout,
-	AuthContainer,
-	LogoContainer,
-	Title,
-	FormContainer,
-	Form,
-	Button,
-	LinkRegister,
-} from "../../styled-components/Auth.styled";
-import { ForgotPassword } from "./styled-components/Login.styled";
+import { useDispatch } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Input from "../../components/Input";
 import InputPassword from "../../components/InputPassword";
-import { Link, useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { setCredentials } from "../../redux/slice/Auth.slice";
 import { useLoginMutation } from "../../redux/slice/authApi.slice";
+import {
+	AuthContainer,
+	AuthLayout,
+	Button,
+	Form,
+	FormContainer,
+	LinkRegister,
+	LogoContainer,
+	Title,
+} from "../../styled-components/Auth.styled";
+import { ForgotPassword } from "./styled-components/Login.styled";
+import Logo from "/assets/logo.svg";
 
 function AuthForm() {
 	const [email, setEmail] = useState("");
@@ -35,15 +33,15 @@ function AuthForm() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-		  const response = await login({ email, password }).unwrap();
-		  dispatch(setCredentials({...response}))
-		  setEmail('')
-		  setPassword('')
-		  navigate('/home')
+			const response = await login({ email, password }).unwrap();
+			dispatch(setCredentials({ ...response }));
+			setEmail("");
+			setPassword("");
+			navigate("/home");
 		} catch (error) {
-		  console.log(error);
+			console.log(error);
 		}
-  }
+	};
 
 	return (
 		<AuthLayout>
@@ -57,7 +55,7 @@ function AuthForm() {
 							data={email}
 							setData={setEmail}
 							type="email"
-              pattern={/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/}
+							pattern={/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/}
 						/>
 						<InputPassword
 							error={passwordError}

@@ -1,4 +1,4 @@
-import { LineStyle } from "../pages/home/styled-components";
+import { LineStyle } from "../pages/home/styled-components/layout.styled";
 
 const DivisionLine = ({ title }) => {
 	return (
