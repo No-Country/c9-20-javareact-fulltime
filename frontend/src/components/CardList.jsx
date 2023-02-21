@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { closetCart } from "../redux/slice/cart.slice";
+import { closetCart, calculateTheTotal } from "../redux/slice/cart.slice";
 import { ButtonCarListExitStyled, CarListStyled } from "../styled-components";
 import ItemsCard from "./ItemsCard";
 import cartYellow from "/icons/cartYellow.svg";
@@ -9,17 +9,15 @@ import exit from "/icons/exit.svg";
 const CardList = () => {
 	const cart = useSelector((state) => state.cart.items);
 	const open = useSelector((state) => state.cart.open);
+	const total = useSelector((state) => state.cart.total);
 
 	const dispatch = useDispatch();
 	const [isLoading, setIsLoading] = useState(false);
-	const [total, setTotal] = useState(0);
 
 	useEffect(() => {
+		dispatch(calculateTheTotal())
 		if (cart.length !== 0) {
 			setIsLoading(true);
-			cart.forEach((i) => {
-				setTotal(total + i.subTotal);
-			});
 		} else {
 			setIsLoading(false);
 		}
@@ -43,9 +41,9 @@ const CardList = () => {
 
 			<section>
 				{isLoading ? (
-					cart.map((item) => (
+					cart.map((item, idx) => (
 						<ItemsCard
-							key={item.id}
+							key={idx}
 							id={item.id}
 							amount={item.amount}
 							name={item.name}

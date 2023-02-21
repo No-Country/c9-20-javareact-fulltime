@@ -36,6 +36,25 @@ export const CartSlice = createSlice({
 				items: [...filtered],
 			};
 		},
+
+		calculateTheTotal: (state) => {
+			if (state.items.length == 0) {
+				return {
+					...state,
+					total: 0,
+				}
+			}
+
+			const totalPrice = state.items.reduce((acc, val) => {
+				return acc + val.subTotal
+			}, 0)
+
+			return {
+				...state,
+				total: totalPrice,
+
+			}
+		},
 	},
 });
 

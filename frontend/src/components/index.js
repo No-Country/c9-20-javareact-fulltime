@@ -1,4 +1,4 @@
-export { default as AuthForm } from "./AuthForm";
+// export { default as AuthForm } from "./AuthForm";
 export { default as ButtonAction } from "./ButtonAction";
 export { default as CardList } from "./CardList";
 export { default as Footer } from "./Footer";
