@@ -31,7 +31,7 @@ public class Order {
     private List<ItemCart> itemCart;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private Payment payment;
+    private PaymentMethod paymentMethod;
 
     @OneToOne(mappedBy = "order", cascade = CascadeType.ALL,
             fetch = FetchType.LAZY, optional = false)

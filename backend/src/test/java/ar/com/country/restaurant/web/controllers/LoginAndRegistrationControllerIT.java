@@ -51,10 +51,7 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
     @BeforeEach
     void init() {
         user = User.builder()
-                .dni("12345678A")
                 .name("Julio")
-                .lastName("Álvarez")
-                .phone("+54 999999-9999")
                 .email("julion.alvarez@gmail.com")
                 .password("12345678")
                 .role(UserRole.NORMAL)
@@ -84,7 +81,9 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
                                     .content(JsonUtils.asJsonString(getRegisteredUserForLogin()))
                     )
                     .andExpect(status().isOk())
+                    .andExpect(jsonPath("$.id").exists())
                     .andExpect(jsonPath("$.email").value("julion.alvarez@gmail.com"))
+                    .andExpect(jsonPath("$.role").value("NORMAL"))
                     .andExpect(jsonPath("$.accessToken").exists())
                     .andExpect(jsonPath("$.refreshToken").exists())
                     .andReturn()
@@ -140,6 +139,7 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
                     .andExpect(status().isCreated())
                     .andExpect(jsonPath("$.id").exists())
                     .andExpect(jsonPath("$.email").value("ricardoibarra2044@gmail.com"))
+                    .andExpect(jsonPath("$.role").value("NORMAL"))
                     .andExpect(jsonPath("$.accessToken").exists())
                     .andExpect(jsonPath("$.refreshToken").exists())
                     .andReturn()
@@ -150,6 +150,21 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
 
             assertValidAccessToken(accessToken);
             assertValidRefreshToken(refreshToken);
+        }
+
+        @Test
+        void shouldReturn400_whenMissingFields() throws Exception {
+            User userWithMissingFields = User.builder()
+                    .name("Nicolás")
+                    .email("nicolas.hiking@gmail.com")
+                    .build();
+
+            mockMvc.perform(
+                            post("/api/register")
+                                    .contentType(MediaType.APPLICATION_JSON)
+                                    .content(JsonUtils.asJsonString(userWithMissingFields))
+                    )
+                    .andExpect(status().isBadRequest());
         }
 
         @Test
@@ -210,6 +225,8 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
         void shouldReturnNewAccessToken_andKeepSameRefreshToken() throws Exception {
             doLogin();
             Map<String, String> body = Map.of("refreshToken", refreshToken);
+            // After logging, we must wait at least 1 second
+            // before calling the "refresh-token" endpoint.
             given(clock.instant()).willReturn(Instant.now().plusSeconds(1));
             given(clock.getZone()).willReturn(Clock.systemDefaultZone().getZone());
 
@@ -235,7 +252,7 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
         @Test
         void shouldReturnNewRefreshToken_whenLessThan1WeekBeforeExpiration() throws Exception {
             doLogin();
-            // Travel 6 days to the future. Refresh token has 4 more days before expiration
+            // Travel 6 days to the future. Refresh token has 4 more days until expiration
             LocalDate timeToTheFuture = LocalDate.now().plusDays(6);
             ZoneId zoneId = ZoneId.systemDefault();
             given(clock.instant()).willReturn(timeToTheFuture.atStartOfDay(zoneId).toInstant());
@@ -287,12 +304,9 @@ class LoginAndRegistrationControllerIT extends AbstractIntegrationTest {
 
     private User createUnregisteredDummyUser() {
         return User.builder()
-                .dni("123456789BC")
                 .name("Nicolás")
-                .lastName("C. Ibarra")
                 .email("ricardoibarra2044@gmail.com")
                 .password("password12345")
-                .phone("+52 9999999999")
                 .role(UserRole.NORMAL)
                 .build();
     }
