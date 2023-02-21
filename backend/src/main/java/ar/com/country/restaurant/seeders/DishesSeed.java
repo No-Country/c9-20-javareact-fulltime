@@ -5,26 +5,21 @@ import ar.com.country.restaurant.dao.entities.DishCategory;
 import ar.com.country.restaurant.dao.entities.spec.DishSpec;
 import ar.com.country.restaurant.services.DishCategoryService;
 import ar.com.country.restaurant.services.DishService;
-import ar.com.country.restaurant.web.dto.DishCategoryDTO;
-import ar.com.country.restaurant.web.dto.DishDTO;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
+@Profile("seeder")
 public class DishesSeed implements CommandLineRunner {
-
     private final DishService dishService;
-
     private final DishCategoryService dishCategoryService;
 
-    public DishesSeed(DishService dishService, DishCategoryService dishCategoryService){
-        this.dishService = dishService;
-        this.dishCategoryService = dishCategoryService;
-    }
-
     @Override
-    public void run(String... args) throws Exception {
-        // categorias
+    public void run(String... args) {
+        // Categorías
         DishCategory dishCategory1 = new DishCategory();
         dishCategory1.setName("Pizzas");
         dishCategory1.setImgUrl("https://res.cloudinary.com/doxahduh8/image/upload/v1676594881/Diseño_sin_título_80_1_vahbhd.png");
@@ -51,8 +46,7 @@ public class DishesSeed implements CommandLineRunner {
         DishCategory saveDishCategory5 = dishCategoryService.createDishCategory(dishCategory5);
         DishCategory saveDishCategory6 = dishCategoryService.createDishCategory(dishCategory6);
 
-        // platillos
-
+        // Platillos
         Dish dish_1 = new Dish();
         dish_1.setName("Combo libra");
         dish_1.setDescription("Hamburguesa, lechuga, tomate, cebolla morada, pepino, y cheddar + papas");
