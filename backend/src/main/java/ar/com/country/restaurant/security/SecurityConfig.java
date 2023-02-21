@@ -69,6 +69,7 @@ public class SecurityConfig {
                 .authorizeRequests(auth -> auth
                         .antMatchers(AUTH_WHITELIST).permitAll()
                         .antMatchers(HttpMethod.GET, "/api/dishes/**").permitAll()
+                        .antMatchers(HttpMethod.GET, "/api/categories/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
