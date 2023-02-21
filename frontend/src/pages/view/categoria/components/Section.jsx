@@ -1,7 +1,7 @@
 import { HeaderSubTitle } from "../../../../components";
 import { useGetInfoFoodQuery } from "../../../../redux/query/FoodInfo.query";
 import { Div } from "../../../../styled-components";
-import Card from "./card";
+import Card from "./Card";
 
 const Section = ({ idCategory }) => {
 	const { data: food } = useGetInfoFoodQuery();
