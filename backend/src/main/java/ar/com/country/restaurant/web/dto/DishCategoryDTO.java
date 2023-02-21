@@ -1,17 +1,24 @@
 package ar.com.country.restaurant.web.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.springframework.hateoas.RepresentationModel;
+import org.springframework.hateoas.server.core.Relation;
 
 import javax.validation.constraints.NotBlank;
 
-public record DishCategoryDTO(
+@Data
+@EqualsAndHashCode
+@Relation(itemRelation = "dishCategory", collectionRelation = "dishCategories")
+public final class DishCategoryDTO extends RepresentationModel<DishCategoryDTO> {
         @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-        Long id,
+        Long id;
 
         @NotBlank
-        String imgUrl,
+        String imgUrl;
 
         @NotBlank
-        String name
-) {
+        String name;
 }
+

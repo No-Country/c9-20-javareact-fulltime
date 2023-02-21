@@ -23,9 +23,11 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.data.web.SortDefault;
 import org.springframework.hateoas.PagedModel;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -99,17 +101,24 @@ public class DishController {
             @ApiResponse(ref = UNAUTHORIZED_RESPONSE_REF, responseCode = "401"),
             @ApiResponse(ref = FORBIDDEN_RESPONSE_REF, responseCode = "403"),
     })
-    @PostMapping
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ResponseEntity<DishResponseDTO> createDish(@RequestBody @Valid DishDTO dishDto) {
+    public ResponseEntity<DishResponseDTO> createDishWithImage(
+            @Parameter(description = "The dish to be created")
+            @RequestPart(name = "dish") @Valid DishDTO dishDto,
+
+            @Parameter(description = "The image of the dish")
+            @RequestPart(name = "image", required = false) MultipartFile image
+    ) {
         Dish newDish = dishMapper.toEntity(dishDto);
-        Dish result = dishService.createDish(new DishSpec(newDish, dishDto.categoryId()));
+        DishSpec dishSpec = new DishSpec(newDish, dishDto.categoryId(), image);
+        Dish result = dishService.createDish(dishSpec);
         return ResponseEntity
                 .created(URI.create("/api/dishes/" + result.getId()))
                 .body(dishModelAssembler.toModel(result));
     }
 
-    @Operation(summary = "Updates the dish with the given payload. All fields must be provided.")
+    @Operation(summary = "Updates the dish with the given payload. All fields must be provided")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Dish updated", content = {
                     @Content(schema = @Schema(implementation = DishResponseDTO.class))
@@ -118,14 +127,19 @@ public class DishController {
             @ApiResponse(ref = FORBIDDEN_RESPONSE_REF, responseCode = "403"),
             @ApiResponse(ref = NOT_FOUND_RESPONSE_REF, responseCode = "404")
     })
-    @PutMapping("/{dishId}")
+    @PutMapping(value = "/{dishId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public DishResponseDTO updateDish(
+    public DishResponseDTO updateDishWithImage(
             @PathVariable Long dishId,
-            @RequestBody @Valid DishDTO dishDto
+
+            @Parameter(description = "The dish to be updated")
+            @RequestPart(name = "dish") @Valid DishDTO dishDto,
+
+            @Parameter(description = "The image of the dish")
+            @RequestPart(name = "image", required = false) MultipartFile image
     ) {
         Dish dish = dishMapper.toEntity(dishDto);
-        Dish result = dishService.updateDish(dishId, new DishSpec(dish, dishDto.categoryId()));
+        Dish result = dishService.updateDish(dishId, new DishSpec(dish, dishDto.categoryId(), image));
         return dishModelAssembler.toModel(result);
     }
 
@@ -141,7 +155,7 @@ public class DishController {
     @DeleteMapping("/{dishId}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public DishResponseDTO deleteDishById(@PathVariable Long dishId) {
-        Dish result = dishService.deleteById(dishId);
+        Dish result = dishService.deleteDishById(dishId);
         return dishMapper.toResponseDto(result);
     }
 

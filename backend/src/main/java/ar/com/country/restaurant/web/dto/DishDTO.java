@@ -11,9 +11,6 @@ public record DishDTO(
         @NotBlank
         String description,
 
-        @NotBlank
-        String image,
-
         @PositiveOrZero
         Double price,
 
