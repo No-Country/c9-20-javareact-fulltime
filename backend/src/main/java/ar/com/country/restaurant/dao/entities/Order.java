@@ -20,11 +20,16 @@ public class Order {
     @Column
     private Date createdAt;
     @Column
-    private Double subtotal;
+    private Double total;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
+
+    @ManyToOne
+    @JoinColumn(name = "cart_id")
+    private Cart cart;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL,
             fetch = FetchType.LAZY, orphanRemoval = true)
@@ -34,7 +39,17 @@ public class Order {
     private PaymentMethod paymentMethod;
 
     @OneToOne(mappedBy = "order", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY, optional = false)
+            fetch = FetchType.LAZY)
     private Receipt receipt;
 
+
+    public void calculateTotal() {
+        this.total = this.itemCart.stream().mapToDouble(ItemCart::getSubTotal).sum();
+    }
+
+    public void generateReceipt() {
+        this.receipt = Receipt.builder()
+                .order(this)
+                .build();
+    }
 }
