@@ -1,4 +1,4 @@
-package ar.com.country.restaurant.seeders;
+package ar.com.country.restaurant.bootstrap;
 
 import ar.com.country.restaurant.dao.entities.Dish;
 import ar.com.country.restaurant.dao.entities.DishCategory;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 @Profile("seeder")
-public class DishesSeed implements CommandLineRunner {
+public class DishSeeder implements CommandLineRunner {
     private final DishService dishService;
     private final DishCategoryService dishCategoryService;
 
