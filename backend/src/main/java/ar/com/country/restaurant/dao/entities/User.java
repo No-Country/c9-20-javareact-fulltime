@@ -42,6 +42,13 @@ public class User implements Serializable {
     )
     private List<Order> orders;
 
+    @OneToOne(
+            mappedBy = "user",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
+    )
+    private Cart cart;
+
     @OneToMany(
             mappedBy = "user",
             fetch = FetchType.LAZY,
