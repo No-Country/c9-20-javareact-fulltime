@@ -9,6 +9,7 @@ import ViewOfThePlate from "../pages/view/viewoftheplate/ViewOfThePlate";
 import Home from "./../pages/home/Home";
 import Category from "./../pages/view/categoria/Category";
 import Thanks from "../pages/Checkout/Thanks";
+import AdminCreate from "../pages/Admin/AdminCreate";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -58,5 +59,9 @@ export const router = createBrowserRouter([
   {
     path: "/thanks",
     element: <Thanks />,
+  },
+  {
+    path: "/adminCreate",
+    element: <AdminCreate />,
   },
 ]);
