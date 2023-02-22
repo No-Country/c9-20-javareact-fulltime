@@ -117,8 +117,9 @@ export default function MisDatos() {
             onChange={(e) => setmoreDetails(e.target.value)}
             value={moreDetails}
           />
-          <br />
-          <button>Guardar</button>
+          <div className="button">
+            <button>Guardar</button>
+          </div>
         </form>
       </MyDataStyle>
     </>
