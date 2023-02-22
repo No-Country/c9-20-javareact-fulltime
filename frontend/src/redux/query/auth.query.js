@@ -1,4 +1,6 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"; import { setCredentials, removeCredentials } from "../slice/Auth.slice"; const baseUrl = "http://localhost:8080/api";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { setCredentials, removeCredentials } from "../slice/Auth.slice";
+const baseUrl = "http://localhost:8080/api";
 
 const baseQuery = fetchBaseQuery({
   baseUrl,
@@ -8,7 +10,6 @@ const baseQuery = fetchBaseQuery({
     if (accessToken) {
       headers.set("authorization", `Bearer ${accessToken}`);
       headers.set("Access-Control-Allow-Origin", "*");
-      console.log('entra')
     }
     return headers;
   }

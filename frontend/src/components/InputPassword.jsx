@@ -6,19 +6,40 @@ import {
 } from "../styled-components/InputPassword.styled";
 import Icon from "./Icon";
 
-function InputPassword({ error, name, data, setData }) {
+function InputPassword({
+	error = false,
+	type,
+	setError,
+	name,
+	data,
+	setData,
+	passwordToValidate = "",
+}) {
 	const [showPassword, setShowPassword] = useState(false);
+	const errorMessage =
+		"La contraseña debe tener entre 6 y 16 caracteres entre numero y letras";
+	const errorMessageConfirm = "Las contraseñas no coinciden";
+
+	console.log(passwordToValidate, "to validate");
+	const validate = (value) => {
+		if (type === "password") {
+			/^[a-zA-Z0-9]{6,16}$/.test(value) ? setError(false) : setError(true);
+		}
+		if (type === "confirmPassword") {
+			value === passwordToValidate ? setError(false) : setError(true);
+		}
+	};
 
 	return (
 		<PasswordContainer>
-			<label htmlFor="password">{ name }</label>
+			<label htmlFor="password">{name}</label>
 			<PasswordWrapper error={error}>
 				<input
 					type={showPassword ? "text" : "password"}
-					id="password"
 					name='password'
-          value={data}
-          onChange={(e) => setData(e.target.value)}
+					value={data}
+					onChange={(e) => setData(e.target.value)}
+					onBlur={(e) => validate(e.target.value)}
 				/>
 				<ShowPasswordIcon
 					type='button'
@@ -27,7 +48,9 @@ function InputPassword({ error, name, data, setData }) {
 					<Icon />
 				</ShowPasswordIcon>
 			</PasswordWrapper>
-			{error && <span>Contraseña invalida</span>}
+			{error && (
+				<span>{type === "password" ? errorMessage : errorMessageConfirm}</span>
+			)}
 		</PasswordContainer>
 	);
 }
