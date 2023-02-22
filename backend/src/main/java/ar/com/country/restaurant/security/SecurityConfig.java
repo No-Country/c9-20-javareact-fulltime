@@ -34,6 +34,8 @@ public class SecurityConfig {
     private static final String[] AUTH_WHITELIST = {
             "/**/*.{js,html,css}",
             "/app/**",
+            "/assets/**",
+            "/static/**",
             "/api/login",
             "/api/register",
             "/api/refresh-token",
