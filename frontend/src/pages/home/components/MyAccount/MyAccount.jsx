@@ -2,8 +2,8 @@ import React from "react";
 import { MyAccountStyle } from "../../styled-components/MyAccountComponent";
 import MisDatos from "./MyData/MisDatos";
 import MisTarjetas from "./MyCards/MisTarjetas";
-import MisPedidos from "./MyOrders/MisPedidos";
-import CerrarSesion from "./LogOut/CerrarSesion";
+import MyOrders from "./MyOrders/MyOrders";
+import LogOut from "./LogOut/LogOut";
 import userImg from "./image/user.png";
 import cardImg from "./image/card.png";
 import cartImg from "./image/cart.png";
@@ -50,30 +50,30 @@ export default function MyAccount() {
   return (
     <MyAccountStyle>
       <div className="MyAccount">
-        <h1>MiCuenta</h1>
+        <p>Mi Cuenta</p>
         <div className="line"></div>
         <div className="container">
-          <div className="selection">
+          <div className="apartados">
             <div className="myData">
-              <img width="19px" src={userImg}></img>
+              <img src={userImg}></img>
               <button name="Datos" onClick={(e) => activacion(e)}>
                 Mis datos
               </button>
             </div>
             <div className="myCards">
-              <img width="19px" src={cardImg}></img>
+              <img src={cardImg}></img>
               <button name="Tarjetas" onClick={(e) => activacion(e)}>
                 Mis tarjetas
               </button>
             </div>
             <div className="myOrders">
-              <img width="19px" src={cartImg}></img>
+              <img src={cartImg}></img>
               <button name="Pedidos" onClick={(e) => activacion(e)}>
                 Mis pedidos
               </button>
             </div>
             <div className="logOut">
-              <img width="19px" src={logOutImg}></img>
+              <img src={logOutImg}></img>
               <button name="Sesion" onClick={(e) => activacion(e)}>
                 Cerrar Sesión
               </button>
@@ -83,8 +83,8 @@ export default function MyAccount() {
           <div>
             {misDatos && <MisDatos />}
             {misTarjetas && <MisTarjetas />}
-            {misPedidos && <MisPedidos />}
-            {cerrarSesion && <CerrarSesion />}
+            {misPedidos && <MyOrders />}
+            {cerrarSesion && <LogOut />}
           </div>
         </div>
       </div>
