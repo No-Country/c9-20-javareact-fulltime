@@ -21,9 +21,11 @@ public class ItemCart {
     private Cart cart;
 
     @ManyToOne(optional = false)
+    @JoinColumn(name = "dish_id")
     private Dish dish;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
     private Order order;
     @Column
     private int quantity;
