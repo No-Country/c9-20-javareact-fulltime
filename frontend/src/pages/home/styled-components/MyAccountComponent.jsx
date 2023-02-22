@@ -5,9 +5,10 @@ export const MyAccountStyle = styled.div`
   height: 1024px;
   width: 100%;
   border-radius: 0;
-  padding: 180px 80px;
+  padding: 50px 80px;
 
-  h1 {
+  p {
+    font-size: x-large;
     margin: 0;
     color: #fff;
   }
@@ -17,33 +18,48 @@ export const MyAccountStyle = styled.div`
   }
 
   button {
+    font-size: large;
+    font-family: var(--font-family);
     color: #fff;
   }
 
   .line {
     border: 0.5px solid #fff;
-    margin: 41px 0px 64px 0px;
+    margin: 20px 0px 10px 0px;
   }
 
   .line2 {
     border: 0.5px solid #fff;
-    margin: 0 25px 0 50px;
+    height: 400px;
+
   }
 
-  .selection {
+  .apartados {
     display: flex;
     flex-flow: column;
+    width: 217px;
+    gap: 15px;
+    
+    button {
+      color: #FFFFFF;
+      font-size: 24px;
+    }
+
+    button:hover {
+      color: #FCDB9B;
+    }
   }
 
-  .selection div {
-    display: flex;
-  }
+  // .selection div {
+  //   display: flex;
+  // }
 
-  button:hover {
-    color: brown;
-    text-align: center;
-  }
 
+
+  img{
+    width:19px;
+    height: auto;
+  }
   .container {
     display: flex;
   }
@@ -116,3 +132,41 @@ export const MyDataStyle = styled.div`
     width: 286.25px;
   }
 `;
+
+
+export const MyOrdersStyle = styled.div`
+  .titularPedidos {
+    font-size: 15px;
+    color: #ACACAC;
+    padding: 20px 0 0px 25px;
+  }
+
+  .descripcionPedidos{
+    padding: 20px 0 0px 25px;
+    font-size: 15px;
+  }
+`
+export const LogOurStyle = styled.div`
+  .contenedorLogOut{
+    padding: 20px 0 0px 25px;
+  }
+  label {
+    font-size: 16px;
+  }
+
+  input {
+    width: 446px;
+    height: 40px;
+    border: solid #acacac 1.75px;
+    background-color: transparent;
+    border-radius: 5px;
+  }
+
+  button {
+    background-color: #FFA800;
+    color: black;
+    border-radius: 3px;
+    margin-top: 25px;
+    float: right; 
+  }
+`
