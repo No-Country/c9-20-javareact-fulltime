@@ -9,6 +9,7 @@ import cardImg from "./image/cardsvg.svg";
 import cartImg from "./image/cartsvg.svg";
 import logOutImg from "./image/logOutsvg.svg";
 import { useEffect } from "react";
+import { Header } from "../../../../components";
 
 export default function MyAccount() {
   const [misDatos, setMisDatos] = React.useState(true);
@@ -49,46 +50,49 @@ export default function MyAccount() {
   };
 
   return (
-    <MyAccountStyle>
-      <div className="MyAccount">
-        <p>Mi Cuenta</p>
-        <div className="line"></div>
-        <div className="container">
-          <div className="apartados">
-            <div className="myData">
-              <div id="mascara"></div>
-              <button name="Datos" onClick={(e) => activacion(e)}>
-                Mis datos
-              </button>
+    <>
+      <Header />
+      <MyAccountStyle>
+        <div className="MyAccount">
+          <p>Mi Cuenta</p>
+          <div className="line"></div>
+          <div className="container">
+            <div className="apartados">
+              <div className="myData">
+                <div id="mascara"></div>
+                <button name="Datos" onClick={(e) => activacion(e)}>
+                  Mis datos
+                </button>
+              </div>
+              <div className="myCards">
+                <object data={cardImg}></object>
+                <button name="Tarjetas" onClick={(e) => activacion(e)}>
+                  Mis tarjetas
+                </button>
+              </div>
+              <div className="myOrders">
+                <img src={cartImg}></img>
+                <button name="Pedidos" onClick={(e) => activacion(e)}>
+                  Mis pedidos
+                </button>
+              </div>
+              <div className="logOut">
+                <img src={logOutImg}></img>
+                <button name="Sesion" onClick={(e) => activacion(e)}>
+                  Cerrar Sesión
+                </button>
+              </div>
             </div>
-            <div className="myCards">
-              <object data={cardImg}></object>
-              <button name="Tarjetas" onClick={(e) => activacion(e)}>
-                Mis tarjetas
-              </button>
+            <div className="line2"></div>
+            <div className="data">
+              {misDatos && <MisDatos />}
+              {misTarjetas && <MisTarjetas />}
+              {misPedidos && <MyOrders />}
+              {cerrarSesion && <LogOut />}
             </div>
-            <div className="myOrders">
-              <img src={cartImg}></img>
-              <button name="Pedidos" onClick={(e) => activacion(e)}>
-                Mis pedidos
-              </button>
-            </div>
-            <div className="logOut">
-              <img src={logOutImg}></img>
-              <button name="Sesion" onClick={(e) => activacion(e)}>
-                Cerrar Sesión
-              </button>
-            </div>
-          </div>
-          <div className="line2"></div>
-          <div className="data">
-            {misDatos && <MisDatos />}
-            {misTarjetas && <MisTarjetas />}
-            {misPedidos && <MyOrders />}
-            {cerrarSesion && <LogOut />}
           </div>
         </div>
-      </div>
-    </MyAccountStyle>
+      </MyAccountStyle>
+    </>
   );
 }

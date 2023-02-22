@@ -63,7 +63,7 @@ const Checkout = () => {
 						<>
 							<form action="">
 								<label htmlFor="">Número de tarjeta</label>
-								<input type="number" name="numberCard" id="" />
+								<input type="number" name="numberCard" id="" placeholder="Ingrese los 12 números" />
 								<label htmlFor="">Fecha de vencimiento</label>
 								<input type="month" name="numberCvv" id="" />
 								<label htmlFor="">CVV</label>

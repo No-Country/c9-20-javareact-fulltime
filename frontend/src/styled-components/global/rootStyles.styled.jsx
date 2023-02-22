@@ -24,6 +24,9 @@ export const GlobalStyle = createGlobalStyle`
     body{
         margin: 0;
         font-family: var(--font-family);
+        background-color: var(--background-primary);
+        background-color: var(--background-primary);
+        color: var(--text-primary);
     }
 
     button{
@@ -41,8 +44,8 @@ export const GlobalStyle = createGlobalStyle`
         text-decoration: none;
         color: inherit;
     }
-    /* img{
+    img{
         max-width: 100%;
         inline-size: auto;
-    } */
+    }
 `;

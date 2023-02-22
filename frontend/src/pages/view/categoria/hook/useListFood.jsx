@@ -15,7 +15,6 @@ const useListFood = (namePath) => {
 			setIsLoading(true);
 		}
 	}, []);
-
 	return {
 		list,
 		isLoading,

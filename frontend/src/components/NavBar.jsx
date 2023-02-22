@@ -1,39 +1,67 @@
-import { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { openCart } from "../redux/slice/cart.slice";
-import { NavBarStyled, StyledLink, CartWidget } from "../styled-components/NavBarComponent";
-import { logo, cart } from "../../public/icons"
-import CardList from './CardList';
+import { NavBarStyled } from "../styled-components";
+import ButtonAction from "./ButtonAction";
+import cart from "/icons/carWhite.svg";
 
-const NavBar = () => {
+const NavBar = (cd) => {
   const dispatch = useDispatch();
-	const carrito = useSelector((state) => state.cart.items);
-  const [open, setOpen] = useState(false)
+  const car = useSelector((state) => state.cart.items);
+  let activeStyle = {
+    color: "#FFA800",
+  };
 
+  const handleOpen = () => dispatch(openCart());
   return (
-    <>
-      <NavBarStyled>
-        <StyledLink to="/">
-          <img src={logo} alt="SVG logo image" />
-        </StyledLink>
+    <NavBarStyled>
+      <menu>
+        <li>
+          <NavLink
+            to={"/categoria"}
+            style={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            categoria
+          </NavLink>
+        </li>
 
-        <ul>
-          <StyledLink to="categoria">Carta</StyledLink>
-          <StyledLink to="promotions">Promociones</StyledLink>
-          <StyledLink to="contact">Contacto</StyledLink>
-          <StyledLink to="myaccount">Mi Cuenta</StyledLink>
-          <CartWidget>
-            <button onClick={() => dispatch(openCart())}>
-              <img src={cart} />
-            </button>
-            {/* badge indica el numero en el carrito */}
-            {carrito && carrito.length > 0 && <span>{carrito.length}</span>}
-          </CartWidget>
-        </ul>
-      </NavBarStyled>
-      {open && card.length > 0 && <CardList setOpen={setOpen} />}
-    </>
-  )
-}
+        <li>
+          <NavLink
+            to={"/promociones"}
+            style={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            promociones
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to={"/contacto"}
+            style={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            contacto
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to={"/myaccount"}
+            style={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            mi cuenta
+          </NavLink>
+        </li>
+
+        <ButtonAction
+          img={cart}
+          size="cover"
+          backgroundColor={"transparent"}
+          onClick={handleOpen}
+          padding={"1em"}
+          dataLength={car.length}
+          opacity={car.length === 0}
+        />
+      </menu>
+    </NavBarStyled>
+  );
+};
 
 export default NavBar;
