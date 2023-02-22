@@ -1,23 +1,33 @@
 import { useState } from "react";
 import { InputContainer } from "../styled-components/Input.styled.";
 
-function InputEmail({ name, type, data, setData }) {
+function Input({ name, type, data, setData, pattern }) {
   const [error, setError] = useState(false)
+  const validation = () => {
+    if (pattern) {
+      if (pattern.test(data)) {
+        setError(false)
+      } else {
+        setError(true)
+      }
+    }
+  }
 
 	return (
 		<InputContainer error={error}>
 			<label htmlFor="email">{name}</label>
 			<input
 				type={type}
-				id="email"
 				name='email'
         value={data}
-        onChange={(e) => setData(e.target.value)}
         required={true}
+        onChange={(e) => setData(e.target.value)}
+        onBlur={validation}
 			/>
-			{error && <span>Email no valido</span>}
+			{error && <span>{name} no valido</span>}
 		</InputContainer>
 	);
 }
 
-export default InputEmail;
+export default Input;
+  
