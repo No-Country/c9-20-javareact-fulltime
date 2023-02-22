@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>backend</artifactId>
+    <description>RESTful API development for a No Country Project</description>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -23,6 +24,13 @@
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
         <mysql-connector.version>8.0.32</mysql-connector.version>
         <springdoc-openapi-ui.version>1.6.14</springdoc-openapi-ui.version>
+        <hibernate-search.version>6.1.8.Final</hibernate-search.version>
+        <springdoc-openapi-maven-plugin.version>1.4</springdoc-openapi-maven-plugin.version>
+        <problem-spring-web.version>0.23.0</problem-spring-web.version>
+        <cloudinary-http44.version>1.31.0</cloudinary-http44.version>
+        <spring-restdocs-mockmvc.version>2.0.6.RELEASE</spring-restdocs-mockmvc.version>
+        <asciidoctor-maven-plugin.version>2.2.1</asciidoctor-maven-plugin.version>
+        <spring-restdocs-asciidoctor.version>2.0.6.RELEASE</spring-restdocs-asciidoctor.version>
     </properties>
 
     <dependencyManagement>
@@ -56,6 +64,13 @@
             <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
         </dependency>
 
+        <!-- HTTP Problems -->
+        <dependency>
+            <groupId>org.zalando</groupId>
+            <artifactId>problem-spring-web</artifactId>
+            <version>${problem-spring-web.version}</version>
+        </dependency>
+
         <!-- Validations-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -78,6 +93,13 @@
             <version>${mysql-connector.version}</version>
         </dependency>
 
+        <!-- Image upload -->
+        <dependency>
+            <groupId>com.cloudinary</groupId>
+            <artifactId>cloudinary-http44</artifactId>
+            <version>${cloudinary-http44.version}</version>
+        </dependency>
+
         <!-- Utils -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -90,11 +112,22 @@
             <artifactId>mapstruct</artifactId>
             <version>${org.mapstruct.version}</version>
         </dependency>
-
         <dependency>
             <groupId>net.minidev</groupId>
             <artifactId>json-smart</artifactId>
             <version>2.4.8</version>
+        </dependency>
+
+        <!-- Search -->
+        <dependency>
+            <groupId>org.hibernate.search</groupId>
+            <artifactId>hibernate-search-mapper-orm</artifactId>
+            <version>${hibernate-search.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.search</groupId>
+            <artifactId>hibernate-search-backend-lucene</artifactId>
+            <version>${hibernate-search.version}</version>
         </dependency>
 
         <!-- Testing -->
@@ -114,6 +147,12 @@
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-security</artifactId>
             <version>${springdoc-openapi-ui.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.restdocs</groupId>
+            <artifactId>spring-restdocs-mockmvc</artifactId>
+            <version>${spring-restdocs-mockmvc.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
@@ -150,7 +189,6 @@
             </build>
         </profile>
     </profiles>
-
     <build>
         <plugins>
             <plugin>
@@ -164,6 +202,19 @@
                         </exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-maven-plugin</artifactId>
+                <version>${springdoc-openapi-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

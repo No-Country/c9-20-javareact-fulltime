@@ -9,6 +9,12 @@ import ar.com.country.restaurant.web.dto.auth.LoginDTO;
 import ar.com.country.restaurant.web.dto.auth.TokenDTO;
 import ar.com.country.restaurant.web.dto.validation.OnCreate;
 import ar.com.country.restaurant.web.mappers.UserMapper;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,9 +28,17 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+import static ar.com.country.restaurant.util.ApiDocsConstants.*;
+
 @RestController
 @RequestMapping("/api")
 @Validated
+@Tag(name = "Login and registration", description = "Login and registration for users")
+@ApiResponses({
+        @ApiResponse(ref = BAD_REQUEST_RESPONSE_REF, responseCode = "400"),
+        @ApiResponse(ref = NOT_FOUND_RESPONSE_REF, responseCode = "404"),
+        @ApiResponse(ref = INTERNAL_SERVER_ERROR_RESPONSE_REF, responseCode = "500")
+})
 public class LoginAndRegistrationController {
     private final UserService userService;
     private final UserMapper userMapper;
@@ -46,6 +60,10 @@ public class LoginAndRegistrationController {
         this.refreshTokenAuthProvider = refreshTokenAuthProvider;
     }
 
+    @Operation(summary = "Login for registered user", description = "Login a user and return a JWT token")
+    @ApiResponse(responseCode = "200", description = "User Logged In", content = {
+            @Content(schema = @Schema(implementation = TokenDTO.class))
+    })
     @PostMapping("/login")
     public TokenDTO login(@RequestBody @Valid LoginDTO payload) {
         var token = UsernamePasswordAuthenticationToken.unauthenticated(payload.email(), payload.password());
@@ -53,6 +71,10 @@ public class LoginAndRegistrationController {
         return tokenGenerator.issueToken(authentication);
     }
 
+    @Operation(summary = "Register a user", description = "Register a new user and return a JWT token")
+    @ApiResponse(responseCode = "201", description = "User Registered", content = {
+            @Content(schema = @Schema(implementation = TokenDTO.class))
+    })
     @PostMapping("/register")
     @Validated(OnCreate.class)
     @ResponseStatus(HttpStatus.CREATED)
@@ -60,10 +82,14 @@ public class LoginAndRegistrationController {
         User newUser = userMapper.toEntity(userDto);
         User result = userService.createUser(newUser);
         SecurityUser securityUser = new SecurityUser(result);
-        Authentication authentication = UsernamePasswordAuthenticationToken.authenticated(securityUser, userDto.password(), securityUser.getAuthorities());
+        Authentication authentication = UsernamePasswordAuthenticationToken.authenticated(securityUser, userDto.getPassword(), securityUser.getAuthorities());
         return tokenGenerator.issueToken(authentication);
     }
 
+    @Operation(summary = "Issues a new access token with the provided refresh token")
+    @ApiResponse(responseCode = "200", description = "OK", content = {
+            @Content(schema = @Schema(implementation = TokenDTO.class))
+    })
     @PostMapping("/refresh-token")
     public TokenDTO refreshToken(@RequestBody TokenDTO payload) {
         Authentication authentication = refreshTokenAuthProvider.authenticate(new BearerTokenAuthenticationToken(payload.refreshToken()));

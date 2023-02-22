@@ -16,6 +16,13 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
+    public User getUserById(Long id) {
+        return userRepository
+                .findById(id)
+                .orElseThrow(() -> new UserNotFoundException(id));
+    }
+
+    @Override
     public User getUserByEmail(String email) {
         return userRepository
                 .findByEmail(email)
@@ -27,6 +34,27 @@ public class UserServiceImpl implements UserService {
         ensureUniqueEmail(user.getEmail());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
+    }
+
+    @Override
+    public User updateUser(Long userId, User updatedUser) {
+        User user = getUserById(userId);
+        if (!user.getEmail().equals(updatedUser.getEmail())) {
+            ensureUniqueEmail(updatedUser.getEmail());
+        }
+
+        user.setName(updatedUser.getName());
+        user.setEmail(updatedUser.getEmail());
+        user.setRole(updatedUser.getRole());
+
+        return userRepository.save(user);
+    }
+
+    @Override
+    public User deleteUser(Long userId) {
+        User userToDelete = getUserById(userId);
+        userRepository.deleteById(userId);
+        return userToDelete;
     }
 
     private void ensureUniqueEmail(String email) {
