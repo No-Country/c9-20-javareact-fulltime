@@ -17,9 +17,9 @@ export default function () {
         <br />
         <input type="password" placeholder="Ingrese su clave" id="password" />
         <br />
-        <button >
-          Cerrar Sesión
-        </button>
+        <div className="button">
+          <button>Cerrar Sesión</button>
+        </div>
       </div>
     </LogOurStyle>
   );

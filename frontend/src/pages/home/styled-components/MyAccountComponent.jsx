@@ -4,12 +4,13 @@ export const MyAccountStyle = styled.div`
   background-color: #2d2d2d;
   width: 100%;
   border-radius: 0;
-  padding: 180px 80px;
+  padding: 70px 90px;
 
   p {
     font-size: x-large;
     margin: 0;
     color: #fff;
+    margin-bottom: 41px;
   }
 
   label {
@@ -24,12 +25,12 @@ export const MyAccountStyle = styled.div`
 
   .line {
     border: 0.5px solid #fff;
-    margin: 41px 0px 64px 0px;
+    // margin: 41px 0px 64px 0px;
   }
 
   .line2 {
     border: 0.5px solid #fff;
-    margin: 0 25px 0 50px;
+    margin-right: 35px;
   }
 
   .selection {
@@ -41,22 +42,52 @@ export const MyAccountStyle = styled.div`
     display: flex;
   }
 
-  button:hover {
-    color: brown;
-    text-align: center;
-  }
-
-  // .selection div {
-  //   display: flex;
-  // }
-
   img {
     width: 19px;
     height: auto;
   }
   .container {
     display: flex;
+    widht: 100%;
+    justify-content: space-between;
   }
+
+  .apartados {
+    margin-top: 64px;
+    width: 15%;
+  }
+
+  button:hover,
+  .apartados div:hover {
+    cursor: pointer;
+    color: #fcdb9b;
+  }
+
+  #mascara {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background: url(https://res.cloudinary.com/doxahduh8/image/upload/v1677045499/usersvg_oitghj.svg);
+  }
+
+  @supports (-webkit-mask: url("")) or (mask: url("")) {
+    #mascara:hover {
+      -webkit-mask: url(https://res.cloudinary.com/doxahduh8/image/upload/v1677045499/usersvg_oitghj.svg);
+      mask: url(https://res.cloudinary.com/doxahduh8/image/upload/v1677045499/usersvg_oitghj.svg);
+      mask-size: cover;
+      background: #fcdb9b;
+    }
+  }
+
+  .data {
+    margin-top: 64px;
+    width: 80%;
+  }
+
+  .apartados > div {
+    margin-bottom: 10px;
+  }
+
   .postalCode_localidad {
     height: fit-content;
   }
@@ -64,7 +95,7 @@ export const MyAccountStyle = styled.div`
 
 export const MyDataStyle = styled.div`
   input {
-    width: 1160px;
+    width: 100%;
     height: 40px;
     border: solid #acacac 1.75px;
     background-color: transparent;
@@ -93,19 +124,19 @@ export const MyDataStyle = styled.div`
   }
 
   .location {
-    margin-right: 500px;
+    margin-right: 42%;
   }
 
   .number {
-    margin-left: 320px;
+    margin-left: 27.5%;
   }
 
   .piso {
-    margin-right: 260px;
+    margin-right: 21.5%;
   }
 
   .email {
-    margin-right: 430px;
+    margin-right: 35.5%;
   }
 
   #postalCode,
@@ -113,7 +144,7 @@ export const MyDataStyle = styled.div`
   #street,
   #contact,
   #email {
-    width: 577.5px;
+    width: 49.65%;
   }
 
   #postalCode,
@@ -125,7 +156,7 @@ export const MyDataStyle = styled.div`
 
   #number,
   #floor {
-    width: 286.25px;
+    width: 24.5%;
   }
 
   button {
@@ -204,7 +235,7 @@ export const MyCardsStyle = styled.div`
 
   input[type="text"],
   input[type="password"] {
-    width: 1160px;
+    width: 100%;
     height: 40px;
     border: solid #acacac 1.75px;
     background-color: transparent;
@@ -216,7 +247,7 @@ export const MyCardsStyle = styled.div`
   #cardNumber,
   #cvv,
   #expirationDate {
-    width: 577.5px;
+    width: 49.65%;
   }
 
   .card,
@@ -231,7 +262,7 @@ export const MyCardsStyle = styled.div`
   }
 
   .cvv {
-    margin-right: 550px;
+    margin-right: 46.5%;
   }
 
   button {
@@ -250,69 +281,6 @@ export const MyCardsStyle = styled.div`
     display: flex;
     justify-content: flex-end;
   }
-
-  // .debito input {
-  //   visibility: hidden;
-  //   position: absolute;
-  //   right: 0;
-  // }
-
-  // .debito input,
-  // .content-select select {
-  //   appearance: none;
-  //   -webkit-appearance: none;
-  //   -moz-appearance: none;
-  // }
-
-  // .debito {
-  //   position: relative;
-  //   margin-bottom: 30px;
-  //   padding: 5px 0 5px 60px; /* Damos un padding de 60px para posicionar el elemento <i> en este espacio*/
-  //   display: block;
-  // }
-
-  // /* Estas reglas se aplicarán a todos las elementos i después de cualquier input*/
-  // .debito input + i {
-  //   background: #f0f0f0;
-  //   border: 2px solid rgba(0, 0, 0, 0.2);
-  //   position: absolute;
-  //   left: 0;
-  //   top: 0;
-  // }
-
-  // /* Estas reglas se aplicarán a todos los i despues de un input de tipo radio*/
-  // .debito input[type="radio"] + i {
-  //   height: 30px;
-  //   width: 30px;
-  //   border-radius: 100%;
-  //   left: 15px;
-  // }
-
-  // .debito input[type="radio"] + i:before {
-  //   content: "";
-  //   display: block;
-  //   height: 18px;
-  //   width: 18px;
-  //   background: red;
-  //   border-radius: 100%;
-  //   position: absolute;
-  //   z-index: 1;
-  //   top: 4px;
-  //   left: 4px;
-  //   background: #2ac176;
-  //   transition: all 0.25s ease; /* Todas las propiedades | tiempo | tipo movimiento */
-  //   transform: scale(0) /* Lo reducimos a 0*/;
-  //   opacity: 0; /* Lo ocultamos*/
-  // }
-
-  // .debito input[type="radio"]:checked + i:before {
-  //   transform: scale(1);
-  //   opacity: 1;
-  // }
-
-  // .debito:hover input[type="radio"]:not(:checked) + i {
-  //   background: #b1e8cd;
-  // }
 `;
 
 export const MyOrdersStyle = styled.div`
@@ -341,13 +309,22 @@ export const LogOurStyle = styled.div`
     border: solid #acacac 1.75px;
     background-color: transparent;
     border-radius: 5px;
+    padding-left: 25px;
+    margin-bottom: 10px;
   }
 
   button {
+    border-radius: 4px;
     background-color: #ffa800;
     color: black;
-    border-radius: 3px;
-    margin-top: 25px;
-    float: right;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 10px 70px;
+    cursor: pointer;
+  }
+
+  .button {
+    display: flex;
+    justify-content: flex-end;
   }
 `;

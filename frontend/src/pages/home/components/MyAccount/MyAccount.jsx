@@ -4,10 +4,11 @@ import MisDatos from "./MyData/MisDatos";
 import MisTarjetas from "./MyCards/MisTarjetas";
 import MyOrders from "./MyOrders/MyOrders";
 import LogOut from "./LogOut/LogOut";
-import userImg from "./image/user.png";
-import cardImg from "./image/card.png";
-import cartImg from "./image/cart.png";
-import logOutImg from "./image/logOut.png";
+import userImg from "./image/usersvg.svg";
+import cardImg from "./image/cardsvg.svg";
+import cartImg from "./image/cartsvg.svg";
+import logOutImg from "./image/logOutsvg.svg";
+import { useEffect } from "react";
 
 export default function MyAccount() {
   const [misDatos, setMisDatos] = React.useState(true);
@@ -55,13 +56,13 @@ export default function MyAccount() {
         <div className="container">
           <div className="apartados">
             <div className="myData">
-              <img src={userImg}></img>
+              <div id="mascara"></div>
               <button name="Datos" onClick={(e) => activacion(e)}>
                 Mis datos
               </button>
             </div>
             <div className="myCards">
-              <img src={cardImg}></img>
+              <object data={cardImg}></object>
               <button name="Tarjetas" onClick={(e) => activacion(e)}>
                 Mis tarjetas
               </button>
@@ -80,7 +81,7 @@ export default function MyAccount() {
             </div>
           </div>
           <div className="line2"></div>
-          <div>
+          <div className="data">
             {misDatos && <MisDatos />}
             {misTarjetas && <MisTarjetas />}
             {misPedidos && <MyOrders />}
