@@ -33,7 +33,7 @@ public class Order {
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL,
             fetch = FetchType.LAZY, orphanRemoval = true)
-    private List<ItemCart> itemCart;
+    private List<ItemCart> items;
 
     @OneToOne(cascade = CascadeType.ALL)
     private PaymentMethod paymentMethod;
@@ -44,7 +44,7 @@ public class Order {
 
 
     public void calculateTotal() {
-        this.total = this.itemCart.stream().mapToDouble(ItemCart::getSubTotal).sum();
+        this.total = this.items.stream().mapToDouble(ItemCart::getSubTotal).sum();
     }
 
     public void generateReceipt() {
