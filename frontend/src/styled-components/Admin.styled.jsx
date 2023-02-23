@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Admin = styled.div`
+export const AdminCreateStyle = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: #2d2d2d;
@@ -37,12 +37,10 @@ export const Admin = styled.div`
     display: flex;
     flex-direction: column;
     align-items: right;
-    padding-left: 35px;
+    padding-left: 50px;
     margin-top: 20px;
-  }
-
-  .list > p {
-    padding-left: 5px;
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
   }
 
   .component {
@@ -51,10 +49,25 @@ export const Admin = styled.div`
     // background-color: red;
   }
 
-  p,
-  h3 {
-    margin: 0;
+  .secciones {
+    text-align: left;
+    font-size: x-large;
+    font-family: var(--font-family);
+    color: #fff;
+    margin: 0 0;
   }
+
+  button {
+    text-align: left;
+    font-size: large;
+    font-family: var(--font-family);
+    color: #fff;
+    :hover {
+      cursor: pointer;
+      color: #fcdb9b;
+    }
+  }
+
 `;
 
 export const DishesListStyles = styled.div`
@@ -64,3 +77,30 @@ export const DishesListStyles = styled.div`
     gap: 62%;
   }
 `;
+
+export const CategoryListStyles = styled.div`
+
+margin-left: 50px;
+
+
+.inputCategoria{
+    width: 446px;
+    height: 40px;
+    border: solid #acacac 1.75px;
+    background-color: transparent;
+    border-radius: 5px;
+    padding-left: 25px;
+    margin-bottom: 10px;
+  }
+
+  button {
+    border-radius: 4px;
+    background-color: #ffa800;
+    color: black;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 10px 70px;
+    cursor: pointer;
+  }
+`;
+

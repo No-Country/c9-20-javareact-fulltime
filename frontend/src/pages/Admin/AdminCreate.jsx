@@ -1,11 +1,14 @@
 import React from "react";
-import { Admin } from "../../styled-components/Admin.styled";
+import { AdminCreateStyle } from "../../styled-components/Admin.styled";
 import DishesList from "./DishesList";
+import CategoryList from "./CategoryList";
 
 const AdminCreate = () => {
+  //Este estado va a definir en un string cual es el componente a mostrar.
+  const [mostrar, setMostrar] = React.useState('Platos_Listado')
   return (
     <>
-      <Admin>
+      <AdminCreateStyle>
         <nav>
           <img src="../../public/icons/logo.svg" alt="" />
           <div className="administrator">
@@ -19,20 +22,29 @@ const AdminCreate = () => {
         </nav>
         <div className="container">
           <div className="list">
-            <h3>Platos</h3>
-            <p>Listado</p>
-            <p>Agregar</p>
-            <h3>Categoria</h3>
-            <p>Listado</p>
-            <p>Agregar</p>
-            <h3>Ventas</h3>
-            <p>Listado</p>
+            <p className='secciones'>Platos</p >
+            <button onClick={()=> setMostrar('Platos_Listado')}>Listado</button>
+            <button onClick={()=> setMostrar('Platos_Listado')}>Agregar</button>
+            <p className='secciones'>Categoria</p >
+            <button onClick={()=> setMostrar('Categoria_Listado')}>Listado</button>
+            <button onClick={()=> setMostrar('Categoria_Listado')}>Agregar</button>
+            <p className='secciones'>Ventas</p >
+            <button>Listado</button>
           </div>
           <div className="component">
-            <DishesList />
+
+             
+              {(mostrar == 'Platos_Listado') && <DishesList />}
+              {(mostrar == 'Categoria_Listado') && <CategoryList />}
+              {(mostrar == 'a') && <DishesList />}
+              {(mostrar == 'b') && <DishesList />}
+              {(mostrar == 'c') && <DishesList />}
+              
+            
+            
           </div>
         </div>
-      </Admin>
+      </AdminCreateStyle>
     </>
   );
 };
