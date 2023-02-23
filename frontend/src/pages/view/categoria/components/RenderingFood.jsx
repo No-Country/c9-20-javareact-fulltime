@@ -1,28 +1,24 @@
-import ItemFood from "../../../../components/ItemFood";
-import { BadgeStar } from "../../../../styled-components";
-import plato from "/assets/plato-pizza.png";
-import star from "/icons/Star.svg";
-const RenderingFood = ({ list, isLoading }) => {
+import { useParams } from "react-router-dom";
+import { Items } from "../../../../components";
+import useListFood from "./../hook/useListFood";
+const RenderingFood = () => {
+	const { idCategory } = useParams();
+	const { list, isLoading } = useListFood(idCategory);
+
 	return (
 		<>
 			{isLoading ? (
 				<>
 					{list.map((item) => (
-						<ItemFood
+						<Items
 							key={item.id}
 							id={item.id}
-							nameFood={item.nameFood}
-							image={plato}
-							circle={"true"}
+							title={item.name}
+							image={item.imgUrl}
 							description={item.description}
 							portion={"1"}
 							price={item.price}
-						>
-							<BadgeStar>
-								<img src={star} alt="star svg image" />
-								4.9
-							</BadgeStar>
-						</ItemFood>
+						/>
 					))}
 				</>
 			) : (

@@ -1,10 +1,11 @@
 import { HeaderSubTitle } from "../../../../components";
-import { useGetInfoFoodQuery } from "../../../../redux/query/FoodInfo.query";
 import { Div } from "../../../../styled-components";
-import Card from "./Card";
+import Card from "../components/Card";
+import useCategories from "../hook/useCategories";
 
 const Section = ({ idCategory }) => {
-	const { data: food } = useGetInfoFoodQuery();
+	const { categories, isLoading } = useCategories();
+
 	return (
 		<section>
 			<HeaderSubTitle
@@ -13,12 +14,13 @@ const Section = ({ idCategory }) => {
 				level={1}
 				fontWeight={300}
 			/>
+
 			<Div gap={"109px"} inlineSize='100%' blockSize='735px'>
-				{!idCategory && food ? (
-					food.map((item) => (
+				{!isLoading ? (
+					categories.map((item) => (
 						<Card
 							key={item.id}
-							img={item.image}
+							img={item.imgUrl}
 							link={item.name}
 							name={item.name}
 						/>
