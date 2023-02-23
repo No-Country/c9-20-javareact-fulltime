@@ -96,6 +96,22 @@ margin-left: 50px;
   font-weight: 400;
 }
 
+.listadoCategoria{
+  width:70%
+}
+
+.iconoCategorias{
+  height:25px;
+  width: auto;
+}
+
+.listadoCatDiv{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .inputCategoria{
     width: 446px;
     height: 40px;
