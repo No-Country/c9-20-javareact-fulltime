@@ -43,10 +43,13 @@ function Signup() {
 		try {
 			const response = await signup({ name, email, password }).unwrap();
 			dispatch(setCredentials({ ...response }));
+      window.localStorage.setItem('accessToken', response.accessToken)
+      window.localStorage.setItem('refreshToken', response.refreshToken)
+      window.localStorage.setItem('role', response.role)
 			setName("");
 			setEmail("");
 			setPassword("");
-			navigate("/home");
+			navigate("/");
 		} catch (error) {
 			console.log(error);
 		}
