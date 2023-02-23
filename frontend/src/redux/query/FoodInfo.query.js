@@ -11,7 +11,7 @@ export const FoodInfoApi = createApi({
 		}),
 
 		getDishes: builder.query({
-			query: () => "/dishes",
+			query: () => "/dishes?page=0&size=999",
 		}),
 
 		getDishesPizza: builder.query({

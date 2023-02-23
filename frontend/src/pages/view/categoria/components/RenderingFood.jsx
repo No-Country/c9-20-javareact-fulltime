@@ -14,7 +14,7 @@ const RenderingFood = () => {
 							key={item.id}
 							id={item.id}
 							title={item.name}
-							image={item.imgUrl}
+							image={item.image.url}
 							description={item.description}
 							portion={"1"}
 							price={item.price}
