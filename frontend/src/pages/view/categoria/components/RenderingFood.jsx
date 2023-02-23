@@ -1,6 +1,5 @@
 import ItemFood from "../../../../components/ItemFood";
 import { BadgeStar } from "../../../../styled-components";
-import plato from "/assets/plato-pizza.png";
 import star from "/icons/Star.svg";
 const RenderingFood = ({ list, isLoading }) => {
 	return (
@@ -12,7 +11,7 @@ const RenderingFood = ({ list, isLoading }) => {
 							key={item.id}
 							id={item.id}
 							nameFood={item.nameFood}
-							image={plato}
+							image={item.img}
 							circle={"true"}
 							description={item.description}
 							portion={"1"}
