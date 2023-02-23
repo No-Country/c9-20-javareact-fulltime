@@ -48,10 +48,13 @@ function Signup() {
 				role: "NORMAL",
 			}).unwrap();
 			dispatch(setCredentials({ ...response }));
+      window.localStorage.setItem('accessToken', response.accessToken)
+      window.localStorage.setItem('refreshToken', response.refreshToken)
+      window.localStorage.setItem('role', response.role)
 			setName("");
 			setEmail("");
 			setPassword("");
-			navigate("/login");
+			navigate("/");
 		} catch (error) {
 			console.log(error);
 		}

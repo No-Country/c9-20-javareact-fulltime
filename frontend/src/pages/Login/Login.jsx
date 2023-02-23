@@ -37,6 +37,9 @@ function AuthForm() {
 		try {
 			const response = await login({ email, password }).unwrap();
 			dispatch(setCredentials({ ...response }));
+			window.localStorage.setItem("accessToken", response.accessToken);
+			window.localStorage.setItem("refreshToken", response.refreshToken);
+			window.localStorage.setItem("role", response.role);
 			setEmail("");
 			setPassword("");
 			navigate("/");

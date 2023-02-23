@@ -8,12 +8,14 @@ import {
 	Unwrapped,
 } from "./CheckoutStyled.jsx";
 import { Button, DivCol } from "../../styled-components/layout/layout.styled"
+import useAuth from "../../hooks/useAuth";
 
 
 const Checkout = () => {
 	const cart = useSelector(state => state.cart.items);
 	const [selectedDeliveryOption, setSelectedDeliveryOption] = useState('local');
 	const [selectedPaymentOption, setSelectedPaymentOption] = useState('debito');
+  useAuth()
 	console.log(cart);
 
 	return (

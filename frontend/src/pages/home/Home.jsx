@@ -1,19 +1,23 @@
 import { CardList, Footer, Header } from "../../components";
 import CustomerFeedback from "./components/CustomerFeedback";
 import SectionHero from "./components/SectionHero";
+import useAuth from '../../hooks/useAuth'
 
 const Home = () => {
-	return (
-		<>
-			<Header />
-			<CardList />
-			<main>
-				<SectionHero />
-				<CustomerFeedback />
-			</main>
-			<Footer />
-		</>
-	);
+  
+  useAuth()
+
+  return (
+    <>
+      <Header />
+      <CardList />
+      <main>
+        <SectionHero />
+        <CustomerFeedback />
+      </main>
+      <Footer />
+    </>
+  );
 };
 
 export default Home;
