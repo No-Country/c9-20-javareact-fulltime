@@ -1,20 +1,20 @@
 import { useState } from "react";
-import Logo from "/assets/logo.svg";
-import {
-	AuthLayout,
-	LogoContainer,
-	AuthContainer,
-	FormContainer,
-	Title,
-	Form,
-	Button,
-} from "../../styled-components/Auth.styled";
-import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setCredentials } from "../../redux/slice/Auth.slice";
-import { useSignupMutation } from "../../redux/slice/authApi.slice";
+import { useNavigate } from "react-router-dom";
 import Input from "../../components/Input";
 import InputPassword from "../../components/InputPassword";
+import { setCredentials } from "../../redux/slice/Auth.slice";
+import { useSignupMutation } from "../../redux/slice/authApi.slice";
+import {
+	AuthContainer,
+	AuthLayout,
+	Button,
+	Form,
+	FormContainer,
+	LogoContainer,
+	Title,
+} from "../../styled-components/Auth.styled";
+import Logo from "/assets/logo.svg";
 
 function Signup() {
 	const [showAlert, setShowAlert] = useState(false);
@@ -36,12 +36,17 @@ function Signup() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-    if(passwordError || confirmPasswordError) {
-      setConfirmPasswordError(true);
-      return;
-    }
+		if (passwordError || confirmPasswordError) {
+			setConfirmPasswordError(true);
+			return;
+		}
 		try {
-			const response = await signup({ name, email, password }).unwrap();
+			const response = await signup({
+				name,
+				email,
+				password,
+				role: "NORMAL",
+			}).unwrap();
 			dispatch(setCredentials({ ...response }));
       window.localStorage.setItem('accessToken', response.accessToken)
       window.localStorage.setItem('refreshToken', response.refreshToken)
@@ -80,19 +85,19 @@ function Signup() {
 						<InputPassword
 							name="Contraseña"
 							error={passwordError}
-              setError={setPasswordError}
+							setError={setPasswordError}
 							data={password}
 							setData={setPassword}
-              type="password"
+							type="password"
 						/>
 						<InputPassword
 							name="Confirmar Contraseña"
 							error={confirmPasswordError}
-              setError={setConfirmPasswordError}
+							setError={setConfirmPasswordError}
 							data={confirmPassword}
 							setData={setConfirmPassword}
-              type="confirmPassword"
-              passwordToValidate={password}
+							type="confirmPassword"
+							passwordToValidate={password}
 						/>
 
 						<Button> Registrarse </Button>

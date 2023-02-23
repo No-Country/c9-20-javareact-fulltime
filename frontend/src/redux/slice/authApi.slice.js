@@ -13,7 +13,7 @@ export const authApiSlice = authQueries.injectEndpoints({
 			query: ({ name, email, password }) => ({
 				url: "/register",
 				method: "POST",
-				body: { name, email, password, role: "ADMIN" },
+				body: { name, email, password, role: "NORMAL" },
 			}),
 		}),
 	}),

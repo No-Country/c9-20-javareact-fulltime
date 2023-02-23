@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import { CardStyled } from "../styled-components/layout.styled";
-import pizza from "/img/pizza.jpg";
-const Card = ({ link, name, id }) => {
+const Card = ({ link, name, id, img }) => {
 	return (
-		<CardStyled key={id} img={pizza} cover='cover'>
+		<CardStyled key={id} img={img} cover='cover'>
 			<Link to={link}>
 				<h2>{name.toUpperCase()}</h2>
 			</Link>
