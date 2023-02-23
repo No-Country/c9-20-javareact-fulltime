@@ -39,7 +39,7 @@ function AuthForm() {
 			dispatch(setCredentials({ ...response }));
 			setEmail("");
 			setPassword("");
-			navigate("/home");
+			navigate("/");
 		} catch (error) {
 			console.log(error);
 			setShowAlert(true);
