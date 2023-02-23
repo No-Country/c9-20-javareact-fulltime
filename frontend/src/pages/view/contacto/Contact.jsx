@@ -1,7 +1,7 @@
 import { CardList, Footer, Header } from "../../../components";
 import HeaderSubTitle from "../../../components/HeaderSubTitle";
 import { ContactStyled } from "./styled-components/layout.styled";
-import wha from "/icons/Whatsapp.svg";
+import wha from "/icons/whatsapp.svg";
 import location from "/icons/location.svg";
 import phone from "/icons/phone.svg";
 const Contact = () => {
