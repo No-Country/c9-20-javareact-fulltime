@@ -6,18 +6,11 @@ export default function CategoryList() {
     let infodeApi = ['1x Ñoquis Orden #123RGR231567Y Confirmado 1 de Jul. 2022 21:00Hs','1x Ñoquis Orden #123RGR231567Y Confirmado 1 de Jul. 2022 21:00Hs', '1x Ñoquis Orden #123RGR231567Y Confirmado 1 de Jul. 2022 21:00Hs']
   return (
     <CategoryListStyles>
+
         <div>
-            <p>Crear Categoría</p>
-            <label htmlFor="nombreCategoria">Nombre:</label>
-            <br />
-            <input type="text" placeholder='Ingrese el nombre de la categoría' className='inputCategoria' name="nombreCategoria" /> 
-            <br />
-            <button>Confirmar</button>
-        </div>
-        <div>
-            <p>Listado de Categoría</p>
+            <p className='tituloListado'>Listado de Categoría</p>
             {
-                infodeApi.map((e) => <p>{e}</p>)
+                infodeApi.map((e) => <p className='listaListado'>{e}</p>)
             }
         </div>
     </CategoryListStyles>

@@ -82,6 +82,19 @@ export const CategoryListStyles = styled.div`
 
 margin-left: 50px;
 
+.createCategory{
+  width: fit-content;
+}
+
+.tituloListado{
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.listaListado{
+  font-size: 15px;
+  font-weight: 400;
+}
 
 .inputCategoria{
     width: 446px;
@@ -101,6 +114,9 @@ margin-left: 50px;
     font-size: 20px;
     padding: 10px 70px;
     cursor: pointer;
+    width: 228px;
+    height: 50px;
+    float: right;
   }
 `;
 

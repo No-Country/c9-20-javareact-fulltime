@@ -2,6 +2,7 @@ import React from "react";
 import { AdminCreateStyle } from "../../styled-components/Admin.styled";
 import DishesList from "./DishesList";
 import CategoryList from "./CategoryList";
+import CreateCategory from "./CreateCategory";
 
 const AdminCreate = () => {
   //Este estado va a definir en un string cual es el componente a mostrar.
@@ -27,7 +28,7 @@ const AdminCreate = () => {
             <button onClick={()=> setMostrar('Platos_Listado')}>Agregar</button>
             <p className='secciones'>Categoria</p >
             <button onClick={()=> setMostrar('Categoria_Listado')}>Listado</button>
-            <button onClick={()=> setMostrar('Categoria_Listado')}>Agregar</button>
+            <button onClick={()=> setMostrar('Crear Categoria')}>Agregar</button>
             <p className='secciones'>Ventas</p >
             <button>Listado</button>
           </div>
@@ -35,10 +36,10 @@ const AdminCreate = () => {
 
              
               {(mostrar == 'Platos_Listado') && <DishesList />}
+              {(mostrar == 'a') && 'Aqui va el componente'}
               {(mostrar == 'Categoria_Listado') && <CategoryList />}
-              {(mostrar == 'a') && <DishesList />}
-              {(mostrar == 'b') && <DishesList />}
-              {(mostrar == 'c') && <DishesList />}
+              {(mostrar == 'Crear Categoria') && <CreateCategory />}
+              {(mostrar == 'c') && 'Aqui va el componente'}
               
             
             
