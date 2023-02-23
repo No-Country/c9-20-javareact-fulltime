@@ -18,6 +18,6 @@ public interface DishService {
 
     Dish updateDish(Long dishId, DishSpec dishSpec);
 
-    Dish deleteById(Long dishId);
+    Dish deleteDishById(Long dishId);
 
 }

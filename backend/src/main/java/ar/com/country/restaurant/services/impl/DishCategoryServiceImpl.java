@@ -5,11 +5,11 @@ import ar.com.country.restaurant.exceptions.DishCategoryNameAlreadyExistsExcepti
 import ar.com.country.restaurant.exceptions.DishCategoryNotFoundException;
 import ar.com.country.restaurant.repositories.DishCategoryRepository;
 import ar.com.country.restaurant.services.DishCategoryService;
+import ar.com.country.restaurant.util.BeanUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -17,8 +17,8 @@ public class DishCategoryServiceImpl implements DishCategoryService {
     private final DishCategoryRepository dishCategoryRepository;
 
     @Override
-    public List<DishCategory> getAllDishCategories() {
-        return dishCategoryRepository.findAllDishCategoriesByOrderByNameAsc();
+    public List<DishCategory> getDishCategories() {
+        return dishCategoryRepository.findAllDishCategoriesByNameAsc();
     }
 
     @Override
@@ -29,29 +29,30 @@ public class DishCategoryServiceImpl implements DishCategoryService {
     }
 
     @Override
-    public DishCategory createDishCategory(DishCategory dishCategory) {
-        ensureUniqueDishCategoryName(dishCategory.getName());
-        return dishCategoryRepository.save(dishCategory);
+    public DishCategory createDishCategory(DishCategory newDishCategory) {
+        ensureUniqueDishCategoryName(newDishCategory.getName());
+        return dishCategoryRepository.save(newDishCategory);
     }
 
     @Override
-    public DishCategory deleteDishCategory(Long id) {
-        dishCategoryRepository.deleteById(id);
-        return null;
+    public DishCategory updateDishCategory(Long categoryId, DishCategory updatedDishCategory) {
+        DishCategory categoryToUpdate = getDishCategoryById(categoryId);
+        if (!categoryToUpdate.getName().equals(updatedDishCategory.getName())) {
+            ensureUniqueDishCategoryName(updatedDishCategory.getName());
+        }
+        BeanUtils.copyProperties(updatedDishCategory, categoryToUpdate);
+        return categoryToUpdate;
     }
 
     @Override
-    public Optional<DishCategory> findById(Long id) {
-        existsDishCategory(id);
-        return dishCategoryRepository.findById(id);
-    }
-
-    private void existsDishCategory(Long id) {
-        dishCategoryRepository.findById(id).orElseThrow(() -> new DishCategoryNotFoundException());
+    public DishCategory deleteDishCategory(Long categoryId) {
+        DishCategory categoryToDelete = getDishCategoryById(categoryId);
+        dishCategoryRepository.deleteById(categoryId);
+        return categoryToDelete;
     }
 
     private void ensureUniqueDishCategoryName(String name) {
-        boolean nameAlreadyExists = dishCategoryRepository.existsByName(name);
+        boolean nameAlreadyExists = dishCategoryRepository.existsByNameIgnoreCase(name);
         if (nameAlreadyExists) {
             throw new DishCategoryNameAlreadyExistsException(name);
         }

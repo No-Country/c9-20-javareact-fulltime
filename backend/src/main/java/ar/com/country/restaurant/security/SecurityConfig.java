@@ -34,6 +34,8 @@ public class SecurityConfig {
     private static final String[] AUTH_WHITELIST = {
             "/**/*.{js,html,css}",
             "/app/**",
+            "/assets/**",
+            "/static/**",
             "/api/login",
             "/api/register",
             "/api/refresh-token",
@@ -69,6 +71,7 @@ public class SecurityConfig {
                 .authorizeRequests(auth -> auth
                         .antMatchers(AUTH_WHITELIST).permitAll()
                         .antMatchers(HttpMethod.GET, "/api/dishes/**").permitAll()
+                        .antMatchers(HttpMethod.GET, "/api/categories/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
