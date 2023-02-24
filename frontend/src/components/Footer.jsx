@@ -12,38 +12,39 @@ import WhatsApp from "/icons/whatsapp.svg";
 const Footer = () => {
 	return (
 		<FooterStyled>
+			<img src={logo} alt="SVG logo image" />
 			<FooterContainerStyled>
-				<img src={logo} alt="SVG logo image" />
 				<div>
-					<strong>Encontranos</strong>
+					<span>Encontranos</span>
 					<ul>
 						<li>
 							<img src={location} alt="SVG location image" />
-							<p>Loremipsum00</p>
-						</li>
-						<li>
-							<img src={location} alt="SVG location image" />
-							<p>Loremipsum00</p>
+							<p>Urquiza 2345 - Capital</p>
 						</li>
 					</ul>
 				</div>
 				<div>
-					<strong>Contactos</strong>
+					<span>Reservas</span>
 					<ul>
 						<li>
 							<img src={phone} alt="SVG phone image" />
-							<p>000000000</p>
+							<p>11 - 23232323</p>
 						</li>
+					</ul>
+				</div>
+				<div>
+					<span>WhatsApp</span>
+					<ul>
 						<li>
-							<img src={WhatsApp} alt="SVG whatsapp image" />
-							<p>01010101010</p>
+							<img src={WhatsApp} alt="SVG phone image" />
+							<p>11- 45454545</p>
 						</li>
 					</ul>
 				</div>
 			</FooterContainerStyled>
 
 			<FooterContainerTwo>
-				<strong>Seguinos</strong>
+				<span>Seguinos</span>
 				<ul>
 					<li>
 						<img src={face} alt="SVG facebook image" />

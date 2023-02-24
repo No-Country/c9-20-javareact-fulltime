@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {
-	BackgroundImageButtons,
-	FlexBoxCenter,
+  BackgroundImageButtons,
+  FlexBoxCenter,
 } from "../reusable/reusable.styled";
 
 export const HeaderStyled = styled.header`
@@ -209,13 +209,13 @@ export const CarListStyled = styled.aside`
      block-size: 245px;
      overflow-y: scroll;
       ${({ length }) => {
-				if (length === 0) {
-					return `
+    if (length === 0) {
+      return `
           ${FlexBoxCenter};
              color: var(--text-primary);
          `;
-				}
-			}}
+    }
+  }}
       
    }
    section + hr{
@@ -414,7 +414,7 @@ export const ButtonActionStyled = styled.button`
     }
     &:hover{
       background-color: ${({ backgroundColorHover }) =>
-				backgroundColorHover || "none"};
+    backgroundColorHover || "none"};
     }
 `;
 
@@ -431,7 +431,7 @@ export const NavBarStyled = styled.nav`
 
       color: var(--text-primary);
       transition: color 1s ease-in-out;
-      &: hover{
+      &:hover{
         color: #FFA800;
       }
 
@@ -519,40 +519,41 @@ export const FooterStyled = styled.footer`
   width: 100%;
   height: 205px;
   margin-top: 4rem;
+  span {
+    font-size: 20px;
+    margin: 5px 0;
+  }
 `;
 
 export const FooterContainerStyled = styled.div`
       display: inherit;
       justify-content: space-between;
-      inline-size: 825px;
+      gap: 5em;
       div ul li{
         display: flex;
+        align-items: center;
         gap:12px;
-
+        font-size: 12px;
+        img {
+          height: 18px;
+        }
         p{
           margin: 5px 0;
         }
       }
-
-    div strong{
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
 `;
 
 export const FooterContainerTwo = styled.div`
 
     display: flex;
     flex-direction: column;
-    align-items: center;
-    strong{
-      margin-bottom: 34px;
-    } 
-    inline-size: 200px;
-      ul{
-        display: flex;
-        gap:18px;
-      }
+    ul{
+      display: flex;
+      justify-content: space-around;
+    }
+    img {
+      height: 18px;
+    }
 `;
 
 export const SectionStyledBackground = styled.section`
