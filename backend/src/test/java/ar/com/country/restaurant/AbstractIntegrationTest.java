@@ -27,12 +27,11 @@ public class AbstractIntegrationTest {
 
     protected void doLogin() throws Exception {
         User registeredUser = getRegisteredUserForLogin();
-        var body = Map.of("email", registeredUser.getEmail(), "password", registeredUser.getPassword());
-
+        var credentials = Map.of("email", registeredUser.getEmail(), "password", registeredUser.getPassword());
         String response = mockMvc.perform(
                         post("/api/login")
                                 .contentType(MediaType.APPLICATION_JSON)
-                                .content(JsonUtils.asJsonString(body))
+                                .content(JsonUtils.asJsonString(credentials))
                 )
                 .andReturn()
                 .getResponse().getContentAsString();

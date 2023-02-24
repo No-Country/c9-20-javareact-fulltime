@@ -22,17 +22,16 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
-import static ar.com.country.restaurant.util.ApiDocsConstants.FORBIDDEN_RESPONSE_REF;
-import static ar.com.country.restaurant.util.ApiDocsConstants.NOT_FOUND_RESPONSE_REF;
+import static ar.com.country.restaurant.util.ApiDocsConstants.*;
 
 @RestController
 @RequestMapping("/api/categories")
 @RequiredArgsConstructor
 @Tag(name = "Dish Categories", description = "API to manage dish categories")
 @ApiResponses({
-        @ApiResponse(ref = "BAD_REQUEST_RESPONSE_REF", responseCode = "400"),
-        @ApiResponse(ref = "UNAUTHORIZED_RESPONSE_REF", responseCode = "401"),
-        @ApiResponse(ref = "INTERNAL_SERVER_ERROR_RESPONSE_REF", responseCode = "500")
+        @ApiResponse(ref = BAD_REQUEST_RESPONSE_REF, responseCode = "400"),
+        @ApiResponse(ref = UNAUTHORIZED_RESPONSE_REF, responseCode = "401"),
+        @ApiResponse(ref = INTERNAL_SERVER_ERROR_RESPONSE_REF, responseCode = "500")
 })
 public class DishCategoryController {
     private final DishCategoryService dishCategoryService;
@@ -75,7 +74,9 @@ public class DishCategoryController {
         DishCategory dishCategory = dishCategoryMapper.toEntity(dishCategoryDto);
         DishCategory result = dishCategoryService.createDishCategory(dishCategory);
         DishCategoryDTO resultDto = dishCategoryModelAssembler.toModel(result);
-        return ResponseEntity.created(URI.create(resultDto.getRequiredLink("self").getHref())).body(resultDto);
+        return ResponseEntity
+                .created(URI.create(resultDto.getRequiredLink("self").getHref()))
+                .body(resultDto);
     }
 
     @Operation(summary = "Updates a dish category")
@@ -89,7 +90,7 @@ public class DishCategoryController {
     @PutMapping("/{categoryId}")
     public DishCategoryDTO updateDishCategory(
             @PathVariable Long categoryId,
-            @RequestBody DishCategoryDTO dishCategoryDto
+            @RequestBody @Valid DishCategoryDTO dishCategoryDto
     ) {
         DishCategory dishCategory = dishCategoryMapper.toEntity(dishCategoryDto);
         DishCategory result = dishCategoryService.updateDishCategory(categoryId, dishCategory);
