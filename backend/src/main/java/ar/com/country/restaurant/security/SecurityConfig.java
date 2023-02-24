@@ -44,6 +44,11 @@ public class SecurityConfig {
             "/v3/api-docs/**",
             "/h2-console/**",
     };
+    private static final String[] GET_METHOD_AUTH_WHITELIST = {
+            "/api/dishes/**",
+            "/api/categories/**",
+            "/api/comments/**",
+    };
     private final JwtToSecurityUserConverter jwtToUserConverter;
     private final KeyPairProvider keyPairProvider;
     private final PasswordEncoder passwordEncoder;
@@ -70,8 +75,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeRequests(auth -> auth
                         .antMatchers(AUTH_WHITELIST).permitAll()
-                        .antMatchers(HttpMethod.GET, "/api/dishes/**").permitAll()
-                        .antMatchers(HttpMethod.GET, "/api/categories/**").permitAll()
+                        .antMatchers(HttpMethod.GET, GET_METHOD_AUTH_WHITELIST).permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
