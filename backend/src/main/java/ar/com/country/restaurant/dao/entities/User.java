@@ -42,11 +42,7 @@ public class User implements Serializable {
     )
     private List<Order> orders;
 
-    @OneToOne(
-            mappedBy = "user",
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL
-    )
+    @OneToOne(fetch = FetchType.LAZY)
     private Cart cart;
 
     @OneToMany(
