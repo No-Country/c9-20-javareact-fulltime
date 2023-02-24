@@ -1,6 +1,5 @@
 import DivisionLine from "../../../components/DivisionLine";
 import useDisplacement from "../hook/useDisplacement";
-
 import {
 	ButtonSearchStyled,
 	FormStyled,
@@ -13,10 +12,22 @@ import imgHome from "/assets/fondoHome.png";
 import search from "/icons/search.svg";
 const SectionHero = () => {
 	const { move, handleMoveLeft, handleMoveRight } = useDisplacement();
+
+	const handleOnSubmit = (event) => {
+		event.preventDefault();
+	};
+
 	return (
 		<SectionHeroStyled img={imgHome} size='cover'>
-			<FormStyled>
-				<Input name={"text"} type={"text"} />
+			<FormStyled onSubmit={handleOnSubmit} method='GET'>
+				<Input
+					name={"q"}
+					type={"search"}
+					onFocus={handleActive}
+					onBlur={handleDesActive}
+					onChange={handleSearch}
+					value={textSearch}
+				/>
 				<ButtonSearchStyled img={search} size='cover' />
 			</FormStyled>
 

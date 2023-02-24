@@ -1,5 +1,6 @@
 import { CardList, Footer, Header } from "../../components";
 import CustomerFeedback from "./components/CustomerFeedback";
+import SearchLayer from "./components/SearchLayer";
 import SectionHero from "./components/SectionHero";
 
 const Home = () => {
@@ -9,6 +10,8 @@ const Home = () => {
 			<CardList />
 			<main>
 				<SectionHero />
+				<SearchLayer />
+
 				<CustomerFeedback />
 			</main>
 			<Footer />

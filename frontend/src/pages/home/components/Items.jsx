@@ -1,13 +1,11 @@
 import { Link } from "react-router-dom";
-import { cart } from "../../../../public/icons";
 import {
-	ItemButton,
-	ItemContainer,
+	ItemContainerStyled,
 	ItemDescription,
-	ItemImg,
 	ItemPeople,
 	ItemPrice,
-} from "../styled-components";
+} from "./../../../styled-components/layout/layout.styled";
+import car from "/icons/cart.svg";
 
 const Items = ({
 	title,
@@ -20,24 +18,24 @@ const Items = ({
 	id,
 }) => {
 	return (
-		<ItemContainer id={id}>
+		<ItemContainerStyled key={id}>
 			<section>
-				<ItemImg>
+				<div>
 					<img src={image} alt="image" />
 					{children}
-				</ItemImg>
+				</div>
 				<h2>{title}</h2>
 				<ItemDescription>{description}</ItemDescription>
 				<ItemPeople>Para {people} personas</ItemPeople>
 				<ItemPrice>${price}</ItemPrice>
 				<Link to={`${id}`}>
-					<ItemButton onClick={onClick}>
+					<button onClick={onClick}>
 						<h4>Agregar al Carrito</h4>
-						<img src={cart} alt="image-cart" />
-					</ItemButton>
+						<img src={car} alt="image-cart" />
+					</button>
 				</Link>
 			</section>
-		</ItemContainer>
+		</ItemContainerStyled>
 	);
 };
 

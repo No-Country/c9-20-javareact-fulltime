@@ -114,10 +114,11 @@ export const LineStyle = styled.div`
 `;
 
 export const SearchStyle = styled.form`
+
+  position: relative;
   font-family: 'Poppins';
   display: flex;
   justify-content: center;
-  padding-top: 5em;
   
   input {
     color: #ffffff;
@@ -160,7 +161,7 @@ export const FormStyled = styled.form`
     margin-top: 12px;
     margin-left : auto;
     margin-right : auto;
-
+    z-index:2;
 `;
 export const ButtonSearchStyled = styled.button`
     
@@ -267,3 +268,24 @@ export const ContainerButtonStyled = styled.div`
         background-color: var(--button-primary);
     }
 `;
+
+/* ============================ SEARCH ESTILOS ==================== */
+
+export const SearchLayerStyled = styled.section`
+    position: fixed;
+    inset-block:0;
+    inset-inline: 0;
+    background-color: #111111b8;
+    opacity: ${({ active }) => (active ? "1" : "0")};
+    visibility : ${({ active }) => (active ? "visible" : "hidden")};
+    z-index: 1;
+    transition: opacity  1s ease-in-out ;  
+`;
+
+export const ContainerSearchLayerStyled = styled.div`
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline: 0;
+`;
+
+/* ================================================================ */

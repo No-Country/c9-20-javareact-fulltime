@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { Items } from "../../../../components";
+import ItemsLoader from "./../../../../components/ItemsLoader";
 import useListFood from "./../hook/useListFood";
 const RenderingFood = () => {
 	const { idCategory } = useParams();
@@ -22,33 +23,53 @@ const RenderingFood = () => {
 					))}
 				</>
 			) : (
-				<></>
+				<>
+					<ItemsLoader
+						borderRadius='50%'
+						blockSize='240px'
+						inlineSize='240px'
+						top='-60%'
+						insetInline='14%'
+					/>
+					<ItemsLoader
+						borderRadius='50%'
+						blockSize='240px'
+						inlineSize='240px'
+						top='-60%'
+						insetInline='14%'
+					/>
+					<ItemsLoader
+						borderRadius='50%'
+						blockSize='240px'
+						inlineSize='240px'
+						top='-60%'
+						insetInline='14%'
+					/>
+					<ItemsLoader
+						borderRadius='50%'
+						blockSize='240px'
+						inlineSize='240px'
+						top='-60%'
+						insetInline='14%'
+					/>
+					<ItemsLoader
+						borderRadius='50%'
+						blockSize='240px'
+						inlineSize='240px'
+						top='-60%'
+						insetInline='14%'
+					/>
+					<ItemsLoader
+						borderRadius='50%'
+						blockSize='240px'
+						inlineSize='240px'
+						top='-60%'
+						insetInline='14%'
+					/>
+				</>
 			)}
 		</>
 	);
 };
 
 export default RenderingFood;
-{
-	/* (isLoading) ?(
-			{
-            
-            list.map((item) => (
-				<ItemFood
-					key={item.id}
-					id={item.id}
-					nameFood={item.nameFood}
-					image={plato}
-					circle={"true"}
-					description={item.description}
-					portion={"1"}
-					price={item.price}
-				>
-					<BadgeStar>
-						<img src={star} alt="star svg image" />
-						4.9
-					</BadgeStar>
-				</ItemFood>
-			))}
-			):(<div>loading...</div>) */
-}

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Items } from "../../../components";
+import ItemsLoader from "../../../components/ItemsLoader";
 import { useGetDishesQuery } from "../../../redux/query/FoodInfo.query";
 import { CarruselStyled } from "../styled-components/layout.styled";
-
 const Carrusel = ({ move }) => {
 	const [list, setList] = useState([]);
 
@@ -33,6 +33,7 @@ const Carrusel = ({ move }) => {
 				{isSuccess ? (
 					list.map((item) => (
 						<Items
+							key={item.id}
 							id={item.id}
 							title={item.name}
 							image={item.image.url}
@@ -41,7 +42,36 @@ const Carrusel = ({ move }) => {
 						/>
 					))
 				) : (
-					<div>loading...</div>
+					<>
+						<ItemsLoader
+							borderRadius='29px'
+							blockSize='192px'
+							inlineSize='300px'
+							top='-28%'
+							insetInline='8%'
+						/>
+						<ItemsLoader
+							borderRadius='29px'
+							blockSize='192px'
+							inlineSize='300px'
+							top='-28%'
+							insetInline='8%'
+						/>
+						<ItemsLoader
+							borderRadius='29px'
+							blockSize='192px'
+							inlineSize='300px'
+							top='-28%'
+							insetInline='8%'
+						/>
+						<ItemsLoader
+							borderRadius='29px'
+							blockSize='192px'
+							inlineSize='300px'
+							top='-28%'
+							insetInline='8%'
+						/>
+					</>
 				)}
 			</div>
 		</CarruselStyled>

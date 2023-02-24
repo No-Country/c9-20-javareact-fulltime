@@ -5,13 +5,14 @@ import { Div } from "../../../styled-components";
 import Footer from "./../../../components/Footer";
 import Header from "./../../../components/Header";
 import { SectionStyled } from "./styled-components/layout.styled";
-import platoPizza from "/img/fondoPastas.jpg";
+import promotions from "/img/promotionImg.jpg";
+
 const Promotions = () => {
 	document.title = "Promociones";
 	return (
 		<>
 			<Header />
-			<SectionStyled img={platoPizza} size='cover'>
+			<SectionStyled img={promotions} size='cover'>
 				<HeaderSubTitle
 					title='PROMO ESPECIAL DE FIN DE SEMANA'
 					textAlign='center'

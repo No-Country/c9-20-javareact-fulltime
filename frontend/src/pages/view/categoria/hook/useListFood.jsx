@@ -4,6 +4,7 @@ import { useGetDishesQuery } from "../../../../redux/query/FoodInfo.query";
 const useListFood = (idNameCategory) => {
 	const [list, setList] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
+
 	const { data: dis, isSuccess } = useGetDishesQuery();
 
 	useEffect(() => {
@@ -16,7 +17,7 @@ const useListFood = (idNameCategory) => {
 			setList([...templete]);
 			setIsLoading(true);
 		}
-	}, []);
+	}, [isSuccess]);
 
 	return {
 		list,

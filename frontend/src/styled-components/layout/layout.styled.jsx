@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import {
 	BackgroundImageButtons,
 	FlexBoxCenter,
@@ -560,3 +560,81 @@ export const SectionStyledBackground = styled.section`
     ${BackgroundImageButtons};   
 `;
 
+/*================= ITEM LOADER ========================*/
+
+const animationLoader = keyframes`
+
+    50%{
+      background-color: var(--text-primary);
+    }  
+`;
+
+export const ItemLoaderStyled = styled.article`
+    position: relative;
+    block-size: 426px;
+    inline-size: 365px;
+    border-radius: 20px;
+    text-align: center;
+    background-color: var(--text-primary);
+
+    span{
+      display: inline-block;
+      background-color: rgb(227, 227, 227);
+      animation: ${animationLoader} 1s  linear infinite  ;
+    }
+    div{
+      background-color: rgb(227, 227, 227);
+      animation: ${animationLoader} 1s   linear infinite ;
+    }
+
+`;
+
+export const HeaderLoaderStyled = styled.header`
+    position: relative;
+    block-size: 156px;
+    inline-size: 400px;
+`;
+
+export const ImageLoaderStyled = styled.span`
+    position: absolute;
+    inset-block-start: ${({ top }) => top || "0%"};
+    inset-inline: ${({ insetInline }) => insetInline || "0%"};
+    block-size: ${({ blockSize }) => blockSize || "0px"}  ;
+    inline-size:${({ inlineSize }) => inlineSize || "0px"}  ;
+    border-radius: ${({ borderRadius }) => borderRadius || "0px"};
+
+`;
+export const TitleLoaderStyled = styled.span`
+    block-size: 48px;
+    inline-size: 80%;
+    border-radius: 10px;
+`;
+
+export const ParagraphLoaderStyled = styled.span`
+    block-size: 59px;
+    inline-size: 87%;
+    margin-top: 3px;
+    border-radius: 10px;
+`;
+
+export const ForPeopleStyled = styled.span`
+
+    block-size: 26px;
+    inline-size: 48%;
+    border-radius: 10px;
+    margin-top: 4px;
+`;
+
+export const PrecisLoaderStyled = styled.span`
+    block-size: 40px;
+    inline-size: 60%;
+    border-radius: 10px;
+`;
+
+export const ButtonLoaderStyled = styled.span`
+    block-size: 55px;
+    inline-size: 289px;
+    border-radius: 5px;
+`;
+
+/*======================================================*/
