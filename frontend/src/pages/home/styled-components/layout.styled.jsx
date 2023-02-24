@@ -88,29 +88,31 @@ export const CommentDate = styled.span`
 `;
 
 export const LineStyle = styled.div`
-  color: #FFF;
-  font-size: 18px;
-  font-weight: 300;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 4em;
-  p {
-    flex-shrink: 0;
-  }
+    color: #FFF;
+    font-size: 18px;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4em;
+    text-align: center;
+    p {
+        flex-shrink: 0;
+        text-align: center;
+    }
 
-  ::before {
-    content: " ";
-    display:block;
-    border: 1px solid #ccc;
-    flex-grow: 2;
-  }
-  ::after {
-    content: " ";
-    display:block;
-    border: 1px solid #ccc;
-    flex-grow: 1;
-  }
+    ::before {
+        content: " ";
+        display:block;
+        border: 1px solid #ccc;
+        flex-grow: 1;
+    }
+    ::after {
+        content: " ";
+        display:block;
+        border: 1px solid #ccc;
+        flex-grow: 1;
+    }
 `;
 
 export const SearchStyle = styled.form`

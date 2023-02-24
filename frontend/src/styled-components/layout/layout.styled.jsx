@@ -17,8 +17,9 @@ export const HeaderStyled = styled.header`
     background-color: var(--background-primary);
     z-index: 1;
     a{
-         display: inline-block;
+        display: inline-block;
     }
+
 `;
 
 export const HeaderSubtitleStyled = styled.header`
@@ -185,47 +186,47 @@ export const Title = styled.h3`
 
 export const CarListStyled = styled.aside`
 
-   position : fixed;
-   inset-inline-end: 0;
-   inset-block: 0;
-   inline-size: 423px;
-   padding-top: 3em;
-   padding-left:1em;
-   padding-right:1em;
-   background-color: var(--background-secondary);
-   transform: ${({ translateX }) => translateX};
-   transition: transform 1s ease-in-out; 
-   z-index:3;
+  position : fixed;
+  inset-inline-end: 0;
+  inset-block: 0;
+  inline-size: 423px;
+  padding-top: 3em;
+  padding-left:1em;
+  padding-right:1em;
+  background-color: var(--background-secondary);
+  transform: ${({ translateX }) => translateX};
+  transition: transform 1s ease-in-out; 
+  z-index:3;
 
-   header{
+  header{
     display: flex;
     align-items: center;
     inline-size: 70%;
     gap: 12px;
     color: var(--button-primary);
-   }
-  
-   section{
-     block-size: 245px;
-     overflow-y: scroll;
-      ${({ length }) => {
-				if (length === 0) {
-					return `
-          ${FlexBoxCenter};
-             color: var(--text-primary);
-         `;
+  }
+
+  section{
+    block-size: 245px;
+    overflow-y: scroll;
+    ${({ length }) => {
+      if (length === 0) {
+        return `
+        ${FlexBoxCenter};
+            color: var(--text-primary);
+        `;
 				}
 			}}
       
-   }
-   section + hr{
+  }
+  section + hr{
     inline-size: 100%;
-   }
-   footer{
+  }
+  footer{
     margin-top: 17px;
-   }
+  }
 
-   footer div{
+  footer div{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -431,7 +432,7 @@ export const NavBarStyled = styled.nav`
 
       color: var(--text-primary);
       transition: color 1s ease-in-out;
-      &: hover{
+      &:hover{
         color: #FFA800;
       }
 

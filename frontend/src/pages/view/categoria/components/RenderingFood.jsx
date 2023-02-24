@@ -4,7 +4,7 @@ import useListFood from "./../hook/useListFood";
 const RenderingFood = () => {
 	const { idCategory } = useParams();
 	const { list, isLoading } = useListFood(idCategory);
-
+console.log(list);
 	return (
 		<>
 			{isLoading ? (
