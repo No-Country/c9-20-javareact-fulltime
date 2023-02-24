@@ -1,5 +1,6 @@
 package ar.com.country.restaurant.dao.entities;
 
+import ar.com.country.restaurant.exceptions.ItemNotFoundException;
 import lombok.*;
 
 import javax.persistence.*;
@@ -30,13 +31,17 @@ public class Cart implements Serializable {
         itemCart.setCart(this);
     }
 
-    public void removeItemCart(ItemCart itemCart) {
-        this.items.remove(itemCart);
-        itemCart.setCart(null);
+    public void removeItemCart(Long itemId) {
+        ItemCart itemCart = this.items.stream()
+                .filter(item -> item.getId().equals(itemId))
+                .findFirst()
+                .orElseThrow(() -> new ItemNotFoundException("Item not found"));
+        this.removeItemCart(itemCart.getId());
     }
 
     public void emptyCart() {
-        this.items.forEach(this::removeItemCart);
+        this.items.forEach(item -> item.setCart(null));
+        this.items.clear();
     }
 
     public void calculateSubTotal() {
