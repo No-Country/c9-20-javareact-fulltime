@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {
 	CheckCart,
 	CheckContainer,
@@ -9,21 +9,34 @@ import {
 } from "./CheckoutStyled.jsx";
 import { Button, DivCol } from "../../styled-components/layout/layout.styled"
 import useAuth from "../../hooks/useAuth";
+import NavBar from "../../components/NavBar.jsx";
 
 
 const Checkout = () => {
 	const cart = useSelector(state => state.cart.items);
 	const [selectedDeliveryOption, setSelectedDeliveryOption] = useState('local');
 	const [selectedPaymentOption, setSelectedPaymentOption] = useState('debito');
-  useAuth()
+	useAuth()
 	console.log(cart);
-
+	function validateNumberCard() {
+		const input = document.getElementById("numberCard");
+		const value = input.value;
+		if (/^\d{12}$/.test(value)) {
+			// El valor es válido, limpiar el mensaje de error
+			input.setCustomValidity("");
+		} else {
+			// El valor no es válido, mostrar un mensaje de error
+			input.setCustomValidity("Ingrese exactamente 12 números");
+		}
+	}
 	return (
 		<>
+		<NavBar/>
 			<CheckContainer>
 				<CheckData>
 					<div>
 						<h1>Envío</h1>
+						<hr />
 						<input
 							type="radio"
 							id="local"
@@ -42,6 +55,7 @@ const Checkout = () => {
 						<label htmlFor="">Delivery</label>
 					</div>
 					<h1>Pago</h1>
+					<hr />
 					<div>
 						<h2>Método de pago</h2>
 						<input
@@ -65,11 +79,11 @@ const Checkout = () => {
 						<>
 							<form action="">
 								<label htmlFor="">Número de tarjeta</label>
-								<input type="number" name="numberCard" id="" placeholder="Ingrese los 12 números" />
+								<input type="text" name="numberCard" id="numberCard" placeholder="Ingrese los 12 números" maxLength="12" oninput="validateNumberCard()" />
 								<label htmlFor="">Fecha de vencimiento</label>
 								<input type="month" name="numberCvv" id="" />
-								<label htmlFor="">CVV</label>
-								<input type="password" name="numberCvv" id="" />
+								<label htmlFor="cvv" >CVV</label>
+								<input type="password" name="numberCvv" id="cvv" maxLength={3} />
 							</form>
 							<Link to={'/thanks'}><Button>Confirmar</Button></Link>
 						</>

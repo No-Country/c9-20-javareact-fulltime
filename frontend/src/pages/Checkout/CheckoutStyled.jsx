@@ -18,7 +18,10 @@ font-family: var(--font-family);
 export const CheckData = styled.div`
 width: 50%;
 height: 100vh;
-padding: 25px;
+padding: 120px;
+hr{
+    background-color: white;
+}
 input[type="radio"] {
     accent-color: var(--button-primary);
     position: relative;
@@ -27,7 +30,6 @@ input[type="radio"] {
     width: 20px;
     height: 20px;
 }
-
 button{
     background-color: var(--button-primary);
     color: black;
@@ -68,6 +70,7 @@ flex-direction: column;
 border-left: 2px solid black;
 height: 100vh;
 width: 50%;
+padding: 120px;
 h1{
     margin-left: 25px;
 }
@@ -131,8 +134,10 @@ export const ThxContainer = styled.div`
     button{
         background-color: var(--button-primary);
         color: black;
-        border-radius: 4px; 
         height: 50px;
-        width: 70px;
+        width: 533px;
+        left: 0px;
+        top: 0px;
+        border-radius: 4px;
     }
 `;
