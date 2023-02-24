@@ -8,18 +8,8 @@ const useDisplacement = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    switch (role) {
-      case 'ADMIN':
-        navigate('/'); //TODO: change to admin page
-        break;
-      case 'NORMAL':
-        navigate('/');
-        break;
-      case '':
-        navigate('/login');
-        break;
-      default:
-        break;
+    if(!role) {
+      navigate('/login');
     }
   }, [])
 
