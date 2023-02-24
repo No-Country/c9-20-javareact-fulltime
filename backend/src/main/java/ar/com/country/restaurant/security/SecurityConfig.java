@@ -48,6 +48,7 @@ public class SecurityConfig {
             "/api/dishes/**",
             "/api/categories/**",
             "/api/comments/**",
+            "/api/users/**",
     };
     private final JwtToSecurityUserConverter jwtToUserConverter;
     private final KeyPairProvider keyPairProvider;
