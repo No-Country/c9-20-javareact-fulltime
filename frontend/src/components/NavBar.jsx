@@ -1,13 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
+import { selectAccessToken } from "../redux/slice/Auth.slice";
 import { NavLink } from "react-router-dom";
 import { openCart } from "../redux/slice/cart.slice";
 import { NavBarStyled } from "../styled-components";
 import ButtonAction from "./ButtonAction";
 import cart from "/icons/carWhite.svg";
+import loginIcon from "/icons/box-arrow-right.svg"
 
 const NavBar = (cd) => {
 	const dispatch = useDispatch();
 	const car = useSelector((state) => state.cart.items);
+	const accessToken = useSelector((state) => state.auth.accessToken)
+
 	let activeStyle = {
 		color: "#FFA800",
 	};
@@ -33,6 +37,7 @@ const NavBar = (cd) => {
 						Promociones
 					</NavLink>
 				</li>
+
 				<li>
 					<NavLink
 						to={"/contacto"}
@@ -41,15 +46,23 @@ const NavBar = (cd) => {
 						Contacto
 					</NavLink>
 				</li>
+				
 				<li>
 					<NavLink
-						to={"/myaccount"}
+						to={accessToken ? "/myaccount" : "/login"}
 						style={({ isActive }) => (isActive ? activeStyle : undefined)}
 					>
-						Mi cuenta
+						<span style={{display: "flex", gap: ".5em"}}>
+							{accessToken ?
+								"Mi cuenta" :
+								<>
+									Iniciar Sesión
+									<img src={loginIcon} alt="login icon" />
+								</>}
+						</span>
 					</NavLink>
 				</li>
-
+				
 				<ButtonAction
 					img={cart}
 					size="cover"

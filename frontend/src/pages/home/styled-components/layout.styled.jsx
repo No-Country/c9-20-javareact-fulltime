@@ -103,7 +103,7 @@ export const LineStyle = styled.div`
     content: " ";
     display:block;
     border: 1px solid #ccc;
-    flex-grow: 2;
+    flex-grow: 1;
   }
   ::after {
     content: " ";
