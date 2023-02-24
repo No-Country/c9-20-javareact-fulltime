@@ -1,65 +1,48 @@
+import { useEffect, useState } from "react";
 import { Items } from "../../../components";
+import { useGetDishesQuery } from "../../../redux/query/FoodInfo.query";
 import { CarruselStyled } from "../styled-components/layout.styled";
-import item from "/assets/item1.jpg";
 
 const Carrusel = ({ move }) => {
+	const [list, setList] = useState([]);
+
+	const { data: di, isSuccess } = useGetDishesQuery();
+
+	useEffect(() => {
+		if (isSuccess) {
+			const { dishes } = di._embedded;
+
+			const template = dishes.filter((item) => {
+				if (
+					item.name === "Combo libra" ||
+					item.name === "Tabla I" ||
+					item.name === "Tabla II" ||
+					item.name === "Tabla III"
+				) {
+					return item;
+				}
+			});
+
+			setList([...template]);
+		}
+	}, [isSuccess]);
+
 	return (
 		<CarruselStyled translateX={`${move}%`}>
 			<div>
-				<Items
-					title={"Tabla I"}
-					image={item}
-					description={
-						"Carne salteada, aceituna, salame, queso roquefort, queso caprese, salsa picante."
-					}
-					people={"2"}
-					price={2500}
-				/>
-				<Items
-					title={"Tabla II"}
-					image={item}
-					description={
-						"Salame, jamón crudo, queso gruyere, aceitunas mixtas, salsa especial."
-					}
-					people={"2"}
-					price={2800}
-				/>
-				<Items
-					title={"Tabla III"}
-					image={item}
-					description={
-						"Salsa picante, salsa cheddar, salsa 4 quesos, choclo asado, mix de chorizos, porción de papas."
-					}
-					people={"3"}
-					price={4800}
-				/>
-				<Items
-					title={"Tabla I"}
-					image={item}
-					description={
-						"Carne salteada, aceituna, salame, queso roquefort, queso caprese, salsa picante."
-					}
-					people={"2"}
-					price={2500}
-				/>
-				<Items
-					title={"Tabla II"}
-					image={item}
-					description={
-						"Salame, jamón crudo, queso gruyere, aceitunas mixtas, salsa especial."
-					}
-					people={"2"}
-					price={2800}
-				/>
-				<Items
-					title={"Tabla III"}
-					image={item}
-					description={
-						"Salsa picante, salsa cheddar, salsa 4 quesos, choclo asado, mix de chorizos, porción de papas."
-					}
-					people={"3"}
-					price={4800}
-				/>
+				{isSuccess ? (
+					list.map((item) => (
+						<Items
+							id={item.id}
+							title={item.name}
+							image={item.image.url}
+							description={item.description}
+							price={item.price}
+						/>
+					))
+				) : (
+					<div>loading...</div>
+				)}
 			</div>
 		</CarruselStyled>
 	);

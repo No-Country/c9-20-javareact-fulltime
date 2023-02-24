@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useGetDishesQuery } from "../../../../redux/query/FoodInfo.query";
+
 const useListFood = (idNameCategory) => {
 	const [list, setList] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
@@ -8,20 +9,15 @@ const useListFood = (idNameCategory) => {
 	useEffect(() => {
 		if (isSuccess) {
 			const { dishes } = dis._embedded;
-
-			const templete = [];
-
-			dishes.forEach((element) => {
-				if (element.category.name === idNameCategory) {
-					templete.push(element);
-				}
-			});
+			const templete = dishes.filter(
+				(element) => element.category.name === idNameCategory,
+			);
 
 			setList([...templete]);
 			setIsLoading(true);
 		}
 	}, []);
-	console.log(list);
+
 	return {
 		list,
 		isLoading,

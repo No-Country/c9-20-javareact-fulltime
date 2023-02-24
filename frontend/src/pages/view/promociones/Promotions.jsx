@@ -7,6 +7,7 @@ import Header from "./../../../components/Header";
 import { SectionStyled } from "./styled-components/layout.styled";
 import platoPizza from "/img/fondoPastas.jpg";
 const Promotions = () => {
+	document.title = "Promociones";
 	return (
 		<>
 			<Header />

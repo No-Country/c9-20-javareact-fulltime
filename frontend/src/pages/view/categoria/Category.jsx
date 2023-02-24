@@ -4,6 +4,7 @@ import Section from "./components/Section";
 
 const Category = () => {
 	const { idCategory } = useParams();
+	document.title = "Carta";
 	return (
 		<>
 			<Header />

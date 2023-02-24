@@ -4,7 +4,7 @@ import Card from "../components/Card";
 import useCategories from "../hook/useCategories";
 
 const Section = ({ idCategory }) => {
-	const { categories, isLoading } = useCategories();
+	const { categories, isSuccess } = useCategories();
 
 	return (
 		<section>
@@ -16,7 +16,7 @@ const Section = ({ idCategory }) => {
 			/>
 
 			<Div gap={"109px"} inlineSize='100%' blockSize='735px'>
-				{!isLoading ? (
+				{isSuccess ? (
 					categories.map((item) => (
 						<Card
 							key={item.id}

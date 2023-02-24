@@ -9,7 +9,7 @@ import {
 import car from "/icons/cart.svg";
 const Items = ({ title, image, description, people, price, id }) => {
 	return (
-		<ItemContainerStyled id={id}>
+		<ItemContainerStyled key={id}>
 			<header>
 				<ItemImgStyled
 					src={image}

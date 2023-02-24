@@ -3,18 +3,18 @@ import { useGetCategoriesQuery } from "../../../../redux/query/FoodInfo.query";
 const useCategories = () => {
 	const [categories, setCategories] = useState([]);
 
-	const { data: cate, isLoading } = useGetCategoriesQuery();
-
+	const { data: cate, isSuccess } = useGetCategoriesQuery();
+	console.log(cate);
 	useEffect(() => {
-		if (!isLoading) {
+		if (isSuccess) {
 			const { dishCategories } = cate._embedded;
 			setCategories([...dishCategories]);
 		}
 	}, [cate]);
-	console.log(categories);
+
 	return {
 		categories,
-		isLoading,
+		isSuccess,
 	};
 };
 
