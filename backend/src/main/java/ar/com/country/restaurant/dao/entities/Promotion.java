@@ -17,6 +17,9 @@ public class Promotion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "discount_percentage")
+    private Double discountPercentage;
+
     @OneToOne(fetch = FetchType.LAZY)
     private Dish dish;
 
