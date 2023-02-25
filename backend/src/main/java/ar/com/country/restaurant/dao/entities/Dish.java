@@ -57,6 +57,10 @@ public class Dish {
         return nonNull(image) && image.isValidImage();
     }
 
+    public boolean hasPromotion() {
+        return nonNull(promotion) && promotion.isValidPromotion();
+    }
+
     public void setPromotion(Promotion promotion) {
         this.promotion = promotion;
         this.promotion.setDish(this);
