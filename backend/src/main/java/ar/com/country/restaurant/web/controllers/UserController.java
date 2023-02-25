@@ -41,11 +41,7 @@ public class UserController {
             @Content(schema = @Schema(implementation = UserDTO.class))
     })
     @GetMapping("/{userId}")
-    @PreAuthorize("#loggedUser.id == #userId")
-    public UserDTO getUserById(
-            @AuthenticationPrincipal SecurityUser loggedUser,
-            @PathVariable Long userId
-    ) {
+    public UserDTO getUserById(@PathVariable Long userId) {
         User result = userService.getUserById(userId);
         return userModelAssembler.toModel(result);
     }
