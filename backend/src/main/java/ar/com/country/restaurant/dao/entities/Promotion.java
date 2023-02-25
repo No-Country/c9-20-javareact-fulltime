@@ -17,6 +17,7 @@ public class Promotion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "has_promotion")
-    boolean hasPromotion;
+    @OneToOne(fetch = FetchType.LAZY)
+    private Dish dish;
+
 }
