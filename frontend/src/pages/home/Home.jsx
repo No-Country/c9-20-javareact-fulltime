@@ -13,6 +13,7 @@ const Home = () => {
 		template,
 		isSuccess,
 	} = useSearch();
+	document.title = "Country Resto";
 	return (
 		<>
 			<Header />
@@ -20,16 +21,16 @@ const Home = () => {
 			<main>
 				<SectionHero
 					handleActive={handleActive}
-					handleDesActive={handleDesActive}
 					textSearch={textSearch}
 					onChange={handleOnchange}
 				/>
+				<CustomerFeedback />
 				<SearchLayer
 					template={template}
 					active={active}
 					isSuccess={isSuccess}
+					handleDesActive={handleDesActive}
 				/>
-				<CustomerFeedback />
 			</main>
 			<Footer />
 		</>

@@ -4,14 +4,11 @@ import {
 	SearchLayerStyled,
 } from "../styled-components/layout.styled";
 import Items from "./Items";
-const SearchLayer = ({ active, template, isSuccess }) => {
+const SearchLayer = ({ active, template, isSuccess, handleDesActive }) => {
 	return (
 		<SearchLayerStyled active={active}>
 			<ContainerSearchLayerStyled>
-				<header>
-					<h2>Resultados</h2>
-				</header>
-
+				<button onClick={handleDesActive}>Cerrar</button>
 				<ScrollContainerStyled>
 					{isSuccess ? (
 						<div>

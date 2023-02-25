@@ -1,5 +1,5 @@
 import { InputStyled } from "../styled-components/layout.styled";
-const Input = ({ type, name, onFocus, onBlur, value, onChange }) => {
+const Input = ({ type, name, onFocus, value, onChange }) => {
 	return (
 		<InputStyled
 			type={type}
@@ -7,7 +7,6 @@ const Input = ({ type, name, onFocus, onBlur, value, onChange }) => {
 			name={name}
 			placeholder="Buscar"
 			onFocus={onFocus}
-			onBlur={onBlur}
 			onChange={onChange}
 			value={value}
 		/>

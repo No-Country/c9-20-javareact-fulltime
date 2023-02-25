@@ -5,6 +5,7 @@ import wha from "/icons/Whatsapp.svg";
 import location from "/icons/location.svg";
 import phone from "/icons/phone.svg";
 const Contact = () => {
+	document.title = "Contacto";
 	return (
 		<>
 			<Header />

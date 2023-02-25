@@ -11,12 +11,7 @@ import Input from "./Input";
 import imgHome from "/assets/fondoHome.png";
 import search from "/icons/search.svg";
 
-const SectionHero = ({
-	handleActive,
-	handleDesActive,
-	onChange,
-	textSearch,
-}) => {
+const SectionHero = ({ handleActive, onChange, textSearch }) => {
 	const { move, handleMoveLeft, handleMoveRight } = useDisplacement();
 
 	const handleOnSubmit = (event) => {
@@ -30,7 +25,6 @@ const SectionHero = ({
 					name={"q"}
 					type={"search"}
 					onFocus={handleActive}
-					/* onBlur={handleDesActive} */
 					onChange={onChange}
 					value={textSearch}
 				/>
