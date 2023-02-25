@@ -62,6 +62,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_1.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594926/Dise%C3%B1o_sin_t%C3%ADtulo_-_2023-02-15T183907_1_cbjj8f.png"));
         dish_1.setPrice(3500D);
         dish_1.setCategory(saveDishCategory6);
+        dish_1.setPortionPerUnit(1);
+        dish_1.setPeople(1);
         DishSpec dish1 = new DishSpec(dish_1, 6L);
 
         Dish dish_2 = new Dish();
@@ -70,6 +72,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_2.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594925/Dise%C3%B1o_sin_t%C3%ADtulo_90_1_gatcrg.png"));
         dish_2.setPrice(2500D);
         dish_2.setCategory(saveDishCategory6);
+        dish_2.setPortionPerUnit(1);
+        dish_2.setPeople(1);
         DishSpec dish2 = new DishSpec(dish_2, 6L);
 
         Dish dish_3 = new Dish();
@@ -78,6 +82,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_3.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594927/Dise%C3%B1o_sin_t%C3%ADtulo_91_1_ioviex.png"));
         dish_3.setPrice(2800D);
         dish_3.setCategory(saveDishCategory6);
+        dish_3.setPortionPerUnit(1);
+        dish_3.setPeople(1);
         DishSpec dish3 = new DishSpec(dish_3, 6L);
 
         Dish dish_4 = new Dish();
@@ -86,6 +92,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_4.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594925/Dise%C3%B1o_sin_t%C3%ADtulo_92_1_ijfnos.png"));
         dish_4.setPrice(4800D);
         dish_4.setCategory(saveDishCategory6);
+        dish_4.setPortionPerUnit(1);
+        dish_4.setPeople(1);
         DishSpec dish4 = new DishSpec(dish_4, 6L);
 
         Dish dish_5 = new Dish();
@@ -94,6 +102,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_5.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594921/pexels-yassir-abbas-12046657_1_xvhuoi.png"));
         dish_5.setPrice(1020D);
         dish_5.setCategory(saveDishCategory1);
+        dish_5.setPortionPerUnit(1);
+        dish_5.setPeople(1);
         DishSpec dish5 = new DishSpec(dish_5, 1L);
 
         Dish dish_6 = new Dish();
@@ -102,6 +112,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_6.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594921/Dise%C3%B1o_sin_t%C3%ADtulo_-_2023-02-16T132343_1_nlhtir.png"));
         dish_6.setPrice(1420D);
         dish_6.setCategory(saveDishCategory1);
+        dish_6.setPortionPerUnit(8);
+        dish_6.setPeople(2);
         DishSpec dish6 = new DishSpec(dish_6, 1L);
 
         Dish dish_7 = new Dish();
@@ -110,6 +122,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_7.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594917/Dise%C3%B1o_sin_t%C3%ADtulo_-_2023-02-16T131849_1_mq6z3d.png"));
         dish_7.setPrice(1320D);
         dish_7.setCategory(saveDishCategory1);
+        dish_7.setPortionPerUnit(8);
+        dish_7.setPeople(2);
         DishSpec dish7 = new DishSpec(dish_7, 1L);
 
         Dish dish_8 = new Dish();
@@ -118,6 +132,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_8.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594920/choclo_1_1_fkzkn8.png"));
         dish_8.setPrice(1720D);
         dish_8.setCategory(saveDishCategory1);
+        dish_8.setPortionPerUnit(8);
+        dish_8.setPeople(2);
         DishSpec dish8 = new DishSpec(dish_8, 1L);
 
         Dish dish_9 = new Dish();
@@ -126,6 +142,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_9.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594914/Dise%C3%B1o_sin_t%C3%ADtulo_-_2023-02-16T133745_1_rri4o3.png"));
         dish_9.setPrice(1200D);
         dish_9.setCategory(saveDishCategory1);
+        dish_9.setPortionPerUnit(8);
+        dish_9.setPeople(2);
         DishSpec dish9 = new DishSpec(dish_9, 1L);
 
         Dish dish_10 = new Dish();
@@ -134,6 +152,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_10.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594913/shourav-sheikh-a66sGfOnnqQ-unsplash_1_fetnur.png"));
         dish_10.setPrice(1800D);
         dish_10.setCategory(saveDishCategory1);
+        dish_10.setPortionPerUnit(8);
+        dish_10.setPeople(2);
         DishSpec dish10 = new DishSpec(dish_10, 1L);
 
         Dish dish_11 = new Dish();
@@ -142,6 +162,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_11.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594917/Dise%C3%B1o_sin_t%C3%ADtulo_-_2023-02-15T184205_1_uksalm.png"));
         dish_11.setPrice(1890D);
         dish_11.setCategory(saveDishCategory6);
+        dish_11.setPortionPerUnit(4);
+        dish_11.setPeople(1);
         DishSpec dish11 = new DishSpec(dish_11, 6L);
 
         Dish dish_12 = new Dish();
@@ -150,6 +172,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_12.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594915/Dise%C3%B1o_sin_t%C3%ADtulo_-_2023-02-16T140448_1_ctpp1u.png"));
         dish_12.setPrice(1200D);
         dish_12.setCategory(saveDishCategory6);
+        dish_12.setPortionPerUnit(10);
+        dish_12.setPeople(2);
         DishSpec dish12 = new DishSpec(dish_12, 6L);
 
         Dish dish_13 = new Dish();
@@ -158,6 +182,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_13.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594915/Dise%C3%B1o_sin_t%C3%ADtulo_-_2023-02-15T184015_1_zjcsdv.png"));
         dish_13.setPrice(1300D);
         dish_13.setCategory(saveDishCategory6);
+        dish_13.setPortionPerUnit(1);
+        dish_13.setPeople(1);
         DishSpec dish13 = new DishSpec(dish_13, 6L);
 
         Dish dish_14 = new Dish();
@@ -166,6 +192,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_14.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594907/Dise%C3%B1o_sin_t%C3%ADtulo_75_1_zjewuh.png"));
         dish_14.setPrice(2850D);
         dish_14.setCategory(saveDishCategory5);
+        dish_14.setPortionPerUnit(1);
+        dish_14.setPeople(1);
         DishSpec dish14 = new DishSpec(dish_14, 5L);
 
         Dish dish_15 = new Dish();
@@ -174,6 +202,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_15.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594906/t_con_fruto_2_1_lle7wp.png"));
         dish_15.setPrice(1150D);
         dish_15.setCategory(saveDishCategory5);
+        dish_15.setPortionPerUnit(1);
+        dish_15.setPeople(4);
         DishSpec dish15 = new DishSpec(dish_15, 5L);
 
         Dish dish_16 = new Dish();
@@ -182,6 +212,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_16.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594906/vinitha-v-E_uxJrOKw6I-unsplash_1_fgp02z.png"));
         dish_16.setPrice(750D);
         dish_16.setCategory(saveDishCategory5);
+        dish_16.setPortionPerUnit(1);
+        dish_16.setPeople(1);
         DishSpec dish16 = new DishSpec(dish_16, 5L);
 
         Dish dish_17 = new Dish();
@@ -190,6 +222,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_17.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594903/parvez-azarqaderi-f2LR0IIRd5s-unsplash_1_y3mcyw.png"));
         dish_17.setPrice(650D);
         dish_17.setCategory(saveDishCategory5);
+        dish_17.setPortionPerUnit(1);
+        dish_17.setPeople(1);
         DishSpec dish17 = new DishSpec(dish_17, 5L);
 
         Dish dish_18 = new Dish();
@@ -198,6 +232,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_18.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594910/t_con_fruto_1_1_lvafpw.png"));
         dish_18.setPrice(1350D);
         dish_18.setCategory(saveDishCategory5);
+        dish_18.setPortionPerUnit(1);
+        dish_18.setPeople(1);
         DishSpec dish18 = new DishSpec(dish_18, 5L);
 
         Dish dish_19 = new Dish();
@@ -206,6 +242,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_19.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594906/t_con_fruto_3_1_yecdq7.png"));
         dish_19.setPrice(900D);
         dish_19.setCategory(saveDishCategory5);
+        dish_19.setPortionPerUnit(1);
+        dish_19.setPeople(1);
         DishSpec dish19 = new DishSpec(dish_19, 5L);
 
         Dish dish_20 = new Dish();
@@ -214,6 +252,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_20.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594903/t_con_fruto_1_m6zziv.png"));
         dish_20.setPrice(750D);
         dish_20.setCategory(saveDishCategory3);
+        dish_20.setPortionPerUnit(1);
+        dish_20.setPeople(1);
         DishSpec dish20 = new DishSpec(dish_20, 3L);
 
         Dish dish_21 = new Dish();
@@ -222,6 +262,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_21.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594895/Dise%C3%B1o_sin_t%C3%ADtulo_97_1_jjtz6f.png"));
         dish_21.setPrice(1050D);
         dish_21.setCategory(saveDishCategory4);
+        dish_21.setPortionPerUnit(1);
+        dish_21.setPeople(1);
         DishSpec dish21 = new DishSpec(dish_21, 4L);
 
         Dish dish_22 = new Dish();
@@ -230,6 +272,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_22.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594901/Dise%C3%B1o_sin_t%C3%ADtulo_74_1_xqixti.png"));
         dish_22.setPrice(650D);
         dish_22.setCategory(saveDishCategory4);
+        dish_22.setPortionPerUnit(5);
+        dish_22.setPeople(1);
         DishSpec dish22 = new DishSpec(dish_22, 4L);
 
         Dish dish_23 = new Dish();
@@ -238,6 +282,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_23.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594899/Dise%C3%B1o_sin_t%C3%ADtulo_96_1_h7s2hy.png"));
         dish_23.setPrice(800D);
         dish_23.setCategory(saveDishCategory4);
+        dish_23.setPortionPerUnit(1);
+        dish_23.setPeople(1);
         DishSpec dish23 = new DishSpec(dish_23, 4L);
 
         Dish dish_24 = new Dish();
@@ -246,6 +292,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_24.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594899/Dise%C3%B1o_sin_t%C3%ADtulo_98_1_baphfy.png"));
         dish_24.setPrice(850D);
         dish_24.setCategory(saveDishCategory4);
+        dish_24.setPortionPerUnit(1);
+        dish_24.setPeople(1);
         DishSpec dish24 = new DishSpec(dish_24, 4L);
 
         Dish dish_25 = new Dish();
@@ -254,6 +302,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_25.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594902/tetiana-bykovets-T4Q2NX1GP4w-unsplash_1_zvce4h.png"));
         dish_25.setPrice(850D);
         dish_25.setCategory(saveDishCategory4);
+        dish_25.setPortionPerUnit(1);
+        dish_25.setPeople(1);
         DishSpec dish25 = new DishSpec(dish_25, 4L);
 
         Dish dish_26 = new Dish();
@@ -262,6 +312,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_26.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594894/Dise%C3%B1o_sin_t%C3%ADtulo_77_1_kgbwpm.png"));
         dish_26.setPrice(1050D);
         dish_26.setCategory(saveDishCategory3);
+        dish_26.setPortionPerUnit(1);
+        dish_26.setPeople(1);
         DishSpec dish26 = new DishSpec(dish_26, 3L);
 
         Dish dish_27 = new Dish();
@@ -270,6 +322,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_27.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594894/Ellipse_12_k7tqxn.png"));
         dish_27.setPrice(840D);
         dish_27.setCategory(saveDishCategory3);
+        dish_27.setPortionPerUnit(1);
+        dish_27.setPeople(1);
         DishSpec dish27 = new DishSpec(dish_27, 3L);
 
         Dish dish_28 = new Dish();
@@ -278,6 +332,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_28.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594901/tania-melnyczuk-xeTv9N2FjXA-unsplash_1_dlasor.png"));
         dish_28.setPrice(900D);
         dish_28.setCategory(saveDishCategory3);
+        dish_28.setPortionPerUnit(1);
+        dish_28.setPeople(1);
         DishSpec dish28 = new DishSpec(dish_28, 3L);
 
         Dish dish_29 = new Dish();
@@ -286,6 +342,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_29.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594895/anh-nguyen-kcA-c3f_3FE-unsplash_1_upsvn9.png"));
         dish_29.setPrice(800D);
         dish_29.setCategory(saveDishCategory3);
+        dish_29.setPortionPerUnit(1);
+        dish_29.setPeople(1);
         DishSpec dish29 = new DishSpec(dish_29, 3L);
 
         Dish dish_30 = new Dish();
@@ -294,6 +352,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_30.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594889/t_con_fruto_5_1_xlwoyn.png"));
         dish_30.setPrice(500D);
         dish_30.setCategory(saveDishCategory3);
+        dish_30.setPortionPerUnit(1);
+        dish_30.setPeople(1);
         DishSpec dish30 = new DishSpec(dish_30, 3L);
 
         Dish dish_31 = new Dish();
@@ -302,6 +362,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_31.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594888/t_con_fruto_4_1_ng44of.png"));
         dish_31.setPrice(500D);
         dish_31.setCategory(saveDishCategory3);
+        dish_31.setPortionPerUnit(1);
+        dish_31.setPeople(1);
         DishSpec dish31 = new DishSpec(dish_31, 3L);
 
         Dish dish_32 = new Dish();
@@ -310,6 +372,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_32.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594883/plato_pasta_1_x6nev6.png"));
         dish_32.setPrice(950D);
         dish_32.setCategory(saveDishCategory2);
+        dish_32.setPortionPerUnit(1);
+        dish_32.setPeople(1);
         DishSpec dish32 = new DishSpec(dish_32, 2L);
 
         Dish dish_33 = new Dish();
@@ -318,6 +382,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_33.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594883/nathalie-klippert-c8anfbnfPRo-unsplash_1_qqedns.png"));
         dish_33.setPrice(950D);
         dish_33.setCategory(saveDishCategory2);
+        dish_33.setPortionPerUnit(1);
+        dish_33.setPeople(1);
         DishSpec dish33 = new DishSpec(dish_33, 2L);
 
         Dish dish_34 = new Dish();
@@ -326,6 +392,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_34.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594879/nicolas-cuestas-xc-067-UsOQ-unsplash_1_txttcz.png"));
         dish_34.setPrice(950D);
         dish_34.setCategory(saveDishCategory2);
+        dish_34.setPortionPerUnit(1);
+        dish_34.setPeople(1);
         DishSpec dish34 = new DishSpec(dish_34, 2L);
 
         Dish dish_35 = new Dish();
@@ -334,6 +402,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_35.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594885/yoav-aziz-EGRJe6BHG9I-unsplash_1_vux1iz.png"));
         dish_35.setPrice(950D);
         dish_35.setCategory(saveDishCategory2);
+        dish_35.setPortionPerUnit(1);
+        dish_35.setPeople(1);
         DishSpec dish35 = new DishSpec(dish_35, 2L);
 
         Dish dish_36 = new Dish();
@@ -342,6 +412,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_36.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594884/t_con_fruto_6_1_sisjhr.png"));
         dish_36.setPrice(950D);
         dish_36.setCategory(saveDishCategory2);
+        dish_36.setPortionPerUnit(1);
+        dish_36.setPeople(1);
         DishSpec dish36 = new DishSpec(dish_36, 2L);
 
         Dish dish_37 = new Dish();
@@ -350,6 +422,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_37.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594891/Dise%C3%B1o_sin_t%C3%ADtulo_93_1_sscdbu.png"));
         dish_37.setPrice(1020D);
         dish_37.setCategory(saveDishCategory6);
+        dish_37.setPortionPerUnit(1);
+        dish_37.setPeople(1);
         DishSpec dish37 = new DishSpec(dish_37, 6L);
 
         Dish dish_38 = new Dish();
@@ -358,6 +432,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_38.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594875/Dise%C3%B1o_sin_t%C3%ADtulo_94_1_bkekzx.png"));
         dish_38.setPrice(1020D);
         dish_38.setCategory(saveDishCategory6);
+        dish_38.setPortionPerUnit(1);
+        dish_38.setPeople(1);
         DishSpec dish38 = new DishSpec(dish_38, 6L);
 
         Dish dish_39 = new Dish();
@@ -366,6 +442,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_39.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594871/t_con_fruto_8_1_fgl9nk.png"));
         dish_39.setPrice(1050D);
         dish_39.setCategory(saveDishCategory6);
+        dish_39.setPortionPerUnit(1);
+        dish_39.setPeople(1);
         DishSpec dish39 = new DishSpec(dish_39, 6L);
 
         Dish dish_40 = new Dish();
@@ -374,6 +452,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_40.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594871/t_con_fruto_10_1_ckxmms.png"));
         dish_40.setPrice(1050D);
         dish_40.setCategory(saveDishCategory6);
+        dish_40.setPortionPerUnit(1);
+        dish_40.setPeople(1);
         DishSpec dish40 = new DishSpec(dish_40, 6L);
 
         Dish dish_41 = new Dish();
@@ -382,6 +462,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_41.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594872/t_con_fruto_11_1_gzzwzh.png"));
         dish_41.setPrice(1250D);
         dish_41.setCategory(saveDishCategory6);
+        dish_41.setPortionPerUnit(1);
+        dish_41.setPeople(1);
         DishSpec dish41 = new DishSpec(dish_41, 6L);
 
         Dish dish_42 = new Dish();
@@ -390,6 +472,8 @@ public class DishSeeder implements CommandLineRunner {
         dish_42.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594871/t_con_fruto_13_1_pesyie.png"));
         dish_42.setPrice(1250D);
         dish_42.setCategory(saveDishCategory6);
+        dish_42.setPortionPerUnit(1);
+        dish_42.setPeople(1);
         DishSpec dish42 = new DishSpec(dish_42, 6L);
 
         Dish saveDish1 = dishService.createDish(dish1);

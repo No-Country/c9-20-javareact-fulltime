@@ -38,6 +38,12 @@ public class Dish {
     @Column(nullable = false)
     private Double price;
 
+    @Column
+    private Integer portionPerUnit;
+
+    @Column
+    private Integer people;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(
             name = "category_id",
