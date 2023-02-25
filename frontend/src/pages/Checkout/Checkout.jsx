@@ -9,7 +9,7 @@ import {
 } from "./CheckoutStyled.jsx";
 import { Button, DivCol } from "../../styled-components/layout/layout.styled"
 import useAuth from "../../hooks/useAuth";
-import NavBar from "../../components/NavBar.jsx";
+import Header from "../../components/Header.jsx";
 
 
 const Checkout = () => {
@@ -31,11 +31,11 @@ const Checkout = () => {
 	}
 	return (
 		<>
-		<NavBar/>
+		<Header/>
 			<CheckContainer>
 				<CheckData>
-					<div>
-						<h1>Envío</h1>
+					<div className="envio">
+						<p className="subtitulos">Envío</p >
 						<hr />
 						<input
 							type="radio"
@@ -54,10 +54,10 @@ const Checkout = () => {
 						/>
 						<label htmlFor="">Delivery</label>
 					</div>
-					<h1>Pago</h1>
-					<hr />
 					<div>
-						<h2>Método de pago</h2>
+						<p className="subtitulos">Pago</p >
+						<hr />
+						<p className="menor">Método de pago</p>
 						<input
 							type="radio"
 							id="debito"
@@ -112,19 +112,39 @@ const Checkout = () => {
 				</CheckData>
 				<CheckCart>
 					<div>
-						<h1>Resumen</h1>
-						{cart.map((cr) => (
-							<DivCol key={cr.id}>
-								{cr.name}
-								<br />
-								Subtotal: ${cr.subTotal}
-								<br />
-								Envío
-								<br />
-								Total: ${cr.total}
-							</DivCol>
-
-						))}
+						<p className="subtitulos">Resumen</p>
+						<hr />
+						{
+						//OJO CUANDO YA ESTE PROBADO, BORRA LOS ITEMS DE PRUEBA DEL STORE DE REDUX
+						//OJO FALTA QUE EL ITEM MUESTRE LA CANTIDAD QUE VIENE CON CADA PLATO.
+						
+							cart.map((cr) => (
+								<div key={cr.id}>
+									<div className="detallePlato">
+										<p>1X {cr.name}</p>
+										<p>${cr.price.toFixed(2)}</p>
+									</div>
+									<hr style={{ marginBottom: "20px"}}/>
+								</div>
+							))}
+						<div>
+							<div className="detallesub">
+								<p style={{marginBottom: "0px"}}>Subtotal</p>
+								<p style={{marginBottom: "0px"}}>$5555</p>						
+							</div>
+							<div className="detallesub">
+								<p>Envío</p>
+								<p>0</p>						
+							</div>	
+						</div>
+						<hr style={{margin: "0px"}} />		
+						<div className="detallesub">
+								<div>
+								<p style={{margin: "0px"}}>Total</p>
+								<p style={{fontSize: "small" , margin: "0px"}}>Retiro en local: Urquiza 2345 - Capital</p>
+								</div>
+								<p style={{fontSize: "xx-large"}}>$0</p>						
+						</div>					
 					</div>
 				</CheckCart>
 			</CheckContainer>

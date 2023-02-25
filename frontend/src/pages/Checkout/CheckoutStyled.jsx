@@ -4,7 +4,7 @@ export const CheckContainer = styled.div`
 display: flex;
 flex-wrap: wrap;
 justify-content: space-between;
-max-height: 100vh;
+//max-height: 100vh;
 background-color: var(--background-secondary);
 color: var(--text-primary);
 font-family: var(--font-family);
@@ -17,10 +17,28 @@ font-family: var(--font-family);
 `;
 export const CheckData = styled.div`
 width: 50%;
-height: 100vh;
-padding: 120px;
+//height: 100vh;
+padding: 120px 120px 150px 150px;
+
+.subtitulos{
+    font-family: var(--font-family);
+    font-size: 24px;
+    margin: 0px 0 5px 0;
+    font-weight: 500;
+}
+
+.menor{
+    font-family: var(--font-family);
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.envio{
+    padding-bottom: 39px;
+}
 hr{
     background-color: white;
+    margin: 0px 0 38px 0;
 }
 input[type="radio"] {
     accent-color: var(--button-primary);
@@ -68,11 +86,31 @@ color: black;
 display: flex;
 flex-direction: column;
 border-left: 2px solid black;
-height: 100vh;
+//height: 100vh;
 width: 50%;
-padding: 120px;
-h1{
-    margin-left: 25px;
+padding: 120px 120px 150px 66px;
+
+.subtitulos{
+    font-family: var(--font-family);
+    font-size: 24px;
+    margin: 0px 0 5px 0;
+    font-weight: 500;
+}
+.detallePlato{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.detallesub{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+}
+hr{
+    background-color: rgba(172, 172, 172, 1);
+    margin: 0px 0 38px 0;
 }
 @media (max-width: 1320px){
     height: 100vh;
