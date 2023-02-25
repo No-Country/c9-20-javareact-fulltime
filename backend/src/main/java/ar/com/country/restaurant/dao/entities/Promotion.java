@@ -16,6 +16,7 @@ import static java.util.Objects.nonNull;
 public class Promotion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "promotion_id")
     private Long id;
 
     @Column(name = "discount_percentage")
