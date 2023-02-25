@@ -10,7 +10,13 @@ import ContainerButton from "./ContainerButton";
 import Input from "./Input";
 import imgHome from "/assets/fondoHome.png";
 import search from "/icons/search.svg";
-const SectionHero = () => {
+
+const SectionHero = ({
+	handleActive,
+	handleDesActive,
+	onChange,
+	textSearch,
+}) => {
 	const { move, handleMoveLeft, handleMoveRight } = useDisplacement();
 
 	const handleOnSubmit = (event) => {
@@ -19,13 +25,13 @@ const SectionHero = () => {
 
 	return (
 		<SectionHeroStyled img={imgHome} size='cover'>
-			<FormStyled onSubmit={handleOnSubmit} method='GET'>
+			<FormStyled onSubmit={handleOnSubmit}>
 				<Input
 					name={"q"}
 					type={"search"}
 					onFocus={handleActive}
-					onBlur={handleDesActive}
-					onChange={handleSearch}
+					/* onBlur={handleDesActive} */
+					onChange={onChange}
 					value={textSearch}
 				/>
 				<ButtonSearchStyled img={search} size='cover' />

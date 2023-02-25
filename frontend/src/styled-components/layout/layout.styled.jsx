@@ -446,7 +446,7 @@ export const NavBarStyled = styled.nav`
 export const ItemContainerStyled = styled.article`
 
   block-size: fit-content;
-  inline-size: 365px;
+  min-inline-size: 365px;
   border-radius: 20px;
   padding: 0 25px;
   background-color: #FFF;

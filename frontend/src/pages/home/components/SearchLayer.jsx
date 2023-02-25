@@ -1,9 +1,10 @@
 import {
 	ContainerSearchLayerStyled,
+	ScrollContainerStyled,
 	SearchLayerStyled,
 } from "../styled-components/layout.styled";
-
-const SearchLayer = () => {
+import Items from "./Items";
+const SearchLayer = ({ active, template, isSuccess }) => {
 	return (
 		<SearchLayerStyled active={active}>
 			<ContainerSearchLayerStyled>
@@ -11,22 +12,23 @@ const SearchLayer = () => {
 					<h2>Resultados</h2>
 				</header>
 
-				<div>
-					{/* 					{isSuccess ? (
-						<>
-							{listSearch.map((item) => (
+				<ScrollContainerStyled>
+					{isSuccess ? (
+						<div>
+							{template.map((item) => (
 								<Items
+									key={item.id}
 									image={item.image.url}
 									description={item.description}
 									price={item.price}
 									title={item.name}
 								/>
 							))}
-						</>
+						</div>
 					) : (
 						<div>loading...</div>
-					)} */}
-				</div>
+					)}
+				</ScrollContainerStyled>
 			</ContainerSearchLayerStyled>
 		</SearchLayerStyled>
 	);

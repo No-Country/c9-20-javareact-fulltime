@@ -275,6 +275,7 @@ export const SearchLayerStyled = styled.section`
     position: fixed;
     inset-block:0;
     inset-inline: 0;
+    min-block-size: 100vh;
     background-color: #111111b8;
     opacity: ${({ active }) => (active ? "1" : "0")};
     visibility : ${({ active }) => (active ? "visible" : "hidden")};
@@ -287,5 +288,15 @@ export const ContainerSearchLayerStyled = styled.div`
     inset-block-end: 0;
     inset-inline: 0;
 `;
-
+export const ScrollContainerStyled = styled.div`
+    position: relative;
+    inline-size: 100%;
+    min-block-size: 700px;
+    div{
+        
+        ${FlexBoxCenter};
+        gap: 50px;
+        overflow-x:scroll;
+    }
+`;
 /* ================================================================ */
