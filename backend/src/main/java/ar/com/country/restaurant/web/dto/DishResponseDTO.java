@@ -13,5 +13,7 @@ public class DishResponseDTO extends RepresentationModel<DishResponseDTO> {
     private final String name;
     private final String description;
     private final Double price;
+    private final Integer portionPerUnit;
+    private final Integer people;
     private final DishCategoryDTO category;
 }
