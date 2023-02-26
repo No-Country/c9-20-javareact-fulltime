@@ -7,7 +7,7 @@ import {
 	CheckData,
 	Unwrapped,
 } from "./CheckoutStyled.jsx";
-import { Button, DivCol } from "../../styled-components/layout/layout.styled"
+import { Button } from "../../styled-components/layout/layout.styled"
 import useAuth from "../../hooks/useAuth";
 import Header from "../../components/Header.jsx";
 
@@ -28,6 +28,7 @@ const Checkout = () => {
 			// El valor no es válido, mostrar un mensaje de error
 			input.setCustomValidity("Ingrese exactamente 12 números");
 		}
+		console.log(cart)
 	}
 	return (
 		<>
