@@ -1,6 +1,7 @@
 package ar.com.country.restaurant.services.impl;
 
 import ar.com.country.restaurant.dao.entities.DishImage;
+import ar.com.country.restaurant.dao.entities.WithImage;
 import ar.com.country.restaurant.services.DishImageUploaderService;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
@@ -17,13 +18,25 @@ public class DishImageUploaderServiceImpl implements DishImageUploaderService {
     private final Cloudinary cloudinary;
 
     @Override
-    public DishImage uploadDishImage(MultipartFile image) {
+    public DishImage uploadOrUpdateImage(WithImage withImage, MultipartFile newImage) {
+        DishImage updatedDishImage;
+        if (withImage.hasImage()) {
+            DishImage oldImage = withImage.getImage();
+            updatedDishImage = updateImage(oldImage.getPublicId(), newImage);
+        } else {
+            updatedDishImage = uploadImage(newImage);
+        }
+        return updatedDishImage;
+    }
+
+    @Override
+    public DishImage uploadImage(MultipartFile image) {
         Map<?, ?> options = ObjectUtils.asMap("folder", "country-restaurant");
         return uploadImage(image, options);
     }
 
     @Override
-    public DishImage updateDishImage(String publicId, MultipartFile image) {
+    public DishImage updateImage(String publicId, MultipartFile image) {
         Map<?, ?> options = ObjectUtils.asMap(
                 "public_id", publicId,
                 "overwrite", true
