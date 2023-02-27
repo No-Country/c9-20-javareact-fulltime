@@ -13,7 +13,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
@@ -93,35 +95,36 @@ class DishCategoryControllerIT extends AbstractIntegrationTest {
         @Test
         void shouldCreateCategory_whenValidFields() throws Exception {
             doLogin();
-            DishCategory newDishCategory = DishCategory.builder()
-                    .name("New Category")
-                    .imgUrl("https://www.example.com.ar")
-                    .build();
+            DishCategory newDishCategory = DishCategory.builder().name("New Category").build();
 
             mockMvc.perform(
-                            post("/api/categories")
-                                    .contentType(MediaType.APPLICATION_JSON)
-                                    .content(JsonUtils.asJsonString(newDishCategory))
+                            multipart(HttpMethod.POST, "/api/categories")
+                                    .file(new MockMultipartFile(
+                                            "category",
+                                            "category.json",
+                                            MediaType.APPLICATION_JSON_VALUE,
+                                            JsonUtils.asJsonString(newDishCategory).getBytes()))
                                     .headers(authHeader())
                     )
                     .andExpect(status().isCreated())
                     .andExpect(header().exists("Location"))
                     .andExpect(jsonPath("$.id").isNumber())
-                    .andExpect(jsonPath("$.name").value("New Category"))
-                    .andExpect(jsonPath("$.imgUrl").value("https://www.example.com.ar"));
+                    .andExpect(jsonPath("$.name").value("New Category"));
         }
 
         @Test
         void shouldReturn400_whenInvalidFields() throws Exception {
             doLogin();
-            DishCategory dishCategoryWithMissingNameField = DishCategory.builder()
-                    .imgUrl("https://www.example.com.ar")
-                    .build();
+            DishCategory dishCategoryWithMissingNameField = DishCategory.builder().build();
 
             mockMvc.perform(
-                            post("/api/categories")
-                                    .contentType(MediaType.APPLICATION_JSON)
-                                    .content(JsonUtils.asJsonString(dishCategoryWithMissingNameField))
+                            multipart(HttpMethod.POST, "/api/categories")
+                                    .file(new MockMultipartFile(
+                                            "category",
+                                            "category.json",
+                                            MediaType.APPLICATION_JSON_VALUE,
+                                            JsonUtils.asJsonString(dishCategoryWithMissingNameField).getBytes()
+                                    ))
                                     .headers(authHeader())
                     )
                     .andExpect(status().isBadRequest());
@@ -133,13 +136,16 @@ class DishCategoryControllerIT extends AbstractIntegrationTest {
             DishCategory firstSavedCategory = getFirstSavedCategory();
             DishCategory newDishCategoryWithDuplicatedName = DishCategory.builder()
                     .name(firstSavedCategory.getName())
-                    .imgUrl("https://www.example.com.ar")
                     .build();
 
             mockMvc.perform(
-                            post("/api/categories")
-                                    .contentType(MediaType.APPLICATION_JSON)
-                                    .content(JsonUtils.asJsonString(newDishCategoryWithDuplicatedName))
+                            multipart(HttpMethod.POST, "/api/categories")
+                                    .file(new MockMultipartFile(
+                                            "category",
+                                            "category.json",
+                                            MediaType.APPLICATION_JSON_VALUE,
+                                            JsonUtils.asJsonString(newDishCategoryWithDuplicatedName).getBytes()
+                                    ))
                                     .headers(authHeader())
                     )
                     .andExpect(status().isConflict());
@@ -154,35 +160,37 @@ class DishCategoryControllerIT extends AbstractIntegrationTest {
         void shouldUpdateCategory_whenValidFields() throws Exception {
             doLogin();
             DishCategory firstSavedCategory = getFirstSavedCategory();
-            DishCategory updatedCategory = DishCategory.builder()
-                    .name("Updated Category")
-                    .imgUrl("https://www.example.com.ar")
-                    .build();
+            DishCategory updatedCategory = DishCategory.builder().name("Updated Category").build();
 
             mockMvc.perform(
-                            put("/api/categories/" + firstSavedCategory.getId())
-                                    .contentType(MediaType.APPLICATION_JSON)
-                                    .content(JsonUtils.asJsonString(updatedCategory))
+                            multipart(HttpMethod.PUT, "/api/categories/" + firstSavedCategory.getId())
+                                    .file(new MockMultipartFile(
+                                            "category",
+                                            "category.json",
+                                            MediaType.APPLICATION_JSON_VALUE,
+                                            JsonUtils.asJsonString(updatedCategory).getBytes()
+                                    ))
                                     .headers(authHeader())
                     )
                     .andExpect(status().isOk())
                     .andExpect(jsonPath("$.id").isNumber())
-                    .andExpect(jsonPath("$.name").value("Updated Category"))
-                    .andExpect(jsonPath("$.imgUrl").value("https://www.example.com.ar"));
+                    .andExpect(jsonPath("$.name").value("Updated Category"));
         }
 
         @Test
         void shouldReturn400_whenInvalidFields() throws Exception {
             doLogin();
             DishCategory firstSavedCategory = getFirstSavedCategory();
-            DishCategory updatedCategory = DishCategory.builder()
-                    .imgUrl("https://www.example.com.ar")
-                    .build();
+            DishCategory updatedCategory = DishCategory.builder().build();
 
             mockMvc.perform(
-                            put("/api/categories/" + firstSavedCategory.getId())
-                                    .contentType(MediaType.APPLICATION_JSON)
-                                    .content(JsonUtils.asJsonString(updatedCategory))
+                            multipart(HttpMethod.PUT, "/api/categories/" + firstSavedCategory.getId())
+                                    .file(new MockMultipartFile(
+                                            "category",
+                                            "category.json",
+                                            MediaType.APPLICATION_JSON_VALUE,
+                                            JsonUtils.asJsonString(updatedCategory).getBytes()
+                                    ))
                                     .headers(authHeader())
                     )
                     .andExpect(status().isBadRequest());
@@ -192,15 +200,16 @@ class DishCategoryControllerIT extends AbstractIntegrationTest {
         void shouldReturn404_whenCategoryNotFound() throws Exception {
             doLogin();
             long noSuchCategoryId = -50L;
-            DishCategory updatedCategory = DishCategory.builder()
-                    .name("Updated Category")
-                    .imgUrl("https://www.example.com.ar")
-                    .build();
+            DishCategory updatedCategory = DishCategory.builder().name("Updated Category").build();
 
             mockMvc.perform(
-                            put("/api/categories/" + noSuchCategoryId)
-                                    .contentType(MediaType.APPLICATION_JSON)
-                                    .content(JsonUtils.asJsonString(updatedCategory))
+                            multipart(HttpMethod.PUT, "/api/categories/" + noSuchCategoryId)
+                                    .file(new MockMultipartFile(
+                                            "category",
+                                            "category.json",
+                                            MediaType.APPLICATION_JSON_VALUE,
+                                            JsonUtils.asJsonString(updatedCategory).getBytes()
+                                    ))
                                     .headers(authHeader())
                     )
                     .andExpect(status().isNotFound());
