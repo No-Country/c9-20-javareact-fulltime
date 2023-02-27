@@ -1,5 +1,6 @@
 package ar.com.country.restaurant.dao.entities;
 
+
 import ar.com.country.restaurant.exceptions.ItemNotFoundException;
 import lombok.*;
 import net.minidev.json.annotate.JsonIgnore;
@@ -7,6 +8,10 @@ import net.minidev.json.annotate.JsonIgnore;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import lombok.*;
+
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -51,7 +56,7 @@ public class Cart implements Serializable {
     public void emptyCart() {
         this.items.forEach(item -> item.setCart(null));
         this.items.clear();
-    }
+   }
 
     public void calculateSubTotal() {
         this.items.forEach(ItemCart::calculateSubTotal);
