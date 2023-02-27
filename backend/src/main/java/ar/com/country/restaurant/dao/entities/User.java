@@ -42,7 +42,9 @@ public class User implements Serializable {
     )
     private List<Order> orders;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(
+            fetch = FetchType.LAZY
+    )
     private Cart cart;
 
     @OneToMany(
