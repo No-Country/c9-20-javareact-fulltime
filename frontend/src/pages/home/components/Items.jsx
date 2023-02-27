@@ -29,10 +29,8 @@ const Items = ({
 				<ItemPeople>Para {people} personas</ItemPeople>
 				<ItemPrice>${price}</ItemPrice>
 				<Link to={`${id}`}>
-					<button onClick={onClick}>
-						<h4>Agregar al Carrito</h4>
-						<img src={car} alt="image-cart" />
-					</button>
+					<span>Agregar al Carrito</span>
+					<img src={car} alt="image-cart" />
 				</Link>
 			</section>
 		</ItemContainerStyled>
