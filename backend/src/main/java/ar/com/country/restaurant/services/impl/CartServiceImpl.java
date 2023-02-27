@@ -33,12 +33,6 @@ public class CartServiceImpl implements CartService{
                 .orElseThrow(() -> new UserNotFoundException("User not found"));
     }
 
-    @Override
-    public Cart getCartById(Long userId, Long cartId) {
-        return cartRepository
-                .findCartByIdAndUserId(userId, cartId)
-                .orElseThrow(() -> new ItemNotFoundException("Cart not found"));
-    }
 
     @Override
     public List<ItemCart> getItemsFromCart(Long userId) {
@@ -48,19 +42,15 @@ public class CartServiceImpl implements CartService{
     }
 
     @Override
-    public Cart addItem(Long userId, ItemCart itemCart) {
+    public Cart addItem(Long userId, Long dishId, ItemCart itemCart) {
         User user = userService.getUserById(userId);
-        Dish dish = dishService.getDishById(itemCart.getDish().getId());
         Cart cart = user.getCart();
+        Dish dish = dishService.getDishById(dishId);
 
-        ItemCart item = new ItemCart();
-        item.setDish(dish);
-        item.setQuantity(itemCart.getQuantity());
-
-        cart = createOrUpdateCart(user, cart);
-        cart.addItemCart(item);
+        itemCart.setDish(dish);
+        itemCart.setCart(cart);
+        cart.addItemCart(itemCart);
         cart.calculateSubTotal();
-
         return cartRepository.save(cart);
     }
 
@@ -76,15 +66,6 @@ public class CartServiceImpl implements CartService{
         return cartRepository.save(cart);
     }
 
-
-    private static Cart createOrUpdateCart(User user, Cart cart) {
-        if (cart == null) {
-            cart = new Cart();
-            cart.setUser(user);
-            user.setCart(cart);
-        }
-        return cart;
-    }
 
     public boolean itemExists(Long itemId) {
         if(!cartRepository.existsById(itemId)) {
