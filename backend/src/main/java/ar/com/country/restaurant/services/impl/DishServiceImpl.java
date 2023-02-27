@@ -52,7 +52,7 @@ public class DishServiceImpl implements DishService {
         DishCategory dishCategory = dishCategoryService.getDishCategoryById(dishSpec.categoryId());
         newDish.setCategory(dishCategory);
         if (dishSpec.imageProvided()) {
-            DishImage image = dishImageUploaderService.uploadDishImage(dishSpec.image());
+            DishImage image = dishImageUploaderService.uploadImage(dishSpec.image());
             newDish.setImage(image);
         }
         return dishRepository.save(newDish);
@@ -65,18 +65,10 @@ public class DishServiceImpl implements DishService {
         BeanUtils.copyProperties(dishSpec.dish(), dishToUpdate);
         DishCategory updatedDishCategory = dishCategoryService.getDishCategoryById(dishSpec.categoryId());
         dishToUpdate.setCategory(updatedDishCategory);
-
         if (dishSpec.imageProvided()) {
-            DishImage updatedDishImage;
-            if (dishToUpdate.hasImage()) {
-                DishImage image = dishToUpdate.getImage();
-                updatedDishImage = dishImageUploaderService.updateDishImage(image.getPublicId(), dishSpec.image());
-            } else {
-                updatedDishImage = dishImageUploaderService.uploadDishImage(dishSpec.image());
-            }
-            dishToUpdate.setImage(updatedDishImage);
+            DishImage image = dishImageUploaderService.uploadOrUpdateImage(dishToUpdate, dishSpec.image());
+            dishToUpdate.setImage(image);
         }
-
         return dishRepository.save(dishToUpdate);
     }
 
