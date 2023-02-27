@@ -44,7 +44,11 @@ public class CartServiceImpl implements CartService{
     @Override
     public Cart addItem(Long userId, Long dishId, ItemCart itemCart) {
         User user = userService.getUserById(userId);
-        Cart cart = user.getCart();
+
+        Cart cart = new Cart();
+        cart = setUserCart(user, cart);
+        cart.setUser(user);
+
         Dish dish = dishService.getDishById(dishId);
 
         itemCart.setDish(dish);
@@ -53,6 +57,8 @@ public class CartServiceImpl implements CartService{
         cart.calculateSubTotal();
         return cartRepository.save(cart);
     }
+
+
 
     @Override
     public Cart deleteItem(Long userId, Long itemId) {
@@ -72,6 +78,15 @@ public class CartServiceImpl implements CartService{
             throw new ItemNotFoundException("Item not found");
         }
         return false;
+    }
+
+    private static Cart setUserCart(User user, Cart cart) {
+        if (user.getCart() != null) {
+            cart = user.getCart();
+        } else {
+            user.setCart(cart);
+        }
+        return cart;
     }
 
 }
