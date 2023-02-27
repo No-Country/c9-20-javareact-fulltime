@@ -5,6 +5,7 @@ import ar.com.country.restaurant.web.dto.DishDTO;
 import ar.com.country.restaurant.web.dto.DishResponseDTO;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,6 +19,7 @@ public abstract class DishMapper {
 
     public abstract Dish toEntity(DishDTO dishDto);
 
+    @Mapping(target = "hasPromotion", expression = "java(dish.hasPromotion())")
     public abstract DishResponseDTO toResponseDto(Dish dish);
 
     @AfterMapping
