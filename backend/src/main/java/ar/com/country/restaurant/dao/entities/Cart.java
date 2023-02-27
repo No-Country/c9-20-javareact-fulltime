@@ -2,9 +2,11 @@ package ar.com.country.restaurant.dao.entities;
 
 import ar.com.country.restaurant.exceptions.ItemNotFoundException;
 import lombok.*;
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,14 +21,22 @@ public class Cart implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(mappedBy = "cart")
+    @OneToOne(fetch = FetchType.LAZY)
     private User user;
 
-    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(
+            mappedBy = "cart",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
+    )
+    @JsonIgnore
     private List<ItemCart> items;
 
 
     public void addItemCart(ItemCart itemCart) {
+        if (this.items == null) {
+            this.items = new ArrayList<>();
+        }
         this.items.add(itemCart);
         itemCart.setCart(this);
     }
