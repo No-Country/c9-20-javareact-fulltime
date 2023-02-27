@@ -29,6 +29,58 @@ Para correr los **tests**, debe ejecutarse el siguiente comando en la raíz del 
 mvn clean test failsafe:integration-test failsafe:verify -pl backend
 ```
 
+## Subida de imágenes
+
+La subida de imágenes se hace de la siguiente manera (ejemplo hecho con `Axios`):
+
+```js
+const [image, setImage] = useState(null);
+
+const user = {
+    name: "John",
+    email: "test@gmail.com",
+};
+
+const handleFileChange = (e) => {
+    if (e.target.files) {
+        setImage(e.target.files[0]);
+    }
+};
+
+const handleUploadClick = () => {
+    if (!image) {
+        return;
+    }
+
+    // Es muy importante que el objeto que el user (dish o dish category) se convierta a un blob
+    // y se especifique el tipo de contenido application/json
+    const blob = new Blob([JSON.stringify(user)], {
+        type: "application/json",
+    });
+
+    const formData = new FormData();
+    formData.set("user", blob);
+    formData.set("image", image); // Se agrega la imagen del dish o category
+
+    axios
+        .post("http://localhost:8080/api/categories", formData, {
+            headers: {
+                "Content-Type": "multipart/form-data", // Importante que se especifique multipart/form-data en la petición
+            },
+        })
+        .then((res) => {
+            console.log(res.data);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+};
+
+```
+
+> El ejemplo anterior también debería funcionar utilizando `Redux tookit`. En un lugar de enviar un `json`, se enviaría
+> el objeto de tipo `FormData`.
+
 ## Documentación de la API
 
 - [Swagger](http://localhost:8080/api/swagger-ui)
