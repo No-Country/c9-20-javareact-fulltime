@@ -2,7 +2,6 @@ package ar.com.country.restaurant.dao.entities;
 
 import ar.com.country.restaurant.exceptions.ItemNotFoundException;
 import lombok.*;
-import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -45,7 +44,6 @@ public class Cart implements Serializable {
                 .filter(item -> item.getId().equals(itemId))
                 .findFirst()
                 .orElseThrow(() -> new ItemNotFoundException("Item not found"));
-        this.removeItemCart(itemCart.getId());
     }
 
     public void emptyCart() {
