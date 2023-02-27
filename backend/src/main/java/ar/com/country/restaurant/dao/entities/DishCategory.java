@@ -23,8 +23,8 @@ public class DishCategory implements WithImage {
     @Column
     private String name;
 
-    @Column
-    private String imgUrl;
+    @Embedded
+    private DishImage image;
 
     @OneToMany(fetch = FetchType.LAZY)
     private List<Dish> dishes;
