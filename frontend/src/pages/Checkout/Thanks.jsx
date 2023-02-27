@@ -24,9 +24,6 @@ const Thanks = () => {
                     <br />
                     <h2>Orden #123RGR231567Y Confirmado</h2>
                     <Link to={'/'}><button>Seguir Comprando</button></Link>
-                    <Link to={'/'}><button>Salir</button></Link>
-                    
-                    
                 </div>
 
             )}

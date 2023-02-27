@@ -3,6 +3,7 @@ import { Div } from "../../../../styled-components";
 import Card from "../components/Card";
 import useCategories from "../hook/useCategories";
 
+
 const Section = ({ idCategory }) => {
 	const { categories, isSuccess } = useCategories();
 

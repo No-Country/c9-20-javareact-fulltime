@@ -27,6 +27,7 @@ export const GlobalStyle = createGlobalStyle`
         background-color: var(--background-primary);
         background-color: var(--background-primary);
         color: var(--text-primary);
+    
     }
 
     button{

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {
-	BackgroundImageButtons,
-	FlexBoxCenter,
+    BackgroundImageButtons,
+    FlexBoxCenter,
 } from "../../../../styled-components";
 /* export const ItemFoodStyled = styled.article`
     ${FlexBoxCenter}
@@ -33,14 +33,25 @@ import {
 `;
  */
 export const CategoryStyled = styled.section`
-    inline-size: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 30px;
+    grid-row-gap: px;
+    font-family: var(--font-family);
+    article{
+        grid-area: 1 / 2 / 2 / 12;
+    }
 `;
 
 export const CardStyled = styled.article`
     position: relative;
-    --size: 300px;
-    block-size: var(--size);
-    inline-size: var(--size);
+    height: 366px;
+    width: 300px;
+    left: 0px;
+    top: 0px;
+    border-radius: 20px;
+    background: #FFFFFF;
     a{
         position: absolute;
         inset-block-end: 0;
@@ -115,16 +126,27 @@ export const ItemFoodStyled = styled.article`
     }
 
 `;
+export const DivGrid = styled.div`
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+padding: 25px;
+article{
+margin: 30px;
+}
 
+
+`;
 export const StarStyled = styled.div`
-  position: absolute;
-  inset-block-start: 31%;
-  ${FlexBoxCenter};
-  gap: 12px;
-  block-size: 47px:
-  inline-size: 84px;
-  padding: 12px 16px;
-  color: var(--text-primary);
-  border-radius: 50px;
-  background-image: linear-gradient(180deg, #323232 0%, #0B0B0B 100%);
+    position: absolute;
+    inset-block-start: 31%;
+    ${FlexBoxCenter};
+    gap: 12px;
+    block-size: 47px;
+    inline-size: 84px;
+    padding: 12px 16px;
+    color: var(--text-primary);
+    border-radius: 50px;
+    background-image: linear-gradient(180deg, #323232 0%, #0B0B0B 100%);
 `;

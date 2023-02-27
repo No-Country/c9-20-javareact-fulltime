@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Loader from "../components/Loader";
 import Checkout from "../pages/Checkout/Checkout";
 import Thanks from "../pages/Checkout/Thanks";
 import Login from "../pages/Login/Login";
@@ -59,5 +60,9 @@ export const router = createBrowserRouter([
 	{
 		path: "/thanks",
 		element: <Thanks />,
+	},
+	{
+		path: "/loading",
+		element: <Loader />,
 	},
 ]);

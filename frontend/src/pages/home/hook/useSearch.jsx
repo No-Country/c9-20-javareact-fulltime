@@ -13,10 +13,8 @@ const useSearch = () => {
 	const template = useMemo(() => {
 		if (isSuccess && textSearch !== "") {
 			const { dishes } = dis._embedded;
-			return dishes.filter(
-				(items) =>
-					items.description.includes(textSearch) ||
-					items.name.includes(textSearch.charAt(0).toUpperCase()),
+			return dishes.filter((items) =>
+				items.name.includes(textSearch.charAt(0).toUpperCase()),
 			);
 		}
 		return [];

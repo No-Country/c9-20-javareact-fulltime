@@ -1,11 +1,5 @@
 class Trolley {
-	constructor(
-		id = 0,
-		name = '',
-    lastName = '',
-    email = '',
-    token = ''
-	) {
+	constructor(id = 0, name = "", lastName = "", email = "", token = "") {
 		this.id = id;
 		this.name = name;
 		this.lastName = lastName;

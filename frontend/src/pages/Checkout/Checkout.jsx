@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
+import { Button, DivCol } from "../../styled-components/layout/layout.styled";
 import {
 	CheckCart,
 	CheckContainer,
 	CheckData,
 	Unwrapped,
 } from "./CheckoutStyled.jsx";
-import { Button, DivCol } from "../../styled-components/layout/layout.styled"
-
 
 const Checkout = () => {
-	const cart = useSelector(state => state.cart.items);
-	const [selectedDeliveryOption, setSelectedDeliveryOption] = useState('local');
-	const [selectedPaymentOption, setSelectedPaymentOption] = useState('debito');
+	const cart = useSelector((state) => state.cart.items);
+
+	const [selectedDeliveryOption, setSelectedDeliveryOption] = useState("local");
+	const [selectedPaymentOption, setSelectedPaymentOption] = useState("debito");
 	console.log(cart);
 
 	return (
@@ -26,16 +26,16 @@ const Checkout = () => {
 							type="radio"
 							id="local"
 							name="checkEnv"
-							checked={selectedDeliveryOption === 'local'}
-							onChange={() => setSelectedDeliveryOption('local')}
+							checked={selectedDeliveryOption === "local"}
+							onChange={() => setSelectedDeliveryOption("local")}
 						/>
 						<label htmlFor="">Retiro en local</label>
 						<input
 							type="radio"
 							id="delivery"
 							name="checkEnv"
-							checked={selectedDeliveryOption === 'delivery'}
-							onChange={() => setSelectedDeliveryOption('delivery')}
+							checked={selectedDeliveryOption === "delivery"}
+							onChange={() => setSelectedDeliveryOption("delivery")}
 						/>
 						<label htmlFor="">Delivery</label>
 					</div>
@@ -46,35 +46,42 @@ const Checkout = () => {
 							type="radio"
 							id="debito"
 							name="check"
-							checked={selectedPaymentOption === 'debito'}
-							onChange={() => setSelectedPaymentOption('debito')}
+							checked={selectedPaymentOption === "debito"}
+							onChange={() => setSelectedPaymentOption("debito")}
 						/>
 						<label htmlFor="">Débito</label>
 						<input
 							type="radio"
 							id="credito"
 							name="check"
-							checked={selectedPaymentOption === 'credito'}
-							onChange={() => setSelectedPaymentOption('credito')}
+							checked={selectedPaymentOption === "credito"}
+							onChange={() => setSelectedPaymentOption("credito")}
 						/>
 						<label htmlFor="">Crédito</label>
 					</div>
-					{selectedPaymentOption === 'debito' && (
+					{selectedPaymentOption === "debito" && (
 						<>
 							<form action="">
 								<label htmlFor="">Número de tarjeta</label>
-								<input type="number" name="numberCard" id="" placeholder="Ingrese los 12 números" />
+								<input
+									type="number"
+									name="numberCard"
+									id=""
+									placeholder="Ingrese los 12 números"
+								/>
 								<label htmlFor="">Fecha de vencimiento</label>
 								<input type="month" name="numberCvv" id="" />
 								<label htmlFor="">CVV</label>
 								<input type="password" name="numberCvv" id="" />
 							</form>
-							<Link to={'/thanks'}><Button>Confirmar</Button></Link>
+							<Link to={"/thanks"}>
+								<Button>Confirmar</Button>
+							</Link>
 						</>
 					)}
-					{selectedPaymentOption === 'credito' && (
+					{selectedPaymentOption === "credito" && (
 						<>
-							<Unwrapped >
+							<Unwrapped>
 								<select>
 									<option>Seleccionar Tarjeta</option>
 									<option>VISA</option>
@@ -90,7 +97,9 @@ const Checkout = () => {
 								<input type="radio" name="cuotas" />
 								<label htmlFor="">6 Cuotas</label>
 							</div>
-							<Link to={'/thanks'}><Button>Confirmar</Button></Link>
+							<Link to={"/thanks"}>
+								<Button>Confirmar</Button>
+							</Link>
 						</>
 					)}
 				</CheckData>
@@ -107,7 +116,6 @@ const Checkout = () => {
 								<br />
 								Total: ${cr.total}
 							</DivCol>
-
 						))}
 					</div>
 				</CheckCart>
@@ -117,7 +125,6 @@ const Checkout = () => {
 };
 
 export default Checkout;
-
 
 /* <CheckData>
 					<form>
@@ -132,7 +139,6 @@ export default Checkout;
 						<input type="text" />
 					</form>
 				</CheckData> */
-
 
 /* 
 <h1>Logo</h1>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Items } from "../../../components";
+import { ItemFood } from "../../../components";
 import ItemsLoader from "../../../components/ItemsLoader";
 import { useGetDishesQuery } from "../../../redux/query/FoodInfo.query";
 import { CarruselStyled } from "../styled-components/layout.styled";
@@ -32,7 +32,7 @@ const Carrusel = ({ move }) => {
 			<div>
 				{isSuccess ? (
 					list.map((item) => (
-						<Items
+						<ItemFood
 							key={item.id}
 							id={item.id}
 							title={item.name}

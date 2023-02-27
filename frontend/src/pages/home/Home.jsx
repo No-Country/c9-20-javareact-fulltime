@@ -1,39 +1,15 @@
-import { CardList, Footer, Header } from "../../components";
-import CustomerFeedback from "./components/CustomerFeedback";
-import SearchLayer from "./components/SearchLayer";
-import SectionHero from "./components/SectionHero";
-import useSearch from "./hook/useSearch";
+import { Suspense, lazy } from "react";
+import Loader from "../../components/Loader";
+
 const Home = () => {
-	const {
-		active,
-		handleActive,
-		handleDesActive,
-		textSearch,
-		handleOnchange,
-		template,
-		isSuccess,
-	} = useSearch();
 	document.title = "Country Resto";
+
+	const MainContent = lazy(() => import("./components/MainContent"));
+
 	return (
-		<>
-			<Header />
-			<CardList />
-			<main>
-				<SectionHero
-					handleActive={handleActive}
-					textSearch={textSearch}
-					onChange={handleOnchange}
-				/>
-				<CustomerFeedback />
-				<SearchLayer
-					template={template}
-					active={active}
-					isSuccess={isSuccess}
-					handleDesActive={handleDesActive}
-				/>
-			</main>
-			<Footer />
-		</>
+		<Suspense fallback={<Loader />}>
+			<MainContent />
+		</Suspense>
 	);
 };
 

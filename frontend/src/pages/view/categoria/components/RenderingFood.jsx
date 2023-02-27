@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { Items } from "../../../../components";
+import { ItemFood } from "../../../../components";
 import ItemsLoader from "./../../../../components/ItemsLoader";
 import useListFood from "./../hook/useListFood";
 const RenderingFood = () => {
@@ -11,7 +11,7 @@ const RenderingFood = () => {
 			{isLoading ? (
 				<>
 					{list.map((item) => (
-						<Items
+						<ItemFood
 							key={item.id}
 							id={item.id}
 							title={item.name}

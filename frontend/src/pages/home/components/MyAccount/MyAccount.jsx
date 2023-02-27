@@ -53,35 +53,35 @@ export default function MyAccount() {
 			<MyAccountStyle>
 				<div className="MyAccount">
 					<p>Mi Cuenta</p>
-					<div className="line"></div>
+					<div className="line" />
 					<div className="container">
 						<div className="apartados">
 							<div className="myData">
-								<div id="mascara"></div>
+								<div id="mascara" />
 								<button name="Datos" onClick={(e) => activacion(e)}>
 									Mis datos
 								</button>
 							</div>
 							<div className="myCards">
-								<object data={cardImg}></object>
+								<object data={cardImg} />
 								<button name="Tarjetas" onClick={(e) => activacion(e)}>
 									Mis tarjetas
 								</button>
 							</div>
 							<div className="myOrders">
-								<img src={cartImg}></img>
+								<img src={cartImg} alt='logo' />
 								<button name="Pedidos" onClick={(e) => activacion(e)}>
 									Mis pedidos
 								</button>
 							</div>
 							<div className="logOut">
-								<img src={logOutImg}></img>
+								<img src={logOutImg} alt='logo' />
 								<button name="Sesion" onClick={(e) => activacion(e)}>
 									Cerrar Sesión
 								</button>
 							</div>
 						</div>
-						<div className="line2"></div>
+						<div className="line2" />
 						<div className="data">
 							{misDatos && <MisDatos />}
 							{misTarjetas && <MisTarjetas />}

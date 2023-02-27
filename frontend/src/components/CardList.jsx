@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { closetCart, calculateTheTotal } from "../redux/slice/cart.slice";
+import { calculateTheTotal, closetCart } from "../redux/slice/cart.slice";
 import { ButtonCarListExitStyled, CarListStyled } from "../styled-components";
 import ItemsCard from "./ItemsCard";
 import cartYellow from "/icons/cartYellow.svg";
@@ -15,7 +15,7 @@ const CardList = () => {
 	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
-		dispatch(calculateTheTotal())
+		dispatch(calculateTheTotal());
 		if (cart.length !== 0) {
 			setIsLoading(true);
 		} else {
@@ -43,7 +43,7 @@ const CardList = () => {
 				{isLoading ? (
 					cart.map((item, idx) => (
 						<ItemsCard
-							key={idx}
+							key={id}
 							id={item.id}
 							amount={item.amount}
 							name={item.name}

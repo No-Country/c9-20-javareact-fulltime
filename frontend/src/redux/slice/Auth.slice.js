@@ -3,9 +3,9 @@ import  Auth  from "../../model/auth.model";
 
 // const initialState = new Auth();
 const initialState = {
-  role: "",
-  accessToken: "",
-  refreshToken: ""
+  role: window.localStorage.getItem("role") || "",
+  accessToken: window.localStorage.getItem("accessToken") || "",
+  refreshToken: window.localStorage.getItem("refreshToken") || "",
 };
 
 export const authSlice = createSlice({

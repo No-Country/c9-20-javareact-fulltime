@@ -17,8 +17,9 @@ export const HeaderStyled = styled.header`
     background-color: var(--background-primary);
     z-index: 1;
     a{
-         display: inline-block;
+        display: inline-block;
     }
+
 `;
 
 export const HeaderSubtitleStyled = styled.header`
@@ -184,48 +185,48 @@ export const Title = styled.h3`
 `;
 
 export const CarListStyled = styled.aside`
+  position : fixed;
+  inset-inline-end: 0;
+  inset-block: 0;
+  inline-size: 423px;
+  padding-top: 3em;
+  padding-left:1em;
+  padding-right:1em;
+  background-color: var(--background-secondary);
+  transform: ${({ translateX }) => translateX};
+  transition: transform 1s ease-in-out; 
+  z-index:3;
 
-   position : fixed;
-   inset-inline-end: 0;
-   inset-block: 0;
-   inline-size: 423px;
-   padding-top: 3em;
-   padding-left:1em;
-   padding-right:1em;
-   background-color: var(--background-secondary);
-   transform: ${({ translateX }) => translateX};
-   transition: transform 1s ease-in-out; 
-   z-index:3;
-
-   header{
+  header{
     display: flex;
     align-items: center;
     inline-size: 70%;
     gap: 12px;
     color: var(--button-primary);
-   }
-  
-   section{
-     block-size: 245px;
-     overflow-y: scroll;
-      ${({ length }) => {
-				if (length === 0) {
-					return `
-          ${FlexBoxCenter};
-             color: var(--text-primary);
-         `;
-				}
-			}}
-      
-   }
-   section + hr{
-    inline-size: 100%;
-   }
-   footer{
-    margin-top: 17px;
-   }
 
-   footer div{
+  }
+
+  section{
+    block-size: 245px;
+    overflow-y: scroll;
+    ${({ length }) => {
+			if (length === 0) {
+				return `
+        ${FlexBoxCenter};
+            color: var(--text-primary);
+        `;
+			}
+		}}
+      
+  }
+  section + hr{
+    inline-size: 100%;
+  }
+  footer{
+    margin-top: 17px;
+  }
+
+  footer div{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -235,9 +236,9 @@ export const CarListStyled = styled.aside`
     b{
       font-weight: 400;
     }
-   }
+  }
   
-   footer div:nth-child(2){
+  footer div:nth-child(2){
       display: flex;
       align-items: center;
       flex-direction: column;
@@ -258,8 +259,7 @@ export const CarListStyled = styled.aside`
         color: var(--text-primary);
         text-decoration:  underline ;
       }
-   }
-
+}
 `;
 
 export const ItemCartStyled = styled.article`
@@ -431,7 +431,7 @@ export const NavBarStyled = styled.nav`
 
       color: var(--text-primary);
       transition: color 1s ease-in-out;
-      &: hover{
+      &:hover{
         color: #FFA800;
       }
 
@@ -452,7 +452,7 @@ export const ItemContainerStyled = styled.article`
   background-color: #FFF;
   color: var(--background-primary);
   text-align: center;
-
+  
   header{
     position: relative;
     block-size: 178px;
@@ -475,7 +475,7 @@ export const ItemImgStyled = styled.img`
     block-size: ${({ blockSize }) => blockSize};
     inline-size:${({ inlineSize }) => inlineSize};
     border-radius:${({ borderRadius }) => borderRadius};
-    text-align:center;  
+    text-align:center; 
 `;
 
 export const ItemDescription = styled.p`
@@ -519,40 +519,41 @@ export const FooterStyled = styled.footer`
   width: 100%;
   height: 205px;
   margin-top: 4rem;
+  span {
+    font-size: 20px;
+    margin: 5px 0;
+  }
 `;
 
 export const FooterContainerStyled = styled.div`
       display: inherit;
       justify-content: space-between;
-      inline-size: 825px;
+      gap: 5em;
       div ul li{
         display: flex;
+        align-items: center;
         gap:12px;
-
+        font-size: 12px;
+        img {
+          height: 18px;
+        }
         p{
           margin: 5px 0;
         }
       }
-
-    div strong{
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
 `;
 
 export const FooterContainerTwo = styled.div`
 
     display: flex;
     flex-direction: column;
-    align-items: center;
-    strong{
-      margin-bottom: 34px;
-    } 
-    inline-size: 200px;
-      ul{
-        display: flex;
-        gap:18px;
-      }
+    ul{
+      display: flex;
+      justify-content: space-around;
+    }
+    img {
+      height: 18px;
+    }
 `;
 
 export const SectionStyledBackground = styled.section`
@@ -637,4 +638,118 @@ export const ButtonLoaderStyled = styled.span`
     border-radius: 5px;
 `;
 
+/*======================================================*/
+
+/*=======================LOADER===============================*/
+
+const Spin78236 = keyframes`
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+`;
+
+const Wobble1 = keyframes`
+    0%,
+    100% {
+        transform: translateY(0%) scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateY(-66%) scale(0.65);
+        opacity: 0.8;
+    }
+`;
+
+const Wobble2 = keyframes`
+      
+      0%,
+      100% {
+            transform: translateY(0%) scale(1);
+            opacity: 1;
+      }
+      50% {
+            transform: translateY(66%) scale(0.65);
+            opacity: 0.8;
+      }
+
+`;
+export const ContainerLoaderStyled = styled.div`
+    position: fixed;
+    inset-block: 0%;
+    block-size: 100vh;
+    inline-size: 100%;
+    ${FlexBoxCenter};
+    background-color: var(--color-primary);
+`;
+
+export const LoaderStyled = styled.div`
+
+  --uib-size: 35px;
+  --uib-speed: 0.8s;
+  --uib-color: var(--button-primary);
+
+    height: var(--uib-size);
+    width: var(--uib-size);
+    transform: translate(-50%, -50%);
+    animation: ${Spin78236} calc(var(--uib-speed) * 2.5) infinite linear;
+
+    & div{
+      position: absolute;
+      height: 25px;
+      width: 25px;  
+
+      &::after{
+        content: '';
+        position: absolute;
+        height: 0%;
+        width: 100%;
+        padding-bottom: 100%;
+        background-color: var(--uib-color);
+        border-radius: 50%;
+
+      }
+
+      &:nth-child(1){
+        bottom: 5%;
+        left: 0;
+        transform: rotate(60deg);
+        transform-origin: 50% 85%;   
+        &::after {
+          bottom: 0;
+          left: 0;
+          animation: ${Wobble1} var(--uib-speed) infinite ease-in-out;
+          animation-delay: calc(var(--uib-speed) * -0.3);
+        }
+      }
+
+      &:nth-child(2) {
+        bottom: 5%;
+        right: 0;
+        transform: rotate(-60deg);
+        transform-origin: 50% 85%;
+        &::after {
+          bottom: 0;
+          left: 0;
+          animation: ${Wobble1} var(--uib-speed) infinite calc(var(--uib-speed) * -0.15) ease-in-out;
+        }
+
+      }
+
+      &:nth-child(3) {
+        bottom: -5%;
+        left: 0;
+        transform: translateX(116.666%);
+        &::after{
+          top: 0;
+          left: 0;
+          animation: ${Wobble2} var(--uib-speed) infinite ease-in-out;
+        }
+      }
+  }
+`;
 /*======================================================*/
