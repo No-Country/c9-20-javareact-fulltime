@@ -16,9 +16,8 @@ public final class DishCategoryDTO extends RepresentationModel<DishCategoryDTO> 
     private Long id;
 
     @NotBlank
-    private String imgUrl;
-
-    @NotBlank
     private String name;
-}
 
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private DishImageDTO image;
+}
