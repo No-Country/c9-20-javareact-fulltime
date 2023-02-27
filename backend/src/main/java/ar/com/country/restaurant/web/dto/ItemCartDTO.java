@@ -3,6 +3,7 @@ package ar.com.country.restaurant.web.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.validation.constraints.NotNull;
 
