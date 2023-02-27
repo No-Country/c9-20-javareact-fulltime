@@ -5,7 +5,10 @@ import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextFi
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.Indexed;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
+import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
 @Entity
@@ -35,6 +38,12 @@ public class Dish {
     @Column(nullable = false)
     private Double price;
 
+    @Column
+    private Integer portionPerUnit;
+
+    @Column
+    private Integer people;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(
             name = "category_id",
@@ -52,6 +61,23 @@ public class Dish {
             referencedColumnName = "promotion_id"
     )
     private Promotion promotion;
+
+    @OneToMany(
+            mappedBy = "dish",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @ToString.Exclude
+    private List<Comment> comments;
+
+    public void addComment(Comment comment) {
+        if (isNull(comments)) {
+            comments = new ArrayList<>();
+        }
+        comments.add(comment);
+        comment.setDish(this);
+    }
 
     public boolean hasImage() {
         return nonNull(image) && image.isValidImage();
