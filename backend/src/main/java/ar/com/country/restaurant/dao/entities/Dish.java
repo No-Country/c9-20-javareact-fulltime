@@ -52,7 +52,14 @@ public class Dish {
     )
     private DishCategory category;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @JoinColumn(
+            name = "promotion_id",
+            referencedColumnName = "promotion_id"
+    )
     private Promotion promotion;
 
     @OneToMany(
@@ -74,6 +81,15 @@ public class Dish {
 
     public boolean hasImage() {
         return nonNull(image) && image.isValidImage();
+    }
+
+    public boolean hasPromotion() {
+        return nonNull(promotion) && promotion.isValidPromotion();
+    }
+
+    public void setPromotion(Promotion promotion) {
+        this.promotion = promotion;
+        this.promotion.setDish(this);
     }
 
 }
