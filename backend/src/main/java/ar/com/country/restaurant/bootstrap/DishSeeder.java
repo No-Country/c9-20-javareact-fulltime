@@ -3,6 +3,7 @@ package ar.com.country.restaurant.bootstrap;
 import ar.com.country.restaurant.dao.entities.Dish;
 import ar.com.country.restaurant.dao.entities.DishCategory;
 import ar.com.country.restaurant.dao.entities.DishImage;
+import ar.com.country.restaurant.dao.entities.spec.DishCategorySpec;
 import ar.com.country.restaurant.dao.entities.spec.DishSpec;
 import ar.com.country.restaurant.services.DishCategoryService;
 import ar.com.country.restaurant.services.DishService;
@@ -26,34 +27,34 @@ public class DishSeeder implements CommandLineRunner {
         // Categorías
         DishCategory dishCategory1 = new DishCategory();
         dishCategory1.setName("Pizzas");
-        dishCategory1.setImgUrl("https://res.cloudinary.com/doxahduh8/image/upload/v1676594881/Diseño_sin_título_80_1_vahbhd.png");
+        dishCategory1.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594881/Diseño_sin_título_80_1_vahbhd.png"));
 
         DishCategory dishCategory2 = new DishCategory();
         dishCategory2.setName("Pastas");
-        dishCategory2.setImgUrl("https://res.cloudinary.com/doxahduh8/image/upload/v1676594879/categoria_pastas_1_uu60cm.png");
+        dishCategory2.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594879/categoria_pastas_1_uu60cm.png"));
 
         DishCategory dishCategory3 = new DishCategory();
         dishCategory3.setName("Saludables");
-        dishCategory3.setImgUrl("https://res.cloudinary.com/doxahduh8/image/upload/v1676594879/Diseño_sin_título_82_1_sobknf.png");
+        dishCategory3.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594879/Diseño_sin_título_82_1_sobknf.png"));
 
         DishCategory dishCategory4 = new DishCategory();
         dishCategory4.setName("Cafeteria");
-        dishCategory4.setImgUrl("https://res.cloudinary.com/doxahduh8/image/upload/v1676594930/Diseño_sin_título_89_1_lbau3n.png");
+        dishCategory4.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594930/Diseño_sin_título_89_1_lbau3n.png"));
 
         DishCategory dishCategory5 = new DishCategory();
         dishCategory5.setName("Postres");
-        dishCategory5.setImgUrl("https://res.cloudinary.com/doxahduh8/image/upload/v1676594931/Diseño_sin_título_79_1_yviibk.png");
+        dishCategory5.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594931/Diseño_sin_título_79_1_yviibk.png"));
 
         DishCategory dishCategory6 = new DishCategory();
         dishCategory6.setName("Churrasqueria");
-        dishCategory6.setImgUrl("https://res.cloudinary.com/doxahduh8/image/upload/v1676594931/Dise%C3%B1o_sin_t%C3%ADtulo_88_1_btb96u.png");
+        dishCategory6.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594931/Dise%C3%B1o_sin_t%C3%ADtulo_88_1_btb96u.png"));
 
-        DishCategory saveDishCategory1 = dishCategoryService.createDishCategory(dishCategory1);
-        DishCategory saveDishCategory2 = dishCategoryService.createDishCategory(dishCategory2);
-        DishCategory saveDishCategory3 = dishCategoryService.createDishCategory(dishCategory3);
-        DishCategory saveDishCategory4 = dishCategoryService.createDishCategory(dishCategory4);
-        DishCategory saveDishCategory5 = dishCategoryService.createDishCategory(dishCategory5);
-        DishCategory saveDishCategory6 = dishCategoryService.createDishCategory(dishCategory6);
+        DishCategory saveDishCategory1 = dishCategoryService.createDishCategory(new DishCategorySpec(dishCategory1));
+        DishCategory saveDishCategory2 = dishCategoryService.createDishCategory(new DishCategorySpec(dishCategory2));
+        DishCategory saveDishCategory3 = dishCategoryService.createDishCategory(new DishCategorySpec(dishCategory3));
+        DishCategory saveDishCategory4 = dishCategoryService.createDishCategory(new DishCategorySpec(dishCategory4));
+        DishCategory saveDishCategory5 = dishCategoryService.createDishCategory(new DishCategorySpec(dishCategory5));
+        DishCategory saveDishCategory6 = dishCategoryService.createDishCategory(new DishCategorySpec(dishCategory6));
 
         // Platillos
         Dish dish_1 = new Dish();

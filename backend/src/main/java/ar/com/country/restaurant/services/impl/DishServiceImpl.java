@@ -56,7 +56,7 @@ public class DishServiceImpl implements DishService {
             promotion.setDish(newDish);
         }
         if (dishSpec.imageProvided()) {
-            DishImage image = dishImageUploaderService.uploadDishImage(dishSpec.image());
+            DishImage image = dishImageUploaderService.uploadImage(dishSpec.image());
             newDish.setImage(image);
         }
         return dishRepository.saveAndFlush(newDish);
@@ -75,14 +75,8 @@ public class DishServiceImpl implements DishService {
             dishToUpdate.setPromotion(promotion);
         }
         if (dishSpec.imageProvided()) {
-            DishImage updatedDishImage;
-            if (dishToUpdate.hasImage()) {
-                DishImage image = dishToUpdate.getImage();
-                updatedDishImage = dishImageUploaderService.updateDishImage(image.getPublicId(), dishSpec.image());
-            } else {
-                updatedDishImage = dishImageUploaderService.uploadDishImage(dishSpec.image());
-            }
-            dishToUpdate.setImage(updatedDishImage);
+            DishImage image = dishImageUploaderService.uploadOrUpdateImage(dishToUpdate, dishSpec.image());
+            dishToUpdate.setImage(image);
         }
         return dishRepository.saveAndFlush(dishToUpdate);
     }

@@ -1,4 +1,4 @@
-INSERT INTO dish_categories (name, img_url)
+INSERT INTO dish_categories (name, url)
 VALUES ('PIZZA', 'http://localhost:8080/img1'),
        ('CHEESE', 'http://localhost:8080/img2'),
        ('VINOS', 'http://localhost:8080/img3'),

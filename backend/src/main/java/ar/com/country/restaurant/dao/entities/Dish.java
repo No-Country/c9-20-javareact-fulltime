@@ -19,7 +19,7 @@ import static java.util.Objects.nonNull;
 @Getter
 @Setter
 @Indexed(index = "dishes")
-public class Dish {
+public class Dish implements WithImage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -79,6 +79,7 @@ public class Dish {
         comment.setDish(this);
     }
 
+    @Override
     public boolean hasImage() {
         return nonNull(image) && image.isValidImage();
     }

@@ -1,11 +1,13 @@
 package ar.com.country.restaurant.web.controllers;
 
 import ar.com.country.restaurant.dao.entities.DishCategory;
+import ar.com.country.restaurant.dao.entities.spec.DishCategorySpec;
 import ar.com.country.restaurant.services.DishCategoryService;
 import ar.com.country.restaurant.web.dto.DishCategoryDTO;
 import ar.com.country.restaurant.web.hateoas.assemblers.DishCategoryModelAssembler;
 import ar.com.country.restaurant.web.mappers.DishCategoryMapper;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -15,8 +17,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -68,11 +72,18 @@ public class DishCategoryController {
             }),
             @ApiResponse(ref = FORBIDDEN_RESPONSE_REF, responseCode = "403")
     })
-    @PostMapping
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<DishCategoryDTO> createDishCategory(@RequestBody @Valid DishCategoryDTO dishCategoryDto) {
+    public ResponseEntity<DishCategoryDTO> createDishCategory(
+            @Parameter(description = "Dish category to create", required = true)
+            @RequestPart(name = "category") @Valid DishCategoryDTO dishCategoryDto,
+
+            @Parameter(description = "Image to upload")
+            @RequestPart(name = "image", required = false) MultipartFile image
+    ) {
         DishCategory dishCategory = dishCategoryMapper.toEntity(dishCategoryDto);
-        DishCategory result = dishCategoryService.createDishCategory(dishCategory);
+        DishCategorySpec dishCategorySpec = new DishCategorySpec(dishCategory, image);
+        DishCategory result = dishCategoryService.createDishCategory(dishCategorySpec);
         DishCategoryDTO resultDto = dishCategoryModelAssembler.toModel(result);
         return ResponseEntity
                 .created(URI.create(resultDto.getRequiredLink("self").getHref()))
@@ -87,13 +98,19 @@ public class DishCategoryController {
             @ApiResponse(ref = FORBIDDEN_RESPONSE_REF, responseCode = "403"),
             @ApiResponse(ref = NOT_FOUND_RESPONSE_REF, responseCode = "404")
     })
-    @PutMapping("/{categoryId}")
+    @PutMapping(value = "/{categoryId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public DishCategoryDTO updateDishCategory(
             @PathVariable Long categoryId,
-            @RequestBody @Valid DishCategoryDTO dishCategoryDto
+
+            @Parameter(description = "Dish category to update", required = true)
+            @RequestPart(name = "category") @Valid DishCategoryDTO dishCategoryDto,
+
+            @Parameter(description = "Image to upload")
+            @RequestPart(name = "image", required = false) MultipartFile image
     ) {
         DishCategory dishCategory = dishCategoryMapper.toEntity(dishCategoryDto);
-        DishCategory result = dishCategoryService.updateDishCategory(categoryId, dishCategory);
+        DishCategorySpec dishCategorySpec = new DishCategorySpec(dishCategory, image);
+        DishCategory result = dishCategoryService.updateDishCategory(categoryId, dishCategorySpec);
         return dishCategoryModelAssembler.toModel(result);
     }
 
