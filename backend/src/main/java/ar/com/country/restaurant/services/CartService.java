@@ -9,11 +9,9 @@ public interface CartService {
 
     Cart getCartOfLoggedUser(Long userId);
 
-    Cart getCartById(Long userId, Long cartId);
-
     List<ItemCart> getItemsFromCart(Long cartId);
 
-    Cart addItem(Long userId, ItemCart itemCart);
+    Cart addItem(Long userId, Long dishId, ItemCart itemCart);
 
     Cart deleteItem(Long userId, Long itemId);
 
