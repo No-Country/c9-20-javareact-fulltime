@@ -29,7 +29,6 @@ public class Cart implements Serializable {
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
     )
-    @JsonIgnore
     private List<ItemCart> items;
 
 
