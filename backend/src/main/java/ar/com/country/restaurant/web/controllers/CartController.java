@@ -5,7 +5,9 @@ import ar.com.country.restaurant.dao.entities.Dish;
 import ar.com.country.restaurant.dao.entities.ItemCart;
 import ar.com.country.restaurant.security.SecurityUser;
 import ar.com.country.restaurant.services.CartService;
+import ar.com.country.restaurant.web.dto.CartDTO;
 import ar.com.country.restaurant.web.dto.ItemCartDTO;
+import ar.com.country.restaurant.web.mappers.CartMapper;
 import ar.com.country.restaurant.web.mappers.ItemCartMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -22,7 +24,7 @@ import java.util.List;
 import static ar.com.country.restaurant.util.ApiDocsConstants.*;
 
 @RestController
-@RequestMapping("/carts")
+@RequestMapping("/api/carts")
 @RequiredArgsConstructor
 @Tag(name = "Carts", description = "API to manage carts")
 @ApiResponses({
@@ -35,6 +37,8 @@ public class CartController {
     private final CartService cartService;
 
     private final ItemCartMapper itemCartMapper;
+
+    private final CartMapper cartMapper;
 
     @Operation(summary = "Returns the cart of the logged user")
     @ApiResponse(responseCode = "200", description = "OK", content = {
@@ -65,15 +69,15 @@ public class CartController {
             @Content(schema = @Schema(implementation = Cart.class))
     })
     @PostMapping("/items")
-    public Cart addItemToCart(
+    public CartDTO addItemToCart(
             @RequestBody ItemCartDTO itemCart,
-            @AuthenticationPrincipal SecurityUser securityUser
+            @AuthenticationPrincipal SecurityUser securityUser,
+            @RequestParam Long dishId
     ) {
         ItemCart item = itemCartMapper.toEntity(itemCart);
         Long userId = securityUser.getId();
-        Dish dish = item.getDish();
-        Long dishId = dish.getId();
-        return cartService.addItem(userId, dishId, item);
+        Cart cart = cartService.addItem(userId, dishId, item);
+        return cartMapper.toDto(cart);
     }
 
     @Operation(summary = "Removes an item from the cart of the logged user")
