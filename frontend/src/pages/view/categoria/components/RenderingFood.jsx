@@ -19,6 +19,7 @@ const RenderingFood = () => {
 							description={item.description}
 							portion={"1"}
 							price={item.price}
+							category={item.category.name}
 						/>
 					))}
 				</>

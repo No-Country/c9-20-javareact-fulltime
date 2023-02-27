@@ -4,7 +4,7 @@ const Description = ({ description, delay, price }) => {
 		<DescriptionStyled>
 			<strong>Descripción del Plato</strong>
 			<p>{description}</p>
-			<p>{delay.toUpperCase()}</p>
+			<p>{delay}</p>
 			<p>${price}</p>
 		</DescriptionStyled>
 	);

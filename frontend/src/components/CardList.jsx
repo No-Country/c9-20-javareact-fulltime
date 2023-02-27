@@ -41,9 +41,9 @@ const CardList = () => {
 
 			<section>
 				{isLoading ? (
-					cart.map((item, idx) => (
+					cart.map((item) => (
 						<ItemsCard
-							key={id}
+							key={item.id}
 							id={item.id}
 							amount={item.amount}
 							name={item.name}

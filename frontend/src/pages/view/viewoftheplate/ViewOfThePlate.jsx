@@ -19,8 +19,10 @@ import platoPasta from "/img/platoPasta2.png";
 const ViewOfThePlate = () => {
 	const amount = useSelector((state) => state.AppetizerData);
 	const dispatch = useDispatch();
+
 	const { idCategory, idFood } = useParams();
-	const { itemFood } = useItemFood(idFood, idCategory);
+
+	const { itemFood, isSuccess } = useItemFood(idFood, idCategory);
 
 	const handleAddItems = () => {
 		if (amount.value !== 0) {
@@ -47,7 +49,7 @@ const ViewOfThePlate = () => {
 					blockSize='305px'
 					inlineSize='383px'
 				/>
-				{itemFood !== undefined ? (
+				{isSuccess ? (
 					<ArticleStyled>
 						<HeaderArticle nameFood={itemFood.nameFood} qualification={"4.9"} />
 

@@ -3,7 +3,8 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
 
     :root{
-        --background-primary: rgba(0, 0, 0, 1);
+        --background-nav-bar: rgba(0, 0, 0, 1);
+        --background-primary: rgba(14, 14, 14, 1);   
         --background-secondary: rgba(45, 45, 45, 1);
         --text-primary: rgba(255, 255, 255, 1);
         --text-secondary: rgba(172, 172, 172, 1);
@@ -27,7 +28,7 @@ export const GlobalStyle = createGlobalStyle`
         background-color: var(--background-primary);
         background-color: var(--background-primary);
         color: var(--text-primary);
-    
+
     }
 
     button{

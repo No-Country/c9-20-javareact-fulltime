@@ -15,7 +15,6 @@ const useFilterComments = (category, idFood) => {
 			setItems([...template]);
 		}
 	}, []);
-	console.log(comments);
 	return {
 		items,
 	};

@@ -2,7 +2,15 @@ import { Link, Outlet, useParams } from "react-router-dom";
 import Star from "../pages/view/categoria/components/Star";
 import { ItemFoodStyled } from "../pages/view/categoria/styled-components/layout.styled";
 import cart from "/icons/cart.svg";
-const ItemFood = ({ description, price, nameFood, portion, id, img }) => {
+const ItemFood = ({
+	description,
+	price,
+	nameFood,
+	portion,
+	id,
+	img,
+	category,
+}) => {
 	const { namePath } = useParams();
 
 	return (
@@ -18,7 +26,7 @@ const ItemFood = ({ description, price, nameFood, portion, id, img }) => {
 					<p>{portion} porciones</p>
 					<strong>${price}</strong>
 
-					<Link to={`${id}`}>
+					<Link to={`/categoria/${category}/${id}`}>
 						<strong>Agregar al Carrito</strong>
 						<img src={cart} alt="image-cart" />
 					</Link>

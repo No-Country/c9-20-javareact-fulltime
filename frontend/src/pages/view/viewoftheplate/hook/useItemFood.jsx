@@ -1,27 +1,25 @@
 import { useEffect, useState } from "react";
-import { useGetInfoFoodQuery } from "../../../../redux/query/FoodInfo.query";
+import { useGetDishesQuery } from "../../../../redux/query/FoodInfo.query";
 
 const useItemFood = (id, nameFood) => {
-	const [itemFood, setItemFood] = useState();
+	const [itemFood, setItemFood] = useState([]);
 
-	const { data: food, isSuccess } = useGetInfoFoodQuery();
-
+	const { data: food, isSuccess } = useGetDishesQuery();
 	useEffect(() => {
 		if (isSuccess) {
-			let template = 0;
-			food.forEach((item) => {
-				if (item.name === nameFood) {
-					template = item.list;
-				}
-			});
+			const { dishes } = food._embedded;
 
-			const itemFood = template.filter((item) => item.id === Number(id));
-			setItemFood(...itemFood);
+			const template = dishes.filter(
+				(item) => item.category.name === nameFood && item.id === Number(id),
+			);
+
+			setItemFood(...template);
 		}
-	}, []);
+	}, [isSuccess]);
 
 	return {
 		itemFood,
+		isSuccess,
 	};
 };
 

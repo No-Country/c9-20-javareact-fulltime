@@ -39,6 +39,7 @@ const Carrusel = ({ move }) => {
 							image={item.image.url}
 							description={item.description}
 							price={item.price}
+							category={item.category.name}
 						/>
 					))
 				) : (
