@@ -528,6 +528,13 @@ export const FooterStyled = styled.footer`
     font-size: 20px;
     margin: 5px 0;
   }
+  @media (max-width: 851px) {
+    padding: 4rem 2em;
+    margin: auto;
+    flex-direction: column;
+    gap: 3rem;
+    height: auto;
+  }
 `;
 
 export const FooterContainerStyled = styled.div`
@@ -544,6 +551,14 @@ export const FooterContainerStyled = styled.div`
         }
         p{
           margin: 5px 0;
+        }
+      }
+      @media (max-width: 601px) {
+        flex-direction: column;
+        text-align: center;
+        gap: 3em;
+        li {
+          justify-content: center;
         }
       }
 `;
