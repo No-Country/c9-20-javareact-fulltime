@@ -65,4 +65,8 @@ export const router = createBrowserRouter([
 		path: "/loading",
 		element: <Loader />,
 	},
+  {
+    path: "/adminCreate",
+    element: <AdminCreate />,
+  }
 ]);
