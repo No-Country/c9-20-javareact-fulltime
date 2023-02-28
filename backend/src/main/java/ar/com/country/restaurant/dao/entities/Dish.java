@@ -94,6 +94,10 @@ public class Dish implements WithImage {
         this.promotion.setDish(this);
     }
 
+    public void removePromotion() {
+        this.promotion = null;
+    }
+
     public double getPriceWithPromotionIfApply() {
         if (hasPromotion()) {
             return promotion.getPriceWithPromotion();
