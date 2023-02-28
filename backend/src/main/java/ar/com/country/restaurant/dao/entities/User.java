@@ -42,11 +42,7 @@ public class User implements Serializable {
     )
     private List<Order> orders;
 
-    @OneToOne(
-            mappedBy = "user",
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL
-    )
+    @OneToOne(fetch = FetchType.LAZY)
     private Cart cart;
 
     @OneToMany(
@@ -77,6 +73,13 @@ public class User implements Serializable {
         }
         paymentMethods.add(paymentMethod);
         paymentMethod.setUser(this);
+    }
+
+    public Cart getCart() {
+        if (isNull(cart)) {
+            cart = Cart.builder().user(this).build();
+        }
+        return cart;
     }
 
 }

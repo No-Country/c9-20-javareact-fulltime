@@ -52,7 +52,8 @@ public class Dish implements WithImage {
     )
     private DishCategory category;
 
-    @OneToOne(fetch = FetchType.LAZY,
+    @OneToOne(
+            fetch = FetchType.LAZY,
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
@@ -91,6 +92,13 @@ public class Dish implements WithImage {
     public void setPromotion(Promotion promotion) {
         this.promotion = promotion;
         this.promotion.setDish(this);
+    }
+
+    public double getPriceWithPromotionIfApply() {
+        if (hasPromotion()) {
+            return promotion.getPriceWithPromotion();
+        }
+        return price;
     }
 
 }
