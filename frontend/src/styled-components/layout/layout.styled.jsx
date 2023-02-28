@@ -258,6 +258,11 @@ export const CarListStyled = styled.aside`
         color: var(--text-primary);
         text-decoration:  underline ;
       }
+      a.disable-link {
+        background-color: var(--second);
+        pointer-events: none;
+        cursor: default;
+      }
    }
 
 `;
