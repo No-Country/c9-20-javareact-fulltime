@@ -4,10 +4,16 @@ import DishesList from "./DishesList";
 import CategoryList from "./CategoryList";
 import CreateCategory from "./CreateCategory";
 import CreateDish from "./CreateDish";
+import { useGetDishesQuery, useGetCategoriesQuery } from "../../redux/query/FoodInfo.query.js";
 
 const AdminCreate = () => {
   //Este estado va a definir en un string cual es el componente a mostrar.
   const [mostrar, setMostrar] = React.useState("Platos_Listado");
+  const { data: dis, isSuccess } = useGetDishesQuery();
+  const { data: cat, validado } = useGetCategoriesQuery();
+  //console.log(dis)
+  //console.log(cat)
+
   return (
     <>
       <AdminCreateStyle>
@@ -45,9 +51,9 @@ const AdminCreate = () => {
             <button>Listado</button> */}
           </div>
           <div className="component">
-            {mostrar == "Platos_Listado" && <DishesList />}
+            {mostrar == "Platos_Listado" && <DishesList dishes={dis} categories={cat}/>}
             {mostrar == "a" && <CreateDish />}
-            {mostrar == "Categoria_Listado" && <CategoryList />}
+            {mostrar == "Categoria_Listado" && <CategoryList categories={cat}/>}
             {mostrar == "Crear Categoria" && <CreateCategory />}
             {mostrar == "c" && "Aqui va el componente"}
           </div>

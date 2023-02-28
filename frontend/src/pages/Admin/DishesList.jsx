@@ -1,7 +1,7 @@
 import React from "react";
 import { DishesListStyles } from "../../styled-components/Admin.styled";
 
-const DishesList = () => {
+const DishesList = (props) => {
   const categoriesList = [
     { name: "Pastas" },
     { name: "Postres" },
@@ -10,8 +10,15 @@ const DishesList = () => {
     { name: "Saludable" },
     { name: "Pizzas" },
   ];
+
+  const categorories = props.categories
+  const dishes = props.dishes
   const [id, setId] = React.useState(false);
   console.log(id);
+
+
+  categorories && console.log(categorories._embedded.dishCategories)
+  dishes && console.log(dishes._embedded.dishes)
 
   return (
     <>

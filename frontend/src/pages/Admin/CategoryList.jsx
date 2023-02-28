@@ -3,17 +3,18 @@ import { CategoryListStyles } from "../../styled-components/Admin.styled";
 import ico1 from "./icon/basura.png";
 import ico2 from "./icon/lapiz.png";
 
-export default function CategoryList() {
+export default function CategoryList(props) {
   //Este array es momentaneo hasta poder consumir esta informacion de la API
-  let infodeApi = ["Pastas", "Mexicana", "Hamburguesas"];
+  let categories = props.categories._embedded.dishCategories;
+  //console.log(props.categories._embedded.dishCategories)
   return (
     <CategoryListStyles>
       <div className="listadoCategoria">
         <p className="tituloListado">Listado de Categoría</p>
-        {infodeApi.map((e) => (
+        {categories.map((e) => (
           <>
             <div className="item line">
-              <p className="dish">{e}</p>
+              <p className="dish">{e.name}</p>
               <div className="item-icons">
                 <svg
                   width="22px"
