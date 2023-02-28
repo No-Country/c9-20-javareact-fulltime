@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 
 @Data
 public class CartItemDTO {
@@ -11,12 +12,12 @@ public class CartItemDTO {
     private Long id;
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private Long cartId;
+    private DishResponseDTO dish;
 
     @NotNull
-    private Long dishId;
+    @PositiveOrZero
+    private Integer quantity;
 
-    @NotNull
-    private int quantity;
-
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private double subTotal;
 }
