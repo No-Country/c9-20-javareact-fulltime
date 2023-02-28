@@ -1,92 +1,55 @@
 package ar.com.country.restaurant.services.impl;
 
 import ar.com.country.restaurant.dao.entities.Cart;
+import ar.com.country.restaurant.dao.entities.CartItem;
 import ar.com.country.restaurant.dao.entities.Dish;
-import ar.com.country.restaurant.dao.entities.ItemCart;
 import ar.com.country.restaurant.dao.entities.User;
-import ar.com.country.restaurant.exceptions.ItemNotFoundException;
-import ar.com.country.restaurant.exceptions.UserNotFoundException;
 import ar.com.country.restaurant.repositories.CartRepository;
 import ar.com.country.restaurant.services.CartService;
 import ar.com.country.restaurant.services.DishService;
 import ar.com.country.restaurant.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class CartServiceImpl implements CartService{
-
-
+public class CartServiceImpl implements CartService {
+    private final UserService userService;
+    private final DishService dishService;
     private final CartRepository cartRepository;
 
-    private final DishService dishService;
-
-    private final UserService userService;
-
     @Override
-    public Cart getCartOfLoggedUser(Long userId) {
-        return cartRepository
-                .findCartByUserId(userId)
-                .orElseThrow(() -> new UserNotFoundException("User not found"));
-    }
-
-
-    @Override
-    public List<ItemCart> getItemsFromCart(Long userId) {
+    public Cart getCartOfUser(Long userId) {
         User user = userService.getUserById(userId);
-        Cart cart = user.getCart();
-        return cartRepository.findAllItemsFromCart(cart.getId());
+        return cartRepository.save(user.getCart());
     }
 
     @Override
-    public Cart addItem(Long userId, Long dishId, ItemCart itemCart) {
+    @Transactional
+    public CartItem addCartItem(Long userId, Long dishId, CartItem cartItem) {
         User user = userService.getUserById(userId);
-
-        Cart cart = new Cart();
-        cart = setUserCart(user, cart);
-        cart.setUser(user);
-
         Dish dish = dishService.getDishById(dishId);
-
-        itemCart.setDish(dish);
-        itemCart.setCart(cart);
-        cart.addItemCart(itemCart);
-        cart.calculateSubTotal();
-        return cartRepository.save(cart);
-    }
-
-
-
-    @Override
-    public Cart deleteItem(Long userId, Long itemId) {
-        User user = userService.getUserById(userId);
         Cart cart = user.getCart();
 
-        if(itemExists(itemId)) {
-            cart.removeItemCart(itemId);
-            cart.calculateSubTotal();
-        }
-        return cartRepository.save(cart);
+        cartItem.setDish(dish);
+        cart.addCartItem(cartItem);
+        cartRepository.saveAndFlush(cart);
+
+        return cartItem;
     }
 
+    @Override
+    @Transactional
+    public CartItem deleteCartItem(Long userId, Long itemId) {
+        User user = userService.getUserById(userId);
+        Cart cart = user.getCart();
+        CartItem cartItem = cart.getCartItemById(itemId);
 
-    public boolean itemExists(Long itemId) {
-        if(!cartRepository.existsById(itemId)) {
-            throw new ItemNotFoundException("Item not found");
-        }
-        return false;
-    }
+        cart.removeCartItem(itemId);
+        cartRepository.save(cart);
 
-    private static Cart setUserCart(User user, Cart cart) {
-        if (user.getCart() != null) {
-            cart = user.getCart();
-        } else {
-            user.setCart(cart);
-        }
-        return cart;
+        return cartItem;
     }
 
 }

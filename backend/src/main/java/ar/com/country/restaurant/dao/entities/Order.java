@@ -28,7 +28,6 @@ public class Order {
     @JoinColumn(name = "user_id")
     private User user;
 
-
     @ManyToOne
     @JoinColumn(name = "cart_id")
     private Cart cart;
@@ -50,11 +49,6 @@ public class Order {
             fetch = FetchType.LAZY
     )
     private Receipt receipt;
-
-
-    public void calculateTotal() {
-        this.total = this.items.stream().mapToDouble(ItemCart::getSubTotal).sum();
-    }
 
     public void generateReceipt() {
         this.receipt = Receipt.builder()

@@ -5,13 +5,10 @@ import ar.com.country.restaurant.exceptions.ItemNotFoundException;
 import lombok.*;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.ArrayList;
-import lombok.*;
-
-import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
+
+import static java.util.Objects.isNull;
 
 @Entity
 @Table(name = "carts")
@@ -20,12 +17,14 @@ import java.util.List;
 @Builder
 @Getter
 @Setter
-public class Cart implements Serializable {
+public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cart_id")
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User user;
 
     @OneToMany(
@@ -35,36 +34,43 @@ public class Cart implements Serializable {
     )
     private List<CartItem> items;
 
-
-    public void addItemCart(ItemCart itemCart) {
-        if (this.items == null) {
-            this.items = new ArrayList<>();
+    public void addCartItem(CartItem cartItem) {
+        if (isNull(items)) {
+            items = new ArrayList<>();
         }
-        this.items.add(itemCart);
-        itemCart.setCart(this);
+        items.add(cartItem);
+        cartItem.setCart(this);
     }
 
-    public void removeItemCart(Long itemId) {
-        ItemCart itemCart = this.items.stream()
+    public CartItem getCartItemById(Long itemId) {
+        return items.stream()
                 .filter(item -> item.getId().equals(itemId))
                 .findFirst()
-                .orElseThrow(() -> new ItemNotFoundException("Item not found"));
+                .orElseThrow(() -> new ItemNotFoundException(itemId));
+    }
+
+    public void removeCartItem(Long itemId) {
+        CartItem cartItem = getCartItemById(itemId);
+        cartItem.setCart(null);
+        items.remove(cartItem);
+    }
+
+    public double getSubTotal() {
+        return items.stream()
+                .mapToDouble(CartItem::getSubTotal)
+                .sum();
     }
 
     public void emptyCart() {
-        this.items.forEach(item -> item.setCart(null));
-        this.items.clear();
-   }
-
-    public void calculateSubTotal() {
-        this.items.forEach(ItemCart::calculateSubTotal);
+        items.forEach(item -> item.setCart(null));
+        items.clear();
     }
 
-    public void generateOrder() {
-           Order order = Order.builder()
-                    .cart(this)
-                    .build();
-            order.calculateTotal();
-            order.generateReceipt();
+    public List<CartItem> getItems() {
+        if (isNull(items)) {
+            items = new ArrayList<>();
+        }
+        return items;
     }
+
 }

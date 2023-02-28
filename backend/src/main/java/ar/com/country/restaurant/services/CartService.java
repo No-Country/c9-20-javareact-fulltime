@@ -1,18 +1,14 @@
 package ar.com.country.restaurant.services;
 
 import ar.com.country.restaurant.dao.entities.Cart;
-import ar.com.country.restaurant.dao.entities.ItemCart;
-
-import java.util.List;
+import ar.com.country.restaurant.dao.entities.CartItem;
 
 public interface CartService {
 
-    Cart getCartOfLoggedUser(Long userId);
+    Cart getCartOfUser(Long userId);
 
-    List<ItemCart> getItemsFromCart(Long cartId);
+    CartItem addCartItem(Long userId, Long dishId, CartItem cartItem);
 
-    Cart addItem(Long userId, Long dishId, ItemCart itemCart);
-
-    Cart deleteItem(Long userId, Long itemId);
+    CartItem deleteCartItem(Long userId, Long itemId);
 
 }
