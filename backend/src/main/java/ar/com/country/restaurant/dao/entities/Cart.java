@@ -33,7 +33,7 @@ public class Cart implements Serializable {
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
     )
-    private List<ItemCart> items;
+    private List<CartItem> items;
 
 
     public void addItemCart(ItemCart itemCart) {

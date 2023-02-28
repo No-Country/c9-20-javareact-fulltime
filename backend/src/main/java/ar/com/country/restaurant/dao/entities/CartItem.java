@@ -5,13 +5,13 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "items_cart")
+@Table(name = "cart_items")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Getter
 @Setter
-public class ItemCart {
+public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,6 +27,7 @@ public class ItemCart {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     private Order order;
+
     @Column
     private int quantity;
 
@@ -37,5 +38,5 @@ public class ItemCart {
     public void calculateSubTotal() {
         this.subTotal = this.dish.getPrice() * this.quantity;
     }
-
+    
 }
