@@ -87,7 +87,7 @@ const handleUploadClick = () => {
 
 ## Links
 
-- [Wireframes](https://www.figma.com/file/NJQDXd6YCHibUsOUUMfmBY/Untitled?node-id=0%3A1&t=TAQBnxUjQUaaXMCT-1)
+- [UI Design](https://www.figma.com/file/DPDtY5NoVbHlvyKLfbN9AT/No-Country-(Copy)?node-id=336%3A809&t=l6jFTywEuEzHRvHK-0)
 
 - [Miro](https://miro.com/app/board/uXjVPrrAB5Q=/)
 
