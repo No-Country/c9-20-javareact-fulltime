@@ -1,7 +1,5 @@
 package ar.com.country.restaurant.dao.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -44,9 +42,7 @@ public class User implements Serializable {
     )
     private List<Order> orders;
 
-    @OneToOne(
-            fetch = FetchType.LAZY
-    )
+    @OneToOne(fetch = FetchType.LAZY)
     private Cart cart;
 
     @OneToMany(
@@ -77,6 +73,13 @@ public class User implements Serializable {
         }
         paymentMethods.add(paymentMethod);
         paymentMethod.setUser(this);
+    }
+
+    public Cart getCart() {
+        if (isNull(cart)) {
+            cart = Cart.builder().user(this).build();
+        }
+        return cart;
     }
 
 }
