@@ -17,6 +17,7 @@ const Items = ({ title, image, description, people, price, id }) => {
 					inlineSize='300px'
 					blockSize='198px'
 					borderRadius='29px'
+					loading="lazy"
 				/>
 			</header>
 			<h2>{title}</h2>

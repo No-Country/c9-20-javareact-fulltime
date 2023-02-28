@@ -9,16 +9,15 @@ import org.springframework.hateoas.server.core.Relation;
 import javax.validation.constraints.NotBlank;
 
 @Data
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 @Relation(itemRelation = "dishCategory", collectionRelation = "dishCategories")
 public final class DishCategoryDTO extends RepresentationModel<DishCategoryDTO> {
-        @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-        Long id;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private Long id;
 
-        @NotBlank
-        String imgUrl;
+    @NotBlank
+    private String name;
 
-        @NotBlank
-        String name;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private DishImageDTO image;
 }
-

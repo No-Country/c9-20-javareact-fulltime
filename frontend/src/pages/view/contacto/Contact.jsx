@@ -1,15 +1,82 @@
+import { CardList, Footer, Header } from "../../../components";
 import HeaderSubTitle from "../../../components/HeaderSubTitle";
-import ContainerList from "./ContainerList";
+import {
+	ContactStyled,
+	ContactForm,
+	ContactSection,
+} from "./styled-components/layout.styled";
+import wha from "/icons/whatsapp.svg";
+import location from "/icons/location.svg";
+import phone from "/icons/phone.svg";
+
 const Contact = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("enviando");
+  };
+
 	return (
-		<section>
-			<HeaderSubTitle title="Nosotros" textAlign='left' level={2} />
-			<p>Breve descripción de la empresa (Restaurante) </p>
-			<article>
-				<HeaderSubTitle title="Contacto" textAlign='left' level={2} />
-				<ContainerList items={["Teléfono", "WhatsApp", "Sucursales"]} />
-			</article>
-		</section>
+		<>
+			<Header />
+			{/* <CardList /> */}
+			<ContactStyled>
+				<ContactSection>
+					<h2>Nosotros</h2>
+					<p>
+						Somos una empresa dedicada a la gastronomía desde 1995, fundada en
+						la ciudad de Buenos Aires. Nuestro objetivo siempre fue brindar al
+						publico una mejor experiencia disgustando nuestros platos elaborados
+						por el Chef Héctor Martínez, quien nos acompaña desde siempre.
+						Estamos orgullosamente felices de que nos sigan eligiendo en cada
+						encuentro familiar.
+					</p>
+				</ContactSection>
+
+				<ContactSection>
+					<h2>Contacto</h2>
+					<ul>
+						<li>
+							<img src={phone} alt='phone' />
+							<span>Teléfono: &nbsp;&nbsp; 11 - 23232323</span>
+						</li>
+						<li>
+							<img src={wha} alt='WhatsApp' />
+							<span>Whatsapp: &nbsp;&nbsp; 11 - 45454545</span>
+						</li>
+						<li>
+							<img src={location} alt='location' />
+							<span>Sucursal: &nbsp;&nbsp; Urquiza 2345 - Capital</span>
+						</li>
+					</ul>
+				</ContactSection>
+
+				<ContactSection>
+					<h2>Reclamos</h2>
+					<ContactForm onSubmit={(e) => handleSubmit(e)}>
+						<label>Puedes dejar tu reclamo</label>
+						<input type="text" />
+						<button type="submit">Enviar</button>
+					</ContactForm>
+				</ContactSection>
+
+				<ContactSection>
+					<h2>Reserva</h2>
+					<p>
+						Para realizar una reserva se recomienda tener en cuenta una
+						anticipación de 24hs.
+						<br /> Podrás consultar disponibilidad a través de nuestros
+						contactos telefónicos o acercándote a la recepción de nuestra
+						sucursal.
+					</p>
+					<ul>
+						<li>
+							<img src={phone} alt='location' />
+							Teléfono: 11 - 23232323
+						</li>
+					</ul>
+				</ContactSection>
+			</ContactStyled>
+		</>
 	);
 };
 

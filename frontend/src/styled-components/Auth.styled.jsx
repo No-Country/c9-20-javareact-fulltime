@@ -39,6 +39,7 @@ export const Title = styled.h3`
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
+  position: relative;
 `;
 
 export const Form = styled.form`

@@ -103,7 +103,7 @@ export const LineStyle = styled.div`
     content: " ";
     display:block;
     border: 1px solid #ccc;
-    flex-grow: 2;
+    flex-grow: 1;
   }
   ::after {
     content: " ";
@@ -186,10 +186,13 @@ export const InputStyled = styled.input`
 `;
 
 export const ParagraphStyled = styled.p`
-    padding: 0 18rem;
+    /* padding: 0 18rem; */
+    max-width: 900px;
     font-weight:200;
     line-height: 23px;
     text-align: center; 
+    margin: auto;
+    padding: 1.5em;
 `;
 
 export const ItemsCommentsStyled = styled.article`
@@ -197,9 +200,12 @@ export const ItemsCommentsStyled = styled.article`
     ${FlexBoxCenter};
     max-block-size: 177px;
     inline-size: 620px;
+    min-width: 324px;
+    color: #2D2D2D;
+    background-color: #F9F6F6;
+    border-radius: 8px;
     padding: 21px 0;
     border: 1px solid var(--text-primary);
-    border-radius: 4px;
     gap: 12px;
 
     header{
@@ -210,7 +216,7 @@ export const ItemsCommentsStyled = styled.article`
         img{
             position: absolute;
             inset-block-start: -3%;
-         }
+        }
     }
 
 
@@ -220,22 +226,51 @@ export const ItemsCommentsStyled = styled.article`
         padding:0 12px;
         h3{
             margin: 0;
+            font-weight: 700;
+            font-size: 24px;
         }
-        
          hr{
             display: inline-block;
             inline-size : 94%;
+            color:#ACACAC;
         }
         p{
             margin:0;
+            font-weight: 400;
         }
         span{
-
+            color: #ACACAC;
             display: inline-block;
             padding: 10px 0;
+            font-size: 14px;
         }
-        
+        img{
+            inset-block-start: 0%;
+        }
+    }
 
+    @media (max-width: 601px) {
+        display: flex;
+        height: 150px;
+        margin: 1em;
+        header{
+            inline-size: 30%;
+            height: 100%;
+            img{
+                position: static;
+                display: block;
+                aspect-ratio: 1/1;
+                /* width: 100%;*/
+                height: 100%;
+                margin: auto;
+            }
+        }
+        p{
+            font-size: 12px;
+        }
+        div span{
+            font-size: 12px;
+        }
     }
 `;
 

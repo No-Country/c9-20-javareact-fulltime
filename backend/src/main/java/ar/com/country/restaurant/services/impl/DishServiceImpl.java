@@ -3,6 +3,7 @@ package ar.com.country.restaurant.services.impl;
 import ar.com.country.restaurant.dao.entities.Dish;
 import ar.com.country.restaurant.dao.entities.DishCategory;
 import ar.com.country.restaurant.dao.entities.DishImage;
+import ar.com.country.restaurant.dao.entities.Promotion;
 import ar.com.country.restaurant.dao.entities.criteria.DishFilterCriteria;
 import ar.com.country.restaurant.dao.entities.spec.DishSpec;
 import ar.com.country.restaurant.exceptions.DishNotFoundException;
@@ -15,8 +16,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -51,33 +51,34 @@ public class DishServiceImpl implements DishService {
         Dish newDish = dishSpec.dish();
         DishCategory dishCategory = dishCategoryService.getDishCategoryById(dishSpec.categoryId());
         newDish.setCategory(dishCategory);
+        if (newDish.hasPromotion()) {
+            Promotion promotion = newDish.getPromotion();
+            promotion.setDish(newDish);
+        }
         if (dishSpec.imageProvided()) {
-            DishImage image = dishImageUploaderService.uploadDishImage(dishSpec.image());
+            DishImage image = dishImageUploaderService.uploadImage(dishSpec.image());
             newDish.setImage(image);
         }
-        return dishRepository.save(newDish);
+        return dishRepository.saveAndFlush(newDish);
     }
 
     @Override
     @Transactional
     public Dish updateDish(Long dishId, DishSpec dishSpec) {
         Dish dishToUpdate = getDishById(dishId);
-        BeanUtils.copyProperties(dishSpec.dish(), dishToUpdate);
+        Dish updatedDish = dishSpec.dish();
+        BeanUtils.copyProperties(updatedDish, dishToUpdate);
         DishCategory updatedDishCategory = dishCategoryService.getDishCategoryById(dishSpec.categoryId());
         dishToUpdate.setCategory(updatedDishCategory);
-
-        if (dishSpec.imageProvided()) {
-            DishImage updatedDishImage;
-            if (dishToUpdate.hasImage()) {
-                DishImage image = dishToUpdate.getImage();
-                updatedDishImage = dishImageUploaderService.updateDishImage(image.getPublicId(), dishSpec.image());
-            } else {
-                updatedDishImage = dishImageUploaderService.uploadDishImage(dishSpec.image());
-            }
-            dishToUpdate.setImage(updatedDishImage);
+        if (updatedDish.hasPromotion()) {
+            Promotion promotion = updatedDish.getPromotion();
+            dishToUpdate.setPromotion(promotion);
         }
-
-        return dishRepository.save(dishToUpdate);
+        if (dishSpec.imageProvided()) {
+            DishImage image = dishImageUploaderService.uploadOrUpdateImage(dishToUpdate, dishSpec.image());
+            dishToUpdate.setImage(image);
+        }
+        return dishRepository.saveAndFlush(dishToUpdate);
     }
 
     @Override

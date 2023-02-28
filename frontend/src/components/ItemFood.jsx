@@ -2,8 +2,7 @@ import { Link, Outlet, useParams } from "react-router-dom";
 import Star from "../pages/view/categoria/components/Star";
 import { ItemFoodStyled } from "../pages/view/categoria/styled-components/layout.styled";
 import cart from "/icons/cart.svg";
-import plato from "/img/platoPastaDemo.jpg";
-const ItemFood = ({ description, price, nameFood, portion, id }) => {
+const ItemFood = ({ description, price, nameFood, portion, id, img }) => {
 	const { namePath } = useParams();
 
 	return (
@@ -11,7 +10,7 @@ const ItemFood = ({ description, price, nameFood, portion, id }) => {
 			{!namePath ? (
 				<ItemFoodStyled>
 					<header>
-						<img src={plato} alt="image" />
+						<img src={img} alt="image" />
 					</header>
 					<Star />
 					<h2>{nameFood}</h2>

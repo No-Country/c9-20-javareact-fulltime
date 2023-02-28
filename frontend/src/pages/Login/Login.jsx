@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Alert from "../../components/Alert";
 import Input from "../../components/Input";
 import InputPassword from "../../components/InputPassword";
 import { setCredentials } from "../../redux/slice/Auth.slice";
@@ -20,6 +21,7 @@ import Logo from "/assets/logo.svg";
 
 function AuthForm() {
 	const [email, setEmail] = useState("");
+	const [showAlert, setShowAlert] = useState(false);
 
 	const [password, setPassword] = useState("");
 	const [passwordError, setPasswordError] = useState(false);
@@ -35,11 +37,16 @@ function AuthForm() {
 		try {
 			const response = await login({ email, password }).unwrap();
 			dispatch(setCredentials({ ...response }));
+			window.localStorage.setItem("accessToken", response.accessToken);
+			window.localStorage.setItem("refreshToken", response.refreshToken);
+			window.localStorage.setItem("role", response.role);
 			setEmail("");
 			setPassword("");
-			navigate("/home");
+			navigate("/");
 		} catch (error) {
 			console.log(error);
+			setShowAlert(true);
+			setTimeout(() => setShowAlert(false), 3000);
 		}
 	};
 
@@ -75,6 +82,7 @@ function AuthForm() {
 					</LinkRegister>
 				</FormContainer>
 			</AuthContainer>
+			{showAlert && <Alert />}
 			<LogoContainer>
 				<img src={Logo} alt="Logo" />
 			</LogoContainer>
