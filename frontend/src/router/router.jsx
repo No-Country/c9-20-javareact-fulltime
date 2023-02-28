@@ -10,41 +10,35 @@ import Promotions from "../pages/view/promociones/Promotions";
 import ViewOfThePlate from "../pages/view/viewoftheplate/ViewOfThePlate";
 import Home from "./../pages/home/Home";
 import Category from "./../pages/view/categoria/Category";
-<<<<<<< HEAD
-import Thanks from "../pages/Checkout/Thanks";
 import AdminCreate from "../pages/Admin/AdminCreate";
-=======
->>>>>>> frontend
 export const router = createBrowserRouter([
-	{
-		path: "/",
-		element: <Home />,
-	},
-	{
-		path: "/categoria",
-		element: <Category />,
-		children: [
-			{
-				path: "/categoria/:idCategory",
-				element: <ItemsCategory />,
-				children: [
-					{
-						path: "/categoria/:idCategory/:idFood",
-						element: <ViewOfThePlate />,
-					},
-				],
-			},
-		],
-	},
-
-<<<<<<< HEAD
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/categoria",
+    element: <Category />,
+    children: [
+      {
+        path: "/categoria/:idCategory",
+        element: <ItemsCategory />,
+        children: [
+          {
+            path: "/categoria/:idCategory/:idFood",
+            element: <ViewOfThePlate />,
+          },
+        ],
+      },
+    ],
+  },
   {
     path: "/promociones",
     element: <Promotions />,
   },
   {
     path: "/contacto",
-    element: <>hola</>,
+    element: <Contact />,
   },
   {
     path: "/myaccount",
@@ -70,34 +64,4 @@ export const router = createBrowserRouter([
     path: "/adminCreate",
     element: <AdminCreate />,
   },
-=======
-	{
-		path: "/promociones",
-		element: <Promotions />,
-	},
-	{
-		path: "/contacto",
-		element: <Contact />,
-	},
-	{
-		path: "/myaccount",
-		element: <MyAccount />,
-	},
-	{
-		path: "/login",
-		element: <Login />,
-	},
-	{
-		path: "/signup",
-		element: <Signup />,
-	},
-	{
-		path: "/checkout",
-		element: <Checkout />,
-	},
-	{
-		path: "/thanks",
-		element: <Thanks />,
-	},
->>>>>>> frontend
 ]);
