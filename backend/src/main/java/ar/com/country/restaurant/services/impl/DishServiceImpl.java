@@ -72,6 +72,8 @@ public class DishServiceImpl implements DishService {
         if (updatedDish.hasPromotion()) {
             Promotion promotion = updatedDish.getPromotion();
             dishToUpdate.setPromotion(promotion);
+        }  else {
+            dishToUpdate.removePromotion();
         }
         if (dishSpec.imageProvided()) {
             DishImage image = dishImageUploaderService.uploadOrUpdateImage(dishToUpdate, dishSpec.image());
