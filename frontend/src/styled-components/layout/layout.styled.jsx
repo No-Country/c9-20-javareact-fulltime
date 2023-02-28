@@ -481,15 +481,14 @@ export const ItemDescription = styled.p`
     font-size: 12px;
 `;
 export const ItemButtonStyled = styled.button`
- 
-   width: 289px;
-   height: 55px;
-   font-size: 20px;
-   margin: auto;
-   border-radius: 4px;
-   background-color: var(--button-primary);
-   transition: background-color 1s ease-in-out;
-
+  
+    width: 289px;
+    height: 55px;
+    font-size: 20px;
+    margin: auto;
+    border-radius: 4px;
+    background-color: var(--button-primary);
+    transition: background-color 1s ease-in-out;
     img {
         margin-left: .5em;
     }
@@ -559,4 +558,3 @@ export const SectionStyledBackground = styled.section`
 
     ${BackgroundImageButtons};   
 `;
-
