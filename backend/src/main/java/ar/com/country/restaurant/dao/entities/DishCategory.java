@@ -26,7 +26,7 @@ public class DishCategory implements WithImage {
     @Embedded
     private DishImage image;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     private List<Dish> dishes;
 
     @Override
