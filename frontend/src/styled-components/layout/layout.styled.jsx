@@ -14,7 +14,7 @@ export const HeaderStyled = styled.header`
     gap: 35%;
     block-size: 106px;
     inline-size: 100%;
-    background-color: var(--background-primary);
+    background-color: var(--background-nav-bar);
     z-index: 1;
     a{
         display: inline-block;

@@ -18,7 +18,7 @@ const ItemFood = ({
 			{!namePath ? (
 				<ItemFoodStyled>
 					<header>
-						<img src={img} alt="image" />
+						<img src={img} alt={nameFood} />
 					</header>
 					<Star />
 					<h2>{nameFood}</h2>

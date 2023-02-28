@@ -1,19 +1,13 @@
-import { Outlet, useParams } from "react-router-dom";
-import { CardList, Footer, Header } from "../../../components";
-import Section from "./components/Section";
+import { lazy, Suspense } from "react";
+import { Loader } from "../../../components";
 const Category = () => {
-	const { idCategory } = useParams();
 	document.title = "Carta";
+	const ContentCategory = lazy(() => import("./components/ContentCategory"));
 	return (
-		<>
-			<Header />
-			<CardList />
-			{!idCategory ? <Section idCategory={idCategory} /> : <Outlet />}
-			<Footer />
-		</>
+		<Suspense fallback={<Loader />}>
+			<ContentCategory />
+		</Suspense>
 	);
-
-	/* opacidad del 80% */
 };
 
 export default Category;

@@ -4,13 +4,13 @@ const useCategories = () => {
 	const [categories, setCategories] = useState([]);
 
 	const { data: cate, isSuccess } = useGetCategoriesQuery();
-	console.log(cate);
+
 	useEffect(() => {
 		if (isSuccess) {
 			const { dishCategories } = cate._embedded;
 			setCategories([...dishCategories]);
 		}
-	}, [cate]);
+	}, [isSuccess]);
 
 	return {
 		categories,

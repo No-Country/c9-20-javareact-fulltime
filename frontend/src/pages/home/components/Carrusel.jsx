@@ -1,15 +1,16 @@
-import { useEffect, useState } from "react";
 import { ItemFood } from "../../../components";
 import ItemsLoader from "../../../components/ItemsLoader";
-import { useGetDishesQuery } from "../../../redux/query/FoodInfo.query";
+import { useFilterDishes } from "../../../hooks";
 import { CarruselStyled } from "../styled-components/layout.styled";
-const Carrusel = ({ move }) => {
-	const [list, setList] = useState([]);
+import { foodSpecials } from "../utilities/FoodSpecials";
 
-	const { data: di, isSuccess } = useGetDishesQuery();
+const Carrusel = ({ move }) => {
+	const { list, isSuccess } = useFilterDishes(foodSpecials);
+
+	/* const { data: di, isSuccess } = useGetDishesQuery();
 
 	useEffect(() => {
-		if (isSuccess) {
+		if (isSuccess && di !== undefined) {
 			const { dishes } = di._embedded;
 
 			const template = dishes.filter((item) => {
@@ -26,7 +27,7 @@ const Carrusel = ({ move }) => {
 			setList([...template]);
 		}
 	}, [isSuccess]);
-
+ */
 	return (
 		<CarruselStyled translateX={`${move}%`}>
 			<div>

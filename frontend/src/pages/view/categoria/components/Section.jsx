@@ -2,11 +2,10 @@ import { HeaderSubTitle } from "../../../../components";
 import { Div } from "../../../../styled-components";
 import Card from "../components/Card";
 import useCategories from "../hook/useCategories";
+import CategoryLoader from "./CategoryLoader";
 
-
-const Section = ({ idCategory }) => {
+const Section = () => {
 	const { categories, isSuccess } = useCategories();
-
 	return (
 		<section>
 			<HeaderSubTitle
@@ -21,13 +20,19 @@ const Section = ({ idCategory }) => {
 					categories.map((item) => (
 						<Card
 							key={item.id}
-							img={item.imgUrl}
+							img={item.image.url}
 							link={item.name}
 							name={item.name}
 						/>
 					))
 				) : (
-					<div>loading...</div>
+					<>
+						<CategoryLoader />
+						<CategoryLoader />
+						<CategoryLoader />
+						<CategoryLoader />
+						<CategoryLoader />
+					</>
 				)}
 			</Div>
 		</section>

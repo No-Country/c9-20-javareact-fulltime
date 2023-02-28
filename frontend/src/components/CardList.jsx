@@ -62,7 +62,7 @@ const CardList = () => {
 				</div>
 				<div>
 					<Link to={"/checkout"}>Realizar pago</Link>
-					<a href=''>Seguir comprando</a>
+					<Link to={"/categoria"}>Seguir comprando</Link>
 				</div>
 			</footer>
 		</CarListStyled>

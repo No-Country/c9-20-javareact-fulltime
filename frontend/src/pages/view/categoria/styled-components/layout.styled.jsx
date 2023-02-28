@@ -1,37 +1,9 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import {
-    BackgroundImageButtons,
-    FlexBoxCenter,
+	BackgroundImageButtons,
+	FlexBoxCenter,
 } from "../../../../styled-components";
-/* export const ItemFoodStyled = styled.article`
-    ${FlexBoxCenter}
-    gap: 30px;
-    block-size: 197px;
-    inline-size: 595px;
-    text-align: left;
-    box-shadow :  0px 4px 4px rgba(0, 0, 0, 0.25);
-    transform : scale(100%);
-    transition: transform  1s  ease-in; 
-    a{
-        display: flex;
-    }
-    
-    &:hover{
-        transform : scale(102%);
-    }
 
-    & > div {
-        flex: 1;
-       & ~  div{    
-             display: grid;
-             justify-content: flex-start;
-             flex: 2;
-             block-size: 100%;
-        }
-    }
-
-`;
- */
 export const CategoryStyled = styled.section`
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -150,3 +122,36 @@ export const StarStyled = styled.div`
     border-radius: 50px;
     background-image: linear-gradient(180deg, #323232 0%, #0B0B0B 100%);
 `;
+
+/*===================== CATEGORY LOADER =====================*/
+
+const Loader = keyframes`
+
+    50%{
+        background-color: rgb(212, 212, 212);   
+    }
+`;
+
+export const CategoryLoaderStyled = styled.div`
+    
+    position: relative;
+    block-size: 366px;
+    inline-size: 300px;
+    border-radius: 20px;
+    background-color: var(--text-primary);
+    animation: ${Loader} 1s infinite linear;
+    
+    span{
+        position: absolute;
+        inset-block-end: 9%;
+        inset-inline: 0%;
+        block-size: 38px;
+        inline-size: 90%;
+        margin: 0 auto;
+        border-radius: 8px;
+        background-color: #d7d7d7b0;
+    }
+
+`;
+
+/*===========================================================*/

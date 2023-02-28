@@ -1,14 +1,13 @@
 import React from "react";
-import { Header } from "../../../../components";
+import { CardList, Header } from "../../../../components";
 import { MyAccountStyle } from "../../styled-components/MyAccountComponent";
+import cardImg from "./image/cardsvg.svg";
+import cartImg from "./image/cartsvg.svg";
+import logOutImg from "./image/logOutsvg.svg";
 import LogOut from "./LogOut/LogOut";
 import MisTarjetas from "./MyCards/MisTarjetas";
 import MisDatos from "./MyData/MisDatos";
 import MyOrders from "./MyOrders/MyOrders";
-import cardImg from "./image/cardsvg.svg";
-import cartImg from "./image/cartsvg.svg";
-import logOutImg from "./image/logOutsvg.svg";
-
 export default function MyAccount() {
 	const [misDatos, setMisDatos] = React.useState(true);
 	const [misTarjetas, setMisTarjetas] = React.useState(false);
@@ -50,6 +49,7 @@ export default function MyAccount() {
 	return (
 		<>
 			<Header />
+			<CardList />
 			<MyAccountStyle>
 				<div className="MyAccount">
 					<p>Mi Cuenta</p>

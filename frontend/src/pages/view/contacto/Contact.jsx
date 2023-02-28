@@ -1,4 +1,4 @@
-import { Header } from "../../../components";
+import { CardList, Header } from "../../../components";
 import {
 	ContactForm,
 	ContactSection,
@@ -13,7 +13,7 @@ const Contact = () => {
 	return (
 		<>
 			<Header />
-			{/* <CardList /> */}
+			<CardList />
 			<ContactStyled>
 				<ContactSection>
 					<h2>Nosotros</h2>

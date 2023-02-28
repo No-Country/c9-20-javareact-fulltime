@@ -1,79 +1,13 @@
-import DivisionLine from "../../../components/DivisionLine";
-import HeaderSubTitle from "../../../components/HeaderSubTitle";
-import ItemFood from "../../../components/ItemFood";
-import { Div } from "../../../styled-components";
-import Footer from "./../../../components/Footer";
-import Header from "./../../../components/Header";
-import { SectionStyled } from "./styled-components/layout.styled";
-import promotions from "/img/promotionImg.jpg";
-
+import { lazy, Suspense } from "react";
+import { Loader } from "../../../components";
 const Promotions = () => {
 	document.title = "Promociones";
+
+	const ContentPromotions = lazy(() => import("./components/ContentPromotion"));
 	return (
-		<>
-			<Header />
-			<SectionStyled img={promotions} size='cover'>
-				<HeaderSubTitle
-					title='PROMO ESPECIAL DE FIN DE SEMANA'
-					textAlign='center'
-					level={2}
-				/>
-
-				<DivisionLine title={"Platos con descuentos"} />
-
-				<Div gap={"180px"} padding='8em 0'>
-					<ItemFood
-						description={"Tomate cherry, rúcula y aceitunas negras"}
-						nameFood={"Tallarines"}
-						portion={"2"}
-						price={950}
-					/>
-					<ItemFood
-						description={"Tomate cherry, rúcula y aceitunas negras"}
-						nameFood={"Tallarines"}
-						portion={"2"}
-						price={950}
-					/>
-					<ItemFood
-						description={"Tomate cherry, rúcula y aceitunas negras"}
-						nameFood={"Tallarines"}
-						portion={"2"}
-						price={950}
-					/>
-					<ItemFood
-						description={"Tomate cherry, rúcula y aceitunas negras"}
-						nameFood={"Tallarines"}
-						portion={"2"}
-						price={950}
-					/>
-					<ItemFood
-						description={"Tomate cherry, rúcula y aceitunas negras"}
-						nameFood={"Tallarines"}
-						portion={"2"}
-						price={950}
-					/>
-					<ItemFood
-						description={"Tomate cherry, rúcula y aceitunas negras"}
-						nameFood={"Tallarines"}
-						portion={"2"}
-						price={950}
-					/>
-					<ItemFood
-						description={"Tomate cherry, rúcula y aceitunas negras"}
-						nameFood={"Tallarines"}
-						portion={"2"}
-						price={950}
-					/>
-					<ItemFood
-						description={"Tomate cherry, rúcula y aceitunas negras"}
-						nameFood={"Tallarines"}
-						portion={"2"}
-						price={950}
-					/>
-				</Div>
-			</SectionStyled>
-			<Footer />
-		</>
+		<Suspense fallback={<Loader />}>
+			<ContentPromotions />
+		</Suspense>
 	);
 };
 
