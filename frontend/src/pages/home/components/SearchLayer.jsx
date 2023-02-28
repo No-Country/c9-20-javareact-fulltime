@@ -1,9 +1,9 @@
+import Items from "../../../components/Items";
 import {
 	ContainerSearchLayerStyled,
 	ScrollContainerStyled,
 	SearchLayerStyled,
 } from "../styled-components/layout.styled";
-import Items from "./Items";
 const SearchLayer = ({ active, template, isSuccess, handleDesActive }) => {
 	return (
 		<SearchLayerStyled active={active}>

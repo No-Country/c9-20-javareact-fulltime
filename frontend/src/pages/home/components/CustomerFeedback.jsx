@@ -26,7 +26,7 @@ const CustomerFeedback = () => {
 
 			<Div gap='50px' margin=' 7rem 0 0 0'>
 				<ItemsComments
-					img={persona1}
+					img={persona3}
 					name={"Adriana"}
 					comment={
 						"Muy rico y abundante! Buena ambientación tradicional. Volvería a ir y lo recomiendo."
@@ -42,10 +42,10 @@ const CustomerFeedback = () => {
 					date={" 10 de Jul. 2022 21:00hs"}
 				/>
 				<ItemsComments
-					img={persona3}
+					img={persona1}
 					name={"Carlos"}
 					comment={
-						" Festeje mi cumpleaños con amigos y la atención fue grandiosa. Los platos son abundantes y el clima muy cálido. Ver mas"
+						" Festeje mi cumpleaños con amigos y la atención fue grandiosa."
 					}
 					date={"15 de Oct. 2022 23:00hs"}
 				/>

@@ -12,13 +12,12 @@ const ItemFood = ({
 	category,
 }) => {
 	const { namePath } = useParams();
-
 	return (
 		<>
 			{!namePath ? (
 				<ItemFoodStyled>
 					<header>
-						<img src={img} alt={nameFood} />
+						<img src={img} alt={nameFood} loading='lazy' />
 					</header>
 					<Star />
 					<h2>{nameFood}</h2>

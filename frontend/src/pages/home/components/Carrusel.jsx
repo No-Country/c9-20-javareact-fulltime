@@ -1,7 +1,9 @@
-import { ItemFood, ItemsLoader } from "../../../components";
+import { ItemsLoader } from "../../../components";
+import Items from "../../../components/Items";
 import { useFilterDishes } from "../../../hooks";
 import { CarruselStyled } from "../styled-components/layout.styled";
 import { foodSpecials } from "../utilities/FoodSpecials";
+
 const Carrusel = ({ move }) => {
 	const { list, isSuccess } = useFilterDishes(foodSpecials);
 
@@ -10,7 +12,7 @@ const Carrusel = ({ move }) => {
 			<div>
 				{isSuccess ? (
 					list.map((item) => (
-						<ItemFood
+						<Items
 							key={item.id}
 							id={item.id}
 							title={item.name}

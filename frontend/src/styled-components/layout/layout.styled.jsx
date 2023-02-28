@@ -481,16 +481,17 @@ export const ItemImgStyled = styled.img`
 export const ItemDescription = styled.p`
     font-size: 12px;
 `;
-export const ItemButtonStyled = styled.button`
- 
-   width: 289px;
-   height: 55px;
-   font-size: 20px;
-   margin: auto;
-   border-radius: 4px;
-   background-color: var(--button-primary);
-   transition: background-color 1s ease-in-out;
 
+/*================== BORRAR ==================*/
+/* export const ItemButtonStyled = styled.button`
+  
+    width: 289px;
+    height: 55px;
+    font-size: 20px;
+    margin: auto;
+    border-radius: 4px;
+    background-color: var(--button-primary);
+    transition: background-color 1s ease-in-out;
     img {
         margin-left: .5em;
     }
@@ -501,6 +502,30 @@ export const ItemButtonStyled = styled.button`
     span {
         font-weight: 600;
     }
+`; */
+
+export const ItemFooterStyled = styled.footer`
+   
+   & a{
+     ${FlexBoxCenter};
+     width: 289px;
+     height: 55px;
+     font-size: 20px;
+     margin: auto;
+     border-radius: 4px;
+     background-color: var(--button-primary);
+     transition: background-color 1s ease-in-out;
+     img {
+         margin-left: .5em;
+     }
+     &:hover{
+       background-color : var(--button-secondary);
+     }
+ 
+     span {
+         font-weight: 600;
+     }
+   }
 `;
 export const ItemPeople = styled.p`
     font-size: 16px;
