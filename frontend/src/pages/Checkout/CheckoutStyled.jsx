@@ -19,8 +19,8 @@ export const CheckContainer = styled.section`
 export const CheckData = styled.form`
 
     flex: 1;
-    max-block-size: 608px;
-    padding: 30px 93px;
+    max-block-size: 547px;
+    padding: 0px 93px;
 
 .subtitulos{
     font-family: var(--font-family);
@@ -51,12 +51,12 @@ input[type="radio"] {
     height: 20px;
 }
 button{
-    background-color: var(--button-primary);
+/*     background-color: var(--button-primary);
     color: black;
     font-weight: bold;
     width: 100%;
     height: 50px;
-    font-size: 1.6rem;
+    font-size: 1.6rem; */
 }
 div{
 
@@ -91,7 +91,7 @@ export const SubtitleStyled = styled.div`
         inset-block-end: ${({ bottom }) => bottom};
         inset-inline: 0;
         block-size: 1px;
-        inline-size: 100%;
+        inline-size: 476px;
         background-color:  rgba(172, 172, 172, 1);
     }
 
@@ -229,7 +229,8 @@ export const ContainerInputsStyled = styled.div`
     align-items: center;
     justify-content: flex-start;
     flex-wrap: wrap;
-    gap: 18px;
+    margin-top: 26px;
+    gap: 16px;
 `;
 
 export const InputStyled = styled.div`
@@ -336,3 +337,16 @@ export const ContainerTotalStyled = styled.div`
         
     }
 `;
+export const Button = styled.button`
+  block-size: 56px;
+  inline-size: 476px;
+  border-radius: 4px;
+  margin-block-start: 19px;
+  font-weight: 600;
+  font-size: var(--letterscustomizable-6);
+  background-color: var(--button-primary);
+  transition: background-color 1s ease-in;
+  &:hover{
+        background-color: var(--button-secondary);
+  }
+ `;

@@ -1,15 +1,17 @@
 import Items from "../../../components/Items";
 import {
+	ButtonExitStyled,
 	ContainerSearchLayerStyled,
 	ScrollContainerStyled,
 	SearchLayerStyled,
 } from "../styled-components/layout.styled";
-import img from "/img/fondohome.png";
+import exit from "/icons/exit.svg";
+import img from "/img/fondoHome.jpg";
 const SearchLayer = ({ active, template, isSuccess, handleDesActive }) => {
 	return (
 		<SearchLayerStyled img={img} size='cover' active={active}>
+			<ButtonExitStyled onClick={handleDesActive} img={exit} size='cover' />
 			<ContainerSearchLayerStyled>
-				<button onClick={handleDesActive}>Cerrar</button>
 				<ScrollContainerStyled>
 					{isSuccess ? (
 						<div>

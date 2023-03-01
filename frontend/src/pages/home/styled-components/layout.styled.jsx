@@ -325,9 +325,9 @@ export const ContainerSearchLayerStyled = styled.div`
     position: absolute;
     inset-block-start: 36%;
     inset-inline: 0;
-    button{
+/*     button{
         background-color: white;
-    }
+    } */
  `;
 export const ScrollContainerStyled = styled.div`
     position: relative;
@@ -353,3 +353,10 @@ export const ButtonCarruselStyled = styled.button`
 `;
 
 /* ================================================================================= */
+export const ButtonExitStyled = styled.button`
+    position: absolute;
+    inset-block-start: 12%;
+    inset-inline: 4%;
+    padding: 1em;
+    ${BackgroundImageButtons};
+`;

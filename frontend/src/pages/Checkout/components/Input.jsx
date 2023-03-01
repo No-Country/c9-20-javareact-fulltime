@@ -9,14 +9,15 @@ const Input = ({
 	inlineSize,
 	messageError,
 	bottom,
+	handleChange,
 }) => {
-	const [error, setError] = useState();
-	const handleChange = (event) => {
+	const [error, setError] = useState(false);
+	/* 	const handleChange = (event) => {
 		let regex = new RegExp(pattern);
 		const { value } = event.target;
 		setError(!regex.test(value));
 	};
-
+ */
 	return (
 		<InputStyled inlineSize={inlineSize} bottom={bottom}>
 			<label htmlFor={name}>{textLabel}</label>

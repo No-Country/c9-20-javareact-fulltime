@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { CardList, Header } from "../../components";
-import { Button, DivCol } from "../../styled-components/layout/layout.styled";
+import { DivCol } from "../../styled-components/layout/layout.styled";
 import {
+	Button,
 	CheckCart,
 	CheckContainer,
 	CheckData,
@@ -17,35 +18,52 @@ import {
 import Checked from "./components/Checked";
 import Input from "./components/Input";
 import SubTitle from "./components/SubTitle";
+import useConfirmation from "./hook/useConfirmation";
 const Checkout = () => {
 	const cart = useSelector((state) => state.cart.items);
 	const total = useSelector((state) => state.cart.total);
+	const navigate = useNavigate();
 
 	const [selectedDeliveryOption, setSelectedDeliveryOption] = useState("local");
 	const [selectedPaymentOption, setSelectedPaymentOption] = useState("debito");
-	/* 	console.log(cart); */
+	const { handleChange } = useConfirmation();
+	/* 
+	const handleChange = () =>{
+
+	} */
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+
+		console.log(selectedDeliveryOption);
+		console.log(selectedPaymentOption);
+		if (numberCar !== "" && date !== "" && cvv !== "") {
+			navigate("/thanks");
+		}
+	};
 
 	return (
 		<>
 			<Header />
 			<CardList />
 			<CheckContainer>
-				<CheckData>
+				<CheckData onSubmit={handleSubmit}>
 					<SubTitle title='Envío' bottom={"-26%"} />
 					<ContainerStyled>
 						<Checked
-							checked={selectedDeliveryOption === "delivery"}
-							id='delivery'
+							checked='local'
+							id='local'
 							labelText='Retiro en local'
-							name='checkEnv'
-							onChange={() => setSelectedDeliveryOption("delivery")}
+							name='shipment'
+							value='local'
+							onChange={handleChange}
 						/>
 						<Checked
-							checked={selectedDeliveryOption === "local"}
-							id='local'
+							id='delivery'
 							labelText='Delivery'
-							name='checkEnv'
-							onChange={() => setSelectedDeliveryOption("local")}
+							name='shipment'
+							value='delivery'
+							onChange={handleChange}
 						/>
 					</ContainerStyled>
 					<SubTitle title='Pago' bottom={"-26%"} />
@@ -73,37 +91,38 @@ const Checkout = () => {
 								<Input
 									textLabel='Número de tarjeta'
 									type='text'
-									name="numberCard"
+									name="cardNumber"
 									pattern={"^[0-9]{1,16}$"}
 									placeholder="1234 5678 9101 1121"
 									inlineSize='476px'
 									messageError='Este campo solo acepta 16 caracteres numéricos'
 									bottom='-23%'
+									handleChange={handleChange}
 								/>
 
 								<Input
 									textLabel='Fecha de vencimiento'
 									type='date'
-									name="numberCvv"
+									name="dueDate"
 									pattern={""}
 									placeholder="MM/YY"
 									inlineSize='233px'
+									handleChange={handleChange}
 								/>
 
 								<Input
 									textLabel='CVV'
 									type='password'
-									name="numberCvv"
+									name="cvv"
 									pattern={"^[0-9]{1,3}$"}
 									placeholder="Ingrese su CVV"
 									inlineSize='233px'
 									messageError='Este campo solo acepta 3 caracteres numéricos'
 									bottom='-35%'
+									handleChange={handleChange}
 								/>
 							</ContainerInputsStyled>
-							<Link to={"/thanks"}>
-								<Button>Confirmar</Button>
-							</Link>
+							<Button>Confirmar</Button>
 						</>
 					)}
 					{selectedPaymentOption === "credito" && (
