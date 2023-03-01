@@ -4,7 +4,6 @@ import { openCart } from "../redux/slice/cart.slice";
 import { Link } from "react-router-dom";
 import Tabbar from "./Tabbar";
 import NavBottom from "./NavBottom";
-import NavSide from "./NavSide";
 import { NavBar } from ".";
 import ButtonAction from "./ButtonAction"
 import { HeaderStyled } from "../styled-components";
@@ -18,7 +17,6 @@ const Header = () => {
 
 	return (
 		<HeaderStyled>
-			<NavSide />
 			<Tabbar />
 			<Link to='/'>
 				<img src={logo} alt='country' />
