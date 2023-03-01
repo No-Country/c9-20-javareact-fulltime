@@ -12,16 +12,9 @@ export const HeaderStyled = styled.header`
     display: flex;
     /* justify-content: space-around; */
     align-items: center;
-    /* gap: 20%; */
     block-size: 106px;
     inline-size: 100%;
-<<<<<<< HEAD
-    background-color: var(--background-nav-bar);
-    z-index: 1;
-    a{
-        display: inline-block;
-=======
-    padding: 0 3em;
+    padding: 0 6em;
     background-color: var(--background-primary);
     z-index: 1;
     a{
@@ -29,6 +22,10 @@ export const HeaderStyled = styled.header`
       /* flex-shrink: 0; */
       margin-right: auto;
     }
+    @media (max-width: 951px) {
+      padding: 0 3em;
+    }
+
     @media (max-width: 801px) {
       justify-content: space-between;
       > a{
@@ -42,7 +39,6 @@ export const HeaderStyled = styled.header`
       img {
         scale: .7
       }
->>>>>>> abf9a0273cdc9dc32ae28b50a48b478caebd2e5b
     }
 
 `;
@@ -230,7 +226,7 @@ export const CarListStyled = styled.aside`
   padding-right:1em;
   background-color: var(--background-secondary);
   transform: ${({ translateX }) => translateX};
-  transition: transform 1s ease-in-out; 
+  transition: transform .5s ease-in-out; 
   z-index:3;
 
   header{
@@ -295,9 +291,6 @@ export const CarListStyled = styled.aside`
         color: var(--text-primary);
         text-decoration:  underline ;
       }
-<<<<<<< HEAD
-}
-=======
       a.disable-link {
         background-color: var(--second);
         pointer-events: none;
@@ -305,7 +298,6 @@ export const CarListStyled = styled.aside`
       }
    }
 
->>>>>>> abf9a0273cdc9dc32ae28b50a48b478caebd2e5b
 `;
 
 export const ItemCartStyled = styled.article`
@@ -558,7 +550,7 @@ export const NavSideStyled = styled.nav`
   left: 0px;
   top: 0px;
   transform: ${({ translateX }) => translateX};
-  transition: transform 1s ease-in-out; 
+  transition: transform .3s ease-in-out; 
   color: var(--text-primary);
   font-weight: 400;
   font-size: 14px;
