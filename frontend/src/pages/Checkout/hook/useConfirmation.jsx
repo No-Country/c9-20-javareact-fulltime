@@ -13,7 +13,6 @@ const useConfirmation = () => {
 		});
 	};
 
-	console.log(stateCheckout);
 	const onSubmit = (event) => {
 		event.preventDefault();
 	};

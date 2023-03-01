@@ -10,7 +10,7 @@ const Form = () => {
 	const [comment, setComment] = useState("");
 	const [success, setSuccess] = useState(false);
 	const { idCategory, idFood } = useParams();
-	const [addNewPost] = useAddNewPostMutation();
+	const [addNewPost, { isLoading }] = useAddNewPostMutation();
 	const handleChange = (event) => {
 		setComment(event.target.value);
 	};
@@ -20,20 +20,15 @@ const Form = () => {
 	const { pos, rating, hoverRating, setHoverRating, setRating } = useStart(5);
 
 	const onSavePost = async () => {
-		const id = Math.floor(Math.random() * 9999);
-		if (comment !== "" && rating !== 0) {
+		if (comment !== "") {
 			await addNewPost({
-				id: id,
-				nameCategory: idCategory,
-				idFood: idFood,
-				nameUser: "Usuario X",
-				qualification: rating,
-				comment: comment,
-				date: `${infoDate.day} de ${infoDate.months} ${infoDate.year}  ${infoDate.hour}:${infoDate.minutes}Hs `,
+				id: Number(idFood),
+				content: comment,
+				createdAt: `${infoDate.day} de ${infoDate.months} ${infoDate.year}  ${infoDate.hour}:${infoDate.minutes}Hs `,
 			}).unwrap();
-			setComment("");
-			setRating("");
+			console.log(isLoading);
 		}
+		setComment("");
 	};
 
 	const handleSubmit = (event) => {

@@ -15,10 +15,10 @@ export const FoodInfoApi = createApi({
 		}),
 
 		addNewPost: builder.mutation({
-			query: (initialPost) => ({
-				url: "/comments",
+			query: (post) => ({
+				url: `/comments?dishId=${post.id}`,
 				method: "POST",
-				body: initialPost,
+				body: JSON.stringify(post),
 				headers: { "Content-Type": "application/json; charset=UTF-8" },
 			}),
 		}),
