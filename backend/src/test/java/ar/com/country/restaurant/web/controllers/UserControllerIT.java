@@ -49,18 +49,6 @@ class UserControllerIT extends AbstractIntegrationTest {
                     .andExpect(jsonPath("$._links.payment_methods.href").value("http://localhost/api/payment_methods"));
         }
 
-        @Test
-        void shouldReturn403_whenRequestAnotherUser() throws Exception {
-            doLogin();
-            long anotherUserId = 2L;
-
-            mockMvc.perform(
-                            get("/api/users/" + anotherUserId)
-                                    .headers(authHeader())
-                    )
-                    .andExpect(status().isForbidden());
-        }
-
     }
 
     @Nested

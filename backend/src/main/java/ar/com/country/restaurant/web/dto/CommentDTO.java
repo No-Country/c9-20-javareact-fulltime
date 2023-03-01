@@ -1,6 +1,5 @@
 package ar.com.country.restaurant.web.dto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -8,18 +7,18 @@ import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.core.Relation;
 
 import javax.validation.constraints.NotBlank;
+import java.util.Calendar;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
-@Relation(itemRelation = "dishCategory", collectionRelation = "dishCategories")
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
-public final class DishCategoryDTO extends RepresentationModel<DishCategoryDTO> {
+@EqualsAndHashCode(callSuper = true)
+@Relation(collectionRelation = "comments", itemRelation = "comment")
+public class CommentDTO extends RepresentationModel<CommentDTO> {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private Long id;
+    private final Long id;
 
     @NotBlank
-    private String name;
+    private final String content;
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private DishImageDTO image;
+    private final Calendar createdAt;
 }

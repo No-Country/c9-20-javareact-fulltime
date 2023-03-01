@@ -42,6 +42,9 @@ public class User implements Serializable {
     )
     private List<Order> orders;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    private Cart cart;
+
     @OneToMany(
             mappedBy = "user",
             fetch = FetchType.LAZY,
@@ -70,6 +73,13 @@ public class User implements Serializable {
         }
         paymentMethods.add(paymentMethod);
         paymentMethod.setUser(this);
+    }
+
+    public Cart getCart() {
+        if (isNull(cart)) {
+            cart = Cart.builder().user(this).build();
+        }
+        return cart;
     }
 
 }

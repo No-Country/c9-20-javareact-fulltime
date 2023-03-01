@@ -98,4 +98,19 @@ public class ApplicationExceptionTranslator implements AdviceTrait {
         return create(Status.CONFLICT, e, request);
     }
 
+    @ExceptionHandler
+    public ResponseEntity<Problem> commentNotFoundExceptionHandler(final CommentNotFoundException e, NativeWebRequest request) {
+        return create(Status.NOT_FOUND, e, request);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<Problem> userNotOwnerOfCommentExceptionHandler(final UserNotOwnerOfCommentException e, NativeWebRequest request) {
+        return create(Status.FORBIDDEN, e, request);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<Problem> itemNotFoundExceptionHandler(final ItemNotFoundException e, NativeWebRequest request) {
+        return create(Status.NOT_FOUND, e, request);
+    }
+
 }

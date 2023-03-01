@@ -5,6 +5,8 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
+import static java.util.Objects.nonNull;
+
 @Entity
 @Table(name = "dish_categories")
 @Getter
@@ -12,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class DishCategory {
+public class DishCategory implements WithImage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")
@@ -21,9 +23,15 @@ public class DishCategory {
     @Column
     private String name;
 
-    @Column
-    private String imgUrl;
+    @Embedded
+    private DishImage image;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     private List<Dish> dishes;
+
+    @Override
+    public boolean hasImage() {
+        return nonNull(image) && image.isValidImage();
+    }
+
 }
