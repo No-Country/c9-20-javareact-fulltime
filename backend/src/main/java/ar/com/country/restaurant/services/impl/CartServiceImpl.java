@@ -22,7 +22,7 @@ public class CartServiceImpl implements CartService {
     @Override
     public Cart getCartOfUser(Long userId) {
         User user = userService.getUserById(userId);
-        return cartRepository.save(user.getCart());
+        return cartRepository.save(user.createAndGetCart());
     }
 
     @Override
@@ -30,7 +30,7 @@ public class CartServiceImpl implements CartService {
     public CartItem addCartItem(Long userId, Long dishId, CartItem cartItem) {
         User user = userService.getUserById(userId);
         Dish dish = dishService.getDishById(dishId);
-        Cart cart = user.getCart();
+        Cart cart = user.createAndGetCart();
 
         cartItem.setDish(dish);
         cart.addCartItem(cartItem);
@@ -43,7 +43,7 @@ public class CartServiceImpl implements CartService {
     @Transactional
     public CartItem deleteCartItem(Long userId, Long itemId) {
         User user = userService.getUserById(userId);
-        Cart cart = user.getCart();
+        Cart cart = user.createAndGetCart();
         CartItem cartItem = cart.getCartItemById(itemId);
 
         cart.removeCartItem(itemId);
