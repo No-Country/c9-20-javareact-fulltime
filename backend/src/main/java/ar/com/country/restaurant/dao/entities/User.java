@@ -75,7 +75,7 @@ public class User implements Serializable {
         paymentMethod.setUser(this);
     }
 
-    public Cart getCart() {
+    public Cart createAndGetCart() {
         if (isNull(cart)) {
             cart = Cart.builder().user(this).build();
         }
