@@ -10,12 +10,12 @@ import FooterArticle from "./components/FooterArticle";
 import Form from "./components/Form";
 import HeaderArticle from "./components/HeaderArticle";
 import SectionClients from "./components/SectionClients";
+import ViewOfThePlateLoader from "./components/ViewOfThePlateLoader";
 import useItemFood from "./hook/useItemFood";
 import {
 	ArticleStyled,
 	ViewOfThePlateStyled,
 } from "./styled-components/layout.styled";
-import platoPasta from "/img/platoPasta2.png";
 const ViewOfThePlate = () => {
 	const amount = useSelector((state) => state.AppetizerData);
 	const dispatch = useDispatch();
@@ -29,7 +29,7 @@ const ViewOfThePlate = () => {
 			const itemCart = new Item(
 				itemFood.id,
 				amount.value,
-				itemFood.nameFood,
+				itemFood.name,
 				itemFood.price,
 				amount.value * itemFood.price,
 				"",
@@ -43,28 +43,30 @@ const ViewOfThePlate = () => {
 	return (
 		<ViewOfThePlateStyled>
 			<Container>
-				<HeroImage
-					img={platoPasta}
-					alt='plato'
-					blockSize='305px'
-					inlineSize='383px'
-				/>
-				{isSuccess ? (
-					<ArticleStyled>
-						<HeaderArticle nameFood={itemFood.nameFood} qualification={"4.9"} />
+				{isSuccess && itemFood.image !== undefined ? (
+					<>
+						<HeroImage
+							img={itemFood.image.url}
+							alt={itemFood.name}
+							blockSize='400px'
+							inlineSize='400px'
+						/>
+						<ArticleStyled>
+							<HeaderArticle nameFood={itemFood.name} qualification={"4.9"} />
 
-						<Description
-							description={itemFood.description}
-							price={itemFood.price}
-							delay={itemFood.delay}
-						/>
-						<FooterArticle
-							handleAddItems={handleAddItems}
-							value={amount.value}
-						/>
-					</ArticleStyled>
+							<Description
+								description={itemFood.description}
+								price={itemFood.price}
+								delay={"15 a 20 Min de demora"}
+							/>
+							<FooterArticle
+								handleAddItems={handleAddItems}
+								value={amount.value}
+							/>
+						</ArticleStyled>
+					</>
 				) : (
-					<div>loading...</div>
+					<ViewOfThePlateLoader />
 				)}
 			</Container>
 			<hr />

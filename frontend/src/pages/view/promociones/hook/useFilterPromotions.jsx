@@ -4,7 +4,7 @@ import { useGetDishesQuery } from "../../../../redux/query/FoodInfo.query";
 const useFilterPromotions = () => {
 	const [list, setList] = useState([]);
 	const { data: food, isSuccess } = useGetDishesQuery();
-	console.log(food);
+
 	useEffect(() => {
 		if (isSuccess) {
 			const { dishes } = food._embedded;

@@ -4,9 +4,10 @@ import {
 	ScrollContainerStyled,
 	SearchLayerStyled,
 } from "../styled-components/layout.styled";
+import img from "/img/fondohome.png";
 const SearchLayer = ({ active, template, isSuccess, handleDesActive }) => {
 	return (
-		<SearchLayerStyled active={active}>
+		<SearchLayerStyled img={img} size='cover' active={active}>
 			<ContainerSearchLayerStyled>
 				<button onClick={handleDesActive}>Cerrar</button>
 				<ScrollContainerStyled>

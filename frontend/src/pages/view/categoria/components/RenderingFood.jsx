@@ -67,6 +67,13 @@ const RenderingFood = () => {
 						top='-60%'
 						insetInline='14%'
 					/>
+					<ItemsLoader
+						borderRadius='50%'
+						blockSize='240px'
+						inlineSize='240px'
+						top='-60%'
+						insetInline='14%'
+					/>
 				</>
 			)}
 		</>

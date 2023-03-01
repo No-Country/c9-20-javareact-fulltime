@@ -9,7 +9,6 @@ const useItemFood = (id, nameFood) => {
 		if (isSuccess) {
 			const { dishes } = food._embedded;
 
-			console.log(dishes);
 			const template = dishes.filter(
 				(item) => item.category.name === nameFood && item.id === Number(id),
 			);

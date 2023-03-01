@@ -1,24 +1,26 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-export const CheckContainer = styled.div`
-display: flex;
-flex-wrap: wrap;
-justify-content: space-between;
-//max-height: 100vh;
-background-color: var(--background-secondary);
-color: var(--text-primary);
-font-family: var(--font-family);
-@media (max-width: 1329px){
+export const CheckContainer = styled.section`
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    min-block-size: 100vh;
+    background-color: var(--background-secondary);
+    color: var(--text-primary);
+    font-family: var(--font-family);
+/* @media (max-width: 1329px){
     max-height: 100%;
 }
 @media (max-width: 768px){
 
-}
+} */
 `;
-export const CheckData = styled.div`
-width: 50%;
-//height: 100vh;
-padding: 120px 120px 150px 150px;
+export const CheckData = styled.form`
+
+    flex: 1;
+    max-block-size: 608px;
+    padding: 30px 93px;
 
 .subtitulos{
     font-family: var(--font-family);
@@ -56,18 +58,20 @@ button{
     height: 50px;
     font-size: 1.6rem;
 }
-form{
-    display: flex;
-    flex-direction: column;
-    margin: 15px;
-    label{
+div{
+
+    /* display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    min-inline-size: 239px; */
+/*     label{
         font-size: 1.2rem;
         margin: 15px;
-    }
+    } */
     input{
-        height: 30px;
+        /* height: 30px;
         background-color: var(--background-secondary);
-        color: white;
+        color: white; */
     }
 }
 @media (max-width: 1320px){
@@ -79,16 +83,41 @@ form{
     width: 100%;
 }
 `;
+export const SubtitleStyled = styled.div`
+    position: relative;
+    & ::after{
+        content: '';
+        position: absolute;
+        inset-block-end: ${({ bottom }) => bottom};
+        inset-inline: 0;
+        block-size: 1px;
+        inline-size: 100%;
+        background-color:  rgba(172, 172, 172, 1);
+    }
 
-export const CheckCart = styled.div`
+`;
+export const ContainerStyled = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    min-inline-size: 239px;
+`;
+
+export const CheckedStyled = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const CheckCart = styled.section`
+flex: 1;
 background-color: white;
 color: black;
 display: flex;
 flex-direction: column;
-border-left: 2px solid black;
 //height: 100vh;
-width: 50%;
-padding: 120px 120px 150px 66px;
+min-block-size: 100vh;
+padding: 28px 30px;
 
 .subtitulos{
     font-family: var(--font-family);
@@ -177,5 +206,133 @@ export const ThxContainer = styled.div`
         left: 0px;
         top: 0px;
         border-radius: 4px;
+    }
+`;
+
+export const FieldsetStyled = styled.fieldset`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  min-inline-size: 239px;
+  border: none;
+  margin: 0;
+  padding:0;
+    margin-bottom: 12px;
+  legend{
+    margin-bottom: 12px;
+  }
+  
+`;
+
+export const ContainerInputsStyled = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 18px;
+`;
+
+export const InputStyled = styled.div`
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    block-size: 89px;
+    input{
+        position: relative;
+        inline-size: ${({ inlineSize }) => inlineSize};
+        padding: 0.9em;
+        border: 1.5px solid #ACACAC;
+        border-radius: 4px;
+        font-weight: 500;
+        font-size:var(--letterscustomizable-7);
+        color: var(--text-secondary);
+        background-color :var(--text-primary);
+        &::placeholder{
+            font-weight: bold;
+            color: var(--text-secondary);
+        }
+        border: none;
+        &:invalid{
+           outline: 1px solid rgba(204, 16, 16, 1);
+        }
+    
+    }
+    
+    label{
+        margin-right: 0;
+        font-weight: 500;
+        font-size: var(--letterscustomizable-6);
+        text-align: left;
+    }
+
+    span{
+        position: absolute;
+        display: inline-block;
+        min-inline-size: 100%;
+        inset-block-end: ${({ bottom }) => bottom};
+        font-weight: 300;
+        font-size: 10px;
+        color: rgba(204, 16, 16, 1);
+    }
+`;
+
+export const ContainerFoodStyled = styled.div`
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    strong{
+        display: inline-flex;
+        gap: 4px;
+        font-weight: 500;
+    }
+    p{
+        font-weight: 500;
+    }
+
+    &::after{
+        content: '';
+        position: absolute;
+        inset-block-end: ${({ bottom }) => bottom};
+        inset-inline: 0;
+        block-size: 1px;
+        inline-size: 100%;
+        background-color:  rgba(172, 172, 172, 1);
+    }
+`;
+
+export const ContainerTotalStyled = styled.div`  
+    margin-top: 79px;
+
+    & div{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    b{
+        font-weight: 500;
+    }
+    & div:nth-child(2){
+        margin-top: 40px;
+    }
+
+    & div:nth-child(3){
+        display: flex;
+        flex-direction: column;
+        span{
+            order:2;
+            font-weight: 400;
+            color:var(--text-secondary);
+        }
+        margin-top: 40px;
+        margin-bottom: 23px;
+        div{
+            order: 2;
+            b:nth-child(2){
+                font-size:var(--letterscustomizable-4);
+            }
+        }
+        
     }
 `;

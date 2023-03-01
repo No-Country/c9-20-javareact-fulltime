@@ -3,6 +3,16 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
 
     :root{
+
+        --letterscustomizable-7: clamp(0.91rem, calc(0.89rem + 0.1vw), 0.96rem);
+        --letterscustomizable-6: clamp(1.09rem, calc(1.05rem + 0.21vw), 1.2rem);
+        --letterscustomizable-5: clamp(1.31rem, calc(1.24rem + 0.37vw), 1.5rem);
+        --letterscustomizable-4: clamp(1.58rem, calc(1.46rem + 0.59vw), 1.88rem);
+        --letterscustomizable-3: clamp(1.89rem, calc(1.71rem + 0.89vw), 2.34rem);
+        --letterscustomizable-2: clamp(2.27rem, calc(2.01rem + 1.29vw), 2.93rem);
+        --letterscustomizable-1: clamp(2.72rem, calc(2.36rem + 1.83vw), 3.66rem);
+        --letterscustomizable-0: clamp(3.27rem, calc(2.75rem + 2.56vw), 4.58rem);
+
         --background-nav-bar: rgba(0, 0, 0, 1);
         --background-primary: rgba(14, 14, 14, 1);   
         --background-secondary: rgba(45, 45, 45, 1);

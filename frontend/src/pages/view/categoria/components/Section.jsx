@@ -6,6 +6,7 @@ import CategoryLoader from "./CategoryLoader";
 
 const Section = () => {
 	const { categories, isSuccess } = useCategories();
+
 	return (
 		<section>
 			<HeaderSubTitle
@@ -27,6 +28,7 @@ const Section = () => {
 					))
 				) : (
 					<>
+						<CategoryLoader />
 						<CategoryLoader />
 						<CategoryLoader />
 						<CategoryLoader />

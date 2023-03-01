@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { FlexBoxCenter } from "../../../../styled-components";
 
 export const ViewOfThePlateStyled = styled.section`
@@ -58,8 +58,8 @@ export const HeaderArticleStyled = styled.header`
 
 export const DescriptionStyled = styled.div`
    strong{
-      font-size: 1.5rem;
-      font-weight: 500;
+      font-size: var(--letterscustomizable-7);
+      font-weight: 300;
     }
 
     p:nth-child(2) {
@@ -86,31 +86,29 @@ export const FooterArticleStyled = styled.footer`
       min-inline-size: 19px;
       text-align: center;
     }
-    button{
-      background-color: var(--button-primary);
-     }
-
-    div{
-      display: flex;
-      button{
-   
-        padding: 1em ;
-      }
-    }
-
-      button{
-        display: flex;
-        align-items: center;
-        gap: 17px;
-        padding: 1em 5em;
-        border-radius: 4px;
-        span{ 
-          font-weight: bold;
-          font-size: 1rem;
-        }
-      }
-
     
+`;
+
+export const ContainerFooterStyled = styled.div`
+  ${FlexBoxCenter};
+  color: var(--background-nav-bar);
+  background-color: var(--button-primary);
+  border-radius: 4px;
+  button{
+    padding: 1em;
+  }
+  & + button{
+    ${FlexBoxCenter};
+    gap: 15px;
+    block-size: 45px;
+    inline-size: 253px;
+    border-radius: 4px;
+    background-color: var(--button-primary);
+    span{
+      font-size: var(--letterscustomizable-7);
+      font-weight: 600;
+    }
+  }
 `;
 
 export const StarIconStyled = styled.svg`
@@ -146,4 +144,49 @@ export const ContainerStartStyled = styled.header`
     div{
         display: flex;
     }
+`;
+
+const Loader = keyframes`
+
+    50%{
+      background-color:#f0f0f0;      
+    }
+`;
+export const ViewOfThePlateLoaderStyled = styled.div`    
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 90px;
+    block-size: 500px;
+    inline-size: 100%;   
+`;
+
+export const DivLoaderStyled = styled.div`
+    --size: 400px;
+    block-size: var(--size);
+    inline-size: var(--size);
+    border-radius: 50%;
+    background-color:#c3c3c3;
+    animation: ${Loader} 1s infinite  linear;
+`;
+
+export const DescriptionLoaderStyled = styled.div`
+    --size: 400px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 24px;
+    block-size: var(--size);
+    inline-size: var(--size);
+`;
+
+export const SpanLoaderStyled = styled.span`
+  display: inline-block;
+  block-size: ${({ blockSize }) => blockSize};
+  min-inline-size: ${({ inlineSize }) => inlineSize};
+  background-color:#c3c3c3;
+  border-radius: 6px;
+  animation: ${Loader} 1s infinite  linear;
 `;

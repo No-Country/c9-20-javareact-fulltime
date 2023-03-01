@@ -16,7 +16,6 @@ const ItemsCategory = () => {
 	const { list, isLoading } = useListFood(idCategory);
 
 	const [backgroundImage, setBackgroundImage] = useState(null);
-
 	useEffect(() => {
 		// Cargar imagen de fondo para la categoría actual
 		if (idCategory === "Pastas") {
@@ -37,18 +36,22 @@ const ItemsCategory = () => {
 	}, [idCategory]);
 
 	return (
-		<>
-			<SectionStyledBackground img={backgroundImage} size='cover'>
-				<HeaderSubTitle title={` ${idCategory}`} textAlign='center' level={2} />
-				{!idFood ? (
+		<SectionStyledBackground img={backgroundImage} size='cover'>
+			{!idFood ? (
+				<>
+					<HeaderSubTitle
+						title={` ${idCategory}`}
+						textAlign='center'
+						level={2}
+					/>
 					<Div blockSize='100vh' inlineSize='100%' gap='120px' padding='7em 0'>
 						<RenderingFood isLoading={isLoading} list={list} />
 					</Div>
-				) : (
-					<Outlet />
-				)}
-			</SectionStyledBackground>
-		</>
+				</>
+			) : (
+				<Outlet />
+			)}
+		</SectionStyledBackground>
 	);
 };
 

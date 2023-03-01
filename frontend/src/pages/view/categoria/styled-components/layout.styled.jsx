@@ -69,12 +69,14 @@ export const ItemFoodStyled = styled.article`
     }
     
     b{
-        font-size: 12px;
-
+        display: inline-block;
+        min-inline-size: 365px;
+        padding: 0 23px;
     }
-
+    
     p{  
-        font-size: 12px;
+
+        font-size: var(--letterscustomizable-7);
         text-align: center;
         & + strong {
             margin-bottom: 12px;
@@ -92,6 +94,9 @@ export const ItemFoodStyled = styled.article`
         border-radius: 4px;
         background-color: var(--button-primary);
         transition: background-color 1s ease-out;
+        & strong{
+            font-weight: 500;
+        }
         &:hover{
             background-color: var(--button-secondary);
         }

@@ -34,7 +34,11 @@ const SectionHero = ({ handleActive, onChange, textSearch }) => {
 			<h1>DESTACADOS DE ESTA SEMANA</h1>
 
 			<DivisionLine title={"Tablas para compartir"} />
-			<Carrusel move={move} />
+			<Carrusel
+				move={move}
+				handleMoveLeft={handleMoveLeft}
+				handleMoveRight={handleMoveRight}
+			/>
 			<ContainerButton
 				handleMoveRight={handleMoveRight}
 				handleMoveLeft={handleMoveLeft}

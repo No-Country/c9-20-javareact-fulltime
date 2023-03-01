@@ -1,14 +1,33 @@
 import { ItemsLoader } from "../../../components";
 import Items from "../../../components/Items";
 import { useFilterDishes } from "../../../hooks";
-import { CarruselStyled } from "../styled-components/layout.styled";
+import {
+	ButtonCarruselStyled,
+	CarruselStyled,
+} from "../styled-components/layout.styled";
 import { foodSpecials } from "../utilities/FoodSpecials";
+import left from "/icons/circleLeft.svg";
+import rigth from "/icons/circleRigth.svg";
 
-const Carrusel = ({ move }) => {
+const Carrusel = ({ move, handleMoveLeft, handleMoveRight }) => {
 	const { list, isSuccess } = useFilterDishes(foodSpecials);
-
+	console.log(list);
 	return (
 		<CarruselStyled translateX={`${move}%`}>
+			<ButtonCarruselStyled
+				img={left}
+				size='cover'
+				insetBlock='41%'
+				insetInline='1%'
+				onClick={handleMoveLeft}
+			/>
+			<ButtonCarruselStyled
+				img={rigth}
+				size='cover'
+				insetBlock='41%'
+				insetInline='96%'
+				onClick={handleMoveRight}
+			/>
 			<div>
 				{isSuccess ? (
 					list.map((item) => (
@@ -20,6 +39,7 @@ const Carrusel = ({ move }) => {
 							description={item.description}
 							price={item.price}
 							category={item.category.name}
+							people={item.people}
 						/>
 					))
 				) : (

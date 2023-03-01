@@ -180,11 +180,11 @@ export const InputStyled = styled.input`
     inline-size: 100%;
     border-radius: 4px;
     font-size: 1.4rem;
-    color: var(--text-primary);
-    background-color: transparent ;  
+    color: var(--text-secondary);
+    background-color: var(--text-primary) ;  
 
     &::placeholder{
-        color: white;
+        color: var(--text-secondary);
     }
 `;
 
@@ -279,9 +279,10 @@ export const ItemsCommentsStyled = styled.article`
 
 export const CarruselStyled = styled.div`
     
+    position: relative;
     ${FlexBoxCenter};
     gap: 100px;
-    block-size: 510px;
+    block-size: 560px;
     inline-size: 1378px;
     margin-top: 80px;
     margin-left: auto;
@@ -313,7 +314,7 @@ export const SearchLayerStyled = styled.section`
     inset-block:0;
     inset-inline: 0;
     min-block-size: 100vh;
-    background-color: #111;
+    ${BackgroundImageButtons};
     opacity: ${({ active }) => (active ? "1" : "0")};
     visibility : ${({ active }) => (active ? "visible" : "hidden")};
     transition: opacity  1s ease-in-out , visibility 1s ease-in-out ;  
@@ -338,3 +339,17 @@ export const ScrollContainerStyled = styled.div`
     }
 `;
 /* ================================================================ */
+
+/* ============================Buttons Carrusel ==================================== */
+
+export const ButtonCarruselStyled = styled.button`
+
+    position: absolute;
+    inset-block-end: ${({ insetBlock }) => insetBlock};
+    inset-inline: ${({ insetInline }) => insetInline};
+    padding: 2em;
+    ${BackgroundImageButtons};
+    z-index: 2;
+`;
+
+/* ================================================================================= */

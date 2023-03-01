@@ -26,7 +26,7 @@ export const HeaderSubtitleStyled = styled.header`
     padding: 1em;
     font-size:${({ fontSize }) => fontSize || "1rem"};
     font-weight:${({ fontWeight }) => fontWeight || "bold"};
-    color: #FFF;
+    color: ${({ color }) => color || "#fff"};
     text-align: ${({ textAlign }) => textAlign}; 
 
 `;
@@ -43,11 +43,23 @@ export const Div = styled.div`
 `;
 //TODO Div responsive abierto a modificar */
 export const DivCol = styled.div`
+    position: relative;
     display: flex;
     flex-direction: column;
+    gap: 17px;
     margin:15px;
     justify-content: space-around;
     flex-wrap: wrap;
+    
+    &::after{
+      content: '';
+        position: absolute;
+        inset-block-end: 0;
+        inset-inline: 0;
+        block-size: 1px;
+        inline-size: 100%;
+        background-color:  rgba(172, 172, 172, 1);
+    }
 `;
 
 export const ModalStyled = styled.section`
@@ -64,13 +76,12 @@ export const ModalStyled = styled.section`
     }
 `;
 
-export const HeroImageStyled = styled.div`
+export const HeroImageStyled = styled.img`
   
     block-size: ${({ blockSize }) => blockSize};
     inline-size: ${({ inlineSize }) => inlineSize};
     text-align: center;
-    background-color: rgba(218, 220, 224, 1);
-
+    
 
 `;
 
@@ -147,13 +158,13 @@ export const PasswordContainer = styled.div`
  `;
 
 export const Button = styled.button`
+  block-size: 56px;
+  inline-size: 476px;
+  border-radius: 4px;
+  margin-block-start: 19px;
+  font-size: var(--letterscustomizable-6);
   background-color: #49454F;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  padding: 10px;
-  margin: 10px;
-  margin-top: 40px;
+  
  `;
 
 export const ShowPasswordIcon = styled.button`
@@ -444,22 +455,17 @@ export const NavBarStyled = styled.nav`
 
 /* Container del item responsive abierto a que lo modifiquen */
 export const ItemContainerStyled = styled.article`
-
-  block-size: fit-content;
+  position: relative;
+  min-block-size: 426px;
   min-inline-size: 365px;
   border-radius: 20px;
-  padding: 0 25px;
   background-color: #FFF;
   color: var(--background-primary);
   text-align: center;
   
-  header{
-    position: relative;
-    block-size: 178px;
-  }
-
   h2{
-      margin: 10px;
+      margin-top: 37%;
+      margin-bottom: 0;
       font-size: 28px;
       font-weight: 500;
   } 
@@ -470,8 +476,8 @@ export const ItemContainerStyled = styled.article`
 `;
 export const ItemImgStyled = styled.img`
     position: absolute;
-    inset-block-start: -25%;
-    inset-inline: 2%;
+    inset-block-start: -15%;
+    inset-inline: 9.1%;
     block-size: ${({ blockSize }) => blockSize};
     inline-size:${({ inlineSize }) => inlineSize};
     border-radius:${({ borderRadius }) => borderRadius};
@@ -479,7 +485,11 @@ export const ItemImgStyled = styled.img`
 `;
 
 export const ItemDescription = styled.p`
-    font-size: 12px;
+    min-block-size: 72px;
+    min-inline-size: 300px;
+    margin: 0;
+    font-size: var(--letterscustomizable-7);
+    font-weight: 500;
 `;
 
 /*================== BORRAR ==================*/
@@ -582,8 +592,8 @@ export const FooterContainerTwo = styled.div`
 `;
 
 export const SectionStyledBackground = styled.section`
-
     ${BackgroundImageButtons};   
+    background-attachment: fixed;
 `;
 
 /*================= ITEM LOADER ========================*/

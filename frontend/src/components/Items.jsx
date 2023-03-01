@@ -12,16 +12,14 @@ import car from "/icons/cart.svg";
 const Items = ({ title, image, description, people, price, id, category }) => {
 	return (
 		<ItemContainerStyled key={id}>
-			<header>
-				<ItemImgStyled
-					src={image}
-					alt={title}
-					inlineSize='300px'
-					blockSize='198px'
-					borderRadius='29px'
-					loading="lazy"
-				/>
-			</header>
+			<ItemImgStyled
+				src={image}
+				alt={title}
+				inlineSize='300px'
+				blockSize='198px'
+				borderRadius='29px'
+				loading="lazy"
+			/>
 			<h2>{title}</h2>
 			<ItemDescription>{description}</ItemDescription>
 			<ItemPeople>Para {people} personas</ItemPeople>

@@ -1,79 +1,106 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { CardList, Header } from "../../components";
 import { Button, DivCol } from "../../styled-components/layout/layout.styled";
 import {
 	CheckCart,
 	CheckContainer,
 	CheckData,
+	ContainerFoodStyled,
+	ContainerInputsStyled,
+	ContainerStyled,
+	ContainerTotalStyled,
+	FieldsetStyled,
 	Unwrapped,
 } from "./CheckoutStyled.jsx";
-
+import Checked from "./components/Checked";
+import Input from "./components/Input";
+import SubTitle from "./components/SubTitle";
 const Checkout = () => {
 	const cart = useSelector((state) => state.cart.items);
+	const total = useSelector((state) => state.cart.total);
 
 	const [selectedDeliveryOption, setSelectedDeliveryOption] = useState("local");
 	const [selectedPaymentOption, setSelectedPaymentOption] = useState("debito");
-	console.log(cart);
+	/* 	console.log(cart); */
 
 	return (
 		<>
+			<Header />
+			<CardList />
 			<CheckContainer>
 				<CheckData>
-					<div>
-						<h1>Envío</h1>
-						<input
-							type="radio"
-							id="local"
-							name="checkEnv"
-							checked={selectedDeliveryOption === "local"}
-							onChange={() => setSelectedDeliveryOption("local")}
-						/>
-						<label htmlFor="">Retiro en local</label>
-						<input
-							type="radio"
-							id="delivery"
-							name="checkEnv"
+					<SubTitle title='Envío' bottom={"-26%"} />
+					<ContainerStyled>
+						<Checked
 							checked={selectedDeliveryOption === "delivery"}
+							id='delivery'
+							labelText='Retiro en local'
+							name='checkEnv'
 							onChange={() => setSelectedDeliveryOption("delivery")}
 						/>
-						<label htmlFor="">Delivery</label>
-					</div>
-					<h1>Pago</h1>
-					<div>
-						<h2>Método de pago</h2>
-						<input
-							type="radio"
-							id="debito"
-							name="check"
+						<Checked
+							checked={selectedDeliveryOption === "local"}
+							id='local'
+							labelText='Delivery'
+							name='checkEnv'
+							onChange={() => setSelectedDeliveryOption("local")}
+						/>
+					</ContainerStyled>
+					<SubTitle title='Pago' bottom={"-26%"} />
+					<FieldsetStyled>
+						<legend>Método de pago</legend>
+						<Checked
 							checked={selectedPaymentOption === "debito"}
+							id='debito'
+							labelText='Débito'
+							name='check'
 							onChange={() => setSelectedPaymentOption("debito")}
 						/>
-						<label htmlFor="">Débito</label>
-						<input
-							type="radio"
-							id="credito"
-							name="check"
+						<Checked
 							checked={selectedPaymentOption === "credito"}
+							id='credito'
+							labelText='Crédito'
+							name='check'
 							onChange={() => setSelectedPaymentOption("credito")}
 						/>
-						<label htmlFor="">Crédito</label>
-					</div>
+					</FieldsetStyled>
+
 					{selectedPaymentOption === "debito" && (
 						<>
-							<form action="">
-								<label htmlFor="">Número de tarjeta</label>
-								<input
-									type="number"
+							<ContainerInputsStyled>
+								<Input
+									textLabel='Número de tarjeta'
+									type='text'
 									name="numberCard"
-									id=""
-									placeholder="Ingrese los 12 números"
+									pattern={"^[0-9]{1,16}$"}
+									placeholder="1234 5678 9101 1121"
+									inlineSize='476px'
+									messageError='Este campo solo acepta 16 caracteres numéricos'
+									bottom='-23%'
 								/>
-								<label htmlFor="">Fecha de vencimiento</label>
-								<input type="month" name="numberCvv" id="" />
-								<label htmlFor="">CVV</label>
-								<input type="password" name="numberCvv" id="" />
-							</form>
+
+								<Input
+									textLabel='Fecha de vencimiento'
+									type='date'
+									name="numberCvv"
+									pattern={""}
+									placeholder="MM/YY"
+									inlineSize='233px'
+								/>
+
+								<Input
+									textLabel='CVV'
+									type='password'
+									name="numberCvv"
+									pattern={"^[0-9]{1,3}$"}
+									placeholder="Ingrese su CVV"
+									inlineSize='233px'
+									messageError='Este campo solo acepta 3 caracteres numéricos'
+									bottom='-35%'
+								/>
+							</ContainerInputsStyled>
 							<Link to={"/thanks"}>
 								<Button>Confirmar</Button>
 							</Link>
@@ -97,26 +124,45 @@ const Checkout = () => {
 								<input type="radio" name="cuotas" />
 								<label htmlFor="">6 Cuotas</label>
 							</div>
-							<Link to={"/thanks"}>
-								<Button>Confirmar</Button>
-							</Link>
+							<Button>Confirmar</Button>
 						</>
 					)}
 				</CheckData>
 				<CheckCart>
+					<SubTitle title='Resumen' bottom={"0%"} />
 					<div>
-						<h1>Resumen</h1>
-						{cart.map((cr) => (
-							<DivCol key={cr.id}>
-								{cr.name}
-								<br />
-								Subtotal: ${cr.subTotal}
-								<br />
-								Envío
-								<br />
-								Total: ${cr.total}
-							</DivCol>
-						))}
+						<DivCol>
+							{cart.length !== 0 ? (
+								cart.map((cr) => (
+									<ContainerFoodStyled key={cr.id} bottom='-35%'>
+										<strong>
+											<span>{cr.amount}</span>X
+											<span>{cr.name}</span>
+										</strong>
+										<p>${cr.subTotal}</p>
+									</ContainerFoodStyled>
+								))
+							) : (
+								<span>Sin Productos</span>
+							)}
+
+							<ContainerTotalStyled>
+								<div>
+									<b>Subtotal:</b> <b>${total}</b>
+								</div>
+								<div>
+									<b>Envió </b>
+									<span>-</span>
+								</div>
+								<div>
+									<div>
+										<b>Total:</b>
+										<b>${total}</b>
+									</div>
+									<span>Retiro en local: Urquiza 2345 - Capital</span>
+								</div>
+							</ContainerTotalStyled>
+						</DivCol>
 					</div>
 				</CheckCart>
 			</CheckContainer>
