@@ -3,6 +3,7 @@ const initialState = {
 	open: 0,
 	items: [],
 	total: 0,
+	openMenu: 0,
 };
 export const CartSlice = createSlice({
 	name: "cart",
@@ -27,6 +28,14 @@ export const CartSlice = createSlice({
 				open: false,
 			};
 		},
+
+		openMenu: (state, { payload }) => {
+			return {
+				...state,
+				openMenu: payload,
+			};
+		},
+
 		deleteItem: (state, { payload }) => {
 			// const index = state.items.indexOf(payload);
 			const filtered = state.items.filter((item) => item.id !== payload);
@@ -57,7 +66,7 @@ export const CartSlice = createSlice({
 	},
 });
 
-export const { addItems, closetCart, openCart, calculateTheTotal, deleteItem } =
+export const { addItems, closetCart, openCart, openMenu, calculateTheTotal, deleteItem } =
 	CartSlice.actions;
 
 export default CartSlice.reducer;

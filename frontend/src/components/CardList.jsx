@@ -61,8 +61,13 @@ const CardList = () => {
 					<p>${total}</p>
 				</div>
 				<div>
-					<Link to={"/checkout"}>Realizar pago</Link>
-					<Link to={"/categoria"}>Seguir comprando</Link>
+					<Link
+						to={"/checkout"}
+						className={cart.length === 0 && "disable-link"}
+					>
+						Realizar pago
+					</Link>
+					<a href=''>Seguir comprando</a>
 				</div>
 			</footer>
 		</CarListStyled>

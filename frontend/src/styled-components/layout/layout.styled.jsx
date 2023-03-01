@@ -8,16 +8,41 @@ export const HeaderStyled = styled.header`
     position:sticky;
     inset-block-start:0;
     inset-inline:0 ;
+    display: none;
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     align-items: center;
-    gap: 35%;
+    /* gap: 20%; */
     block-size: 106px;
     inline-size: 100%;
+<<<<<<< HEAD
     background-color: var(--background-nav-bar);
     z-index: 1;
     a{
         display: inline-block;
+=======
+    padding: 0 3em;
+    background-color: var(--background-primary);
+    z-index: 1;
+    a{
+      display: inline-block;
+      /* flex-shrink: 0; */
+      margin-right: auto;
+    }
+    @media (max-width: 801px) {
+      justify-content: space-between;
+      > a{
+        margin-right: unset;
+        pointer-events: none;
+        cursor: default;
+      }
+    }
+    @media (max-width: 801px) {
+      height: 70px;
+      img {
+        scale: .7
+      }
+>>>>>>> abf9a0273cdc9dc32ae28b50a48b478caebd2e5b
     }
 
 `;
@@ -270,7 +295,17 @@ export const CarListStyled = styled.aside`
         color: var(--text-primary);
         text-decoration:  underline ;
       }
+<<<<<<< HEAD
 }
+=======
+      a.disable-link {
+        background-color: var(--second);
+        pointer-events: none;
+        cursor: default;
+      }
+   }
+
+>>>>>>> abf9a0273cdc9dc32ae28b50a48b478caebd2e5b
 `;
 
 export const ItemCartStyled = styled.article`
@@ -431,26 +466,123 @@ export const ButtonActionStyled = styled.button`
 
 export const NavBarStyled = styled.nav`
     min-inline-size: 464px;
+    display: flex;
+    justify-content: space-around;
+    /* margin: 1em; */
     menu{
       display: flex;
       gap: 20px;
       inline-size: 100%;
       padding: 0;
+      li {
+        min-width: fit-content;
+      }
     }
 
     menu li a{
-
       color: var(--text-primary);
       transition: color 1s ease-in-out;
       &:hover{
-        color: #FFA800;
+        color: var(--button-primary);
       }
 
-      .isActive{
-        color: rgba(255, 168, 0, 1);
+      &.isActive{
+        color: var(--button-primary);
       }
-
     }
+    @media (max-width: 801px) {
+      display: none;
+    }
+`;
+
+export const NavBottomStyled = styled.div`
+    display: none;
+    font-size: 12px;
+    menu {
+      display: flex;
+      height: 70px;
+      margin: 0;
+      padding: 0;
+      justify-content: space-around;
+      p{
+        margin: 0;
+      }
+    }
+    @media (max-width: 801px) {
+      display: block;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      /* height: auto; */
+      background-color: #000;
+      /* overflow: hidden; */
+      border-radius: 10px 10px 0px 0px;
+      li{
+        display: block;
+        flex: 1 1 0px;
+        a, span{
+            display: flex;
+            align-items: center;
+            flex-direction: column-reverse;
+            height: 85%;
+            inline-size: 100%;
+            img{
+              height: 30px;
+            }
+            &.isActive{
+              color: var(--button-primary);
+              filter: brightness(0) saturate(100%) invert(64%) sepia(97%) saturate(1918%) hue-rotate(360deg) brightness(103%) contrast(106%);
+            }
+          }
+      }
+    }
+`;
+export const TabbarStyled = styled.div`
+    display: none;
+
+    img {
+      display: block;
+      scale: 1.2;
+    }
+    @media (max-width: 801px) {
+      display: initial;
+    }
+`;
+export const NavSideStyled = styled.nav`
+  position: fixed;
+  display: none;
+  z-index: 100;
+  height: 100%;
+  width: 210px;
+  left: 0px;
+  top: 0px;
+  transform: ${({ translateX }) => translateX};
+  transition: transform 1s ease-in-out; 
+  color: var(--text-primary);
+  font-weight: 400;
+  font-size: 14px;
+  background: #0E0E0E;
+  border-radius: 0px 10px 10px 0px;
+  header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    margin: 0px 20px 15px;
+    border-bottom: 1px solid #ffffff88;
+    img:first-child{
+      width: 64px;
+    }
+  }
+  menu{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 20px;
+  }
+  @media (max-width: 801px) {
+    display: block;
+  }
 `;
 
 /* Container del item responsive abierto a que lo modifiquen */
@@ -558,6 +690,13 @@ export const FooterStyled = styled.footer`
     font-size: 20px;
     margin: 5px 0;
   }
+  @media (max-width: 851px) {
+    padding: 7em 2em;
+    margin: auto;
+    flex-direction: column;
+    gap: 3rem;
+    height: auto;
+  }
 `;
 
 export const FooterContainerStyled = styled.div`
@@ -574,6 +713,14 @@ export const FooterContainerStyled = styled.div`
         }
         p{
           margin: 5px 0;
+        }
+      }
+      @media (max-width: 601px) {
+        flex-direction: column;
+        text-align: center;
+        gap: 3em;
+        li {
+          justify-content: center;
         }
       }
 `;
