@@ -11,6 +11,8 @@ import Promotions from "../pages/view/promociones/Promotions";
 import ViewOfThePlate from "../pages/view/viewoftheplate/ViewOfThePlate";
 import Home from "./../pages/home/Home";
 import Category from "./../pages/view/categoria/Category";
+import AdminCreate from "../pages/Admin/AdminCreate.jsx"
+
 export const router = createBrowserRouter([
 	{
 		path: "/",
@@ -65,4 +67,8 @@ export const router = createBrowserRouter([
 		path: "/loading",
 		element: <Loader />,
 	},
+  {
+    path: "/adminCreate",
+    element: <AdminCreate/> ,
+  },
 ]);
