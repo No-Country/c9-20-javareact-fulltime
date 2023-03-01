@@ -477,6 +477,14 @@ public class DishSeeder implements CommandLineRunner {
         dish_42.setPeople(1);
         DishSpec dish42 = new DishSpec(dish_42, 6L);
 
+        Dish dish_43 = new Dish();
+        dish_43.setName("Mostaccioli");
+        dish_43.setDescription("Salsa blanca con zapallo");
+        dish_43.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1677692260/t_con_fruto_7_1_scfo7e.png"));
+        dish_43.setPrice(950D);
+        dish_43.setCategory(saveDishCategory2);
+        DishSpec dish43 = new DishSpec(dish_43, 2L);
+
         Dish saveDish1 = dishService.createDish(dish1);
         Dish saveDish2 = dishService.createDish(dish2);
         Dish saveDish3 = dishService.createDish(dish3);
@@ -519,6 +527,7 @@ public class DishSeeder implements CommandLineRunner {
         Dish saveDish40 = dishService.createDish(dish40);
         Dish saveDish41 = dishService.createDish(dish41);
         Dish saveDish42 = dishService.createDish(dish42);
+        Dish saveDish43 = dishService.createDish(dish43);
     }
 
 }
