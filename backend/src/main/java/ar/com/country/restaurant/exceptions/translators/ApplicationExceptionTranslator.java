@@ -108,4 +108,9 @@ public class ApplicationExceptionTranslator implements AdviceTrait {
         return create(Status.FORBIDDEN, e, request);
     }
 
+    @ExceptionHandler
+    public ResponseEntity<Problem> itemNotFoundExceptionHandler(final ItemNotFoundException e, NativeWebRequest request) {
+        return create(Status.NOT_FOUND, e, request);
+    }
+
 }

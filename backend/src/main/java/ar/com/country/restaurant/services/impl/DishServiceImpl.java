@@ -67,17 +67,19 @@ public class DishServiceImpl implements DishService {
     public Dish updateDish(Long dishId, DishSpec dishSpec) {
         Dish dishToUpdate = getDishById(dishId);
         Dish updatedDish = dishSpec.dish();
-        BeanUtils.copyProperties(updatedDish, dishToUpdate);
         DishCategory updatedDishCategory = dishCategoryService.getDishCategoryById(dishSpec.categoryId());
         dishToUpdate.setCategory(updatedDishCategory);
         if (updatedDish.hasPromotion()) {
             Promotion promotion = updatedDish.getPromotion();
             dishToUpdate.setPromotion(promotion);
+        }  else {
+            dishToUpdate.removePromotion();
         }
         if (dishSpec.imageProvided()) {
             DishImage image = dishImageUploaderService.uploadOrUpdateImage(dishToUpdate, dishSpec.image());
             dishToUpdate.setImage(image);
         }
+        BeanUtils.copyProperties(updatedDish, dishToUpdate);
         return dishRepository.saveAndFlush(dishToUpdate);
     }
 

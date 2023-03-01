@@ -10,7 +10,7 @@ import org.springframework.hateoas.server.core.Relation;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Relation(itemRelation = "dish", collectionRelation = "dishes")
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class DishResponseDTO extends RepresentationModel<DishResponseDTO> {
     private final Long id;
     private final String name;
