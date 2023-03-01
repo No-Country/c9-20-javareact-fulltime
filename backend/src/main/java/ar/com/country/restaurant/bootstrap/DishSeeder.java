@@ -252,10 +252,10 @@ public class DishSeeder implements CommandLineRunner {
         dish_20.setDescription("Frutos rojos, naranja, durazno, uvas y kiwi");
         dish_20.setImage(new DishImage("https://res.cloudinary.com/doxahduh8/image/upload/v1676594903/t_con_fruto_1_m6zziv.png"));
         dish_20.setPrice(750D);
-        dish_20.setCategory(saveDishCategory3);
+        dish_20.setCategory(saveDishCategory4);
         dish_20.setPortionPerUnit(1);
         dish_20.setPeople(1);
-        DishSpec dish20 = new DishSpec(dish_20, 3L);
+        DishSpec dish20 = new DishSpec(dish_20, 4L);
 
         Dish dish_21 = new Dish();
         dish_21.setName("Desayuno especial");
