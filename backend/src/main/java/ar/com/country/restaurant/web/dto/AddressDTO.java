@@ -13,23 +13,25 @@ import javax.validation.constraints.NotBlank;
 @Relation(itemRelation = "address", collectionRelation = "addresses")
 public final class AddressDTO extends RepresentationModel<AddressDTO> {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private final Long id;
+    private Long id;
 
     @NotBlank
-    private final String street;
+    private String street;
 
     @NotBlank
-    private final String number;
+    private String number;
 
     @NotBlank
-    private final String city;
+    private String city;
 
     @NotBlank
-    private final String state;
+    private String state;
 
     @NotBlank
-    private final String country;
+    private String country;
 
     @NotBlank
-    private final String zipCode;
+    private String zipCode;
+
+    private String clarifications;
 }
