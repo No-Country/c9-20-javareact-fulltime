@@ -292,9 +292,15 @@ export const CarListStyled = styled.aside`
         text-decoration:  underline ;
       }
       a.disable-link {
-        background-color: var(--second);
+        color: var(--background-secondary);
+        background-color: var(--button-disabled);
         pointer-events: none;
-        cursor: default;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
       }
    }
 
