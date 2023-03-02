@@ -5,7 +5,7 @@ import {
 	ButtonCarruselStyled,
 	CarruselStyled,
 } from "../styled-components/layout.styled";
-import { foodSpecials } from "../utilities/FoodSpecials";
+import { foodSpecials } from "../utilities/foodSpecials";
 import left from "/icons/circleLeft.svg";
 import rigth from "/icons/circleRigth.svg";
 
