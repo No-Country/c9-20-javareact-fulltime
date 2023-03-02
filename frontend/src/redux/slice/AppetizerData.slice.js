@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import Trolley from "../../model/trolley.model";
-const initialState = new Trolley();
+const initialState = { value: 0 };
 
 export const AppetizerData = createSlice({
 	name: "AppetizerData",
@@ -8,39 +7,30 @@ export const AppetizerData = createSlice({
 	reducers: {
 		increment: (state) => {
 			return {
-				...initialState,
-				amount: state.amount + 1,
+				...state,
+				value: state.value + 1,
 			};
 		},
 		decrement: (state) => {
-			if (state.amount <= 0) {
+			if (state.value <= 0) {
+				state.value = 0;
 				return {
-					...initialState,
-					amount: 0,
+					...state,
+					value: 0,
 				};
 			}
 
 			return {
-				...initialState,
-				amount: state.amount - 1,
+				...state,
+				value: state.value - 1,
 			};
 		},
 
 		resetValue: (state) => {
-			return {
-				...initialState,
-				amount: 0,
-			};
-		},
-
-		getInformation: (state) => {
-			return {
-				...initialState,
-			};
+			state.value = 0;
 		},
 	},
 });
 
-export const { increment, decrement, resetValue, getInformation } =
-	AppetizerData.actions;
+export const { increment, decrement, resetValue } = AppetizerData.actions;
 export default AppetizerData.reducer;

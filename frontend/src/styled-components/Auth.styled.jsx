@@ -1,13 +1,14 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const AuthLayout = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #000;
+  background-color: var(--background-primary);
   width: 100%;
   height: 100vh;
-  font-family: sans-serif;
+  color: var(--background-primary);
+  font-family: var(--font-family);
 `;
 
 export const AuthContainer = styled.div`
@@ -38,6 +39,7 @@ export const Title = styled.h3`
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
+  position: relative;
 `;
 
 export const Form = styled.form`

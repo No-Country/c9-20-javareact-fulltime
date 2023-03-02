@@ -1,27 +1,15 @@
-import { Outlet, useResolvedPath } from "react-router-dom";
-import CardList from "./../../components/CardList";
-import Banner from "./components/Banner";
-import Contact from "./components/Contact";
-import MyAccount from "./components/MyAccount";
-import Promotions from "./components/Promotions";
+import { Suspense, lazy } from "react";
+import Loader from "../../components/Loader";
+
 const Home = () => {
-	const { pathname } = useResolvedPath();
+	document.title = "Country Resto";
+
+	const MainContent = lazy(() => import("./components/MainContent"));
+
 	return (
-		<>
-			<CardList />
-			{pathname === "/" ? (
-				<>
-					<Banner />
-					<Promotions />
-					<Contact />
-					<MyAccount />
-				</>
-			) : (
-				<>
-					<Outlet />
-				</>
-			)}
-		</>
+		<Suspense fallback={<Loader />}>
+			<MainContent />
+		</Suspense>
 	);
 };
 
