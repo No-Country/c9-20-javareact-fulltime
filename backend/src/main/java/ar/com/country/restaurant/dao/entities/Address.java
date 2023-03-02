@@ -35,6 +35,9 @@ public class Address {
     @Column(name = "zip_code")
     private String zipCode;
 
+    @Column
+    private String clarifications;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User user;
