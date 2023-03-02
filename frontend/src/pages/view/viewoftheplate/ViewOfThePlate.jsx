@@ -18,6 +18,7 @@ import {
 } from "./styled-components/layout.styled";
 const ViewOfThePlate = () => {
 	const amount = useSelector((state) => state.AppetizerData);
+
 	const dispatch = useDispatch();
 
 	const { idCategory, idFood } = useParams();

@@ -1,5 +1,6 @@
 package ar.com.country.restaurant.dao.entities;
 
+import ar.com.country.restaurant.dao.entities.order.Order;
 import lombok.*;
 
 import javax.persistence.*;

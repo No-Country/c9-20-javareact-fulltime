@@ -62,6 +62,7 @@ class AddressControllerIT extends AbstractIntegrationTest {
                     .andExpect(jsonPath("$.city").value(firstAddress.getCity()))
                     .andExpect(jsonPath("$.state").value(firstAddress.getState()))
                     .andExpect(jsonPath("$.country").value(firstAddress.getCountry()))
+                    .andExpect(jsonPath("$.clarifications").value(firstAddress.getClarifications()))
                     .andExpect(jsonPath("$._links.self.href").value("http://localhost/api/addresses/" + firstAddress.getId()))
                     .andExpect(jsonPath("$._links.user.href").value("http://localhost/api/users/1"));
         }
@@ -93,6 +94,7 @@ class AddressControllerIT extends AbstractIntegrationTest {
                     .state("Yucatán")
                     .country("México")
                     .zipCode("97500")
+                    .clarifications("White house with red door")
                     .build();
 
             mockMvc.perform(
@@ -108,6 +110,7 @@ class AddressControllerIT extends AbstractIntegrationTest {
                     .andExpect(jsonPath("$.city").value("Mérida"))
                     .andExpect(jsonPath("$.state").value("Yucatán"))
                     .andExpect(jsonPath("$.country").value("México"))
+                    .andExpect(jsonPath("$.clarifications").value("White house with red door"))
                     .andExpect(jsonPath("$._links.self").exists())
                     .andExpect(jsonPath("$._links.user.href").value("http://localhost/api/users/1"));
         }

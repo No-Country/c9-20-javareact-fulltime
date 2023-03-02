@@ -1,6 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseUrl = "http://localhost:8080/api";
+/* const baseUrl =
+	"https://c9-20-javareact-fulltime-production.up.railway.app/api"; */
 
 export const FoodInfoApi = createApi({
 	reducerPath: "food",
@@ -17,8 +19,11 @@ export const FoodInfoApi = createApi({
 			query: (post) => ({
 				url: `/comments?dishId=${post.id}`,
 				method: "POST",
-				body: JSON.stringify(post),
-				headers: { "Content-Type": "application/json; charset=UTF-8" },
+				body: post.content,
+				headers: {
+					"Content-Type": "application/json; charset=UTF-8",
+					Authorization: `Bearer ${post.token}`,
+				},
 			}),
 		}),
 
@@ -30,7 +35,7 @@ export const FoodInfoApi = createApi({
 			query: (id) => `/users/${id}`,
 		}),
 
-		getAddressInfo: builder.query({
+		/* 		getAddressInfo: builder.query({
 			query: (token) => ({
 				url: `/addressess`,
 				headers: {
@@ -38,7 +43,7 @@ export const FoodInfoApi = createApi({
 					"Content-Type": "application/json",
 				},
 			}),
-		}),
+		}), */
 
 		addNewDataUser: builder.mutation({
 			query: (id, field) => ({

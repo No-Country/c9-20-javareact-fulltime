@@ -6,10 +6,14 @@ export const ViewOfThePlateStyled = styled.section`
     flex-direction: column;
     min-block-size: 100vh;  
     inline-size: 100%;
+    text-align: center;
     color: var(--text-primary);
     background-color: var(--background-primary); 
     z-index: 2;
     overflow: hidden;
+        @media  screen and (min-width: 900px){
+      text-align: left;
+    }
     hr{
         inline-size: 88%;
         margin-top: 60px;
@@ -18,12 +22,15 @@ export const ViewOfThePlateStyled = styled.section`
 
 export const ContainerStyled = styled.div`
     display: flex;
+    flex-wrap: wrap;
+    
     align-items: ${({ alignItems }) => alignItems || "center"};
     justify-content: space-evenly;
     flex-direction: ${({ flexDirection }) => flexDirection || "row"};
     inline-size: 100%;
     min-block-size: 570px;
     padding: ${({ padding }) => padding || "0px"};
+
 `;
 
 export const ArticleStyled = styled.article`
@@ -63,7 +70,7 @@ export const DescriptionStyled = styled.div`
     }
 
     p:nth-child(2) {
-      min-inline-size: 636px;      
+      min-inline-size: 486px;      
       font-weight: 300;
       padding-right: 1em;
     }

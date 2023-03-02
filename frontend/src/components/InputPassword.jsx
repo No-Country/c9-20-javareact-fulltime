@@ -20,7 +20,6 @@ function InputPassword({
 		"La contraseña debe tener entre 6 y 16 caracteres entre numero y letras";
 	const errorMessageConfirm = "Las contraseñas no coinciden";
 
-	console.log(passwordToValidate, "to validate");
 	const validate = (value) => {
 		if (type === "password") {
 			/^[a-zA-Z0-9]{6,16}$/.test(value) ? setError(false) : setError(true);
