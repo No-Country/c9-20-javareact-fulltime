@@ -2,8 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Loader from "../components/Loader";
 import Checkout from "../pages/Checkout/Checkout";
 import Thanks from "../pages/Checkout/Thanks";
-import Login from "../pages/Login/Login";
-import Signup from "../pages/Signup/Signup";
+import Auth from "../pages/Auth/Auth";
 import MyAccount from "../pages/home/components/MyAccount/MyAccount";
 import ItemsCategory from "../pages/view/categoria/components/ItemsCategory";
 import Contact from "../pages/view/contacto/Contact";
@@ -49,11 +48,11 @@ export const router = createBrowserRouter([
 	},
 	{
 		path: "/login",
-		element: <Login />,
+		element: <Auth />,
 	},
 	{
 		path: "/signup",
-		element: <Signup />,
+		element: <Auth />,
 	},
 	{
 		path: "/checkout",

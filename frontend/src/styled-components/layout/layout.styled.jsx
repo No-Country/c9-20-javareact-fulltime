@@ -275,7 +275,9 @@ export const CarListStyled = styled.aside`
       a{
         color: var(--background-primary);
       }
-      a:nth-child(1){
+      button{
+        color: var(--background-primary);
+        font-weight: 600;
         padding: .7em 2.7em;
         border-radius: 4px;
         background-color: var(--button-primary);
@@ -288,7 +290,7 @@ export const CarListStyled = styled.aside`
         color: var(--text-primary);
         text-decoration:  underline ;
       }
-      a.disable-link {
+      button.disable {
         background-color: var(--button-disabled);
         pointer-events: none;
         cursor: default;
@@ -925,5 +927,15 @@ export const LoaderStyled = styled.div`
         }
       }
   }
+`;
+
+export const AuthModalStyled = styled.div`
+    position: fixed;
+    inset-block: 0%;  
+    inset-inline: 0%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    color: black;
+    ${FlexBoxCenter};
 `;
 /*======================================================*/

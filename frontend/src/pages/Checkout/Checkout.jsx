@@ -20,6 +20,7 @@ import Checked from "./components/Checked";
 import Input from "./components/Input";
 import SubTitle from "./components/SubTitle";
 import useConfirmation from "./hook/useConfirmation";
+import useAuth from "../../hooks/useAuth";
 
 const Checkout = () => {
 	const cart = useSelector((state) => state.cart.items);
@@ -37,6 +38,9 @@ const Checkout = () => {
 		console.log(data);
 		navigate("/thanks");
 	};
+
+  useAuth() // This protects the route from unauthorized users
+  
 	return (
 		<>
 			<Header />

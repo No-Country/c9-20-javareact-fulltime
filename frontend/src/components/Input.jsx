@@ -15,10 +15,10 @@ function Input({ name, type, data, setData, pattern }) {
 
 	return (
 		<InputContainer error={error}>
-			<label htmlFor="email">{name}</label>
+			<label htmlFor={name}>{name}</label>
 			<input
 				type={type}
-				name='email'
+				name={name}
         value={data}
         required={true}
         onChange={(e) => setData(e.target.value)}
