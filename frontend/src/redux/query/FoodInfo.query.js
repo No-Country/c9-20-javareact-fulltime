@@ -17,8 +17,11 @@ export const FoodInfoApi = createApi({
 			query: (post) => ({
 				url: `/comments?dishId=${post.id}`,
 				method: "POST",
-				body: JSON.stringify(post),
-				headers: { "Content-Type": "application/json; charset=UTF-8" },
+				body: JSON.stringify(post.content),
+				headers: {
+					"Content-Type": "application/json; charset=UTF-8",
+					Authorization: `Bearer ${post.token}`,
+				},
 			}),
 		}),
 
@@ -30,7 +33,7 @@ export const FoodInfoApi = createApi({
 			query: (id) => `/users/${id}`,
 		}),
 
-		getAddressInfo: builder.query({
+		/* 		getAddressInfo: builder.query({
 			query: (token) => ({
 				url: `/addressess`,
 				headers: {
@@ -38,7 +41,7 @@ export const FoodInfoApi = createApi({
 					"Content-Type": "application/json",
 				},
 			}),
-		}),
+		}), */
 
 		addNewDataUser: builder.mutation({
 			query: (id, field) => ({

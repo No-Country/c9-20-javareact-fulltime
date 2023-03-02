@@ -1,19 +1,18 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 import Loader from "../components/Loader";
+import AdminCreate from "../pages/Admin/AdminCreate.jsx";
 import Checkout from "../pages/Checkout/Checkout";
 import Thanks from "../pages/Checkout/Thanks";
+import MyAccount from "../pages/home/components/MyAccount/MyAccount";
 import Login from "../pages/Login/Login";
 import Signup from "../pages/Signup/Signup";
-import MyAccount from "../pages/home/components/MyAccount/MyAccount";
 import ItemsCategory from "../pages/view/categoria/components/ItemsCategory";
 import Contact from "../pages/view/contacto/Contact";
 import Promotions from "../pages/view/promociones/Promotions";
 import ViewOfThePlate from "../pages/view/viewoftheplate/ViewOfThePlate";
 import Home from "./../pages/home/Home";
 import Category from "./../pages/view/categoria/Category";
-import AdminCreate from "../pages/Admin/AdminCreate.jsx"
-
-export const router = createBrowserRouter([
+export const router = createHashRouter([
 	{
 		path: "/",
 		element: <Home />,
@@ -67,8 +66,8 @@ export const router = createBrowserRouter([
 		path: "/loading",
 		element: <Loader />,
 	},
-  {
-    path: "/adminCreate",
-    element: <AdminCreate/> ,
-  },
+	{
+		path: "/adminCreate",
+		element: <AdminCreate />,
+	},
 ]);
