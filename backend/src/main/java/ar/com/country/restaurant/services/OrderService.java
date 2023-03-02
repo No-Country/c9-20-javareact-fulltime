@@ -1,6 +1,6 @@
 package ar.com.country.restaurant.services;
 
-import ar.com.country.restaurant.dao.entities.Order;
+import ar.com.country.restaurant.dao.entities.order.Order;
 
 import java.util.List;
 
@@ -8,9 +8,10 @@ public interface OrderService {
 
     List<Order> getOrdersOfUser(Long userId);
 
-    Order getOrderOfUser(Long userId);
+    Order getOrderById(Long userId, Long orderId);
 
     Order createOrder(Long userId, Long paymentMethodId);
 
-    void cancelOrder(Order order);
+    Order cancelOrder(Long userId, Long orderId);
+
 }
