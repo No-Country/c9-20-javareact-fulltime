@@ -321,24 +321,35 @@ export const SearchLayerStyled = styled.section`
     transition: opacity  1s ease-in-out , visibility 1s ease-in-out ;  
     z-index: ${({ active }) => (active ? "4" : "1")};
 `;
-
+export const P = styled.p`
+    text-align: center;
+`;
 export const ContainerSearchLayerStyled = styled.div`
-    position: absolute;
+    position: fixed;
     inset-block-start: 36%;
     inset-inline: 0;
-/*     button{
-        background-color: white;
-    } */
- `;
+
+    `;
 export const ScrollContainerStyled = styled.div`
-    position: relative;
-    inline-size: 100%;
-    div{
-        ${FlexBoxCenter};
-        gap: 50px;
-        overflow-x:scroll;
-    }
-`;
+position: relative;
+inline-size: 100%;
+overflow-y: scroll;
+height: 500px;
+div {
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+article{
+    margin:25px;
+    margin-top: 65px;
+    margin-bottom: 55px;
+
+}
+}
+`
+;
 /* ================================================================ */
 
 /* ============================Buttons Carrusel ==================================== */

@@ -14,7 +14,7 @@ const useSearch = () => {
 		if (isSuccess && textSearch !== "") {
 			const { dishes } = dis._embedded;
 			return dishes.filter((items) =>
-				items.name.includes(textSearch.charAt(0).toUpperCase()),
+			items.name.toLowerCase().includes(textSearch.toLowerCase()),
 			);
 		}
 		return [];
