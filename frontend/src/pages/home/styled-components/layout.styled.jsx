@@ -164,7 +164,7 @@ export const FormStyled = styled.form`
     margin-left : auto;
     margin-right : auto;
     padding: 0 1em;
-    z-index:2;
+    z-index: ${({ active }) => (active ? "5" : "2")};
 `;
 export const ButtonSearchStyled = styled.button`
     
@@ -319,7 +319,7 @@ export const SearchLayerStyled = styled.section`
     opacity: ${({ active }) => (active ? "1" : "0")};
     visibility : ${({ active }) => (active ? "visible" : "hidden")};
     transition: opacity  1s ease-in-out , visibility 1s ease-in-out ;  
-    z-index: 1;
+    z-index: ${({ active }) => (active ? "4" : "1")};
 `;
 
 export const ContainerSearchLayerStyled = styled.div`
