@@ -17,9 +17,14 @@ const SearchLayer = ({ active, template, isSuccess, handleDesActive }) => {
 				<ScrollContainerStyled>
 					{isSuccess ? (
 						<div>
-							{template.length === 0 ? (<P>No hay publicaciones que coincidan con tu búsqueda. <br></br>
-								Te invitamos a navegar por las categorías para encontrar el plato que buscas.</P>) :
-								(template.map((item) => (
+							{template.length === 0 ? (
+								<P>
+									No hay publicaciones que coincidan con tu búsqueda. <br />
+									Te invitamos a navegar por las categorías para encontrar el
+									plato que buscas.
+								</P>
+							) : (
+								template.map((item) => (
 									<Items
 										key={item.id}
 										category={item.category.name}
@@ -35,8 +40,8 @@ const SearchLayer = ({ active, template, isSuccess, handleDesActive }) => {
 										top='-15%'
 										hasPromotion={item.hasPromotion}
 									/>
-								)))
-							}
+								))
+							)}
 						</div>
 					) : (
 						<div>loading...</div>
