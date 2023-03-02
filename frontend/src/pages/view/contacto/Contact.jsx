@@ -1,4 +1,5 @@
 import { CardList, Header } from "../../../components";
+import NavSide from "../../../components/NavSide"
 import {
 	ContactForm,
 	ContactSection,
@@ -12,6 +13,7 @@ const Contact = () => {
 	document.title = "Contacto";
 	return (
 		<>
+			<NavSide />
 			<Header />
 			<CardList />
 			<ContactStyled>

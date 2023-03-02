@@ -11,7 +11,7 @@ import Input from "./Input";
 import imgHome from "/assets/fondoHome.png";
 import search from "/icons/search.svg";
 
-const SectionHero = ({ handleActive, onChange, textSearch }) => {
+const SectionHero = ({ handleActive, onChange, textSearch, active }) => {
 	const { move, handleMoveLeft, handleMoveRight } = useDisplacement();
 
 	const handleOnSubmit = (event) => {
@@ -20,7 +20,7 @@ const SectionHero = ({ handleActive, onChange, textSearch }) => {
 
 	return (
 		<SectionHeroStyled img={imgHome} size='cover'>
-			<FormStyled onSubmit={handleOnSubmit}>
+			<FormStyled onSubmit={handleOnSubmit} active={active}>
 				<Input
 					name={"q"}
 					type={"search"}

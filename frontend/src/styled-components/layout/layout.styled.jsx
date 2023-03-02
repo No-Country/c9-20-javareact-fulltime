@@ -16,7 +16,7 @@ export const HeaderStyled = styled.header`
     inline-size: 100%;
     padding: 0 6em;
     background-color: var(--background-primary);
-    z-index: 1;
+    z-index: 3;
     a{
       display: inline-block;
       /* flex-shrink: 0; */
@@ -290,11 +290,20 @@ export const CarListStyled = styled.aside`
       a:nth-child(2){
         color: var(--text-primary);
         text-decoration:  underline ;
+        &:hover{
+          color: var(--second)
+        }
       }
       a.disable-link {
-        background-color: var(--second);
+        color: var(--background-secondary);
+        background-color: var(--button-disabled);
         pointer-events: none;
-        cursor: default;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
       }
    }
 

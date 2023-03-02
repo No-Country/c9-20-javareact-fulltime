@@ -156,8 +156,8 @@ public class Seeder implements CommandLineRunner {
         Dish dish_19 = createDish("Helado", "Gusto a elección + frutos rojos", "https://res.cloudinary.com/doxahduh8/image/upload/v1676594906/t_con_fruto_3_1_yecdq7.png", 900D, saveDishCategory5, 1, 1);
         DishSpec dish19 = new DishSpec(dish_19, 5L);
 
-        Dish dish_20 = createDish("Ensalada de frutas", "Frutos rojos, naranja, durazno, uvas y kiwi", "https://res.cloudinary.com/doxahduh8/image/upload/v1676594903/t_con_fruto_1_m6zziv.png", 750D, saveDishCategory3, 1, 1);
-        DishSpec dish20 = new DishSpec(dish_20, 3L);
+        Dish dish_20 = createDish("Ensalada de frutas", "Frutos rojos, naranja, durazno, uvas y kiwi", "https://res.cloudinary.com/doxahduh8/image/upload/v1676594903/t_con_fruto_1_m6zziv.png", 750D, saveDishCategory4, 1, 1);
+        DishSpec dish20 = new DishSpec(dish_20, 4L); //
 
         Dish dish_21 = createDish("Desayuno especial", "Medialunas rellenas", "https://res.cloudinary.com/doxahduh8/image/upload/v1676594895/Dise%C3%B1o_sin_t%C3%ADtulo_97_1_jjtz6f.png", 1050D, saveDishCategory4, 1, 1);
         DishSpec dish21 = new DishSpec(dish_21, 4L);
@@ -225,6 +225,9 @@ public class Seeder implements CommandLineRunner {
         Dish dish_42 = createDish("Arrollado de carne", "Verduras salteadas", "https://res.cloudinary.com/doxahduh8/image/upload/v1676594871/t_con_fruto_13_1_pesyie.png", 1250D, saveDishCategory6, 1, 1);
         DishSpec dish42 = new DishSpec(dish_42, 6L);
 
+        Dish dish_43 = createDish("Mostaccioli", "Salsa blanca con zapallo", "https://res.cloudinary.com/doxahduh8/image/upload/v1677692260/t_con_fruto_7_1_scfo7e.png", 950D, saveDishCategory2, 1, 1);
+        DishSpec dish43 = new DishSpec(dish_43, 2L);
+
         // Comentarios
         Comment comment1 = new Comment();
         Calendar calendar1 = Calendar.getInstance();
@@ -261,11 +264,11 @@ public class Seeder implements CommandLineRunner {
         Promotion promotion4 = createPromotion(50D);
         dish_4.setPromotion(promotion4);
 
-        Promotion promotion5 = createPromotion(50D);
-        dish_5.setPromotion(promotion5);
+        // Promotion promotion5 = createPromotion(50D);
+        // dish_5.setPromotion(promotion5);
 
         // Uso de services
-        DishSpec[] dishes = {dish1, dish2, dish3, dish4, dish5, dish6, dish7, dish8, dish9, dish10, dish11, dish12, dish13, dish14, dish15, dish16, dish17, dish18, dish19, dish20, dish21, dish22, dish23, dish24, dish25, dish26, dish27, dish28, dish29, dish30, dish31, dish32, dish33, dish34, dish35, dish36, dish37, dish38, dish39, dish40, dish41, dish42};
+        DishSpec[] dishes = {dish1, dish2, dish3, dish4, dish5, dish6, dish7, dish8, dish9, dish10, dish11, dish12, dish13, dish14, dish15, dish16, dish17, dish18, dish19, dish20, dish21, dish22, dish23, dish24, dish25, dish26, dish27, dish28, dish29, dish30, dish31, dish32, dish33, dish34, dish35, dish36, dish37, dish38, dish39, dish40, dish41, dish42, dish43};
         for(DishSpec dish : dishes) {
             dishService.createDish(dish);
         }

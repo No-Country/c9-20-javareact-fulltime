@@ -20,6 +20,7 @@ export const GlobalStyle = createGlobalStyle`
         --text-secondary: rgba(172, 172, 172, 1);
         --button-primary: rgba(255, 168, 0, 1);
         --button-secondary: rgba(255, 196, 81, 1);
+        --button-disabled: rgba(255, 168, 0, 0.4);
         --second: rgba(252, 219, 155, 1);
         --font-family:  'Poppins', sans-serif;
     }

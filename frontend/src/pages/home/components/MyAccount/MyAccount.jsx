@@ -1,5 +1,6 @@
 import React from "react";
 import { CardList, Header } from "../../../../components";
+import NavSide from "../../../../components/NavSide";
 import { MyAccountStyle } from "../../styled-components/MyAccountComponent";
 import cardImg from "./image/cardsvg.svg";
 import cartImg from "./image/cartsvg.svg";
@@ -48,6 +49,7 @@ export default function MyAccount() {
 
 	return (
 		<>
+			<NavSide />
 			<Header />
 			<CardList />
 			<MyAccountStyle>

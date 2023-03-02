@@ -159,17 +159,18 @@ export const SectionHeroStyled = styled.section`
 export const FormStyled = styled.form`
     position: relative;
     block-size: 50px;
-    inline-size: 548px;
+    max-inline-size: 548px;
     margin-top: 12px;
     margin-left : auto;
     margin-right : auto;
-    z-index:2;
+    padding: 0 1em;
+    z-index: ${({ active }) => (active ? "5" : "2")};
 `;
 export const ButtonSearchStyled = styled.button`
     
     position: absolute;
-    inset-block-start: 26%;
-    inset-inline-end: 4%;
+    inset-block-start: 30%;
+    inset-inline-end: 6%;
     ${BackgroundImageButtons};
     padding:.7em;
 `;
@@ -318,7 +319,7 @@ export const SearchLayerStyled = styled.section`
     opacity: ${({ active }) => (active ? "1" : "0")};
     visibility : ${({ active }) => (active ? "visible" : "hidden")};
     transition: opacity  1s ease-in-out , visibility 1s ease-in-out ;  
-    z-index: 1;
+    z-index: ${({ active }) => (active ? "4" : "1")};
 `;
 
 export const ContainerSearchLayerStyled = styled.div`

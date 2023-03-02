@@ -18,6 +18,7 @@ const Main = () => {
 				handleActive={handleActive}
 				textSearch={textSearch}
 				onChange={handleOnchange}
+				active={active}
 			/>
 			<CustomerFeedback />
 			<SearchLayer
