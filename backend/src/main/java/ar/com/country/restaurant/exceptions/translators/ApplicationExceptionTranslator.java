@@ -113,4 +113,9 @@ public class ApplicationExceptionTranslator implements AdviceTrait {
         return create(Status.NOT_FOUND, e, request);
     }
 
+    @ExceptionHandler
+    public ResponseEntity<Problem> orderNotFoundExceptionHandler(final OrderNotFoundException e, NativeWebRequest request) {
+        return create(Status.NOT_FOUND, e, request);
+    }
+
 }
