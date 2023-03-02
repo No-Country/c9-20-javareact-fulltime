@@ -1,45 +1,12 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { useAddNewPostMutation } from "../../../../redux/query/FoodInfo.query";
-import useDate from "../hook/useDate";
+import useComment from "../hook/useComment";
 import useStart from "../hook/useStart";
 import { FormStyled } from "../styled-components/layout.styled";
 import ContainerStart from "./ContainerStart";
 const Form = () => {
-	const [comment, setComment] = useState("");
-	const [success, setSuccess] = useState(false);
-	const { idCategory, idFood } = useParams();
-	const [addNewPost, { isLoading }] = useAddNewPostMutation();
-
-	const token = useSelector((state) => state.auth.accessToken);
-
-	const handleChange = (event) => {
-		setComment(event.target.value);
-	};
-
-	const { infoDate } = useDate();
-
+	const { handleChange, onSavePost, comment } = useComment();
 	const { pos, rating, hoverRating, setHoverRating, setRating } = useStart(5);
 
-	const post = {
-		id: Number(idFood),
-		token,
-		content: {
-			comment,
-			createdAt: `${infoDate.day} de ${infoDate.months} ${infoDate.year}  ${infoDate.hour}:${infoDate.minutes}Hs `,
-		},
-	};
-
-	const onSavePost = async () => {
-		if (post.content.comment !== "") {
-			await addNewPost(post).unwrap();
-			console.log(isLoading);
-		}
-	};
-
 	const handleSubmit = (event) => {
-		event.preventDefault();
 		onSavePost();
 	};
 
