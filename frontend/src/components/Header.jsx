@@ -21,7 +21,7 @@ const Header = () => {
 			<Link to='/'>
 				<img src={logo} alt='country' />
 			</Link>
-			<NavBar items={["Carta", "Promociones", "Contacto", "Mi cuenta"]} />
+			<NavBar />
 			<ButtonAction
 				img={cart}
 				size="cover"
