@@ -18,10 +18,18 @@ const SearchLayer = ({ active, template, isSuccess, handleDesActive }) => {
 							{template.map((item) => (
 								<Items
 									key={item.id}
-									image={item.image.url}
+									category={item.category.name}
 									description={item.description}
+									id={item.id}
+									image={item.image.url}
+									people={item.people}
 									price={item.price}
 									title={item.name}
+									blockSize='192px'
+									inlineSize='300px'
+									insetInline="10%"
+									top='-15%'
+									hasPromotion={item.hasPromotion}
 								/>
 							))}
 						</div>

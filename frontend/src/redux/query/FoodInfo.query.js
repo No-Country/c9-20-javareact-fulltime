@@ -23,7 +23,7 @@ export const FoodInfoApi = createApi({
 		}),
 
 		getComments: builder.query({
-			query: () => "/comments",
+			query: (id) => `/comments?dishId=${id}&page=0&size=999`,
 		}),
 
 		getUserInfo: builder.query({

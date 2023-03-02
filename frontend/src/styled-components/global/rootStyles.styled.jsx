@@ -23,7 +23,8 @@ export const GlobalStyle = createGlobalStyle`
         --button-disabled: rgba(255, 168, 0, 0.4);
         --second: rgba(252, 219, 155, 1);
         --font-family:  'Poppins', sans-serif;
-    }
+        --hidden: auto;
+    }   
 
     html{
         box-sizing: border-box;
@@ -39,7 +40,7 @@ export const GlobalStyle = createGlobalStyle`
         background-color: var(--background-primary);
         background-color: var(--background-primary);
         color: var(--text-primary);
-
+        overflow: var(--hidden);
     }
 
     button{

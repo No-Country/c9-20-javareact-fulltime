@@ -43,7 +43,7 @@ const ViewOfThePlate = () => {
 	return (
 		<ViewOfThePlateStyled>
 			<Container>
-				{isSuccess && itemFood.image !== undefined ? (
+				{isSuccess && itemFood !== undefined && itemFood.image !== undefined ? (
 					<>
 						<HeroImage
 							img={itemFood.image.url}

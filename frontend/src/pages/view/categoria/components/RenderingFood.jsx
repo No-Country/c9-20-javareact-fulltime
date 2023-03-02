@@ -1,25 +1,28 @@
 import { useParams } from "react-router-dom";
-import { ItemFood } from "../../../../components";
+import Items from "../../../../components/Items";
 import ItemsLoader from "./../../../../components/ItemsLoader";
 import useListFood from "./../hook/useListFood";
 const RenderingFood = () => {
 	const { idCategory } = useParams();
 	const { list, isLoading } = useListFood(idCategory);
-
 	return (
 		<>
 			{isLoading ? (
 				<>
 					{list.map((item) => (
-						<ItemFood
+						<Items
 							key={item.id}
-							id={item.id}
-							nameFood={item.name}
-							img={item.image.url}
-							description={item.description}
-							portion={"1"}
-							price={item.price}
 							category={item.category.name}
+							description={item.description}
+							id={item.id}
+							image={item.image.url}
+							people={item.people}
+							price={item.price}
+							title={item.name}
+							blockSize='240px'
+							inlineSize='240px'
+							insetInline="18%"
+							top='-24%'
 						/>
 					))}
 				</>

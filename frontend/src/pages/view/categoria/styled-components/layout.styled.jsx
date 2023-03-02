@@ -117,7 +117,8 @@ margin: 30px;
 `;
 export const StarStyled = styled.div`
     position: absolute;
-    inset-block-start: 31%;
+    inset-block-start: 22%;
+    inset-inline: 38%;
     ${FlexBoxCenter};
     gap: 12px;
     block-size: 47px;

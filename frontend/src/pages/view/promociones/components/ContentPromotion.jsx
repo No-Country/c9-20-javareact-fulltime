@@ -4,9 +4,9 @@ import {
 	Footer,
 	Header,
 	HeaderSubTitle,
-	ItemFood,
 	ItemsLoader,
 } from "../../../../components";
+import Items from "../../../../components/Items";
 import NavSide from "../../../../components/NavSide";
 import { useFilterDishes } from "../../../../hooks";
 import { Div } from "../../../../styled-components";
@@ -36,13 +36,20 @@ const ContentPromotion = () => {
 							<div>Sin Promociones</div>
 						) : (
 							list.map((item) => (
-								<ItemFood
+								<Items
 									key={item.id}
-									category={item.category}
+									category={item.category.name}
 									description={item.description}
-									img={item.image.url}
-									nameFood={item.name}
+									id={item.id}
+									image={item.image.url}
+									people={item.people}
 									price={item.price}
+									title={item.name}
+									blockSize='192px'
+									inlineSize='300px'
+									insetInline="10%"
+									top='-15%'
+									hasPromotion={item.hasPromotion}
 								/>
 							))
 						)
