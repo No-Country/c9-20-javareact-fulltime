@@ -4,7 +4,7 @@ import useFilterComments from "../hook/useFilterComments";
 const SectionClients = () => {
 	const { idFood } = useParams();
 	const { items, isSuccess } = useFilterComments(idFood);
-
+	console.log(items);
 	return (
 		<section>
 			<HeaderSubTitle level={2} textAlign={"left"} title='Nuestros clientes' />

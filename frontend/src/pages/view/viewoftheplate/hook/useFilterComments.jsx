@@ -9,9 +9,10 @@ const useFilterComments = (idFood) => {
 		if (isSuccess && info._embedded !== undefined) {
 			const { comments } = info._embedded;
 			setItems([...comments]);
+			console.log(comments);
 		}
 	}, [isSuccess]);
-	console.log(items);
+
 	return {
 		items,
 		isSuccess,
