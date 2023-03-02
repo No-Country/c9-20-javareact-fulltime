@@ -1,6 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { removeCredentials, setCredentials } from "../slice/Auth.slice";
-const baseUrl = "http://localhost:8080/api";
+/* const baseUrl = "http://localhost:8080/api";
+ */
+
+const baseUrl =
+	"https://c9-20-javareact-fulltime-production.up.railway.app/api";
 
 const baseQuery = fetchBaseQuery({
 	baseUrl,

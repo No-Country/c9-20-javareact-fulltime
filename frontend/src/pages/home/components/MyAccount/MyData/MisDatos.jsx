@@ -37,8 +37,6 @@ export default function MisDatos() {
 			.catch((err) => console.log(err));
 	}, []);
 
-	console.log(res);
-
 	const { data: post, isFetching, isSuccess } = useGetUserInfoQuery(id);
 	// const { data: ready, isProccess, isReady } = useGetAddressInfoQuery(token);
 	const [addNewDataUser, { isLoading }] = useAddNewDataUserMutation();
@@ -74,7 +72,8 @@ export default function MisDatos() {
 		if (res?._embedded === undefined) {
 			// ! post address
 			axios.post(
-				`http://localhost:8080/api/addresses/`,
+				/* 	`http://localhost:8080/api/addresses/`, */
+				"https://c9-20-javareact-fulltime-production.up.railway.app/api/addresses/",
 				{
 					street,
 					number,
@@ -94,7 +93,8 @@ export default function MisDatos() {
 
 		// ! put name email
 		await axios.put(
-			`http://localhost:8080/api/users/${id}`,
+			/* `http://localhost:8080/api/users/${id}`, */
+			`https://c9-20-javareact-fulltime-production.up.railway.app/api/users/${id}`,
 			{
 				name: NameAndSurname,
 				email: email,
@@ -108,10 +108,11 @@ export default function MisDatos() {
 			},
 		);
 
-		if (res?._embedded != undefined) {
+		if (res?._embedded !== undefined) {
 			// ! put address
 			await axios.put(
-				`http://localhost:8080/api/addresses/${res?._embedded?.addresses[0].id}`,
+				/* `http://localhost:8080/api/addresses/${res?._embedded?.addresses[0].id}`, */
+				`https://c9-20-javareact-fulltime-production.up.railway.app/api/addresses/${res?._embedded?.addresses[0].id}`,
 				{
 					street,
 					number,
