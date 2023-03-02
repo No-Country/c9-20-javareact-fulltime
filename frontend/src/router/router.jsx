@@ -1,11 +1,10 @@
 import { createHashRouter } from "react-router-dom";
 import Loader from "../components/Loader";
 import AdminCreate from "../pages/Admin/AdminCreate.jsx";
+import Auth from "../pages/Auth/Auth";
 import Checkout from "../pages/Checkout/Checkout";
 import Thanks from "../pages/Checkout/Thanks";
 import MyAccount from "../pages/home/components/MyAccount/MyAccount";
-import Login from "../pages/Login/Login";
-import Signup from "../pages/Signup/Signup";
 import ItemsCategory from "../pages/view/categoria/components/ItemsCategory";
 import Contact from "../pages/view/contacto/Contact";
 import Promotions from "../pages/view/promociones/Promotions";
@@ -48,11 +47,11 @@ export const router = createHashRouter([
 	},
 	{
 		path: "/login",
-		element: <Login />,
+		element: <Auth />,
 	},
 	{
 		path: "/signup",
-		element: <Signup />,
+		element: <Auth />,
 	},
 	{
 		path: "/checkout",

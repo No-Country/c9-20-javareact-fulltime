@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { CardList, Header } from "../../components";
 import { DivCol } from "../../styled-components/layout/layout.styled";
+import useAuth from "../../hooks/useAuth";
 import {
   Button,
   CheckCart,
@@ -38,6 +39,9 @@ const Checkout = () => {
     console.log(data);
     navigate("/thanks");
   };
+
+  useAuth() // Redirect to login if user is not logged in
+
   return (
     <>
       <Header />

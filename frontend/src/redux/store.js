@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { FoodInfoApi } from "./query/FoodInfo.query";
-import { authQueries } from "./query/auth.query";
+import { authQueries } from "./query/wrapper.query.js";
 import AppetizerDataSlice from "./slice/AppetizerData.slice";
 import authSlice from "./slice/Auth.slice";
 import CartSlice from "./slice/cart.slice";
