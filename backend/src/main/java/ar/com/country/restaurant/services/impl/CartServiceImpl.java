@@ -4,6 +4,7 @@ import ar.com.country.restaurant.dao.entities.Cart;
 import ar.com.country.restaurant.dao.entities.CartItem;
 import ar.com.country.restaurant.dao.entities.Dish;
 import ar.com.country.restaurant.dao.entities.User;
+import ar.com.country.restaurant.repositories.CartItemRepository;
 import ar.com.country.restaurant.repositories.CartRepository;
 import ar.com.country.restaurant.services.CartService;
 import ar.com.country.restaurant.services.DishService;
@@ -18,6 +19,7 @@ public class CartServiceImpl implements CartService {
     private final UserService userService;
     private final DishService dishService;
     private final CartRepository cartRepository;
+    private final CartItemRepository cartItemRepository;
 
     @Override
     public Cart getCartOfUser(Long userId) {
@@ -34,9 +36,8 @@ public class CartServiceImpl implements CartService {
 
         cartItem.setDish(dish);
         cart.addCartItem(cartItem);
-        cartRepository.saveAndFlush(cart);
 
-        return cartItem;
+        return cartItemRepository.saveAndFlush(cartItem);
     }
 
     @Override
