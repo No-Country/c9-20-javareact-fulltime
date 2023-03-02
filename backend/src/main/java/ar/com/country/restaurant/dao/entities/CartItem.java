@@ -16,19 +16,16 @@ import java.util.Objects;
 public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cart_item_id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "cart_id", referencedColumnName = "cart_id")
     private Cart cart;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "dish_id")
     private Dish dish;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id")
-    private Order order;
 
     @Column
     private Integer quantity;
@@ -49,5 +46,5 @@ public class CartItem {
     public int hashCode() {
         return getClass().hashCode();
     }
-    
+
 }
