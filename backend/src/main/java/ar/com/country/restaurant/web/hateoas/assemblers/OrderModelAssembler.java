@@ -11,6 +11,7 @@ import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -41,7 +42,7 @@ public class OrderModelAssembler implements RepresentationModelAssembler<Order, 
     }
 
     private Optional<Link> cancelLink() {
-        if (order.getStatus().equals(OrderStatus.CANCELLED)) {
+        if (List.of(OrderStatus.DELIVERED, OrderStatus.CANCELLED).contains(order.getStatus())) {
             return Optional.empty();
         }
         return Optional.of(
