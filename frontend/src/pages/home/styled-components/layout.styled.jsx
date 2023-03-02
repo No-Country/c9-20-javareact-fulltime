@@ -159,17 +159,18 @@ export const SectionHeroStyled = styled.section`
 export const FormStyled = styled.form`
     position: relative;
     block-size: 50px;
-    inline-size: 548px;
+    max-inline-size: 548px;
     margin-top: 12px;
     margin-left : auto;
     margin-right : auto;
+    padding: 0 1em;
     z-index:2;
 `;
 export const ButtonSearchStyled = styled.button`
     
     position: absolute;
-    inset-block-start: 26%;
-    inset-inline-end: 4%;
+    inset-block-start: 30%;
+    inset-inline-end: 6%;
     ${BackgroundImageButtons};
     padding:.7em;
 `;

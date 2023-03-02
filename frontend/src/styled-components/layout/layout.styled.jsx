@@ -16,7 +16,7 @@ export const HeaderStyled = styled.header`
     inline-size: 100%;
     padding: 0 6em;
     background-color: var(--background-primary);
-    z-index: 1;
+    z-index: 3;
     a{
       display: inline-block;
       /* flex-shrink: 0; */
