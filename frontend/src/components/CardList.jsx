@@ -68,10 +68,7 @@ const CardList = () => {
 					>
 						Realizar pago
 					</Link>
-					<Link 
-						to={'/categoria'}
-						onClick={() => dispatch(closetCart())}
-					>
+					<Link to={"/categoria"} onClick={() => dispatch(closetCart())}>
 						Seguir comprando
 					</Link>
 				</div>

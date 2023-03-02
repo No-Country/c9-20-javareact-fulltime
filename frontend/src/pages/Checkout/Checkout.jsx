@@ -28,13 +28,15 @@ const Checkout = () => {
 	const {
 		register,
 		handleSubmit,
-
 		formState: { errors },
 	} = useForm();
 
 	const [selectedPaymentOption, setSelectedPaymentOption] = useState("debito");
 	const { handleChange, shipment } = useConfirmation();
-	const onSubmit = (data) => console.log(data);
+	const onSubmit = (data) => {
+		console.log(data);
+		navigate("/thanks");
+	};
 	return (
 		<>
 			<Header />
@@ -116,7 +118,7 @@ const Checkout = () => {
 									name="cvv"
 									placeholder="Ingrese su CVV"
 									inlineSize='233px'
-									bottom='-35%'
+									bottom='-22%'
 									register={{
 										...register("cvv", {
 											required: "Campo requerido",

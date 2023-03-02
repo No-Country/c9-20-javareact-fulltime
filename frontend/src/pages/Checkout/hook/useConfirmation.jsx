@@ -5,11 +5,18 @@ const useConfirmation = () => {
 	const state = new InfoCheckout();
 
 	const [stateCheckout, setStateCheckout] = useState(state);
-
+	const [shipment, setShipment] = useState(false);
 	const handleChange = (event) => {
 		const { name, value } = event.target;
+		if (name === "shipment") {
+			if (value === "delivery") {
+				setShipment(true);
+			} else if (value === "local") {
+				setShipment(false);
+			}
 
-		console.log(name);
+			console.log(value);
+		}
 	};
 
 	const onSubmit = (event) => {
@@ -19,6 +26,7 @@ const useConfirmation = () => {
 	return {
 		onSubmit,
 		handleChange,
+		shipment,
 	};
 };
 

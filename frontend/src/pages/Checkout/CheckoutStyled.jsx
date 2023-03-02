@@ -269,7 +269,7 @@ export const InputStyled = styled.div`
     span{
         position: absolute;
         display: inline-block;
-        min-inline-size: 100%;
+        min-inline-size: 400px;
         inset-block-end: ${({ bottom }) => bottom};
         font-weight: 300;
         font-size: 16px;
