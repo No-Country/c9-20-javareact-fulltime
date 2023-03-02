@@ -3,6 +3,13 @@ import { CategoryListStyles } from "../../styled-components/Admin.styled";
 import image from "./icon/Union.png";
 
 export default function CreateCategory() {
+  const [data, setData] = React.useState({'nombre': '' , 'imagen':''})
+
+
+  const handleChange = (e) => {
+    setData({...data, [e.target.name]:e.target.value})
+  }
+
   return (
     <CategoryListStyles>
       <div className="createCategory">
@@ -13,6 +20,9 @@ export default function CreateCategory() {
           placeholder="Ingrese el nombre de la categoría"
           className="name"
           id="nombreCategoria"
+          value={data.nombre}
+          name='nombre'
+          onChange={(e) => handleChange(e)}
         />
 
         <div className="image_button">
@@ -27,6 +37,7 @@ export default function CreateCategory() {
               type="file"
               id="image"
               className="image"
+              name='imagen'
             />
             <label className="inputImage" htmlFor="image">
               Inserte imagen del producto
