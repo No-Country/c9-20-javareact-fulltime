@@ -165,7 +165,8 @@ export const ViewOfThePlateLoaderStyled = styled.div`
     align-items: center;
     justify-content: space-evenly;
     gap: 90px;
-    block-size: 500px;
+    flex-wrap: wrap;
+    block-size: 800px;
     inline-size: 100%;   
 `;
 
