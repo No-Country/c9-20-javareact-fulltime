@@ -13,7 +13,13 @@ const MainContent = () => {
 		textSearch,
 		handleOnchange,
 	} = useSearch();
+	if(active === true){
+		document.documentElement.style.setProperty('--hidden', "hidden");
+	} else{
+		document.documentElement.style.setProperty('--hidden', "auto")
+	}
 
+	console.log(active);
 	return (
 		<>
 			<NavSide />

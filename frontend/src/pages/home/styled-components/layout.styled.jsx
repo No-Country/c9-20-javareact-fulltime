@@ -323,22 +323,31 @@ export const SearchLayerStyled = styled.section`
 `;
 
 export const ContainerSearchLayerStyled = styled.div`
-    position: absolute;
+    position: fixed;
     inset-block-start: 36%;
     inset-inline: 0;
-/*     button{
-        background-color: white;
-    } */
- `;
+
+    `;
 export const ScrollContainerStyled = styled.div`
-    position: relative;
-    inline-size: 100%;
-    div{
-        ${FlexBoxCenter};
-        gap: 50px;
-        overflow-x:scroll;
-    }
-`;
+position: relative;
+inline-size: 100%;
+overflow-y: scroll;
+height: 500px;
+div {
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+article{
+    margin:25px;
+    margin-top: 65px;
+    margin-bottom: 55px;
+
+}
+}
+`
+;
 /* ================================================================ */
 
 /* ============================Buttons Carrusel ==================================== */
