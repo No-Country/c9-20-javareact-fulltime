@@ -27,6 +27,7 @@ const CardList = () => {
 		<CarListStyled
 			translateX={open ? "translateX(0%)" : "translateX(100%)"}
 			length={cart.length}
+			onMouseLeave={() => dispatch(closetCart())}
 		>
 			<ButtonCarListExitStyled
 				onClick={() => dispatch(closetCart())}
@@ -67,7 +68,12 @@ const CardList = () => {
 					>
 						Realizar pago
 					</Link>
-					<a href=''>Seguir comprando</a>
+					<Link 
+						to={'/categoria'}
+						onClick={() => dispatch(closetCart())}
+					>
+						Seguir comprando
+					</Link>
 				</div>
 			</footer>
 		</CarListStyled>

@@ -2,10 +2,19 @@ import styled from "styled-components";
 
 export const ContactStyled = styled.section`    
     background-color: rgba(45, 45, 45, 1);
-    padding: 2em 130px;
-   section:nth-child(3) {
-    margin-bottom: 0;
-   }
+    padding: 3em 130px;
+    section:nth-child(3) {
+      margin-bottom: 0;
+    }
+    @media (max-width: 801px) {
+      padding: 3em 6em 5em;
+    }
+    @media (max-width: 651px) {
+      padding: 3em 4em 5em;
+    }
+    @media (max-width: 451px) {
+      padding: 3em 2em 5em;
+    }
 `;
 
 export const ContactSection = styled.section`
@@ -47,5 +56,8 @@ export const ContactForm = styled.form`
     border-radius: 4px;
     font-weight: 600;
     font-size: 15px;
+    @media (max-width: 501px) {
+      width: 100%
+    }
    }
 `;

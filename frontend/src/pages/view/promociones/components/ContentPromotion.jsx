@@ -7,6 +7,7 @@ import {
 	ItemFood,
 	ItemsLoader,
 } from "../../../../components";
+import NavSide from "../../../../components/NavSide";
 import { useFilterDishes } from "../../../../hooks";
 import { Div } from "../../../../styled-components";
 import { SectionStyled } from "../styled-components/layout.styled";
@@ -17,6 +18,7 @@ const ContentPromotion = () => {
 
 	return (
 		<>
+			<NavSide />
 			<Header />
 			<CardList />
 			<SectionStyled img={promotions} size='cover'>

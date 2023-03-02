@@ -290,6 +290,9 @@ export const CarListStyled = styled.aside`
       a:nth-child(2){
         color: var(--text-primary);
         text-decoration:  underline ;
+        &:hover{
+          color: var(--second)
+        }
       }
       a.disable-link {
         color: var(--background-secondary);
