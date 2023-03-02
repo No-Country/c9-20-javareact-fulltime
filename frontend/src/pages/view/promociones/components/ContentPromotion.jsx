@@ -12,7 +12,7 @@ import { useFilterDishes } from "../../../../hooks";
 import { Div } from "../../../../styled-components";
 import { SectionStyled } from "../styled-components/layout.styled";
 import { filterPromotions } from "../utilities/filterPromotions";
-import promotions from "/img/promotionImg.jpg";
+import promotions from "/assets/img/promotionImg.jpg";
 const ContentPromotion = () => {
 	const { list, isSuccess } = useFilterDishes(filterPromotions);
 

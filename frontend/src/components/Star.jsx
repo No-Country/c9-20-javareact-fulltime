@@ -1,5 +1,5 @@
 import { StarStyled } from "../pages/view/categoria/styled-components/layout.styled";
-import star from "/icons/startYellow.svg";
+import star from "/assets/icons/startYellow.svg";
 const Star = () => {
 	return (
 		<StarStyled>

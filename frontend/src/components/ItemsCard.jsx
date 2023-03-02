@@ -4,7 +4,7 @@ import {
 	ButtonDeleteItemCartStyled,
 	ItemCartStyled,
 } from "../styled-components";
-import dele from "/icons/delete.svg";
+import dele from "/assets/icons/delete.svg";
 
 const ItemsCard = ({ id, amount, name, cost }) => {
 	const dispatch = useDispatch();

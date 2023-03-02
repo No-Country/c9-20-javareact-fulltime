@@ -1,7 +1,7 @@
 import { Link, Outlet, useParams } from "react-router-dom";
 import { ItemFoodStyled } from "../pages/view/categoria/styled-components/layout.styled";
 import Star from "./Star";
-import cart from "/icons/cart.svg";
+import cart from "/assets/icons/cart.svg";
 const ItemFood = ({
 	description,
 	price,

@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { NavBarStyled } from "../styled-components";
-import loginIcon from "/icons/box-arrow-right.svg"
+import loginIcon from "/assets/icons/box-arrow-right.svg";
 
 const NavBar = () => {
-	const accessToken = useSelector((state) => state.auth.accessToken)
+	const accessToken = useSelector((state) => state.auth.accessToken);
 
 	return (
 		<NavBarStyled>
@@ -42,12 +42,14 @@ const NavBar = () => {
 						className={({ isActive }) => (isActive ? "isActive" : undefined)}
 					>
 						<span style={{ display: "flex", gap: ".5em" }}>
-							{accessToken ?
-								"Mi cuenta" :
+							{accessToken ? (
+								"Mi cuenta"
+							) : (
 								<>
 									Iniciar Sesión
 									<img src={loginIcon} alt="login icon" />
-								</>}
+								</>
+							)}
 						</span>
 					</NavLink>
 				</li>

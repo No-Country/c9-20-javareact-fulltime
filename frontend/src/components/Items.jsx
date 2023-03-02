@@ -8,7 +8,7 @@ import {
 	ItemPrice,
 } from "./../styled-components/layout/layout.styled";
 import Star from "./Star";
-import car from "/icons/cart.svg";
+import car from "/assets/icons/cart.svg";
 const Items = ({
 	title,
 	image,

@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { calculateTheTotal, closetCart } from "../redux/slice/cart.slice";
 import { ButtonCarListExitStyled, CarListStyled } from "../styled-components";
 import ItemsCard from "./ItemsCard";
-import cartYellow from "/icons/cartYellow.svg";
-import exit from "/icons/exit.svg";
+import cartYellow from "/assets/icons/cartYellow.svg";
+import exit from "/assets/icons/exit.svg";
 const CardList = () => {
 	const cart = useSelector((state) => state.cart.items);
 	const open = useSelector((state) => state.cart.open);

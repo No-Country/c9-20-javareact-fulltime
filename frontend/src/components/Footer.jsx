@@ -3,12 +3,12 @@ import {
 	FooterContainerTwo,
 	FooterStyled,
 } from "../styled-components";
-import face from "/icons/facebook.svg";
-import location from "/icons/location.svg";
-import logo from "/icons/logo.svg";
-import phone from "/icons/phone.svg";
-import twitter from "/icons/twitter.svg";
-import WhatsApp from "/icons/whatsapp.svg";
+import face from "/assets/icons/facebook.svg";
+import location from "/assets/icons/location.svg";
+import logo from "/assets/icons/logoHeader.svg";
+import phone from "/assets/icons/phone.svg";
+import twitter from "/assets/icons/twitter.svg";
+import WhatsApp from "/assets/icons/whatsapp.svg";
 const Footer = () => {
 	return (
 		<FooterStyled>

@@ -1,20 +1,20 @@
 import { useDispatch } from "react-redux";
 import { openMenu } from "../redux/slice/cart.slice";
-import { TabbarStyled } from "../styled-components"
-import menuTabbarIcon from "../../public/icons/menu-tabbar.svg"
+import { TabbarStyled } from "../styled-components";
+import menuTabbarIcon from "/assets/icons/menu-tabbar.svg";
 
 const Tabbar = () => {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  return (
-    <TabbarStyled>
-      <img 
-        onClick={() => dispatch(openMenu(true))}
-        src={menuTabbarIcon} 
-        alt="menu icon" 
-      />
-    </TabbarStyled>
-  )
-}
+	return (
+		<TabbarStyled>
+			<img
+				onClick={() => dispatch(openMenu(true))}
+				src={menuTabbarIcon}
+				alt="menu icon"
+			/>
+		</TabbarStyled>
+	);
+};
 
-export default Tabbar
+export default Tabbar;
