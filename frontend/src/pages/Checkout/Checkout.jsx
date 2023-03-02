@@ -28,14 +28,13 @@ const Checkout = () => {
 	const {
 		register,
 		handleSubmit,
-		control,
+
 		formState: { errors },
-		setError,
 	} = useForm();
 
 	const [selectedPaymentOption, setSelectedPaymentOption] = useState("debito");
-	const { onSubmit, handleChange } = useConfirmation();
-
+	const { handleChange, shipment } = useConfirmation();
+	const onSubmit = (data) => console.log(data);
 	return (
 		<>
 			<Header />
@@ -86,16 +85,17 @@ const Checkout = () => {
 									textLabel='Número de tarjeta'
 									type='text'
 									name="cardNumber"
-									pattern={"^[0-9]{1,16}$"}
 									placeholder="1234 5678 9101 1121"
 									inlineSize='476px'
-									messageError='Este campo solo acepta 16 caracteres numéricos'
 									bottom='-23%'
-									handleChange={handleChange}
 									register={{
 										...register("cardNumber", {
-											pattern: /^[0-9]{1,16}$/,
-											message: "Este campo solo acepta 16 caracteres numericos",
+											required: "Campo requerido",
+											pattern: {
+												value: /^[0-9]{1,16}$/,
+												message:
+													"Este campo solo acepta 16 caracteres numéricos",
+											},
 										}),
 									}}
 									error={errors.cardNumber}
@@ -105,22 +105,29 @@ const Checkout = () => {
 									textLabel='Fecha de vencimiento'
 									type='date'
 									name="dueDate"
-									pattern={""}
 									placeholder="MM/YY"
 									inlineSize='233px'
-									handleChange={handleChange}
+									bottom='-23%'
 								/>
 
 								<Input
 									textLabel='CVV'
 									type='password'
 									name="cvv"
-									pattern={"^[0-9]{1,3}$"}
 									placeholder="Ingrese su CVV"
 									inlineSize='233px'
-									messageError='Este campo solo acepta 3 caracteres numéricos'
 									bottom='-35%'
-									handleChange={handleChange}
+									register={{
+										...register("cvv", {
+											required: "Campo requerido",
+											pattern: {
+												value: /^[0-9]{1,3}$/,
+												message:
+													"Este campo solo acepta 3 caracteres numéricos",
+											},
+										}),
+									}}
+									error={errors.cvv}
 								/>
 							</ContainerInputsStyled>
 							<Button>Confirmar</Button>
@@ -172,7 +179,7 @@ const Checkout = () => {
 								</div>
 								<div>
 									<b>Envió </b>
-									<span>-</span>
+									<span>{shipment ? "$150" : "-"}</span>
 								</div>
 								<div>
 									<div>

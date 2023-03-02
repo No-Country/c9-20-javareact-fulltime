@@ -8,10 +8,8 @@ const useConfirmation = () => {
 
 	const handleChange = (event) => {
 		const { name, value } = event.target;
-		setStateCheckout({
-			...stateCheckout,
-			[name]: value,
-		});
+
+		console.log(name);
 	};
 
 	const onSubmit = (event) => {

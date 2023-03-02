@@ -254,9 +254,8 @@ export const InputStyled = styled.div`
             color: var(--text-secondary);
         }
         border: none;
-        &:invalid{
-           outline: 1px solid rgba(204, 16, 16, 1);
-        }
+        outline:${({ outline }) =>
+					outline ? "1px solid rgba(204, 16, 16, 1);" : "none"}
     
     }
     

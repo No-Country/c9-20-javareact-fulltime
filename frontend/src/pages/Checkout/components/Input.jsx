@@ -4,32 +4,15 @@ const Input = ({
 	type,
 	name,
 	placeholder,
-	pattern,
 	inlineSize,
-	messageError,
 	bottom,
-	handleChange,
 	register,
 	error,
 }) => {
-	/* 	const handleChange = (event) => {
-		let regex = new RegExp(pattern);
-		const { value } = event.target;
-		setError(!regex.test(value));
-	};
- */
-
 	return (
-		<InputStyled inlineSize={inlineSize} bottom={bottom}>
+		<InputStyled inlineSize={inlineSize} bottom={bottom} outline={error}>
 			<label htmlFor={name}>{textLabel}</label>
-			<input
-				type={type}
-				name={name}
-				placeholder={placeholder}
-				pattern={pattern}
-				onChange={handleChange}
-				{...register}
-			/>
+			<input type={type} name={name} placeholder={placeholder} {...register} />
 
 			{error && <span>{error?.message}</span>}
 		</InputStyled>
