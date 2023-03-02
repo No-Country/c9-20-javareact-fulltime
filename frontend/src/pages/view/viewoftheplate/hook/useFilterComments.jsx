@@ -6,13 +6,14 @@ const useFilterComments = (idFood) => {
 	const { data: info, isSuccess } = useGetCommentsQuery(idFood);
 
 	useEffect(() => {
-		if (isSuccess) {
+		if (isSuccess && info._embedded !== undefined) {
 			const { comments } = info._embedded;
 			setItems([...comments]);
 		}
 	}, [info]);
 	return {
 		items,
+		isSuccess,
 	};
 };
 

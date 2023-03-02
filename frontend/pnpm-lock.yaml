@@ -26,11 +26,8 @@ dependencies:
   jsonwebtoken: 9.0.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
-<<<<<<< HEAD
   react-hook-form: 7.43.3_react@18.2.0
-=======
   react-jwt: 1.1.8_react@18.2.0
->>>>>>> NuevaAdmin
   react-redux: 8.0.5_fxtgt6bjwd6p4cwoordejim2zi
   react-router-dom: 6.8.0_biqbaboplfbrettd7655fr4n2y
   styled-components: 5.3.6_biqbaboplfbrettd7655fr4n2y

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { CardList, Header } from "../../components";
@@ -82,25 +82,7 @@ const Checkout = () => {
 					{selectedPaymentOption === "debito" && (
 						<>
 							<ContainerInputsStyled>
-								<Controller
-									name="cardNumber"
-									control={control}
-									render={({ field }) => (
-										<Input
-											textLabel={"Número de tarjeta"}
-											type='text'
-											placeholder="1234 5678 9101 1121"
-											inlineSize='476px'
-											bottom='-23%'
-											handleChange={handleChange}
-										/>
-									)}
-									rules={{
-										pattern: /^[0-9]{1,16}$/,
-										message: "error",
-									}}
-								/>
-								{/* <Input
+								<Input
 									textLabel='Número de tarjeta'
 									type='text'
 									name="cardNumber"
@@ -112,12 +94,12 @@ const Checkout = () => {
 									handleChange={handleChange}
 									register={{
 										...register("cardNumber", {
-											required: "este campo es requerido",
 											pattern: /^[0-9]{1,16}$/,
+											message: "Este campo solo acepta 16 caracteres numericos",
 										}),
 									}}
-									error={errors.pattern}
-								/> */}
+									error={errors.cardNumber}
+								/>
 
 								<Input
 									textLabel='Fecha de vencimiento'

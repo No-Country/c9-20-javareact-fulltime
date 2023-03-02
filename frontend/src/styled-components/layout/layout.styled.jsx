@@ -12,9 +12,10 @@ export const HeaderStyled = styled.header`
     display: flex;
     /* justify-content: space-around; */
     align-items: center;
+    /* gap: 20%; */
     block-size: 106px;
     inline-size: 100%;
-    padding: 0 6em;
+    padding: 0 3em;
     background-color: var(--background-primary);
     z-index: 3;
     a{
@@ -22,10 +23,6 @@ export const HeaderStyled = styled.header`
       /* flex-shrink: 0; */
       margin-right: auto;
     }
-    @media (max-width: 951px) {
-      padding: 0 3em;
-    }
-
     @media (max-width: 801px) {
       justify-content: space-between;
       > a{
@@ -178,7 +175,7 @@ export const PasswordContainer = styled.div`
   margin-left: 0;
  `;
 
-export const Button = styled.button`
+/* export const Button = styled.button`
   block-size: 56px;
   inline-size: 476px;
   border-radius: 4px;
@@ -187,7 +184,7 @@ export const Button = styled.button`
   background-color: #49454F;
   
  `;
-
+ */
 export const ShowPasswordIcon = styled.button`
   &:focus {
     outline: none;
@@ -226,7 +223,7 @@ export const CarListStyled = styled.aside`
   padding-right:1em;
   background-color: var(--background-secondary);
   transform: ${({ translateX }) => translateX};
-  transition: transform .5s ease-in-out; 
+  transition: transform 1s ease-in-out; 
   z-index:3;
 
   header{
@@ -290,20 +287,11 @@ export const CarListStyled = styled.aside`
       a:nth-child(2){
         color: var(--text-primary);
         text-decoration:  underline ;
-        &:hover{
-          color: var(--second)
-        }
       }
       a.disable-link {
-        color: var(--background-secondary);
         background-color: var(--button-disabled);
         pointer-events: none;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
+        cursor: default;
       }
    }
 
@@ -559,7 +547,7 @@ export const NavSideStyled = styled.nav`
   left: 0px;
   top: 0px;
   transform: ${({ translateX }) => translateX};
-  transition: transform .3s ease-in-out; 
+  transition: transform 1s ease-in-out; 
   color: var(--text-primary);
   font-weight: 400;
   font-size: 14px;
@@ -609,17 +597,20 @@ export const ItemContainerStyled = styled.article`
 `;
 export const ItemImgStyled = styled.img`
     position: absolute;
-    inset-block-start: -15%;
-    inset-inline: 9.1%;
-    block-size: ${({ blockSize }) => blockSize};
-    inline-size:${({ inlineSize }) => inlineSize};
+    inset-block-start: ${({ top }) => top || " -15%"}; 
+    inset-inline: ${({ insetInline }) => insetInline || "9.1%"};
+    block-size: ${({ blockSize }) => blockSize || "198px"};
+    inline-size:${({ inlineSize }) => inlineSize || "300px"};
     border-radius:${({ borderRadius }) => borderRadius};
     text-align:center; 
 `;
 
 export const ItemDescription = styled.p`
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     min-block-size: 72px;
-    min-inline-size: 300px;
+    max-inline-size: 300px;
     margin: 0;
     font-size: var(--letterscustomizable-7);
     font-weight: 500;

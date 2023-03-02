@@ -18,7 +18,7 @@ const Input = ({
 		setError(!regex.test(value));
 	};
  */
-	console.log(error);
+
 	return (
 		<InputStyled inlineSize={inlineSize} bottom={bottom}>
 			<label htmlFor={name}>{textLabel}</label>

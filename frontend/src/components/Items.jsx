@@ -7,19 +7,35 @@ import {
 	ItemPeople,
 	ItemPrice,
 } from "./../styled-components/layout/layout.styled";
+import Star from "./Star";
 import car from "/icons/cart.svg";
-
-const Items = ({ title, image, description, people, price, id, category }) => {
+const Items = ({
+	title,
+	image,
+	description,
+	people,
+	price,
+	id,
+	category,
+	top,
+	insetInline,
+	blockSize,
+	inlineSize,
+	hasPromotion,
+}) => {
 	return (
 		<ItemContainerStyled key={id}>
 			<ItemImgStyled
 				src={image}
 				alt={title}
-				inlineSize='300px'
-				blockSize='198px'
+				inlineSize={inlineSize}
+				blockSize={blockSize}
 				borderRadius='29px'
 				loading="lazy"
+				top={top}
+				insetInline={insetInline}
 			/>
+			{!hasPromotion && <Star />}
 			<h2>{title}</h2>
 			<ItemDescription>{description}</ItemDescription>
 			<ItemPeople>Para {people} personas</ItemPeople>

@@ -1,17 +1,6 @@
-import useSearch from "../hook/useSearch";
 import CustomerFeedback from "./CustomerFeedback";
-import SearchLayer from "./SearchLayer";
 import SectionHero from "./SectionHero";
-const Main = () => {
-	const {
-		active,
-		handleActive,
-		handleDesActive,
-		textSearch,
-		handleOnchange,
-		template,
-		isSuccess,
-	} = useSearch();
+const Main = ({ active, handleActive, textSearch, handleOnchange }) => {
 	return (
 		<main>
 			<SectionHero
@@ -21,12 +10,12 @@ const Main = () => {
 				active={active}
 			/>
 			<CustomerFeedback />
-			<SearchLayer
+			{/* 			<SearchLayer
 				template={template}
 				active={active}
 				isSuccess={isSuccess}
 				handleDesActive={handleDesActive}
-			/>
+			/> */}
 		</main>
 	);
 };

@@ -2,13 +2,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { openCart } from "../redux/slice/cart.slice";
 
 import { Link } from "react-router-dom";
-import Tabbar from "./Tabbar";
-import NavBottom from "./NavBottom";
 import { NavBar } from ".";
-import ButtonAction from "./ButtonAction"
 import { HeaderStyled } from "../styled-components";
-import logo from "/icons/logo.svg";
+import ButtonAction from "./ButtonAction";
+import NavBottom from "./NavBottom";
+import Tabbar from "./Tabbar";
 import cart from "/icons/carWhite.svg";
+import logo from "/icons/logo.svg";
 
 const Header = () => {
 	const dispatch = useDispatch();
@@ -23,14 +23,14 @@ const Header = () => {
 			</Link>
 			<NavBar items={["Carta", "Promociones", "Contacto", "Mi cuenta"]} />
 			<ButtonAction
-					img={cart}
-					size="cover"
-					backgroundColor={"transparent"}
-					onClick={handleOpen}
-					padding={"1em"}
-					dataLength={car.length}
-					opacity={car.length === 0}
-				/>
+				img={cart}
+				size="cover"
+				backgroundColor={"transparent"}
+				onClick={handleOpen}
+				padding={"1em"}
+				dataLength={car.length}
+				opacity={car.length === 0}
+			/>
 			<NavBottom />
 		</HeaderStyled>
 	);

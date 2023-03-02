@@ -40,6 +40,7 @@ const Carrusel = ({ move, handleMoveLeft, handleMoveRight }) => {
 							price={item.price}
 							category={item.category.name}
 							people={item.people}
+							hasPromotion={item.hasPromotion}
 						/>
 					))
 				) : (
