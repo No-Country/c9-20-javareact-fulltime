@@ -2,6 +2,7 @@ import Items from "../../../components/Items";
 import {
 	ButtonExitStyled,
 	ContainerSearchLayerStyled,
+	P,
 	ScrollContainerStyled,
 	SearchLayerStyled,
 } from "../styled-components/layout.styled";
@@ -16,8 +17,8 @@ const SearchLayer = ({ active, template, isSuccess, handleDesActive }) => {
 				<ScrollContainerStyled>
 					{isSuccess ? (
 						<div>
-							{template.length === 0 ? (<p>No hay publicaciones que coincidan con tu búsqueda.
-								Te invitamos a navegar por las categorías para encontrar el plato que buscas.</p>) :
+							{template.length === 0 ? (<P>No hay publicaciones que coincidan con tu búsqueda. <br></br>
+								Te invitamos a navegar por las categorías para encontrar el plato que buscas.</P>) :
 								(template.map((item) => (
 									<Items
 										key={item.id}

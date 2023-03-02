@@ -321,7 +321,9 @@ export const SearchLayerStyled = styled.section`
     transition: opacity  1s ease-in-out , visibility 1s ease-in-out ;  
     z-index: ${({ active }) => (active ? "4" : "1")};
 `;
-
+export const P = styled.p`
+    text-align: center;
+`;
 export const ContainerSearchLayerStyled = styled.div`
     position: fixed;
     inset-block-start: 36%;
