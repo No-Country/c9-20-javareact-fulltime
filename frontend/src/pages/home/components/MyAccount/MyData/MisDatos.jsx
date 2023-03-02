@@ -1,16 +1,21 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Loader } from "../../../../../components";
 import {
 	useAddNewDataUserMutation,
 	useGetUserInfoQuery,
 } from "../../../../../redux/query/FoodInfo.query";
+import { setAddress } from "../../../../../redux/slice/UserData.slice";
 import { MyDataStyle } from "../../../styled-components/MyAccountComponent";
 
 export default function MisDatos() {
 	const [id, setId] = useState([]);
 	const [token, setToken] = useState([]);
 	const [res, setRes] = useState([]);
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const id = JSON.parse(localStorage.getItem("id"));
@@ -66,14 +71,23 @@ export default function MisDatos() {
 		// OJO
 		setFloor(res?._embedded?.addresses[0].country);
 		setContact(res?._embedded?.addresses[0].state);
+
+		dispatch(
+			setAddress(
+				street + " " + number + " " + floor + " " + location + " " + postalCode,
+			),
+		);
 	}, [isSuccess, res]);
 
 	const submit = async (e) => {
+		e.preventDefault();
+		setTimeout(() => {
+			navigate("/");
+		}, [500]);
 		if (res?._embedded === undefined) {
 			// ! post address
 			axios.post(
-				/* 	`http://localhost:8080/api/addresses/`, */
-				"https://c9-20-javareact-fulltime-production.up.railway.app/api/addresses/",
+				`http://localhost:8080/api/addresses/`,
 				{
 					street,
 					number,
@@ -89,12 +103,24 @@ export default function MisDatos() {
 					},
 				},
 			);
+			dispatch(
+				setAddress(
+					street +
+						" " +
+						number +
+						" " +
+						floor +
+						" " +
+						location +
+						" " +
+						postalCode,
+				),
+			);
 		}
 
 		// ! put name email
 		await axios.put(
-			/* `http://localhost:8080/api/users/${id}`, */
-			`https://c9-20-javareact-fulltime-production.up.railway.app/api/users/${id}`,
+			`http://localhost:8080/api/users/${id}`,
 			{
 				name: NameAndSurname,
 				email: email,
@@ -108,11 +134,10 @@ export default function MisDatos() {
 			},
 		);
 
-		if (res?._embedded !== undefined) {
+		if (res?._embedded != undefined) {
 			// ! put address
 			await axios.put(
-				/* `http://localhost:8080/api/addresses/${res?._embedded?.addresses[0].id}`, */
-				`https://c9-20-javareact-fulltime-production.up.railway.app/api/addresses/${res?._embedded?.addresses[0].id}`,
+				`http://localhost:8080/api/addresses/${res?._embedded?.addresses[0].id}`,
 				{
 					street,
 					number,
@@ -128,6 +153,20 @@ export default function MisDatos() {
 					},
 				},
 			);
+			dispatch(
+				setAddress(
+					street +
+						" " +
+						number +
+						" " +
+						floor +
+						" " +
+						location +
+						" " +
+						postalCode,
+				),
+			);
+			console.log(floor);
 		}
 
 		// if (canSave) {
@@ -264,6 +303,6 @@ export default function MisDatos() {
 			</>
 		);
 	}
-
+	a;
 	return content;
 }
