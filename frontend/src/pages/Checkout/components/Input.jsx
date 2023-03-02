@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { InputStyled } from "../CheckoutStyled";
 const Input = ({
 	textLabel,
@@ -10,14 +9,16 @@ const Input = ({
 	messageError,
 	bottom,
 	handleChange,
+	register,
+	error,
 }) => {
-	const [error, setError] = useState(false);
 	/* 	const handleChange = (event) => {
 		let regex = new RegExp(pattern);
 		const { value } = event.target;
 		setError(!regex.test(value));
 	};
  */
+	console.log(error);
 	return (
 		<InputStyled inlineSize={inlineSize} bottom={bottom}>
 			<label htmlFor={name}>{textLabel}</label>
@@ -27,8 +28,10 @@ const Input = ({
 				placeholder={placeholder}
 				pattern={pattern}
 				onChange={handleChange}
+				{...register}
 			/>
-			{error && <span>{messageError}</span>}
+
+			{error && <span>{error?.message}</span>}
 		</InputStyled>
 	);
 };

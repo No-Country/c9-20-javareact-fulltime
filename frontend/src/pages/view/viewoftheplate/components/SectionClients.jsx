@@ -2,9 +2,9 @@ import { useParams } from "react-router-dom";
 import { HeaderSubTitle } from "../../../../components";
 import useFilterComments from "../hook/useFilterComments";
 const SectionClients = () => {
-	const { idCategory, idFood } = useParams();
-	const { items } = useFilterComments(idCategory, idFood);
-
+	const { idFood } = useParams();
+	const { items } = useFilterComments(idFood);
+	console.log(items);
 	return (
 		<section>
 			<HeaderSubTitle level={2} textAlign={"left"} title='Nuestros clientes' />
@@ -12,14 +12,14 @@ const SectionClients = () => {
 			{items.length > 0 ? (
 				items.map((item) => (
 					<article key={item.id}>
-						<header>
+						{/* <header>
 							<h3>{item.nameUser}</h3>
 							<p>{item.qualification}</p>
 							<p>{item.date}</p>
-						</header>
+						</header> */}
 
 						<div>
-							<p>{item.comment}</p>
+							<p>{item.content}</p>
 						</div>
 					</article>
 				))

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import InfoCheckout from "../model/InfoCheckout.model";
+
 const useConfirmation = () => {
 	const state = new InfoCheckout();
 
@@ -14,10 +15,11 @@ const useConfirmation = () => {
 	};
 
 	const onSubmit = (event) => {
-		event.preventDefault();
+		console.log(event);
 	};
 
 	return {
+		onSubmit,
 		handleChange,
 	};
 };

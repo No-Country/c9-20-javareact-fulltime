@@ -1,20 +1,16 @@
 import { useEffect, useState } from "react";
 import { useGetCommentsQuery } from "../../../../redux/query/FoodInfo.query";
-
-const useFilterComments = (category, idFood) => {
+const useFilterComments = (idFood) => {
 	const [items, setItems] = useState([]);
 
-	const { data: comments, isSuccess } = useGetCommentsQuery();
+	const { data: info, isSuccess } = useGetCommentsQuery(idFood);
 
 	useEffect(() => {
 		if (isSuccess) {
-			const template = comments.filter(
-				(item) => item.nameCategory === category && item.idFood === idFood,
-			);
-
-			setItems([...template]);
+			const { comments } = info._embedded;
+			setItems([...comments]);
 		}
-	}, []);
+	}, [info]);
 	return {
 		items,
 	};

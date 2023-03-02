@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Controller, useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { CardList, Header } from "../../components";
@@ -19,35 +20,28 @@ import Checked from "./components/Checked";
 import Input from "./components/Input";
 import SubTitle from "./components/SubTitle";
 import useConfirmation from "./hook/useConfirmation";
+
 const Checkout = () => {
 	const cart = useSelector((state) => state.cart.items);
 	const total = useSelector((state) => state.cart.total);
 	const navigate = useNavigate();
+	const {
+		register,
+		handleSubmit,
+		control,
+		formState: { errors },
+		setError,
+	} = useForm();
 
-	const [selectedDeliveryOption, setSelectedDeliveryOption] = useState("local");
 	const [selectedPaymentOption, setSelectedPaymentOption] = useState("debito");
-	const { handleChange } = useConfirmation();
-	/* 
-	const handleChange = () =>{
-
-	} */
-
-	const handleSubmit = (event) => {
-		event.preventDefault();
-
-		console.log(selectedDeliveryOption);
-		console.log(selectedPaymentOption);
-		if (numberCar !== "" && date !== "" && cvv !== "") {
-			navigate("/thanks");
-		}
-	};
+	const { onSubmit, handleChange } = useConfirmation();
 
 	return (
 		<>
 			<Header />
 			<CardList />
 			<CheckContainer>
-				<CheckData onSubmit={handleSubmit}>
+				<CheckData onSubmit={handleSubmit(onSubmit)}>
 					<SubTitle title='Envío' bottom={"-26%"} />
 					<ContainerStyled>
 						<Checked
@@ -88,7 +82,25 @@ const Checkout = () => {
 					{selectedPaymentOption === "debito" && (
 						<>
 							<ContainerInputsStyled>
-								<Input
+								<Controller
+									name="cardNumber"
+									control={control}
+									render={({ field }) => (
+										<Input
+											textLabel={"Número de tarjeta"}
+											type='text'
+											placeholder="1234 5678 9101 1121"
+											inlineSize='476px'
+											bottom='-23%'
+											handleChange={handleChange}
+										/>
+									)}
+									rules={{
+										pattern: /^[0-9]{1,16}$/,
+										message: "error",
+									}}
+								/>
+								{/* <Input
 									textLabel='Número de tarjeta'
 									type='text'
 									name="cardNumber"
@@ -98,7 +110,14 @@ const Checkout = () => {
 									messageError='Este campo solo acepta 16 caracteres numéricos'
 									bottom='-23%'
 									handleChange={handleChange}
-								/>
+									register={{
+										...register("cardNumber", {
+											required: "este campo es requerido",
+											pattern: /^[0-9]{1,16}$/,
+										}),
+									}}
+									error={errors.pattern}
+								/> */}
 
 								<Input
 									textLabel='Fecha de vencimiento'

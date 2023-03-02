@@ -273,7 +273,7 @@ export const InputStyled = styled.div`
         min-inline-size: 100%;
         inset-block-end: ${({ bottom }) => bottom};
         font-weight: 300;
-        font-size: 10px;
+        font-size: 16px;
         color: rgba(204, 16, 16, 1);
     }
 `;

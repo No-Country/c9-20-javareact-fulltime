@@ -28,7 +28,6 @@ const Form = () => {
 			}).unwrap();
 			console.log(isLoading);
 		}
-		setComment("");
 	};
 
 	const handleSubmit = (event) => {
