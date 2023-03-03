@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ThxContainer } from "./CheckoutStyled.jsx";
 import Loader from "./Loader.jsx";
-import img from "/icons/cartYellow.svg";
+import img from "../../../public/assets/cart-check.svg";
 const Thanks = () => {
   const [isLoading, setIsLoading] = useState(true);
 
