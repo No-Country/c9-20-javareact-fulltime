@@ -5,7 +5,7 @@ const useFilterDishes = (customFiltration) => {
 	const [list, setList] = useState([]);
 
 	const { data: food, isSuccess } = useGetDishesQuery();
-	console.log(food);
+
 	useEffect(() => {
 		if (isSuccess && food !== undefined) {
 			const { dishes } = food._embedded;

@@ -85,8 +85,10 @@ export const FooterArticleStyled = styled.footer`
 
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
     align-items: center;
     inline-size: 500px;
+    block-size: 400px;
     margin-block-start: .6em;
 
     span{

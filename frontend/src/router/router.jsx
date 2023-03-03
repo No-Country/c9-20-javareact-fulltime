@@ -11,6 +11,8 @@ import Promotions from "../pages/view/promociones/Promotions";
 import ViewOfThePlate from "../pages/view/viewoftheplate/ViewOfThePlate";
 import Home from "./../pages/home/Home";
 import Category from "./../pages/view/categoria/Category";
+import SearchPage from "../pages/SearchPage/SearchPage";
+
 export const router = createHashRouter([
 	{
 		path: "/",
@@ -56,6 +58,10 @@ export const router = createHashRouter([
 	{
 		path: "/checkout",
 		element: <Checkout />,
+	},
+	{
+		path: "/search",
+		element: <SearchPage />,
 	},
 	{
 		path: "/thanks",
