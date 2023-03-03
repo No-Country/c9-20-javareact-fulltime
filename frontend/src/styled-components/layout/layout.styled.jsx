@@ -596,6 +596,11 @@ export const ItemContainerStyled = styled.article`
   footer{
     block-size: 90px;
   }
+  @media (max-width: 601px) {
+    width: 200px;
+    height: 250px;
+    
+  }
 `;
 export const ItemImgStyled = styled.img`
     position: absolute;

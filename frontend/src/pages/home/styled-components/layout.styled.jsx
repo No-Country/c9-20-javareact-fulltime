@@ -165,6 +165,11 @@ export const FormStyled = styled.form`
     margin-right : auto;
     padding: 0 1em;
     z-index: ${({ active }) => (active ? "5" : "2")};
+    @media (max-width: 801px) {
+        display : ${({ searchpage }) => (!searchpage && "none")};
+        min-width: 80%;
+        height: 35px;
+    }
 `;
 export const ButtonSearchStyled = styled.button`
     
@@ -186,6 +191,16 @@ export const InputStyled = styled.input`
 
     &::placeholder{
         color: var(--text-secondary);
+    }
+    @media (max-width: 801px) {
+        padding: 0 .6em;
+        height: 35px;
+        color: #49454F;
+        font-size: 1.2rem;
+        &::placeholder{
+            color: #49454F;
+            font-size: 16px;
+        }
     }
 `;
 

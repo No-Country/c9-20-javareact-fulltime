@@ -2,16 +2,20 @@ import React from "react";
 import { CategoryListStyles } from "../../styled-components/Admin.styled";
 import ico1 from "./icon/basura.png";
 import ico2 from "./icon/lapiz.png";
+import { useGetCategoriesQuery } from "../../redux/query/FoodInfo.query.js";
 
-export default function CategoryList(props) {
+
+export default function CategoryList() {
+
+  const { data: cat, validado } = useGetCategoriesQuery();
   //Este array es momentaneo hasta poder consumir esta informacion de la API
-  let categories = props.categories._embedded.dishCategories;
+  let categories = cat?._embedded.dishCategories;
   //console.log(props.categories._embedded.dishCategories)
   return (
     <CategoryListStyles>
       <div className="listadoCategoria">
         <p className="tituloListado">Listado de Categoría</p>
-        {categories.map((e) => (
+        {categories?.map((e) => (
           <>
             <div className="item line">
               <p className="dish">{e.name}</p>

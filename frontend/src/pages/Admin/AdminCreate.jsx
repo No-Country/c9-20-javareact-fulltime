@@ -51,11 +51,11 @@ const AdminCreate = () => {
             <button>Listado</button> */}
           </div>
           <div className="component">
-            {mostrar == "Platos_Listado" && <DishesList dishes={dis} categories={cat}/>}
+            {mostrar == "Platos_Listado" && <DishesList/>}
             {mostrar == "a" && <CreateDish />}
-            {mostrar == "Categoria_Listado" && <CategoryList categories={cat}/>}
+            {mostrar == "Categoria_Listado" && <CategoryList/>}
             {mostrar == "Crear Categoria" && <CreateCategory />}
-            {mostrar == "c" && "Aqui va el componente"}
+            
           </div>
         </div>
       </AdminCreateStyle>
