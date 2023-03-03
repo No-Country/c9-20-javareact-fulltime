@@ -8,7 +8,7 @@ import {
 import Carrusel from "./Carrusel";
 import ContainerButton from "./ContainerButton";
 import Input from "./Input";
-import imgHome from "/assets/fondoHome.png";
+import imgHome from "/assets/img/fondoHome.jpg";
 import search from "/assets/icons/search.svg";
 
 const SectionHero = ({ handleActive, onChange, textSearch, active }) => {
