@@ -323,6 +323,7 @@ export const SearchLayerStyled = styled.section`
 `;
 export const P = styled.p`
     text-align: center;
+    font-size: var(--letterscustomizable-7);
 `;
 export const ContainerSearchLayerStyled = styled.div`
     position: fixed;
@@ -348,8 +349,7 @@ article{
 
 }
 }
-`
-;
+`;
 /* ================================================================ */
 
 /* ============================Buttons Carrusel ==================================== */
