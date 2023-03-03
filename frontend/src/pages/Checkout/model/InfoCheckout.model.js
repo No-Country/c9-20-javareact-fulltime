@@ -1,18 +1,16 @@
 class InfoCheckout {
 	constructor(
-		shipment = "local",
-		pay = "",
-		cardNumber = "",
-		dueDate = "",
+		type = "DEBIT",
+		number = "",
+		holder = "local",
+		expirationDate = "",
 		cvv = "",
-		paymentMethod = "Debito",
 	) {
-		this.shipment = shipment;
-		this.pay = pay;
-		this.cardNumber = cardNumber;
-		this.dueDate = dueDate;
+		this.type = type;
+		this.number = number;
+		this.holder = holder;
+		this.expirationDate = expirationDate;
 		this.cvv = cvv;
-		this.paymentMethod = paymentMethod;
 	}
 }
 export default InfoCheckout;

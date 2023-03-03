@@ -14,8 +14,6 @@ const useConfirmation = () => {
 			} else if (value === "local") {
 				setShipment(false);
 			}
-
-			console.log(value);
 		}
 	};
 

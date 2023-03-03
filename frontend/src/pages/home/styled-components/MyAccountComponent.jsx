@@ -98,10 +98,8 @@ export const MyDataStyle = styled.div`
     width: 100%;
     height: 40px;
     border: solid #acacac 1.75px;
-    background-color: transparent;
     border-radius: 5px;
     padding-left: 25px;
-    color: white;
   }
 
   .postalCode_location,
@@ -176,6 +174,12 @@ export const MyDataStyle = styled.div`
     justify-content: flex-end;
     cursor: pointer;
   }
+
+  button:hover {
+    background-color: #ffc451;
+    color: black;
+    cursor: pointer;
+  }
 `;
 
 export const MyCardsStyle = styled.div`
@@ -238,10 +242,8 @@ export const MyCardsStyle = styled.div`
     width: 100%;
     height: 40px;
     border: solid #acacac 1.75px;
-    background-color: transparent;
     border-radius: 5px;
     padding-left: 25px;
-    color: white;
   }
 
   #cardNumber,
@@ -281,6 +283,12 @@ export const MyCardsStyle = styled.div`
     display: flex;
     justify-content: flex-end;
   }
+
+  button:hover {
+    background-color: #ffc451;
+    color: black;
+    cursor: pointer;
+  }
 `;
 
 export const MyOrdersStyle = styled.div`
@@ -307,7 +315,7 @@ export const LogOurStyle = styled.div`
     width: 446px;
     height: 40px;
     border: solid #acacac 1.75px;
-    background-color: transparent;
+    background-color: #acacac;
     border-radius: 5px;
     padding-left: 25px;
     margin-bottom: 10px;
@@ -326,5 +334,11 @@ export const LogOurStyle = styled.div`
   .button {
     display: flex;
     justify-content: flex-end;
+  }
+
+  button:hover {
+    background-color: #ffc451;
+    color: black;
+    cursor: pointer;
   }
 `;

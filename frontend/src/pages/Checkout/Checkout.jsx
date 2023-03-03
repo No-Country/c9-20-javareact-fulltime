@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { CardList, Header } from "../../components";
 import { DivCol } from "../../styled-components/layout/layout.styled";
-import useAuth from "../../hooks/useAuth";
 import {
   Button,
   CheckCart,
@@ -20,8 +19,7 @@ import {
 import Checked from "./components/Checked";
 import Input from "./components/Input";
 import SubTitle from "./components/SubTitle";
-import useConfirmation from "./hook/useConfirmation";
-
+import usePayment from "./hook/usePayment";
 const Checkout = () => {
   const cart = useSelector((state) => state.cart.items);
   const total = useSelector((state) => state.cart.total);
@@ -33,14 +31,16 @@ const Checkout = () => {
     formState: { errors },
   } = useForm();
 
+  const { handleChange, payment, handleAddPayment } = usePayment();
   const [selectedPaymentOption, setSelectedPaymentOption] = useState("debito");
-  const { handleChange, shipment } = useConfirmation();
+
+  /* const { handleChange, shipment } = useConfirmation(); */
   const onSubmit = (data) => {
-    console.log(data);
+    const newState = Object.assign({}, payment, data);
+
+    handleAddPayment(newState);
     navigate("/thanks");
   };
-
-  useAuth() // Redirect to login if user is not logged in
 
   return (
     <>
@@ -54,14 +54,14 @@ const Checkout = () => {
               checked="local"
               id="local"
               labelText="Retiro en local"
-              name="shipment"
+              name="holder"
               value="local"
               onChange={handleChange}
             />
             <Checked
               id="delivery"
               labelText="Delivery"
-              name="shipment"
+              name="holder"
               value="delivery"
               onChange={handleChange}
             />
@@ -70,18 +70,19 @@ const Checkout = () => {
           <FieldsetStyled>
             <legend>Método de pago</legend>
             <Checked
-              checked={selectedPaymentOption === "debito"}
+              checked={"debito"}
               id="debito"
               labelText="Débito"
-              name="check"
-              onChange={() => setSelectedPaymentOption("debito")}
+              name="type"
+              value="DEBIT"
+              onChange={handleChange}
             />
             <Checked
-              checked={selectedPaymentOption === "credito"}
               id="credito"
               labelText="Crédito"
-              name="check"
-              onChange={() => setSelectedPaymentOption("credito")}
+              name="type"
+              value="CREDIT"
+              onChange={handleChange}
             />
           </FieldsetStyled>
 
@@ -96,7 +97,7 @@ const Checkout = () => {
                   inlineSize="476px"
                   bottom="-23%"
                   register={{
-                    ...register("cardNumber", {
+                    ...register("number", {
                       required: "Campo requerido",
                       pattern: {
                         value: /^[0-9]{1,16}$/,
@@ -105,7 +106,7 @@ const Checkout = () => {
                       },
                     }),
                   }}
-                  error={errors.cardNumber}
+                  error={errors.number}
                 />
 
                 <Input
@@ -115,6 +116,12 @@ const Checkout = () => {
                   placeholder="MM/YY"
                   inlineSize="233px"
                   bottom="-23%"
+                  register={{
+                    ...register("expirationDate", {
+                      required: "Campo requerido",
+                    }),
+                  }}
+                  error={errors.expirationDate}
                 />
 
                 <Input
@@ -185,15 +192,17 @@ const Checkout = () => {
                 </div>
                 <div>
                   <b>Envio </b>
-                  <span>{shipment ? "$150" : "-"}</span>
+                  <span>{payment.holder === "delivery" ? "$150" : "-"}</span>
                 </div>
                 <div>
                   <div>
                     <b>Total:</b>
-                    <b>${shipment ? total + 150 : total}</b>
+                    <b>
+                      ${payment.holder === "delivery" ? total + 150 : total}
+                    </b>
                   </div>
                   <span>
-                    {shipment
+                    {payment.holder
                       ? userAddress
                       : "Retiro en local: Urquiza 2345 - Capital"}
                   </span>

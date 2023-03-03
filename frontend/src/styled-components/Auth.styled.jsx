@@ -33,7 +33,7 @@ export const LogoContainer = styled.div`
 `;
 
 export const Title = styled.h3`
-  margin-bottom: 73px;  
+  margin-bottom: 73px;
 `;
 
 export const FormContainer = styled.div`
@@ -53,29 +53,33 @@ export const Button = styled.button`
   margin-top: 56px;
   border-radius: 6px;
   height: 57px;
-  background-color: #FFA800;
+  background-color: #ffa800;
   font-size: 20px;
   font-weight: 600;
+  :hover {
+    background-color: #ffc451;
+    color: black;
+    cursor: pointer;
+  }
 `;
 
 export const LinkRegister = styled.div`
   font-size: 16px;
   margin-top: 56px;
   text-align: center;
-  &>a {
+  & > a {
     font-weight: 600;
     color: black;
     text-decoration: none;
   }
 `;
 
-
 export const ForgotPassword = styled.div`
   display: flex;
   justify-content: flex-end;
-  align-items:center;
+  align-items: center;
   & > a {
     text-decoration: none;
-    color: #4D4D4D;
+    color: #4d4d4d;
   }
 `;
