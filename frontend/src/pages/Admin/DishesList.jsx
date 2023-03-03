@@ -11,15 +11,21 @@ export default function DishesList() {
     const { data: dis, isSuccess } = useGetDishesQuery();
     const { data: cat, validado } = useGetCategoriesQuery();
     //Este array es momentaneo hasta poder consumir esta informacion de la API
-    var dishes1 = dis._embedded.dishes
+    var dishes1 = dis?._embedded.dishes
     
-    
+    useEffect(()=>{
+  
+        // // dishes1 = useGetDishesQuery()
+        // // dishes1 = dishes1.data._embedded.dishes
+        console.log('entro')
+    },[isSuccess])
+
     //console.log(props.categories._embedded.dishCategories)
     return (
         <CategoryListStyles>
         <div className="listadoCategoria">
             <p className="tituloListado">Listado de platos</p>
-            { dishes1.map((e) => (
+            { dishes1?.map((e) => (
             <>
                 <div className="item line">
                 <p className="dish">{e.name}</p>

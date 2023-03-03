@@ -9,13 +9,13 @@ export default function CategoryList() {
 
   const { data: cat, validado } = useGetCategoriesQuery();
   //Este array es momentaneo hasta poder consumir esta informacion de la API
-  let categories = cat._embedded.dishCategories;
+  let categories = cat?._embedded.dishCategories;
   //console.log(props.categories._embedded.dishCategories)
   return (
     <CategoryListStyles>
       <div className="listadoCategoria">
         <p className="tituloListado">Listado de Categoría</p>
-        {categories.map((e) => (
+        {categories?.map((e) => (
           <>
             <div className="item line">
               <p className="dish">{e.name}</p>
