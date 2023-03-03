@@ -6,8 +6,8 @@ import {
   CarruselStyled,
 } from "../styled-components/layout.styled";
 import { foodSpecials } from "../utilities/foodSpecials";
-import left from "/icons/circleLeft.svg";
-import rigth from "/icons/circleRigth.svg";
+import left from "/assets/icons/circleLeft.svg";
+import rigth from "/assets/icons/circleRigth.svg";
 
 const Carrusel = ({ move, handleMoveLeft, handleMoveRight }) => {
   const { list, isSuccess } = useFilterDishes(foodSpecials);

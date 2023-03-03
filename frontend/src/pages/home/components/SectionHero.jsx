@@ -9,7 +9,7 @@ import Carrusel from "./Carrusel";
 import ContainerButton from "./ContainerButton";
 import Input from "./Input";
 import imgHome from "/assets/fondoHome.png";
-import search from "/icons/search.svg";
+import search from "/assets/icons/search.svg";
 
 const SectionHero = ({ handleActive, onChange, textSearch, active }) => {
 	const { move, handleMoveLeft, handleMoveRight } = useDisplacement();

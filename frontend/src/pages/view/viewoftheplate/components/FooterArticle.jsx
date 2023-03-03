@@ -8,7 +8,7 @@ import {
 	FooterArticleStyled,
 } from "../styled-components/layout.styled";
 
-import cart from "/icons/cart.svg";
+import cart from "/assets/icons/cart.svg";
 const FooterArticle = ({ value, handleAddItems }) => {
 	const dispatch = useDispatch();
 	const handlerIncrement = () => dispatch(increment());

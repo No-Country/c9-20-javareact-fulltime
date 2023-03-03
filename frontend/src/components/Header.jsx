@@ -7,8 +7,8 @@ import { HeaderStyled } from "../styled-components";
 import ButtonAction from "./ButtonAction";
 import NavBottom from "./NavBottom";
 import Tabbar from "./Tabbar";
-import cart from "/icons/carWhite.svg";
-import logo from "/icons/logo.svg";
+import cart from "/assets/icons/carWhite.svg";
+import logo from "/assets/icons/logoHeader.svg";
 
 const Header = () => {
 	const dispatch = useDispatch();

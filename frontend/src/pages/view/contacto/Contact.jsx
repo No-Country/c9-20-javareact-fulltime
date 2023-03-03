@@ -1,13 +1,13 @@
 import { CardList, Header } from "../../../components";
-import NavSide from "../../../components/NavSide"
+import NavSide from "../../../components/NavSide";
 import {
 	ContactForm,
 	ContactSection,
 	ContactStyled,
 } from "./styled-components/layout.styled";
-import location from "/icons/location.svg";
-import phone from "/icons/phone.svg";
-import wha from "/icons/whatsapp.svg";
+import location from "/assets/icons/location.svg";
+import phone from "/assets/icons/phone.svg";
+import wha from "/assets/icons/whatsapp.svg";
 
 const Contact = () => {
 	document.title = "Contacto";

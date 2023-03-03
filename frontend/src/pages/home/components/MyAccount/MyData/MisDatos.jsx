@@ -11,6 +11,8 @@ import { setAddress } from "../../../../../redux/slice/UserData.slice";
 import { MyDataStyle } from "../../../styled-components/MyAccountComponent";
 
 export default function MisDatos() {
+  const baseUrl =
+    "https://c9-20-javareact-fulltime-production.up.railway.app/api";
   const [id, setId] = useState([]);
   const [token, setToken] = useState([]);
   const [res, setRes] = useState([]);
@@ -30,7 +32,7 @@ export default function MisDatos() {
       setToken(token);
     }
     axios
-      .get(`http://localhost:8080/api/addresses/`, {
+      .get(`${baseUrl}/addresses/`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -87,7 +89,7 @@ export default function MisDatos() {
     if (res?._embedded === undefined) {
       // ! post address
       axios.post(
-        `http://localhost:8080/api/addresses/`,
+        `${baseUrl}/addresses/`,
         {
           street,
           number,
@@ -120,7 +122,7 @@ export default function MisDatos() {
 
     // ! put name email
     await axios.put(
-      `http://localhost:8080/api/users/${id}`,
+      `${baseUrl}/users/${id}`,
       {
         name: NameAndSurname,
         email: email,
@@ -137,7 +139,7 @@ export default function MisDatos() {
     if (res?._embedded != undefined) {
       // ! put address
       await axios.put(
-        `http://localhost:8080/api/addresses/${res?._embedded?.addresses[0].id}`,
+        `${baseUrl}/addresses/${res?._embedded?.addresses[0].id}`,
         {
           street,
           number,

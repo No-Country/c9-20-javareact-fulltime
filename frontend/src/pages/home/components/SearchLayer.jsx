@@ -6,8 +6,8 @@ import {
 	ScrollContainerStyled,
 	SearchLayerStyled,
 } from "../styled-components/layout.styled";
-import exit from "/icons/exit.svg";
-import img from "/img/fondoHome.jpg";
+import exit from "/assets/icons/exit.svg";
+import img from "/assets/img/fondoHome.jpg";
 
 const SearchLayer = ({ active, template, isSuccess, handleDesActive }) => {
 	return (

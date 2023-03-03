@@ -4,12 +4,12 @@ import { HeaderSubTitle } from "../../../../components";
 import { Div, SectionStyledBackground } from "../../../../styled-components";
 import useListFood from "../hook/useListFood";
 import RenderingFood from "./RenderingFood";
-import fondoCafeteria from "/img/fondoCafe.png";
-import fondoChurrasqueria from "/img/fondoCarnes.png";
-import fondoPastas from "/img/fondopastas.png";
-import fondoPizza from "/img/fondoPizza.png";
-import fondoPostres from "/img/fondoPostres.png";
-import fondoSalusables from "/img/fondoSaludables.png";
+import fondoCafeteria from "/assets/img/fondoCafe.png";
+import fondoChurrasqueria from "/assets/img/fondoCarnes.png";
+import fondoPastas from "/assets/img/fondopastas.png";
+import fondoPizza from "/assets/img/fondoPizza.png";
+import fondoPostres from "/assets/img/fondoPostres.png";
+import fondoSalusables from "/assets/img/fondoSaludables.png";
 
 const ItemsCategory = () => {
 	const { idCategory, idFood } = useParams();

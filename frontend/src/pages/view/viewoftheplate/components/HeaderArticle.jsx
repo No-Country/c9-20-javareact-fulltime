@@ -1,5 +1,5 @@
 import { HeaderArticleStyled } from "../styled-components/layout.styled";
-import start from "/icons/Star.svg";
+import start from "/assets/icons/Star.svg";
 const HeaderArticle = ({ nameFood, qualification }) => {
 	return (
 		<HeaderArticleStyled>
