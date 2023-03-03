@@ -16,6 +16,8 @@ import {
 	ArticleStyled,
 	ViewOfThePlateStyled,
 } from "./styled-components/layout.styled";
+import BackButton from "../../../components/BackButton";
+
 const ViewOfThePlate = () => {
 	const amount = useSelector((state) => state.AppetizerData);
 
@@ -43,6 +45,7 @@ const ViewOfThePlate = () => {
 
 	return (
 		<ViewOfThePlateStyled>
+			<BackButton />
 			<Container>
 				{isSuccess && itemFood !== undefined && itemFood.image !== undefined ? (
 					<>

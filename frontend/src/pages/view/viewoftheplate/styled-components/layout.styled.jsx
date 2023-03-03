@@ -6,6 +6,7 @@ export const ViewOfThePlateStyled = styled.section`
     flex-direction: column;
     min-block-size: 100vh;  
     inline-size: 100%;
+    margin-top: 2em;
     text-align: center;
     color: var(--text-primary);
     background-color: var(--background-primary); 
@@ -31,6 +32,15 @@ export const ContainerStyled = styled.div`
     min-block-size: 570px;
     padding: ${({ padding }) => padding || "0px"};
 
+    @media (max-width: 867px) {
+      >img{
+        min-width: 200px;
+        max-width: 400px;
+        height: auto;
+        padding: 0 2em;
+      }
+    }
+
 `;
 
 export const ArticleStyled = styled.article`
@@ -48,6 +58,7 @@ export const HeaderArticleStyled = styled.header`
     align-items: center;
     justify-content: space-between;
     inline-size: 100%;
+    margin: 1em 0;
     font-size:  1.5rem;
       h2{
         font-weight: 500;
@@ -60,7 +71,16 @@ export const HeaderArticleStyled = styled.header`
           font-size: 1.2rem;
         }
       }
-
+    @media (max-width: 866px) {
+      flex-direction: column;
+      h2 {
+        font-size: 30px;
+        margin: .5em 0;
+      }
+      p {
+        margin: 0;
+      }
+    }
 `;
 
 export const DescriptionStyled = styled.div`
@@ -95,7 +115,17 @@ export const FooterArticleStyled = styled.footer`
       min-inline-size: 19px;
       text-align: center;
     }
-    
+    @media (max-width: 551px) {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2em;
+      inline-size: auto;
+      block-size: auto;
+      > button {
+        min-width: calc(100vw - 40vw);
+        inline-size: auto;
+      }
+    }
 `;
 
 export const ContainerFooterStyled = styled.div`

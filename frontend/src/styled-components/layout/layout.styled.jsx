@@ -523,7 +523,14 @@ export const NavBottomStyled = styled.div`
             }
             &.isActive{
               color: var(--button-primary);
-              filter: brightness(0) saturate(100%) invert(64%) sepia(97%) saturate(1918%) hue-rotate(360deg) brightness(103%) contrast(106%);
+              filter: brightness(0)
+                saturate(100%)
+                invert(64%)
+                sepia(97%)
+                saturate(1918%)
+                hue-rotate(360deg)
+                brightness(103%)
+                contrast(106%);
             }
           }
       }
@@ -549,7 +556,7 @@ export const NavSideStyled = styled.nav`
   left: 0px;
   top: 0px;
   transform: ${({ translateX }) => translateX};
-  transition: transform 1s ease-in-out; 
+  transition: transform 0.4s ease-in-out; 
   color: var(--text-primary);
   font-weight: 400;
   font-size: 14px;

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { openMenu } from "../redux/slice/cart.slice";
 import { NavLink } from "react-router-dom";
-import { NavSideStyled, ButtonCarListExitStyled, CarListStyled } from "../styled-components";
+import { NavSideStyled, ButtonCarListExitStyled } from "../styled-components";
 import logo from "/icons/logo.svg";
 import crossIcon from "/icons/cross-icon.svg";
 
@@ -12,11 +12,11 @@ const NavSide = () => {
 
 	const handleMenu = () => dispatch(openMenu(false));
 
-
   return (
 
     <NavSideStyled
       translateX={open ? "translateX(0%)" : "translateX(-100%)"}
+      onMouseLeave={handleMenu}
     >
       <header>
         <img src={logo} alt='country' />
