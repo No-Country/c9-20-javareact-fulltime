@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import useSearch from "../pages/home/hook/useSearch";
 
 import { NavBottomStyled } from "../styled-components";
 
@@ -11,8 +12,13 @@ import promosIcon from "/icons/promos-navbar.svg"
 import searchIcon from "/icons/search.svg"
 
 const NavBottom = () => {
-	const accessToken = useSelector((state) => state.auth.accessToken)
+  const {
+		active,
+		handleActive,
+		handleDesActive
+	} = useSearch();
 
+	const accessToken = useSelector((state) => state.auth.accessToken)
 
   return (
     <NavBottomStyled>
@@ -28,10 +34,12 @@ const NavBottom = () => {
         </li>
 
         <li>
-          <span>
+          <NavLink to={"/search"}
+            className={({ isActive }) => (isActive ? "isActive" : undefined)}
+          >
             <p>Buscar</p>
             <img className="svg" src={searchIcon} alt="icon" />
-          </span>
+          </NavLink>
         </li>
 
         <li>
@@ -71,16 +79,6 @@ const NavBottom = () => {
               </>}
           </NavLink>
         </li>
-
-        {/* <ButtonAction
-					img={cart}
-					size="cover"
-					backgroundColor={"transparent"}
-					onClick={handleOpen}
-					padding={"1em"}
-					dataLength={car.length}
-					opacity={car.length === 0}
-				/> */}
       </menu>
     </NavBottomStyled>
   )
