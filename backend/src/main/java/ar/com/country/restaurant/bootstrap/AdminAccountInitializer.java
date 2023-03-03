@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Profile;
 @RequiredArgsConstructor
 @Configuration
 @ConfigurationProperties(prefix = "application.admin")
-@Profile("dev")
+@Profile({"dev", "admin"})
 public class AdminAccountInitializer implements ApplicationRunner {
     private final UserService userService;
     private String defaultName;
