@@ -1,6 +1,5 @@
-import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import useSearch from "../pages/home/hook/useSearch";
+import { useSelector } from "react-redux";
 
 import { NavBottomStyled } from "../styled-components";
 
@@ -12,8 +11,7 @@ import promosIcon from "/assets/icons/promos-navbar.svg";
 import searchIcon from "/assets/icons/search.svg";
 
 const NavBottom = () => {
-  const accessToken = useSelector((state) => state.auth.accessToken);
-  const { active, handleActive, handleDesActive } = useSearch();
+	const { role } = useSelector((state) => state.auth);
 
   return (
     <NavBottomStyled>
@@ -27,21 +25,26 @@ const NavBottom = () => {
             <img className="svg" src={homeIcon} alt="icon" />
           </NavLink>
         </li>
+
         <li>
-          <span>
-            <p>Buscar</p>
-            <img className="svg" src={searchIcon} alt="icon" />
-          </span>
-        </li>
-        <li>
-          <NavLink
-            to={"/search"}
+          <NavLink to={"/search"}
             className={({ isActive }) => (isActive ? "isActive" : undefined)}
           >
             <p>Buscar</p>
             <img className="svg" src={searchIcon} alt="icon" />
           </NavLink>
         </li>
+
+        <li>
+          <NavLink
+            to={"/categoria"}
+            className={({ isActive }) => (isActive ? "isActive" : undefined)}
+          >
+            <p>Carta</p>
+            <img className="svg" src={cartaIcon} alt="icon" />
+          </NavLink>
+        </li>
+
         <li>
           <NavLink
             to={"/promociones"}
@@ -51,45 +54,27 @@ const NavBottom = () => {
             <img className="svg" src={promosIcon} alt="icon" />
           </NavLink>
         </li>
+
         <li className="myaccount">
           <NavLink
-            to={accessToken ? "/myaccount" : "/login"}
+            to={role === "" ? "/login" : "/myaccount"}
             className={({ isActive }) => (isActive ? "isActive" : undefined)}
           >
-            {accessToken ? (
+            {role !== "" ?
               <>
                 <p>Mi cuenta</p>
                 <img className="svg" src={accountIcon} alt="icon" />
               </>
-            ) : (
+              :
               <>
-                <p>Mi cuenta</p>
+                <p>Log In</p>
                 <img className="svg" src={loginIcon} alt="login icon" />
-              </>
-            )}
-          </NavLink>
-        </li>
-        <li className="myaccount">
-          <NavLink
-            to={accessToken ? "/myaccount" : "/login"}
-            className={({ isActive }) => (isActive ? "isActive" : undefined)}
-          >
-            {accessToken ? (
-              <>
-                <p>Mi cuenta</p>
-                <img className="svg" src={accountIcon} alt="icon" />
-              </>
-            ) : (
-              <>
-                <p>Mi cuenta</p>
-                <img className="svg" src={loginIcon} alt="login icon" />
-              </>
-            )}
+              </>}
           </NavLink>
         </li>
       </menu>
     </NavBottomStyled>
-  );
-};
+  )
+}
 
-export default NavBottom;
+export default NavBottom
