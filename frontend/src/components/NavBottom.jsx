@@ -18,7 +18,7 @@ const NavBottom = () => {
 		handleDesActive
 	} = useSearch();
 
-	const accessToken = useSelector((state) => state.auth.accessToken)
+	const { role } = useSelector((state) => state.auth);
 
   return (
     <NavBottomStyled>
@@ -64,17 +64,17 @@ const NavBottom = () => {
 
         <li className="myaccount">
           <NavLink
-            to={accessToken ? "/myaccount" : "/login"}
+            to={role === "" ? "/login" : "/myaccount"}
             className={({ isActive }) => (isActive ? "isActive" : undefined)}
           >
-            {accessToken ?
+            {role !== "" ?
               <>
                 <p>Mi cuenta</p>
                 <img className="svg" src={accountIcon} alt="icon" />
               </>
               :
               <>
-                <p>Mi cuenta</p>
+                <p>Log In</p>
                 <img className="svg" src={loginIcon} alt="login icon" />
               </>}
           </NavLink>

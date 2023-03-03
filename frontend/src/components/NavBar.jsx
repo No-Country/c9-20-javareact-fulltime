@@ -4,7 +4,7 @@ import { NavBarStyled } from "../styled-components";
 import loginIcon from "/icons/box-arrow-right.svg"
 
 const NavBar = () => {
-	const accessToken = useSelector((state) => state.auth.accessToken)
+	const { role } = useSelector((state) => state.auth);
 
 	return (
 		<NavBarStyled>
@@ -38,11 +38,11 @@ const NavBar = () => {
 
 				<li>
 					<NavLink
-						to={accessToken ? "/myaccount" : "/login"}
+						to={role === "" ? "/login" : "/myaccount"}
 						className={({ isActive }) => (isActive ? "isActive" : undefined)}
 					>
 						<span style={{ display: "flex", gap: ".5em" }}>
-							{accessToken ?
+							{role !== "" ?
 								"Mi cuenta" :
 								<>
 									Iniciar Sesión
