@@ -232,6 +232,7 @@ export const ContainerInputsStyled = styled.div`
   flex-wrap: wrap;
   margin-top: 26px;
   gap: 16px;
+  max-inline-size: 491px;
 `;
 
 export const InputStyled = styled.div`
@@ -240,9 +241,10 @@ export const InputStyled = styled.div`
   flex-direction: column;
   gap: 10px;
   block-size: 89px;
+  inline-size: ${({ inlineSize }) => inlineSize};
   input {
     position: relative;
-    inline-size: ${({ inlineSize }) => inlineSize};
+    inline-size: 100%;
     padding: 0.9em;
     border: 1.5px solid #acacac;
     border-radius: 4px;
@@ -256,7 +258,7 @@ export const InputStyled = styled.div`
     }
     border: none;
     outline: ${({ outline }) =>
-      outline ? "1px solid rgba(204, 16, 16, 1);" : "none"};
+			outline ? "1px solid rgba(204, 16, 16, 1);" : "none"};
   }
 
   label {

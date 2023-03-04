@@ -1,16 +1,16 @@
 import { useState } from "react";
 
 const useDisplacement = () => {
-	const [move, setMove] = useState(14);
+	const [move, setMove] = useState(-4);
 
 	const handleMoveRight = () => {
-		if (move !== 14) {
-			setMove(move + 28);
+		if (move !== -4) {
+			setMove(move + 8);
 		}
 	};
 	const handleMoveLeft = () => {
 		if (move !== -14) {
-			setMove(move - 28);
+			setMove(move - 12);
 		}
 	};
 

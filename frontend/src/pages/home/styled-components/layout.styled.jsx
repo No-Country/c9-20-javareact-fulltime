@@ -166,7 +166,7 @@ export const FormStyled = styled.form`
     padding: 0 1em;
     z-index: ${({ active }) => (active ? "5" : "2")};
     @media (max-width: 801px) {
-        display : ${({ searchpage }) => (!searchpage && "none")};
+        display : ${({ searchpage }) => !searchpage && "none"};
         min-width: 80%;
         height: 35px;
     }
@@ -299,7 +299,7 @@ export const CarruselStyled = styled.div`
     ${FlexBoxCenter};
     gap: 100px;
     block-size: 560px;
-    inline-size: 1378px;
+    inline-size: clamp(300px,80%,1378px);
     margin-top: 80px;
     margin-left: auto;
     margin-right: auto;
@@ -383,7 +383,11 @@ export const ButtonCarruselStyled = styled.button`
 export const ButtonExitStyled = styled.button`
     position: absolute;
     inset-block-start: 12%;
-    inset-inline: 4%;
+    inset-inline-start: 4%;
     padding: 1em;
     ${BackgroundImageButtons};
+`;
+
+export const SectionClient = styled.section`
+
 `;

@@ -108,7 +108,7 @@ export const FooterArticleStyled = styled.footer`
     flex-wrap: wrap;
     align-items: center;
     inline-size: 500px;
-    block-size: 400px;
+    block-size: 100px;
     margin-block-start: .6em;
 
     span{
@@ -179,6 +179,8 @@ export const FormStyled = styled.form`
 export const ContainerStartStyled = styled.header`
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 80px;
     div{
         display: flex;
@@ -228,4 +230,18 @@ export const SpanLoaderStyled = styled.span`
   background-color:#c3c3c3;
   border-radius: 6px;
   animation: ${Loader} 1s infinite  linear;
+`;
+
+export const SectionClient = styled.section`
+  text-align: center;
+  h2{
+    text-align: center;
+  }
+
+    @media screen and (min-width: 900px){
+      text-align: left;
+      h2{
+      text-align: left;
+    } 
+  }
 `;

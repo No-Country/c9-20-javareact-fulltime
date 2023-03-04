@@ -586,8 +586,8 @@ export const NavSideStyled = styled.nav`
 /* Container del item responsive abierto a que lo modifiquen */
 export const ItemContainerStyled = styled.article`
   position: relative;
-  min-block-size: 426px;
-  min-inline-size: 365px;
+  min-block-size: clamp(377px,80%,426px)  ;
+  min-inline-size: clamp(329px,80%,365px) ;
   border-radius: 20px;
   background-color: #FFF;
   color: var(--background-primary);
@@ -603,11 +603,7 @@ export const ItemContainerStyled = styled.article`
   footer{
     block-size: 90px;
   }
-  @media (max-width: 601px) {
-    width: 200px;
-    height: 250px;
-    
-  }
+
 `;
 export const ItemImgStyled = styled.img`
     position: absolute;

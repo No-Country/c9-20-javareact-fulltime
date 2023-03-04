@@ -1,11 +1,12 @@
+import { useParams } from "react-router-dom";
 import { HeaderSubTitle } from "../../../../components";
 import useFilterComments from "../hook/useFilterComments";
-import { useParams } from "react-router-dom";
+import { SectionClient } from "../styled-components/layout.styled";
 const SectionClients = () => {
 	const { idFood } = useParams();
 	const { items, isSuccess } = useFilterComments(idFood);
 	return (
-		<section>
+		<SectionClient>
 			<HeaderSubTitle level={2} textAlign={"left"} title='Nuestros clientes' />
 			{isSuccess ? (
 				<>
@@ -30,7 +31,7 @@ const SectionClients = () => {
 			) : (
 				<div>laoding...</div>
 			)}
-		</section>
+		</SectionClient>
 	);
 };
 
