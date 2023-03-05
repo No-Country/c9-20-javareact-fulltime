@@ -153,20 +153,11 @@ export default function MisDatos() {
           },
         }
       );
-      dispatch(
-        setAddress(
-          street +
-            " " +
-            number +
-            " " +
-            floor +
-            " " +
-            location +
-            " " +
-            postalCode
-        )
+      window.localStorage.setItem(
+        "userAddress",
+        street + " " + number + " " + floor + " " + location + " " + postalCode
       );
-      console.log(floor);
+      dispatch(setAddress(localStorage.getItem("userAddress")));
     }
 
     // if (canSave) {
@@ -257,6 +248,7 @@ export default function MisDatos() {
               value={number}
             />
             <input
+              required
               placeholder="Ingrese el numero"
               type="text"
               id="floor"
