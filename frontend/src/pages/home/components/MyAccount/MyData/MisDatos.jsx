@@ -12,7 +12,7 @@ import { MyDataStyle } from "../../../styled-components/MyAccountComponent";
 
 export default function MisDatos() {
   const baseUrl =
-    "https://c9-20-javareact-fulltime-production.up.railway.app/api";
+    "https://c9-20-javareact-fulltime-production-2ad1.up.railway.app/api";
   const [id, setId] = useState([]);
   const [token, setToken] = useState([]);
   const [res, setRes] = useState([]);

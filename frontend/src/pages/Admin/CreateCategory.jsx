@@ -5,7 +5,7 @@ import icoimg from "./icon/Union.png";
 
 export default function CreateCategory() {
   const baseUrl =
-    "https://c9-20-javareact-fulltime-production.up.railway.app/api";
+    "https://c9-20-javareact-fulltime-production-2ad1.up.railway.app/api";
   const [image, setImage] = React.useState({ imagen: null });
   const [nombre, setNombre] = React.useState({ name: "" });
   const [token, setToken] = React.useState("");

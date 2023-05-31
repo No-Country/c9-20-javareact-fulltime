@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { removeCredentials, setCredentials } from "../slice/Auth.slice";
 const baseUrl =
-  "https://c9-20-javareact-fulltime-production.up.railway.app/api";
+  "https://c9-20-javareact-fulltime-production-2ad1.up.railway.app/api";
 
 const baseQuery = fetchBaseQuery({
   baseUrl,

@@ -6,7 +6,7 @@ import { useGetCategoriesQuery } from "../../redux/query/FoodInfo.query.js";
 
 const CreateDish = () => {
   const baseUrl =
-    "https://c9-20-javareact-fulltime-production.up.railway.app/api";
+    "https://c9-20-javareact-fulltime-production-2ad1.up.railway.app/api";
 
   const [discount, setdiscount] = React.useState(false);
   const { data: cat, validado } = useGetCategoriesQuery();

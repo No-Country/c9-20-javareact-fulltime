@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 // const baseUrl = "http://localhost:8080/api";
 const baseUrl =
-  "https://c9-20-javareact-fulltime-production.up.railway.app/api";
+  "https://c9-20-javareact-fulltime-production-2ad1.up.railway.app/api";
 
 export const FoodInfoApi = createApi({
   reducerPath: "food",
